@@ -1,1 +1,1 @@
-JuliaMusic_documentation.jl
+Documentation host for JuliaMusic organization.

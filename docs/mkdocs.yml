@@ -1,0 +1,57 @@
+site_name:           JuliaMusic
+repo_url:            https://github.com/JuliaMusic
+site_description:    Julia packages for handling and manipulating music-related data.
+site_author:         George Datseris, Joel Hobson
+
+theme:
+  name: 'material'
+  palette:
+    primary: 'deep purple'
+    accent: 'teal'
+extra:
+  social:
+    - type: 'github'
+      link: 'https://github.com/JuliaMusic'
+
+markdown_extensions:
+  - admonition
+  - pymdownx.arithmatex
+  - pymdownx.details
+  - mdx_math
+  - codehilite
+  - extra
+  - tables
+  - fenced_code
+
+extra_css:
+  - assets\Documenter.css
+
+
+extra_javascript:
+  - assets\mathjaxhelper.js
+  - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
+
+docs_dir: 'build'
+
+pages:
+- Introduction: index.md
+- Fundamentals:
+  - Dynamical Systems: definition/general.md
+  - Time Evolution: definition/evolve.md
+  - Numerical Data: definition/dataset.md
+  - Delay Coordinates: definition/reconstruction.md
+  - Predefined Systems: definition/predefined.md
+- ChaosTools:
+  - Features Overview: chaos/overview.md
+  - Orbit Diagrams & PSOS: chaos/orbitdiagram.md
+  - Lyapunov Exponents: chaos/lyapunovs.md
+  - Entropies and Dimensions: chaos/entropies.md
+  - Nonlinear Timeseries Analysis: chaos/nlts.md
+  - Periodicity: chaos/periodicity.md
+  - Chaos Detection: chaos/chaos_detection.md
+  - Visualization: chaos/visualization.md
+- TimeseriesPrediction:
+  - Local Modeling: tsprediction/localmodels.md
+- Advanced Documentation: advanced.md
+- Contributor Guide: contributors_guide.md
+- News: news.md
