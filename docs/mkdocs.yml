@@ -6,8 +6,8 @@ site_author:         George Datseris, Joel Hobson
 theme:
   name: 'material'
   palette:
-    primary: 'deep purple'
-    accent: 'teal'
+    primary: 'purple'
+    accent: 'pink'
 extra:
   social:
     - type: 'github'
@@ -35,23 +35,7 @@ docs_dir: 'build'
 
 pages:
 - Introduction: index.md
-- Fundamentals:
-  - Dynamical Systems: definition/general.md
-  - Time Evolution: definition/evolve.md
-  - Numerical Data: definition/dataset.md
-  - Delay Coordinates: definition/reconstruction.md
-  - Predefined Systems: definition/predefined.md
-- ChaosTools:
-  - Features Overview: chaos/overview.md
-  - Orbit Diagrams & PSOS: chaos/orbitdiagram.md
-  - Lyapunov Exponents: chaos/lyapunovs.md
-  - Entropies and Dimensions: chaos/entropies.md
-  - Nonlinear Timeseries Analysis: chaos/nlts.md
-  - Periodicity: chaos/periodicity.md
-  - Chaos Detection: chaos/chaos_detection.md
-  - Visualization: chaos/visualization.md
-- TimeseriesPrediction:
-  - Local Modeling: tsprediction/localmodels.md
-- Advanced Documentation: advanced.md
-- Contributor Guide: contributors_guide.md
-- News: news.md
+- MIDI files: midi/io.md
+- Notes: midi/notes.md
+- Quantizing: mm/quantizing.md
+- Note processing: mm/processing.md
