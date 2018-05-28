@@ -38,9 +38,20 @@ struct SysexEvent <: TrackEvent
     data::Array{UInt8,1}
 end
 ```
+
+To add an event to a `MIDITrack`, simply use
+```@docs
+addevent!
+```
+
+Typically the most relevant information of a `MIDITrack` are the notes contained within.
+For this reason, special functions [`getnotes`](@ref) and [`addnotes!`](@ref) exist, which can be found in the [Notes](notes) page.
+
 ## Utility functions
-
-
+```@docs
+BPM
+ms_per_tick
+```
 
 
 ## Low-Level API
@@ -49,4 +60,11 @@ bytes from a file and transform them into Julia structures.
 
 ```@docs
 readvariablelength
+```
+Other useful functions that are not exported are
+```julia
+writeevent
+readMIDIevent
+readmetaevent
+readsysexevent
 ```
