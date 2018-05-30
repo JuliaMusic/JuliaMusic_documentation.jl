@@ -39,11 +39,6 @@ struct SysexEvent <: TrackEvent
 end
 ```
 
-To add an event to a `MIDITrack`, simply use
-```@docs
-addevent!
-```
-
 Typically the most relevant information of a `MIDITrack` are the notes contained within.
 For this reason, special functions [`getnotes`](@ref) and [`addnotes!`](@ref) exist, which can be found in the [Notes](notes) page.
 
@@ -51,6 +46,9 @@ For this reason, special functions [`getnotes`](@ref) and [`addnotes!`](@ref) ex
 ```@docs
 BPM
 ms_per_tick
+addevent!
+trackname
+addtrackname!
 ```
 
 
@@ -68,3 +66,4 @@ readMIDIevent
 readmetaevent
 readsysexevent
 ```
+Lastly, see the file `MIDI/src/constants.jl` for message types, event types, etc.
