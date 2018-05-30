@@ -18,7 +18,7 @@ addnotes!
 Finally, you can use the function `getnotnotes(track)` to get all `TrackEvents`
 that are *not* `NOTEON` or `NOTEOFF`.
 
-## Small Example
+## Write Example
 
 ```julia
 using MIDI
@@ -45,6 +45,33 @@ addnotes!(track, notes)
 addtrackname!(track, "simple track")
 push!(file.tracks, track)
 writeMIDIfile("test.mid", file)
+```
+
+## Read Example
+```julia
+cd(Pkg.dir("MusicManipulations")*"/test")
+midi = readMIDIfile("serenade_full.mid")
+# Track number 3 is a quantized bass MIDI track
+bass = midi.tracks[3]
+notes = getnotes(bass, midi.tpq)
+println("Notes of track $(trackname(bass)):")
+Base.show(notes)
+```
+gives
+```
+Notes of track Bass:
+256 Notes with tpq=960
+ Note F3   | vel = 76  | pos = 0, dur = 1196
+ Note F3   | vel = 75  | pos = 1600, dur = 273
+ Note D♯3  | vel = 58  | pos = 1920, dur = 1496
+ Note D♯3  | vel = 56  | pos = 3520, dur = 274
+ Note C♯3  | vel = 60  | pos = 3840, dur = 1421
+ Note C♯3  | vel = 58  | pos = 5440, dur = 228
+ Note C3   | vel = 73  | pos = 5760, dur = 889
+ Note D♯3  | vel = 77  | pos = 6720, dur = 967
+ Note F3   | vel = 76  | pos = 7680, dur = 1196
+ Note F3   | vel = 75  | pos = 9280, dur = 273
+  ⋮
 ```
 
 ## Pitch to `Int` convertion
