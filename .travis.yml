@@ -12,5 +12,6 @@ notifications:
 #   - julia -e 'Pkg.clone("https://github.com/JuliaMusic/MusicManipulations.jl")'
 #   - julia -e 'Pkg.clone("https://github.com/JuliaMusic/JuliaMusic_documentation.jl")'
 after_success:
-  - julia -e julia -e 'Pkg.add("Documenter")'
+  - julia -e 'Pkg.clone("https://github.com/JuliaMusic/MusicManipulations.jl")'
+  - julia -e 'Pkg.add("Documenter")'
   - julia -e 'cd(Pkg.dir("JuliaMusic_documentation")); include(joinpath("docs", "make.jl"))'
