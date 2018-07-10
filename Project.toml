@@ -1,3 +1,8 @@
+authors = ["George Datseris <datseris.george@gmail.com>"]
+name = "JuliaMusic_documentation"
+uuid = "3b257ef0-8485-11e8-0aaa-4f8bd98e59c8"
+version = "0.0.1"
+
 [deps]
 MIDI = "f57c4921-e30c-5f49-b073-3f2f2ada663e"
 MusicManipulations = "0696f8b0-8469-11e8-2dd1-81a184564249"
