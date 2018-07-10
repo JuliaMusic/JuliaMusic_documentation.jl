@@ -23,7 +23,7 @@ The [MusicManipulations.jl](https://github.com/JuliaMusic/MusicManipulations.jl)
 *This section serves as a crash-course on the MIDI format. For more info
 see the [wikipedia](https://en.wikipedia.org/wiki/MIDI) page,
 read the [official MIDI specifications](https://www.midi.org/specifications) or
-have a look at the comprehensive tutorial [at recirdingblogs.com](http://www.recordingblogs.com/wiki/musical-instrument-digital-interface-midi)*
+have a look at the comprehensive tutorial [at recirdingblogs.com](http://www.recordingblogs.com/wiki/musical-instrument-digital-interface-midi)*.
 
 A MIDI file typically comes in pieces called tracks that play simultaneously. Each track can have 16 different channels, numbered 0-15. Each channel can be thought of as a single instrument, though that instrument can be changed throughout that track. A track contains events. The three types of events are MIDI events, META events, and system exclusive (SYSEX) events.
 All events begin with the time since the last event (dT) in ticks. The number of ticks per quarter note is given by the `tpq` of the midi file, `MIDIFile.tpq` (see [`MIDIFile`](@ref)).

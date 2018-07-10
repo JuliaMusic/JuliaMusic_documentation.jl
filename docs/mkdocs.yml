@@ -38,4 +38,4 @@ pages:
 - MIDI files: midi/io.md
 - Notes: midi/notes.md
 - Quantizing: mm/quantizing.md
-- Music Data Extraction: mm/processing.md
+- Music Data Extraction: mm/extraction.md

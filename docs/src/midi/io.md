@@ -47,6 +47,7 @@ For this reason, special functions [`getnotes`](@ref) and [`addnotes!`](@ref) ex
 BPM
 ms_per_tick
 addevent!
+addevents!
 trackname
 addtrackname!
 ```
