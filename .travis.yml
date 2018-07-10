@@ -1,16 +1,17 @@
-## Documentation: http://docs.travis-ci.com/user/languages/julia/
 language: julia
 os:
   - linux
 julia:
-  - 0.6
+  # - 0.7
+  - nightly
 notifications:
   email:
     on_success: never
     on_failure: never
 script:
   - if [[ -a .git/shallow ]]; then git fetch --unshallow; fi
-  - julia -e 'Pkg.clone(pwd())'
+  - julia -e 'Pkg.clone("https://github.com/JuliaMusic/MIDI.jl");
+  Pkg.clone("https://github.com/JuliaMusic/MusicManipulations.jl"); Pkg.clone(pwd())'
 after_success:
-  - test $TRAVIS_OS_NAME = "linux" && julia -e julia -e 'Pkg.add("Documenter")'
-  - test $TRAVIS_OS_NAME = "linux" && julia -e 'cd(Pkg.dir("JuliaMusic_documentation")); include(joinpath("docs", "make.jl"))'
+  - julia -e julia -e 'Pkg.add("Documenter")'
+  - julia -e 'cd(Pkg.dir("JuliaMusic_documentation")); include(joinpath("docs", "make.jl"))'
