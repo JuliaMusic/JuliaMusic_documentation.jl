@@ -1,5 +1,5 @@
 module JuliaMusic_documentation
 
-using MIDI, MusicManipulations
+using MIDI #, MusicManipulations
 
 end
