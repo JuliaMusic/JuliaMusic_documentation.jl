@@ -10,7 +10,7 @@ To read and write a MIDI file, use
 midi = readMIDIfile("test.mid") # Reads a file into a MIDIFile data type
 writeMIDIfile("filename.mid", midi) # Writes a MIDI file to the given filename
 ```
-
+---
 ## `MIDITrack`
 The most important field of a `MIDIFile` is the `tracks` field. It contains as
 many tracks as the user wants. The tracks themselves contain all "musical" information
