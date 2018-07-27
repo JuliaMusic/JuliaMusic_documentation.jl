@@ -6,11 +6,13 @@ MIDIFile
 ```
 
 To read and write a MIDI file, use
-```julia
-midi = readMIDIfile("test.mid") # Reads a file into a MIDIFile data type
-writeMIDIfile("filename.mid", midi) # Writes a MIDI file to the given filename
+```@docs
+readMIDIfile
+writeMIDIfile
 ```
+
 ---
+
 ## `MIDITrack`
 The most important field of a `MIDIFile` is the `tracks` field. It contains as
 many tracks as the user wants. The tracks themselves contain all "musical" information
@@ -19,6 +21,9 @@ in the form of the "events" we mentioned in the introduction:
 MIDITrack
 TrackEvent
 ```
+
+---
+
 The `TrackEvent` themselves can be one of three types:
 ```julia
 struct MIDIEvent <: TrackEvent
@@ -50,6 +55,8 @@ addevent!
 addevents!
 trackname
 addtrackname!
+textevent
+findtextevents
 ```
 
 
@@ -66,5 +73,9 @@ writeevent
 readMIDIevent
 readmetaevent
 readsysexevent
+get_abs_pos
 ```
+
+---
+
 Lastly, see the file `MIDI/src/constants.jl` for message types, event types, etc.

@@ -1,3 +1,4 @@
 julia 0.7-beta
-MIDI 0.6
-# MusicManipulations
+MIDI 0.8
+MotifSequenceGenerator
+MusicManipulations

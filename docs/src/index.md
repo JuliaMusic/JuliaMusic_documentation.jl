@@ -1,19 +1,28 @@
 # Introduction
 This documentation describes how to use packages of the [JuliaMusic](https://github.com/JuliaMusic). They are about reading, manipulating
-and saving data exclusively related with music. Most of the functionality
+and saving data related with music. Most of the functionality
 comes in the form of the [MIDI](https://en.wikipedia.org/wiki/MIDI) format
 which is described later on this page.
 
+The current documentation was built with the following versions
+```@eval
+using Pkg.API: installed # hide
+ins = installed()
+for pkg in ["MIDI", "MotifSequenceGenerator", "MusicManipulations"]
+  println("- $(pkg): $(ins[pkg])")
+end
+```
+
 ## Overview
 
-The [MIDI.jl](https://github.com/JuliaMusic/MIDI.jl) is a module that defines
+[MIDI.jl](https://github.com/JuliaMusic/MIDI.jl) is a module that defines
 fundamental types like tracks, reading/writing functionality, note functionality and other
-basic stuff. It was originally developed by [Joel Hobson](https://github.com/JoelHobson) and is now maintained by all members of JuliaMusic. In short it contains:
+basic stuff.
 
-1. The API of basic types like midi files and tracks, as well as IO is in the [Basic MIDI Structures](midi/io) page.
-2. The [`Note`](@ref) construct which describes a music note, as well as basic read/write methods, are in the [Notes](midi/notes) page.
+1. [Basic MIDI API](midi/io) : The API of basic types like midi files and tracks, as well as IO. Various utility functions are included as well.
+2. [Notes](midi/notes) : The [`Note`](@ref) construct describes a music note. Many convenience tools are also provided in the same page, like e.g. turning a not pitch to a string like `A♯3`.
 
-The [MusicManipulations.jl](https://github.com/JuliaMusic/MusicManipulations.jl) package has more advanced functionality about note processing, data extraction, quantizing and other similar processes that related to music data:
+The [MusicManipulations.jl](https://github.com/JuliaMusic/MusicManipulations.jl) package has more advanced functionality about note processing, data extraction, quantizing and other similar processes that related to music data.
 
 1. [Quantizing & Classifying Notes](mm/quantizing) on a given grid.
 2. [Music Data Extraction](mm/extraction)
