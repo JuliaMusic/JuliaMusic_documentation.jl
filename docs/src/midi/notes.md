@@ -55,14 +55,18 @@ writeMIDIfile("test.mid", file)
 ```
 
 ## Read Example
-```@example
-cd(Pkg.dir("MusicManipulations")*"/test")
-midi = readMIDIfile("serenade_full.mid")
+```@example midi
+using MIDI
+cd(Pkg.dir("MIDI")*"/test")
+midi = readMIDIfile("doxy.mid")
+```
+
+```@example midi
 # Track number 3 is a quantized bass MIDI track
 bass = midi.tracks[3]
 notes = getnotes(bass, midi.tpq)
 println("Notes of track $(trackname(bass)):")
-Base.show(notes)
+notes
 ```
 
 

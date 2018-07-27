@@ -15,6 +15,8 @@ end
 
 ## Overview
 
+### MIDI
+
 [MIDI.jl](https://github.com/JuliaMusic/MIDI.jl) is a module that defines
 fundamental types like tracks, reading/writing functionality, note functionality and other
 basic stuff.
@@ -22,11 +24,21 @@ basic stuff.
 1. [Basic MIDI API](midi/io) : The API of basic types like midi files and tracks, as well as IO. Various utility functions are included as well.
 2. [Notes](midi/notes) : The [`Note`](@ref) construct describes a music note. Many convenience tools are also provided in the same page, like e.g. turning a not pitch to a string like `A♯3`.
 
+### MusicManipulations
+
 The [MusicManipulations.jl](https://github.com/JuliaMusic/MusicManipulations.jl) package has more advanced functionality about note processing, data extraction, quantizing and other similar processes that related to music data.
 
 1. [Quantizing & Classifying Notes](mm/quantizing) on a given grid.
 2. [Music Data Extraction](mm/extraction)
 3. More coming soon.
+
+### MotifSequenceGenerator
+
+[MotifSequenceGenerator.jl](https://github.com/JuliaMusic/MotifSequenceGenerator.jl) is a very simple module that does a very simple thing: based on a pool of motifs with specified lengths, it makes a random sequence out of them so that the sequence also has a specified lengths!
+
+1. [Motif Sequences](motif/basic.md) introduces the module and has a basic usage example.
+2. [Music Motifs Example](motif/musicexample.md) shows a real-world use case where the module is used to produce music sequences.
+
 
 ## MIDI: The least you need to know
 *This section serves as a crash-course on the MIDI format. For more info

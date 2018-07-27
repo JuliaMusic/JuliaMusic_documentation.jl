@@ -1,5 +1,6 @@
 module JuliaMusic_documentation
 
-using MIDI #, MusicManipulations
+using Reexport
+@reexport using MIDI, MotifSequenceGenerator, MusicManipulations
 
 end

@@ -1,7 +1,7 @@
 using Documenter
-using MIDI, MusicManipulations, JuliaMusic_documentation
+using JuliaMusic_documentation
 
-makedocs(modules=[MIDI, MusicManipulations, JuliaMusic_documentation], doctest=false)
+makedocs(modules=[JuliaMusic_documentation], doctest=false)
 
 deploydocs(
     deps   = Deps.pip("Tornado>=4.0.0,<5.0.0", "mkdocs",
