@@ -62,15 +62,14 @@ struct FloatShout
   start::Float64
 end
 
-N = 5
-
 rs(x) = uppercase(randstring(x))
 
-shouts = [FloatShout(rs(rand(3:5)), rand()+1, rand()) for k in 1:N]
+shouts = [FloatShout(rs(rand(3:5)), rand()+1, rand()) for k in 1:5]
 shoutlimits(s::FloatShout) = (s.start, s.start + s.dur);
 shouttranslate(s::FloatShout, n) = FloatShout(s.shout, s.dur, s.start + n);
 
 q = 10.0
+δq = 1.0
 
 r, s = random_sequence(shouts, q, shoutlimits, shouttranslate, δq)
 

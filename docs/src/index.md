@@ -5,12 +5,17 @@ comes in the form of the [MIDI](https://en.wikipedia.org/wiki/MIDI) format
 which is described later on this page.
 
 The current documentation was built with the following versions
-```@eval
-using Pkg.API: installed # hide
+```@setup versions
+using Pkg.API: installed
 ins = installed()
+function f()
 for pkg in ["MIDI", "MotifSequenceGenerator", "MusicManipulations"]
   println("- $(pkg): $(ins[pkg])")
 end
+end
+```
+```@example versions
+f() # hide
 ```
 
 ## Overview
@@ -34,7 +39,7 @@ The [MusicManipulations.jl](https://github.com/JuliaMusic/MusicManipulations.jl)
 
 ### MotifSequenceGenerator
 
-[MotifSequenceGenerator.jl](https://github.com/JuliaMusic/MotifSequenceGenerator.jl) is a very simple module that does a very simple thing: based on a pool of motifs with specified lengths, it makes a random sequence out of them so that the sequence also has a specified lengths!
+[MotifSequenceGenerator.jl](https://github.com/JuliaMusic/MotifSequenceGenerator.jl) is a very simple module that does a very simple thing: based on a pool of motifs with specified lengths, it makes a random sequence out of them so that the sequence also has a specified length!
 
 1. [Motif Sequences](motif/basic.md) introduces the module and has a basic usage example.
 2. [Music Motifs Example](motif/musicexample.md) shows a real-world use case where the module is used to produce music sequences.
@@ -44,7 +49,7 @@ The [MusicManipulations.jl](https://github.com/JuliaMusic/MusicManipulations.jl)
 *This section serves as a crash-course on the MIDI format. For more info
 see the [wikipedia](https://en.wikipedia.org/wiki/MIDI) page,
 read the [official MIDI specifications](https://www.midi.org/specifications) or
-have a look at the comprehensive tutorial [at recirdingblogs.com](http://www.recordingblogs.com/wiki/musical-instrument-digital-interface-midi)*.
+have a look at the comprehensive tutorial [at recordingblogs.com](http://www.recordingblogs.com/wiki/musical-instrument-digital-interface-midi)*.
 
 A MIDI file typically comes in pieces called tracks that play simultaneously. Each track can have 16 different channels, numbered 0-15. Each channel can be thought of as a single instrument, though that instrument can be changed throughout that track. A track contains events. The three types of events are MIDI events, META events, and system exclusive (SYSEX) events.
 All events begin with the time since the last event (dT) in ticks. The number of ticks per quarter note is given by the `tpq` of the midi file, `MIDIFile.tpq` (see [`MIDIFile`](@ref)).

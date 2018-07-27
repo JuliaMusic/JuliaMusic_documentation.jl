@@ -1,3 +1,9 @@
 # Music Data Extraction
+The functions described in this page allow for easier extraction of data from music recordings (in the form of MIDI).
 
-advanced data extraction.
+```@docs
+firstnotes
+allowedpitches
+separatepitches
+timeseries
+```

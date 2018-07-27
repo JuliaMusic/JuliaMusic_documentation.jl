@@ -14,8 +14,7 @@ quantize
 Here are some examples
 ```@example
 using MusicManipulations
-cd(Pkg.dir("MusicManipulations")*"/test")
-midi = readMIDIfile("serenade_full.mid")
+midi = readMIDIfile(testmidi())
 notes = getnotes(midi, 4)
 
 sixteens = 0:1//4:1

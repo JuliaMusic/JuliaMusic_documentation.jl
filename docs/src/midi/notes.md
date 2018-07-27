@@ -57,8 +57,7 @@ writeMIDIfile("test.mid", file)
 ## Read Example
 ```@example midi
 using MIDI
-cd(Pkg.dir("MIDI")*"/test")
-midi = readMIDIfile("doxy.mid")
+midi = readMIDIfile(testmidi())
 ```
 
 ```@example midi
