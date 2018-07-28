@@ -132,8 +132,7 @@ for i in 1:length(seq)
     le = textevent(:lyric, s)
     addevent!(track, ℓ, le)
     global ℓ += note_length(s)*sixt
-    # Invert notes if necessary
-    if !right_lead
+    if !right_lead # Invert notes if necessary
         for j in prev_note:prev_note+note_length(s)-1
             inverse!(notes[j])
         end

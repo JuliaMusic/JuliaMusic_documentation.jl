@@ -6,7 +6,6 @@ using Documenter, Literate
 docdir = @__DIR__
 docdir *= "/src/"
 
-
 # all files in `tobe` will be converted
 tobe = [
 "motif/musicexample.jl"

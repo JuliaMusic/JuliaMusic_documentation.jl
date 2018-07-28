@@ -10,7 +10,7 @@ using Pkg.API: installed
 ins = installed()
 function f()
 for pkg in ["MIDI", "MotifSequenceGenerator", "MusicManipulations"]
-  println("- $(pkg): $(ins[pkg])")
+  println(rpad(" * $(pkg) ", 30, "⋅"), " $(ins[pkg])")
 end
 end
 ```
@@ -33,7 +33,7 @@ basic stuff.
 
 The [MusicManipulations.jl](https://github.com/JuliaMusic/MusicManipulations.jl) package has more advanced functionality about note processing, data extraction, quantizing and other similar processes that related to music data.
 
-1. [Convenience tools](mm/convenience).
+1. [Convenience tools](midi/notes/#convenience-tools).
 1. [Quantizing & Classifying Notes](mm/quantizing) on a given grid.
 2. [Advanced Music Data Extraction](mm/extraction).
 3. More coming soon.
