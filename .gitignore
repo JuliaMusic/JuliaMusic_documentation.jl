@@ -3,3 +3,5 @@
 *.jl.mem
 docs/build
 Manifest.toml
+drums_patterns_with_names.mid
+drums_patterns.mid

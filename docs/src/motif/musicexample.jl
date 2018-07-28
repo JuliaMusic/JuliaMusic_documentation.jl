@@ -12,7 +12,7 @@
 # Let's say that we have some basic drum patterns that we want to be
 # able to combine freely at random combinations. For example,
 #
-# ![Basic drum patterns](basic_motifs.PNG)
+# ![Basic drum patterns](basic_motifs.png)
 #
 # where the note E means right hand, while A means left hand.
 # These patterns can be easily combined to fill a bar, like for
@@ -85,7 +85,7 @@ writeMIDIfile("drums_patterns.mid", notes)
 # like e.g. [MuseScore](https://musescore.org/en), to visualize and print
 # the result:
 
-# ![32-bar pattern sequence](drum_patterns.PNG)
+# ![32-bar pattern sequence](drums_patterns.png)
 
 # *this is a pre-made figure - your random sequence will probably differ*
 
@@ -113,11 +113,11 @@ accents = [accent1, accent2, accent3, accent4]
 # of the tuple simply denotes whether the pattern swaps the leading hand.
 
 # The function that will "inverse" a note sticking is:
-inverse!(n::Note) = (n.pitch = (n.pitch == left ? right : left))
+inverse!(n::Note) = (n.pitch = (n.pitch == left ? right : left));
 
 # The function that will "count" how long is each pattern, so that we
 # put the lyrics on the correct positions in the score, will be:
-note_length(s::String) = parse(Int, s[1])
+note_length(s::String) = parse(Int, s[1]);
 
 # (remember: `sixt` is the duration of one sixteenth note).
 # We now initialize an empty [`MIDITrack`](@ref) and add all events to it!
@@ -155,4 +155,4 @@ writeMIDIfile("drums_patterns_with_names.mid", MIDIFile(0, tpq, [track]))
 # then we drag-n-drop the midi file into [MuseScore](https://musescore.org/en)
 # once again, and we get:
 
-# ![Correct 32-bar pattern sequence](drum_patterns_with_names.PNG)
+# ![Correct 32-bar pattern sequence](drums_patterns_with_names.png)
