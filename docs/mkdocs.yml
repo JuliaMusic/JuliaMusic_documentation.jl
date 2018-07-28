@@ -37,6 +37,7 @@ pages:
 - Introduction: index.md
 - MIDI files: midi/io.md
 - Notes: midi/notes.md
+- Convenience: mm/convenience.md
 - Quantizing: mm/quantizing.md
 - Music Data Extraction: mm/extraction.md
 - Motif Sequence Generation: motif/basic.md
