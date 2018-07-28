@@ -1,5 +1,10 @@
-using Documenter
 using JuliaMusic_documentation
+
+using Pkg
+pkg"add Documenter Literate"
+pkg"precompile"
+
+using Documenter, Literate
 
 makedocs(modules=[JuliaMusic_documentation], doctest=false)
 
