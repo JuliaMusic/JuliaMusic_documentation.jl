@@ -84,10 +84,7 @@ notes
 ```
 
 and now we can write these to a MIDI file simply by doing
-
-```@example musicexample
-writeMIDIfile("drums_patterns.mid", notes)
-```
+`writeMIDIfile("drums_patterns.mid", notes)`.
 
 Afterwards we can drag-n-drop the midi file into a music score editor,
 like e.g. [MuseScore](https://musescore.org/en), to visualize and print
@@ -168,14 +165,8 @@ end
 addnotes!(track, notes)
 ```
 
-Finally, we write the track as a midi file
-
-```@example musicexample
-writeMIDIfile("drums_patterns_with_names.mid", MIDIFile(0, tpq, [track]))
-```
-
-then we drag-n-drop the midi file into [MuseScore](https://musescore.org/en)
-once again, and we get:
+Finally, we write the track as a midi file using `writeMIDIfile("drums_patterns_with_names.mid", MIDIFile(0, tpq, [track]))`
+and then we drag-n-drop the midi file into [MuseScore](https://musescore.org/en).
 
 ![Correct 32-bar pattern sequence](drums_patterns_with_names.png)
 
