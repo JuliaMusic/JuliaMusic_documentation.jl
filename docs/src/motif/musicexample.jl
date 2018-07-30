@@ -31,15 +31,19 @@
 # We first have to define the `Notes` instances that will correspond
 # to those four basic patterns.
 
+#%% #src
 using MusicManipulations # re-exports MIDI
-cd(@__DIR__)
 
-tpq = 960
-sixt = subdivision(16, tpq)
+tpq = 960 #
+sixt = 240 # duration of sixteenth note
 left = name_to_pitch("A5")
 right = name_to_pitch("E6")
 
-motif1 = [
+# Reminder: `Note(pitch, intensity, start, duration)`
+
+#%% #src
+
+motif1 = [ # motif 5a
 Note(right, 100, 0, sixt),
 Note(left, 50, sixt, sixt),
 Note(right, 100, 2sixt, sixt),
@@ -47,7 +51,9 @@ Note(left, 50, 3sixt, sixt),
 Note(left, 50, 4sixt, sixt)
 ]
 
-motif2 = [
+#%% #src
+
+motif2 = [ # motif 5b
 Note(right, 100, 0, sixt),
 Note(left, 50, sixt, sixt),
 Note(left, 50, 2sixt, sixt),
@@ -55,13 +61,13 @@ Note(right, 50, 3sixt, sixt),
 Note(right, 50, 4sixt, sixt)
 ]
 
-motif3 = [
+motif3 = [ # motif 3
 Note(right, 100, 0, sixt),
 Note(left, 50, sixt, sixt),
 Note(left, 50, 2sixt, sixt),
 ]
 
-motif4 = [
+motif4 = [ # motif 4
 Note(right, 100, 0, sixt),
 Note(left, 50, sixt, sixt),
 Note(right, 50, 2sixt, sixt),
@@ -70,6 +76,7 @@ Note(right, 50, 3sixt, sixt),
 
 motifs = Notes.([motif1, motif2, motif3, motif4], tpq)
 
+#%% #srs
 # Now `motifs` stands for a pool of note sequences we can draw random samples from.
 # Let's generate sequences that are 8-bars long (i.e. 32 quarter notes)
 
@@ -123,27 +130,27 @@ note_length(s::String) = parse(Int, s[1]);
 # We now initialize an empty [`MIDITrack`](@ref) and add all events to it!
 
 track = MIDITrack()
-ℓ = 0 # where to put the lyrics
-right_lead = true # what hand leads?
-prev_note = 1
+ℓ = 0
+right_leads = true
 
 for i in 1:length(seq)
+
     s = accents[seq[i]][1]
     le = textevent(:lyric, s)
-    addevent!(track, ℓ, le)
-    global ℓ += note_length(s)*sixt
-    if !right_lead # Invert notes if necessary
-        for j in prev_note:prev_note+note_length(s)-1
+    addevent!(track, ℓ*sixt, le)
+
+    if !right_leads # Invert notes
+        for j in ℓ+1:ℓ+note_length(s)
             inverse!(notes[j])
         end
     end
 
-    global prev_note += note_length(s)
+    global ℓ += note_length(s)
 
     change = accents[seq[i]][2]
-    global right_lead = xor(right_lead, change)
+    global right_leads = xor(right_leads, change)
 end
-!right_lead && inverse!(notes[end])
+!right_leads && inverse!(notes[end])
 
 addnotes!(track, notes)
 
