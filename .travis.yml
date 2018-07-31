@@ -11,4 +11,5 @@ notifications:
 
 after_success:
   - julia -e 'Pkg.add("Documenter"); Pkg.add("Literate")'
+  - julia -e 'Pkg.add("MIDI"); Pkg.add("MotifSequenceGenerator"); Pkg.add("MusicManipulations")'
   - julia -e 'cd(Pkg.dir("JuliaMusic_documentation")); include(joinpath("docs", "make.jl"))'
