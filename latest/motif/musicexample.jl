@@ -34,7 +34,7 @@
 #%% #src
 using MusicManipulations # re-exports MIDI
 
-tpq = 960 #
+tpq = 960 # ticks per quarter note
 sixt = 240 # duration of sixteenth note
 left = name_to_pitch("A5")
 right = name_to_pitch("E6")
