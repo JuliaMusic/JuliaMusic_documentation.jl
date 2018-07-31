@@ -8,10 +8,7 @@ notifications:
   email:
     on_success: never
     on_failure: never
-# script:
-#   - julia -e 'Pkg.clone("https://github.com/JuliaMusic/MusicManipulations.jl")'
-#   - julia -e 'Pkg.clone("https://github.com/JuliaMusic/JuliaMusic_documentation.jl")'
+
 after_success:
-  - julia -e 'Pkg.clone("https://github.com/JuliaMusic/MusicManipulations.jl")'
-  - julia -e 'Pkg.add("Documenter")'
+  - julia -e 'Pkg.add("Documenter"); Pkg.add("Literate")'
   - julia -e 'cd(Pkg.dir("JuliaMusic_documentation")); include(joinpath("docs", "make.jl"))'
