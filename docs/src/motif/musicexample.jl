@@ -12,7 +12,7 @@
 # Let's say that we have some basic drum patterns that we want to be
 # able to combine freely at random combinations. For example,
 #
-# ![Basic drum patterns](basic_motifs.png)
+# ![Basic drum patterns](basic_motifs.PNG)
 #
 # where the note E means right hand, while A means left hand.
 # These patterns can be easily combined to fill a bar, like for
