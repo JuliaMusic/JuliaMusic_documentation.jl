@@ -1,5 +1,5 @@
 using JuliaMusic_documentation
-using MIDI, MotifSequenceGenerator, MusicManipulations
+
 using Documenter, Literate
 #%% Literate Conversions
 
