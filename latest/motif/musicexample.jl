@@ -24,7 +24,7 @@
 
 
 # The goal is to be able to play arbitrary sequences of them for arbitrary lengths.
-# How does one practice that? We will use [`random_notes_sequence`] to create
+# How does one practice that? We will use [`random_notes_sequence`](@ref) to create
 # longer 8-bar sequences faster with the help of Julia.
 #
 # ## Defining the `Notes`
@@ -97,7 +97,7 @@ notes
 # *this is a pre-made figure - your random sequence will probably differ*
 
 # This worked nicely, but there is a problem: The sequence does not respect
-# the fact that some specific patterns (`5a` and `4`) swap the leading hand.
+# the fact that some specific patterns (`5b` and `4`) swap the leading hand.
 # This is what we tackle in the next section.
 
 # ## Adding alternating hands and Lyrics
@@ -150,9 +150,9 @@ for i in 1:length(seq)
     change = accents[seq[i]][2]
     global right_leads = xor(right_leads, change)
 end
-!right_leads && inverse!(notes[end])
 
 addnotes!(track, notes)
+notes
 
 # Finally, we write the track as a midi file using `writeMIDIfile("drums_patterns_with_names.mid", MIDIFile(0, tpq, [track]))`
 # and then we drag-n-drop the midi file into [MuseScore](https://musescore.org/en).
