@@ -40,7 +40,7 @@
     
     
       
-        <title>Quantizing - JuliaMusic</title>
+        <title>Motif Sequence Generation - JuliaMusic</title>
       
     
     
@@ -104,7 +104,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#quantizing" tabindex="1" class="md-skip">
+      <a href="#motif-sequence-generation" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -130,7 +130,7 @@
                 JuliaMusic
               </span>
               <span class="md-header-nav__topic">
-                Quantizing
+                Motif Sequence Generation
               </span>
             
           
@@ -281,6 +281,30 @@
       
       
 
+
+  <li class="md-nav__item">
+    <a href="../../mm/quantizing/" title="Quantizing" class="md-nav__link">
+      Quantizing
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../mm/extraction/" title="Music Data Extraction" class="md-nav__link">
+      Music Data Extraction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
   
 
 
@@ -292,11 +316,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        Quantizing
+        Motif Sequence Generation
       </label>
     
-    <a href="./" title="Quantizing" class="md-nav__link md-nav__link--active">
-      Quantizing
+    <a href="./" title="Motif Sequence Generation" class="md-nav__link md-nav__link--active">
+      Motif Sequence Generation
     </a>
     
       
@@ -310,8 +334,15 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#quantization" title="Quantization" class="md-nav__link">
-    Quantization
+  <a href="#simple-example" title="Simple Example" class="md-nav__link">
+    Simple Example
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#floating-point-lengths" title="Floating point lengths" class="md-nav__link">
+    Floating point lengths
   </a>
   
 </li>
@@ -333,31 +364,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../extraction/" title="Music Data Extraction" class="md-nav__link">
-      Music Data Extraction
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../../motif/basic/" title="Motif Sequence Generation" class="md-nav__link">
-      Motif Sequence Generation
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../../motif/musicexample/" title="Music Motifs Example" class="md-nav__link">
+    <a href="../musicexample/" title="Music Motifs Example" class="md-nav__link">
       Music Motifs Example
     </a>
   </li>
@@ -384,8 +391,15 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#quantization" title="Quantization" class="md-nav__link">
-    Quantization
+  <a href="#simple-example" title="Simple Example" class="md-nav__link">
+    Simple Example
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#floating-point-lengths" title="Floating point lengths" class="md-nav__link">
+    Floating point lengths
   </a>
   
 </li>
@@ -406,58 +420,107 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/JuliaMusic/edit/master/docs/mm/quantizing.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/JuliaMusic/edit/master/docs/motif/basic.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <p><a id='Quantizing-1'></a></p>
-<h1 id="quantizing">Quantizing</h1>
-<p><a id='Quantization-1'></a></p>
-<h2 id="quantization">Quantization</h2>
-<p><em>Quantization</em> is the process of moving all note starting positions to a specified and periodic grid. This "grid" does not have the be equi-spaced but it has to be periodic per quarter note.</p>
-<p><a id='MusicManipulations.quantize' href='#MusicManipulations.quantize'>#</a>
-<strong><code>MusicManipulations.quantize</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span><span class="n">quantize</span><span class="p">(</span><span class="n">notes</span><span class="o">::</span><span class="n">Notes</span><span class="p">,</span> <span class="n">grid</span><span class="p">)</span>
-<span class="n">quantize</span><span class="p">(</span><span class="n">note</span><span class="o">::</span><span class="n">AbstractNote</span><span class="p">,</span> <span class="n">grid</span><span class="p">,</span> <span class="n">tpq</span><span class="o">::</span><span class="kt">Integer</span><span class="p">)</span>
+                <p><a id='Motif-Sequence-Generation-1'></a></p>
+<h1 id="motif-sequence-generation">Motif Sequence Generation</h1>
+<p><a id='MotifSequenceGenerator.MotifSequenceGenerator' href='#MotifSequenceGenerator.MotifSequenceGenerator'>#</a>
+<strong><code>MotifSequenceGenerator.MotifSequenceGenerator</code></strong> &mdash; <em>Module</em>.</p>
+<div class="codehilite"><pre><span></span>MotifSequenceGenerator
 </pre></div>
 
 
-<p>Return a quantized copy of the given notes on the given <code>grid</code>, which can be any sorted iterable that starts on <code>0</code> and ends on <code>1</code>.</p>
-<p>Each note is quantized (relocated) to its closest point of the <code>grid</code>, by first identifying that point using <a href="./#MusicManipulations.classify"><code>classify</code></a>. It is assumed that the grid is the same for all quarter notes of the track.</p>
-<p>This function respects the notes' absolute position and quantizes in absolute position, not relative.</p>
+<p>This module generates random sequences of motifs, under the constrain that the sequence has some total length ℓ so that <code>q - δq ≤ ℓ ≤ q + δq</code>. All main functionality is given by the function <a href="./#MotifSequenceGenerator.random_sequence"><code>random_sequence</code></a>.</p>
+<p><a id='MotifSequenceGenerator.random_sequence' href='#MotifSequenceGenerator.random_sequence'>#</a>
+<strong><code>MotifSequenceGenerator.random_sequence</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span><span class="nt">random_sequence</span><span class="o">(</span><span class="nt">motifs</span><span class="p">::</span><span class="nd">Vector</span><span class="p">{</span><span class="err">M</span><span class="p">}</span><span class="o">,</span> <span class="nt">q</span><span class="o">,</span> <span class="nt">limits</span><span class="o">,</span> <span class="nt">translate</span><span class="o">,</span> <span class="err">δ</span><span class="nt">q</span> <span class="o">=</span> <span class="nt">0</span><span class="o">;</span> <span class="nt">kwargs</span><span class="o">...)</span>
+</pre></div>
+
+
+<p>Create a random sequence of motifs of type <code>M</code>, under the constraint that the sequence has "length" <code>ℓ</code> <strong>exactly</strong> within <code>q - δq ≤ ℓ ≤ q + δq</code>. Return the sequence itself as well as the sequence of indices of <code>motifs</code> used to create it.</p>
+<p>"length" here means an abstracted length defined by the struct <code>M</code>, based on the <code>limits</code> and <code>translate</code> functions. It does <strong>not</strong> refer to the amount of elements!</p>
+<p><code>M</code> can be anything, given the two functions</p>
+<ul>
+<li><code>limits(motif)</code> : Some function that given the <code>motif</code> it returns the <code>(start, fine)</code> of the the motif in the same units as <code>q</code>. This function establishes a measure of length, which simply is <code>fine - start</code>.</li>
+<li><code>translate(motif, t)</code> : Some function that given the <code>motif</code> it returns a <em>new</em> motif which is translated by <code>t</code> (either negative or positive), with respect to the same units as <code>q</code>.</li>
+</ul>
+<p><strong>Keywords</strong></p>
+<p>Please see the source code (use <code>@which</code>) for a full description of the algorithm.</p>
+<ul>
+<li><code>tries = 5</code> : Up to how many initial random sequences are accepted.</li>
+<li><code>taulcut = 2</code> : Up to how times an element is dropped from the initial guess.</li>
+<li><code>summands = 3</code> : Up to how many motifs may be combined as a sum to complete a sequence.</li>
+</ul>
+<p><a id='Simple-Example-1'></a></p>
+<h2 id="simple-example">Simple Example</h2>
+<p>This example illustrates how the module <a href="./#MotifSequenceGenerator.MotifSequenceGenerator"><code>MotifSequenceGenerator</code></a> works using a simple <code>struct</code>. For a more realistic, and much more complex example, see the <a href="../musicexample/">example using music notes</a>.</p>
 <hr />
-<p>Here are some examples</p>
-<p>```@example
-using MusicManipulations
-midi = readMIDIfile(testmidi())
-notes = getnotes(midi, 4)</p>
-<p>sixteens = 0:1//4:1</p>
-<p>notes16 = quantize(notes, sixteens)</p>
-<p>swung_8s = [0, 2//3, 1]</p>
-<p>swung_notes = quantize(notes, swung_8s)</p>
-<div class="codehilite"><pre><span></span>The first quantization quantized the notes on the 16-th subdivision. The second one did something a bit more specialized, as it separated the notes to &quot;quarter notes&quot; and swung 8th notes, the typical way a Jazz standard (like Serenade To A Cuckoo) is played.
-
-
-<span class="nt">&lt;a</span> <span class="na">id=</span><span class="s">&#39;Classification-1&#39;</span><span class="nt">&gt;&lt;/a&gt;</span>
-
-## Classification
-
-
-[`quantize`](quantizing.md#MusicManipulations.quantize) works in two steps. In the first step, each note is &quot;classified&quot;, according to which is the closest grid point to this note (modulo the quarter note).
-
-<span class="nt">&lt;a</span> <span class="na">id=</span><span class="s">&#39;MusicManipulations.classify&#39;</span> <span class="na">href=</span><span class="s">&#39;#MusicManipulations.classify&#39;</span><span class="nt">&gt;</span>#<span class="nt">&lt;/a&gt;</span>
-**`MusicManipulations.classify`** <span class="ni">&amp;mdash;</span> *Function*.
-
-
-
-```julia
-classify(notes::Notes, grid)
-classify(note::AbstractNote, grid, tpq::Integer)
+<p>Let's say that we want to create a random sequence of "shouts", which are described by the <code>struct</code></p>
+<div class="codehilite"><pre><span></span><span class="n">struct</span> <span class="n">Shout</span>
+  <span class="n">shout</span><span class="o">::</span><span class="n">String</span>
+  <span class="n">start</span><span class="o">::</span><span class="kt">Int</span>
+<span class="k">end</span>
 </pre></div>
 
 
-<p>Classify given notes according to the given grid.</p>
-<p>Returns an integer (or vector of integers) that corresponds to the index of the closest grid point to the note position modulo the quarter note. <code>1</code> means start of the grid and <code>length(grid)</code> means end of the grid (i.e. <em>next</em> quarter note).</p>
-<p>After the notes have been classified, this classification vector is used to simply relocate all notes to the closest grid point (modulo the quarter note).</p>
+<p>Let's first create a vector of shouts that will be used as the pool of possible motifs that will create the random sequence:</p>
+<div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">Random</span>
+<span class="n">shouts</span> <span class="o">=</span> <span class="p">[</span><span class="n">Shout</span><span class="p">(</span><span class="n">uppercase</span><span class="p">(</span><span class="n">randstring</span><span class="p">(</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="o">:</span><span class="mi">5</span><span class="p">))),</span> <span class="n">rand</span><span class="p">(</span><span class="mi">1</span><span class="o">:</span><span class="mi">100</span><span class="p">))</span> <span class="k">for</span> <span class="n">k</span> <span class="kp">in</span> <span class="mi">1</span><span class="o">:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span>5-element Array{Main.ex-shout.Shout,1}:
+ Main.ex-shout.Shout(&quot;WAY&quot;, 60)
+ Main.ex-shout.Shout(&quot;O3EB&quot;, 23)
+ Main.ex-shout.Shout(&quot;SQGI9&quot;, 68)
+ Main.ex-shout.Shout(&quot;EZSP&quot;, 6)
+ Main.ex-shout.Shout(&quot;DWD&quot;, 98)
+</pre></div>
+
+
+<p>Notice that at the moment the values of the <code>.start</code> field of <code>Shout</code> are irrelevant. <code>MotifSequenceGenerator</code> will translate all motifs to start point 0 while operating.</p>
+<p>Now, to create a random sequence, we need to define two concepts:</p>
+<div class="codehilite"><pre><span></span><span class="n">shoutlimits</span><span class="p">(</span><span class="n">s</span><span class="o">::</span><span class="n">Shout</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">start</span> <span class="o">+</span> <span class="n">length</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">shout</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+
+<span class="n">shouttranslate</span><span class="p">(</span><span class="n">s</span><span class="o">::</span><span class="n">Shout</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="o">=</span> <span class="n">Shout</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">shout</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">start</span> <span class="o">+</span> <span class="n">n</span><span class="p">);</span>
+</pre></div>
+
+
+<p>This means that we accept that the temporal length of a <code>Shout</code> is <code>length(s.shout) + 1</code>.</p>
+<p>We can now create random sequences of shouts that have total length of <em>exactly</em> <code>q</code>:</p>
+<p>```@example shout
+using MotifSequenceGenerator
+q = 30
+sequence, idxs = random_sequence(shouts, q, shoutlimits, shouttranslate)
+sequence</p>
+<div class="codehilite"><pre><span></span>```@example shout
+sequence, idxs = random_sequence(shouts, q, shoutlimits, shouttranslate)
+sequence
+</pre></div>
+
+
+<p>Notice that it is impossible to create a sequence of length e.g. <code>7</code> with the above pool. Doing <code>random_sequence(shouts, 7, shoutlimits, shouttranslate)</code> would throw an error.</p>
+<p><a id='Floating-point-lengths-1'></a></p>
+<h2 id="floating-point-lengths">Floating point lengths</h2>
+<p>The lengths of the motifs do not have to be integers. When using motifs with floating lengths, it is advised to give a non-0 <code>δq</code> to <a href="./#MotifSequenceGenerator.random_sequence"><code>random_sequence</code></a>. The following example modifies the <code>Shout</code> struct and shows how it can be done with floating length.</p>
+<p>```@example shout
+struct FloatShout
+  shout::String
+  dur::Float64
+  start::Float64
+end</p>
+<p>rs(x) = uppercase(randstring(x))</p>
+<p>shouts = [FloatShout(rs(rand(3:5)), rand()+1, rand()) for k in 1:5]
+shoutlimits(s::FloatShout) = (s.start, s.start + s.dur);
+shouttranslate(s::FloatShout, n) = FloatShout(s.shout, s.dur, s.start + n);</p>
+<p>q = 10.0
+δq = 1.0</p>
+<p>r, s = random_sequence(shouts, q, shoutlimits, shouttranslate, δq)</p>
+<p>r</p>
+<div class="codehilite"><pre><span></span>```@example shout
+s
+</pre></div>
                 
                   
                 
@@ -478,7 +541,7 @@ classify(note::AbstractNote, grid, tpq::Integer)
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../../midi/notes/" title="Notes" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../../mm/extraction/" title="Music Data Extraction" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -487,19 +550,19 @@ classify(note::AbstractNote, grid, tpq::Integer)
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Notes
+                Music Data Extraction
               </span>
             </div>
           </a>
         
         
-          <a href="../extraction/" title="Music Data Extraction" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../musicexample/" title="Music Motifs Example" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Music Data Extraction
+                Music Motifs Example
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

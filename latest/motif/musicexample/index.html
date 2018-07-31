@@ -40,7 +40,7 @@
     
     
       
-        <title>Quantizing - JuliaMusic</title>
+        <title>Music Motifs Example - JuliaMusic</title>
       
     
     
@@ -104,7 +104,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#quantizing" tabindex="1" class="md-skip">
+      <a href="#music-motif-examples" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -130,7 +130,7 @@
                 JuliaMusic
               </span>
               <span class="md-header-nav__topic">
-                Quantizing
+                Music Motifs Example
               </span>
             
           
@@ -281,6 +281,42 @@
       
       
 
+
+  <li class="md-nav__item">
+    <a href="../../mm/quantizing/" title="Quantizing" class="md-nav__link">
+      Quantizing
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../mm/extraction/" title="Music Data Extraction" class="md-nav__link">
+      Music Data Extraction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../basic/" title="Motif Sequence Generation" class="md-nav__link">
+      Motif Sequence Generation
+    </a>
+  </li>
+
+    
+      
+      
+      
+
   
 
 
@@ -292,11 +328,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        Quantizing
+        Music Motifs Example
       </label>
     
-    <a href="./" title="Quantizing" class="md-nav__link md-nav__link--active">
-      Quantizing
+    <a href="./" title="Music Motifs Example" class="md-nav__link md-nav__link--active">
+      Music Motifs Example
     </a>
     
       
@@ -310,8 +346,15 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#quantization" title="Quantization" class="md-nav__link">
-    Quantization
+  <a href="#motifs-basic-drum-patterns" title="Motifs: Basic drum patterns" class="md-nav__link">
+    Motifs: Basic drum patterns
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defining-the-notes" title="Defining the Notes" class="md-nav__link">
+    Defining the Notes
   </a>
   
 </li>
@@ -324,42 +367,6 @@
   
 </nav>
     
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../extraction/" title="Music Data Extraction" class="md-nav__link">
-      Music Data Extraction
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../../motif/basic/" title="Motif Sequence Generation" class="md-nav__link">
-      Motif Sequence Generation
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../../motif/musicexample/" title="Music Motifs Example" class="md-nav__link">
-      Music Motifs Example
-    </a>
   </li>
 
     
@@ -384,8 +391,15 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#quantization" title="Quantization" class="md-nav__link">
-    Quantization
+  <a href="#motifs-basic-drum-patterns" title="Motifs: Basic drum patterns" class="md-nav__link">
+    Motifs: Basic drum patterns
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defining-the-notes" title="Defining the Notes" class="md-nav__link">
+    Defining the Notes
   </a>
   
 </li>
@@ -406,58 +420,168 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/JuliaMusic/edit/master/docs/mm/quantizing.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/JuliaMusic/edit/master/docs/motif/musicexample.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <p><a id='Quantizing-1'></a></p>
-<h1 id="quantizing">Quantizing</h1>
-<p><a id='Quantization-1'></a></p>
-<h2 id="quantization">Quantization</h2>
-<p><em>Quantization</em> is the process of moving all note starting positions to a specified and periodic grid. This "grid" does not have the be equi-spaced but it has to be periodic per quarter note.</p>
-<p><a id='MusicManipulations.quantize' href='#MusicManipulations.quantize'>#</a>
-<strong><code>MusicManipulations.quantize</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span><span class="n">quantize</span><span class="p">(</span><span class="n">notes</span><span class="o">::</span><span class="n">Notes</span><span class="p">,</span> <span class="n">grid</span><span class="p">)</span>
-<span class="n">quantize</span><span class="p">(</span><span class="n">note</span><span class="o">::</span><span class="n">AbstractNote</span><span class="p">,</span> <span class="n">grid</span><span class="p">,</span> <span class="n">tpq</span><span class="o">::</span><span class="kt">Integer</span><span class="p">)</span>
+                <p><a id='Music-Motif-Examples-1'></a></p>
+<h1 id="music-motif-examples">Music Motif Examples</h1>
+<p>In this page <a href="../basic/#MotifSequenceGenerator.MotifSequenceGenerator"><code>MotifSequenceGenerator</code></a> is applied in a real world case using the function <a href="./#MusicManipulations.random_notes_sequence"><code>random_notes_sequence</code></a>:</p>
+<p><a id='MusicManipulations.random_notes_sequence' href='#MusicManipulations.random_notes_sequence'>#</a>
+<strong><code>MusicManipulations.random_notes_sequence</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span>random_notes_sequence(motifs::Vector{Notes{N}}, q, δq = 0)
 </pre></div>
 
 
-<p>Return a quantized copy of the given notes on the given <code>grid</code>, which can be any sorted iterable that starts on <code>0</code> and ends on <code>1</code>.</p>
-<p>Each note is quantized (relocated) to its closest point of the <code>grid</code>, by first identifying that point using <a href="./#MusicManipulations.classify"><code>classify</code></a>. It is assumed that the grid is the same for all quarter notes of the track.</p>
-<p>This function respects the notes' absolute position and quantizes in absolute position, not relative.</p>
-<hr />
-<p>Here are some examples</p>
-<p>```@example
-using MusicManipulations
-midi = readMIDIfile(testmidi())
-notes = getnotes(midi, 4)</p>
-<p>sixteens = 0:1//4:1</p>
-<p>notes16 = quantize(notes, sixteens)</p>
-<p>swung_8s = [0, 2//3, 1]</p>
-<p>swung_notes = quantize(notes, swung_8s)</p>
-<div class="codehilite"><pre><span></span>The first quantization quantized the notes on the 16-th subdivision. The second one did something a bit more specialized, as it separated the notes to &quot;quarter notes&quot; and swung 8th notes, the typical way a Jazz standard (like Serenade To A Cuckoo) is played.
+<p>Create a random sequence from a pool of notes (<code>motifs</code>) such that it has total length exactly <code>q ± δq</code>. Notice that <code>q</code> is measured in <strong>ticks</strong>.</p>
+<p>Return the result as a single <code>Notes</code> container, and also return the sequence of motifs used.</p>
+<p>This function uses <a href="../basic/#MotifSequenceGenerator.random_sequence"><code>random_sequence</code></a> from the module <a href="../basic/#MotifSequenceGenerator.MotifSequenceGenerator"><code>MotifSequenceGenerator</code></a>, adapted to the <a href="../../midi/notes/#MIDI.Notes"><code>Notes</code></a> struct.</p>
+<p><a id='Motifs:-Basic-drum-patterns-1'></a></p>
+<h2 id="motifs-basic-drum-patterns">Motifs: Basic drum patterns</h2>
+<p>Let's say that we have some basic drum patterns that we want to be able to combine freely at random combinations. For example,</p>
+<p><img alt="Basic drum patterns" src="../basic_motifs.png" /></p>
+<p>where the note E means right hand, while A means left hand. These patterns can be easily combined to fill a bar, like for example <code>5b -&gt; 5b -&gt; 3 -&gt; 3</code> or <code>5a -&gt; 4 -&gt; 4 -&gt; 3</code>, etc. They can also be combined to fill two bars and so on. Notice that some sequences, like e.g. the <code>5a -&gt; 4 -&gt; 4 -&gt; 3</code>, result in <em>alternating hands</em>: each time the sequence is played the hand that "leads" is swapped. This will be important later on.</p>
+<p>The goal is to be able to play arbitrary sequences of them for arbitrary lengths. How does one practice that? We will use [<code>random_notes_sequence</code>] to create longer 8-bar sequences faster with the help of Julia.</p>
+<p><a id='Defining-the-Notes-1'></a></p>
+<h2 id="defining-the-notes">Defining the <code>Notes</code></h2>
+<p>We first have to define the <code>Notes</code> instances that will correspond to those four basic patterns.</p>
+<p>```@example musicexample
+using MusicManipulations # re-exports MIDI</p>
+<p>tpq = 960 #
+sixt = 240 # duration of sixteenth note
+left = name_to_pitch("A5")
+right = name_to_pitch("E6")</p>
+<div class="codehilite"><pre><span></span>Reminder: `Note(pitch, intensity, start, duration)`
 
 
-<span class="nt">&lt;a</span> <span class="na">id=</span><span class="s">&#39;Classification-1&#39;</span><span class="nt">&gt;&lt;/a&gt;</span>
-
-## Classification
-
-
-[`quantize`](quantizing.md#MusicManipulations.quantize) works in two steps. In the first step, each note is &quot;classified&quot;, according to which is the closest grid point to this note (modulo the quarter note).
-
-<span class="nt">&lt;a</span> <span class="na">id=</span><span class="s">&#39;MusicManipulations.classify&#39;</span> <span class="na">href=</span><span class="s">&#39;#MusicManipulations.classify&#39;</span><span class="nt">&gt;</span>#<span class="nt">&lt;/a&gt;</span>
-**`MusicManipulations.classify`** <span class="ni">&amp;mdash;</span> *Function*.
-
+```@example musicexample
+motif1 = [ # motif 5a
+Note(right, 100, 0, sixt),
+Note(left, 50, sixt, sixt),
+Note(right, 100, 2sixt, sixt),
+Note(left, 50, 3sixt, sixt),
+Note(left, 50, 4sixt, sixt)
+]
 
 
-```julia
-classify(notes::Notes, grid)
-classify(note::AbstractNote, grid, tpq::Integer)
+motif2 = [ # motif 5b
+Note(right, 100, 0, sixt),
+Note(left, 50, sixt, sixt),
+Note(left, 50, 2sixt, sixt),
+Note(right, 50, 3sixt, sixt),
+Note(right, 50, 4sixt, sixt)
+]
+
+motif3 = [ # motif 3
+Note(right, 100, 0, sixt),
+Note(left, 50, sixt, sixt),
+Note(left, 50, 2sixt, sixt),
+]
+
+motif4 = [ # motif 4
+Note(right, 100, 0, sixt),
+Note(left, 50, sixt, sixt),
+Note(right, 50, 2sixt, sixt),
+Note(right, 50, 3sixt, sixt),
+]
+
+motifs = Notes.([motif1, motif2, motif3, motif4], tpq)
+
+#%% #srs
 </pre></div>
 
 
-<p>Classify given notes according to the given grid.</p>
-<p>Returns an integer (or vector of integers) that corresponds to the index of the closest grid point to the note position modulo the quarter note. <code>1</code> means start of the grid and <code>length(grid)</code> means end of the grid (i.e. <em>next</em> quarter note).</p>
-<p>After the notes have been classified, this classification vector is used to simply relocate all notes to the closest grid point (modulo the quarter note).</p>
+<p>Now <code>motifs</code> stands for a pool of note sequences we can draw random samples from. Let's generate sequences that are 8-bars long (i.e. 32 quarter notes)</p>
+<p>```@example musicexample
+q = tpq*32</p>
+<p>notes, seq = random_notes_sequence(motifs, q)
+notes</p>
+<div class="codehilite"><pre><span></span>and now we can write these to a MIDI file simply by doing `writeMIDIfile(&quot;drums_patterns.mid&quot;, notes)`.
+
+
+Afterwards we can drag-n-drop the midi file into a music score editor, like e.g. [MuseScore](https://musescore.org/en), to visualize and print the result:
+
+
+![32-bar pattern sequence](drums_patterns.png)
+
+
+*this is a pre-made figure - your random sequence will probably differ*
+
+
+This worked nicely, but there is a problem: The sequence does not respect the fact that some specific patterns (`5a` and `4`) swap the leading hand. This is what we tackle in the next section.
+
+
+<span class="nt">&lt;a</span> <span class="na">id=</span><span class="s">&#39;Adding-alternating-hands-and-Lyrics-1&#39;</span><span class="nt">&gt;&lt;/a&gt;</span>
+
+## Adding alternating hands and Lyrics
+
+
+Notice that `random_note_sequence` also returns the indices of the motifs that were used to create the sequence:
+
+
+```@example musicexample
+seq
+</pre></div>
+
+
+<p>We can use this information to put the correct "stickings". To alternate hands we simply need to replace the necessary E notes with A and vice versa. Let's define some "meta-data" like structures</p>
+<div class="codehilite"><pre><span></span><span class="n">accent1</span> <span class="o">=</span> <span class="p">(</span><span class="s">&quot;5a&quot;</span><span class="p">,</span> <span class="kc">false</span><span class="p">)</span>
+<span class="n">accent2</span> <span class="o">=</span> <span class="p">(</span><span class="s">&quot;5b&quot;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+<span class="n">accent3</span> <span class="o">=</span> <span class="p">(</span><span class="s">&quot;3&quot;</span><span class="p">,</span> <span class="kc">false</span><span class="p">)</span>
+<span class="n">accent4</span> <span class="o">=</span> <span class="p">(</span><span class="s">&quot;4&quot;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+<span class="n">accents</span> <span class="o">=</span> <span class="p">[</span><span class="n">accent1</span><span class="p">,</span> <span class="n">accent2</span><span class="p">,</span> <span class="n">accent3</span><span class="p">,</span> <span class="n">accent4</span><span class="p">]</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span>4-element Array{Tuple{String,Bool},1}:
+ (&quot;5a&quot;, false)
+ (&quot;5b&quot;, true)
+ (&quot;3&quot;, false)
+ (&quot;4&quot;, true)
+</pre></div>
+
+
+<p>The first entry of each tuple is simply the name of the pattern which we will also show in our music score as "lyrics". The second entry of the tuple simply denotes whether the pattern swaps the leading hand.</p>
+<p>The function that will "inverse" a note sticking is:</p>
+<p>```@example musicexample
+inverse!(n::Note) = (n.pitch = (n.pitch == left ? right : left));</p>
+<div class="codehilite"><pre><span></span><span class="nt">The</span> <span class="nt">function</span> <span class="nt">that</span> <span class="nt">will</span> <span class="s2">&quot;count&quot;</span> <span class="nt">how</span> <span class="nt">long</span> <span class="nt">is</span> <span class="nt">each</span> <span class="nt">pattern</span><span class="o">,</span> <span class="nt">so</span> <span class="nt">that</span> <span class="nt">we</span> <span class="nt">put</span> <span class="nt">the</span> <span class="nt">lyrics</span> <span class="nt">on</span> <span class="nt">the</span> <span class="nt">correct</span> <span class="nt">positions</span> <span class="nt">in</span> <span class="nt">the</span> <span class="nt">score</span><span class="o">,</span> <span class="nt">will</span> <span class="nt">be</span><span class="o">:</span>
+
+
+<span class="err">```</span><span class="nt">julia</span>
+<span class="nt">note_length</span><span class="o">(</span><span class="nt">s</span><span class="p">::</span><span class="nd">String</span><span class="o">)</span> <span class="o">=</span> <span class="nt">parse</span><span class="o">(</span><span class="nt">Int</span><span class="o">,</span> <span class="nt">s</span><span class="cp">[</span><span class="mi">1</span><span class="cp">]</span><span class="o">);</span>
+</pre></div>
+
+
+<p>(remember: <code>sixt</code> is the duration of one sixteenth note). We now initialize an empty <a href="../../midi/io/#MIDI.MIDITrack"><code>MIDITrack</code></a> and add all events to it!</p>
+<p>```@example musicexample
+track = MIDITrack()
+ℓ = 0
+right_leads = true</p>
+<p>for i in 1:length(seq)</p>
+<div class="codehilite"><pre><span></span>s = accents[seq[i]][1]
+le = textevent(:lyric, s)
+addevent!(track, ℓ*sixt, le)
+
+if !right_leads # Invert notes
+    for j in ℓ+1:ℓ+note_length(s)
+        inverse!(notes[j])
+    end
+end
+
+global ℓ += note_length(s)
+
+change = accents[seq[i]][2]
+global right_leads = xor(right_leads, change)
+</pre></div>
+
+
+<p>end
+!right_leads &amp;&amp; inverse!(notes[end])</p>
+<p>addnotes!(track, notes)
+```</p>
+<p>Finally, we write the track as a midi file using <code>writeMIDIfile("drums_patterns_with_names.mid", MIDIFile(0, tpq, [track]))</code> and then we drag-n-drop the midi file into <a href="https://musescore.org/en">MuseScore</a>.</p>
+<p><img alt="Correct 32-bar pattern sequence" src="../drums_patterns_with_names.png" /></p>
+<p><em>This page was generated using <a href="https://github.com/fredrikekre/Literate.jl">Literate.jl</a>.</em></p>
                 
                   
                 
@@ -478,7 +602,7 @@ classify(note::AbstractNote, grid, tpq::Integer)
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../../midi/notes/" title="Notes" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../basic/" title="Motif Sequence Generation" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -487,25 +611,11 @@ classify(note::AbstractNote, grid, tpq::Integer)
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Notes
+                Motif Sequence Generation
               </span>
             </div>
           </a>
         
-        
-          <a href="../extraction/" title="Music Data Extraction" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  Next
-                </span>
-                Music Data Extraction
-              </span>
-            </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
-            </div>
-          </a>
         
       </nav>
     </div>

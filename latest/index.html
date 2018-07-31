@@ -36,7 +36,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="./assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-0.17.5, mkdocs-material-2.9.2">
+      <meta name="generator" content="mkdocs-0.17.5, mkdocs-material-2.9.4">
     
     
       
@@ -44,9 +44,9 @@
       
     
     
-      <link rel="stylesheet" href="./assets/stylesheets/application.ba0fd1a6.css">
+      <link rel="stylesheet" href="./assets/stylesheets/application.451f80e5.css">
       
-        <link rel="stylesheet" href="./assets/stylesheets/application-palette.6079476c.css">
+        <link rel="stylesheet" href="./assets/stylesheets/application-palette.22915126.css">
       
       
         
@@ -209,11 +209,11 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <span class="md-nav__button md-logo">
+    <a href="." title="JuliaMusic" class="md-nav__button md-logo">
       
         <i class="md-icon"></i>
       
-    </span>
+    </a>
     JuliaMusic
   </label>
   
@@ -277,6 +277,33 @@
   <a href="#overview" title="Overview" class="md-nav__link">
     Overview
   </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#midi" title="MIDI" class="md-nav__link">
+    MIDI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#musicmanipulations" title="MusicManipulations" class="md-nav__link">
+    MusicManipulations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#motifsequencegenerator" title="MotifSequenceGenerator" class="md-nav__link">
+    MotifSequenceGenerator
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -346,6 +373,30 @@
   </li>
 
     
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="motif/basic/" title="Motif Sequence Generation" class="md-nav__link">
+      Motif Sequence Generation
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="motif/musicexample/" title="Music Motifs Example" class="md-nav__link">
+      Music Motifs Example
+    </a>
+  </li>
+
+    
   </ul>
 </nav>
                   </div>
@@ -370,6 +421,33 @@
   <a href="#overview" title="Overview" class="md-nav__link">
     Overview
   </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#midi" title="MIDI" class="md-nav__link">
+    MIDI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#musicmanipulations" title="MusicManipulations" class="md-nav__link">
+    MusicManipulations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#motifsequencegenerator" title="MotifSequenceGenerator" class="md-nav__link">
+    MotifSequenceGenerator
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -401,23 +479,42 @@
                 
                 <p><a id='Introduction-1'></a></p>
 <h1 id="introduction">Introduction</h1>
-<p>This documentation describes how to use packages of the <a href="https://github.com/JuliaMusic">JuliaMusic</a>. They are about reading, manipulating and saving data exclusively related with music. Most of the functionality comes in the form of the <a href="https://en.wikipedia.org/wiki/MIDI">MIDI</a> format which is described later on this page.</p>
+<p>This documentation describes how to use packages of the <a href="https://github.com/JuliaMusic">JuliaMusic</a>. They are about reading, manipulating and saving data related with music. Most of the functionality comes in the form of the <a href="https://en.wikipedia.org/wiki/MIDI">MIDI</a> format which is described later on this page.</p>
+<p>The current documentation was built with the following versions</p>
+<div class="codehilite"><pre><span></span> * MIDI ⋅⋅⋅⋅⋅⋅⋅⋅⋅⋅⋅⋅⋅⋅⋅⋅⋅⋅⋅⋅⋅⋅ 0.8.0
+ * MotifSequenceGenerator ⋅⋅⋅⋅ 0.1.1
+ * MusicManipulations ⋅⋅⋅⋅⋅⋅⋅⋅ 0.1.0
+</pre></div>
+
+
 <p><a id='Overview-1'></a></p>
 <h2 id="overview">Overview</h2>
-<p>The <a href="https://github.com/JuliaMusic/MIDI.jl">MIDI.jl</a> is a module that defines fundamental types like tracks, reading/writing functionality, note functionality and other basic stuff. It was originally developed by <a href="https://github.com/JoelHobson">Joel Hobson</a> and is now maintained by all members of JuliaMusic. In short it contains:</p>
+<p><a id='MIDI-1'></a></p>
+<h3 id="midi">MIDI</h3>
+<p><a href="https://github.com/JuliaMusic/MIDI.jl">MIDI.jl</a> is a module that defines fundamental types like tracks, reading/writing functionality, note functionality and other basic stuff.</p>
 <ol>
-<li>The API of basic types like midi files and tracks, as well as IO is in the <a href="./midi/io">Basic MIDI Structures</a> page.</li>
-<li>The <a href="midi/notes/#MIDI.Note"><code>Note</code></a> construct which describes a music note, as well as basic read/write methods, are in the <a href="./midi/notes">Notes</a> page.</li>
+<li><a href="./midi/io">Basic MIDI API</a> : The API of basic types like midi files and tracks, as well as IO. Various utility functions are included as well.</li>
+<li><a href="./midi/notes">Notes</a> : The <a href="midi/notes/#MIDI.Note"><code>Note</code></a> construct describes a music note. Many convenience tools are also provided in the same page, like e.g. turning a not pitch to a string like <code>A♯3</code>.</li>
 </ol>
-<p>The <a href="https://github.com/JuliaMusic/MusicManipulations.jl">MusicManipulations.jl</a> package has more advanced functionality about note processing, data extraction, quantizing and other similar processes that related to music data:</p>
+<p><a id='MusicManipulations-1'></a></p>
+<h3 id="musicmanipulations">MusicManipulations</h3>
+<p>The <a href="https://github.com/JuliaMusic/MusicManipulations.jl">MusicManipulations.jl</a> package has more advanced functionality about note processing, data extraction, quantizing and other similar processes that related to music data.</p>
 <ol>
+<li><a href="./midi/notes/#convenience-tools">Convenience tools</a>.</li>
 <li><a href="./mm/quantizing">Quantizing &amp; Classifying Notes</a> on a given grid.</li>
-<li><a href="./mm/extraction">Music Data Extraction</a></li>
+<li><a href="./mm/extraction">Advanced Music Data Extraction</a>.</li>
 <li>More coming soon.</li>
+</ol>
+<p><a id='MotifSequenceGenerator-1'></a></p>
+<h3 id="motifsequencegenerator">MotifSequenceGenerator</h3>
+<p><a href="https://github.com/JuliaMusic/MotifSequenceGenerator.jl">MotifSequenceGenerator.jl</a> is a very simple module that does a very simple thing: based on a pool of motifs with specified lengths, it makes a random sequence out of them so that the sequence also has a specified length!</p>
+<ol>
+<li><a href="motif/basic/">Motif Sequences</a> introduces the module and has a basic usage example.</li>
+<li><a href="motif/musicexample/">Music Motifs Example</a> shows a real-world use case where the module is used to produce music sequences.</li>
 </ol>
 <p><a id='MIDI:-The-least-you-need-to-know-1'></a></p>
 <h2 id="midi-the-least-you-need-to-know">MIDI: The least you need to know</h2>
-<p><em>This section serves as a crash-course on the MIDI format. For more info see the <a href="https://en.wikipedia.org/wiki/MIDI">wikipedia</a> page, read the <a href="https://www.midi.org/specifications">official MIDI specifications</a> or have a look at the comprehensive tutorial <a href="http://www.recordingblogs.com/wiki/musical-instrument-digital-interface-midi">at recirdingblogs.com</a></em>.</p>
+<p><em>This section serves as a crash-course on the MIDI format. For more info see the <a href="https://en.wikipedia.org/wiki/MIDI">wikipedia</a> page, read the <a href="https://www.midi.org/specifications">official MIDI specifications</a> or have a look at the comprehensive tutorial <a href="http://www.recordingblogs.com/wiki/musical-instrument-digital-interface-midi">at recordingblogs.com</a></em>.</p>
 <p>A MIDI file typically comes in pieces called tracks that play simultaneously. Each track can have 16 different channels, numbered 0-15. Each channel can be thought of as a single instrument, though that instrument can be changed throughout that track. A track contains events. The three types of events are MIDI events, META events, and system exclusive (SYSEX) events. All events begin with the time since the last event (dT) in ticks. The number of ticks per quarter note is given by the <code>tpq</code> of the midi file, <code>MIDIFile.tpq</code> (see <a href="midi/io/#MIDI.MIDIFile"><code>MIDIFile</code></a>).</p>
 <ul>
 <li>MIDI events handle things related to the actual notes as well as sound texture, such as playing a note or moving the pitch-wheel.</li>
@@ -488,7 +585,7 @@
       
     </div>
     
-      <script src="./assets/javascripts/application.a59e2a89.js"></script>
+      <script src="./assets/javascripts/application.30f6b8b1.js"></script>
       
       <script>app.initialize({version:"0.17.5",url:{base:"."}})</script>
       

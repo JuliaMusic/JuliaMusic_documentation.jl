@@ -36,7 +36,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-0.17.5, mkdocs-material-2.9.2">
+      <meta name="generator" content="mkdocs-0.17.5, mkdocs-material-2.9.4">
     
     
       
@@ -44,9 +44,9 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application.ba0fd1a6.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
       
-        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.6079476c.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.22915126.css">
       
       
         
@@ -209,11 +209,11 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <span class="md-nav__button md-logo">
+    <a href="../.." title="JuliaMusic" class="md-nav__button md-logo">
       
         <i class="md-icon"></i>
       
-    </span>
+    </a>
     JuliaMusic
   </label>
   
@@ -360,6 +360,30 @@
   </li>
 
     
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../motif/basic/" title="Motif Sequence Generation" class="md-nav__link">
+      Motif Sequence Generation
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../motif/musicexample/" title="Music Motifs Example" class="md-nav__link">
+      Music Motifs Example
+    </a>
+  </li>
+
+    
   </ul>
 </nav>
                   </div>
@@ -441,15 +465,29 @@
 <p><strong>Fields</strong></p>
 <ul>
 <li><code>format::UInt16</code> : The format of the file. Can be 0, 1 or 2.</li>
-<li><code>tpq::Int16</code> : The time division of the track, ticks-per-beat.</li>
+<li><code>tpq::Int16</code> : The time division of the track, ticks-per-quarter-note.</li>
 <li><code>tracks::Array{MIDITrack, 1}</code> : The array of contained tracks.</li>
 </ul>
 <p>To read and write a MIDI file, use</p>
-<div class="codehilite"><pre><span></span><span class="n">midi</span> <span class="o">=</span> <span class="n">readMIDIfile</span><span class="p">(</span><span class="s">&quot;test.mid&quot;</span><span class="p">)</span> <span class="c"># Reads a file into a MIDIFile data type</span>
-<span class="n">writeMIDIfile</span><span class="p">(</span><span class="s">&quot;filename.mid&quot;</span><span class="p">,</span> <span class="n">midi</span><span class="p">)</span> <span class="c"># Writes a MIDI file to the given filename</span>
+<p><a id='MIDI.readMIDIfile' href='#MIDI.readMIDIfile'>#</a>
+<strong><code>MIDI.readMIDIfile</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span>readMIDIfile(filename::AbstractString)
 </pre></div>
 
 
+<p>Read a file into a <code>MIDIFile</code> data type.</p>
+<p><a id='MIDI.writeMIDIfile' href='#MIDI.writeMIDIfile'>#</a>
+<strong><code>MIDI.writeMIDIfile</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span>writeMIDIfile(filename::AbstractString, data::MIDIFile)
+</pre></div>
+
+
+<p>Write a <code>MIDIFile</code> as a ".mid" file to the given filename.</p>
+<div class="codehilite"><pre><span></span>writeMIDIfile(filename::AbstractString, notes::Notes)
+</pre></div>
+
+
+<p>Create a <code>MIDIFile</code> directly from <code>notes</code>, using format 0.</p>
 <hr />
 <p><a id='MIDITrack-1'></a></p>
 <h2 id="miditrack"><code>MIDITrack</code></h2>
@@ -461,7 +499,7 @@
 
 
 <p><code>MIDITrack</code> is simply a container for <code>TrackEvents</code>, since its only field is <code>events::Vector{TrackEvent}</code>.</p>
-<p>Track chunks begin with four bytes spelling out "MTrk", followed by the length (in bytes) of the track (see <code>readvariablelength</code>), followed by a sequence of events.</p>
+<p>Track chunks begin with four bytes spelling out "MTrk", followed by the length (in bytes) of the track (see <a href="./#MIDI.readvariablelength"><code>readvariablelength</code></a>), followed by a sequence of events.</p>
 <p><a id='MIDI.TrackEvent' href='#MIDI.TrackEvent'>#</a>
 <strong><code>MIDI.TrackEvent</code></strong> &mdash; <em>Type</em>.</p>
 <div class="codehilite"><pre><span></span>TrackEvent &lt;: Any
@@ -472,6 +510,7 @@
 <p>All track events begin with a variable length time value (see <a href="./#MIDI.readvariablelength"><code>readvariablelength</code></a>) and have a field named <code>dT</code> which contains it. This number notes after how many ticks since the last event does the current even takes place.</p>
 <p><code>MIDIEvent</code>s then resume with a MIDI channel message defined in <code>constants.jl</code>. They're followed by 1 or 2 bytes, depending on the channel message (see <code>MIDI.EVENTTYPETOLENGTH</code>). If no valid channel message is identified, the previous seen channel message is used. After that the MIDI command is encoded.</p>
 <p><code>MetaEvent</code>s and <code>SysexEvent</code>s both resume with a specific byte (see <code>constants.jl</code>).</p>
+<hr />
 <p>The <code>TrackEvent</code> themselves can be one of three types:</p>
 <div class="codehilite"><pre><span></span><span class="n">struct</span> <span class="n">MIDIEvent</span> <span class="o">&lt;:</span> <span class="n">TrackEvent</span>
     <span class="n">dT</span><span class="o">::</span><span class="kt">Int</span>
@@ -504,11 +543,12 @@
 <p>Return the BPM where the given <code>MIDIFile</code> was exported at.</p>
 <p><a id='MIDI.ms_per_tick' href='#MIDI.ms_per_tick'>#</a>
 <strong><code>MIDI.ms_per_tick</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>ms_per_tick(midi, bpm::Integer = BPM(midi)) -&gt; ms
+<div class="codehilite"><pre><span></span>ms_per_tick(tpq, bpm)
+ms_per_tick(midi::MIDIFile)
 </pre></div>
 
 
-<p>Given a <code>MIDIFile</code>, return how many miliseconds is one tick, based on the <code>bpm</code>. By default the <code>bpm</code> is the BPM the midi file was exported at.</p>
+<p>Return how many miliseconds is one tick, based on the beats per minute <code>bpm</code> and ticks per quarter note <code>tpq</code>.</p>
 <p><a id='MIDI.addevent!' href='#MIDI.addevent!'>#</a>
 <strong><code>MIDI.addevent!</code></strong> &mdash; <em>Function</em>.</p>
 <div class="codehilite"><pre><span></span>addevent!(track::MIDITrack, time::Int, event::TrackEvent)
@@ -531,14 +571,32 @@
 </pre></div>
 
 
-<p>Return the name of the given <a href="./#MIDI.MIDITrack"><code>MIDITrack</code></a> as a string, by finding the "track name" <a href="../@ref"><code>MetaEvent</code></a>.</p>
+<p>Return the name of the given <code>track</code> as a string, by finding the "track name" <code>MetaEvent</code>.</p>
 <p><a id='MIDI.addtrackname!' href='#MIDI.addtrackname!'>#</a>
 <strong><code>MIDI.addtrackname!</code></strong> &mdash; <em>Function</em>.</p>
 <div class="codehilite"><pre><span></span>addtrackname!(track::MIDI.MIDITrack, name::String)
 </pre></div>
 
 
-<p>Add a name of the given <a href="./#MIDI.MIDITrack"><code>MIDITrack</code></a> by attaching the correct "track name" <a href="../@ref"><code>MetaEvent</code></a> to the track.</p>
+<p>Add a name to the given <code>track</code> by attaching the "track name" <code>MetaEvent</code> to the start of the <code>track</code>.</p>
+<p><a id='MIDI.textevent' href='#MIDI.textevent'>#</a>
+<strong><code>MIDI.textevent</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span>textevent(eventtype, text)
+</pre></div>
+
+
+<p>Create an event using the string <code>text</code>. The <code>eventtype</code> can be <code>:text, :lyric, :marker</code>, which will create the appropriate type of <code>MetaEvent</code>.</p>
+<p>The returned event can be added to a <a href="./#MIDI.MIDITrack"><code>MIDITrack</code></a> via either <a href="./#MIDI.addevent!"><code>addevent!</code></a> or <a href="./#MIDI.addevents!"><code>addevents!</code></a> for multiple events.</p>
+<p><em>Notice</em> - Cubase can read the marker events and MuseScore can read the lyrics events. We haven't seen any editor that can read the text events, so far.</p>
+<p><a id='MIDI.findtextevents' href='#MIDI.findtextevents'>#</a>
+<strong><code>MIDI.findtextevents</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span>findtextevents(eventtype, track)
+</pre></div>
+
+
+<p>Find all "text" events specifield by <code>eventtype</code> in the <code>track</code>. The <code>eventtype</code> can be <code>:text, :lyric, :marker</code>, which will find the appropriate <code>MetaEvent</code>s.</p>
+<p>For convenience, this function does not return the events themselves. Instead, it returns three vectors: the first is the strings of the events, the second is the indices of the events in the <code>track</code> and the third is the absolute position of the events (since start of <code>track</code>).</p>
+<p><em>Notice</em> - common music score editors like e.g. MuseScore, GuitarPro, etc., do not export the lyrics and text information when exporting midi files.</p>
 <p><a id='Low-Level-API-1'></a></p>
 <h2 id="low-level-api">Low-Level API</h2>
 <p>In this section we show the low-level API that allows one to actually read bytes from a file and transform them into Julia structures.</p>
@@ -554,9 +612,11 @@
 <span class="n">readMIDIevent</span>
 <span class="n">readmetaevent</span>
 <span class="n">readsysexevent</span>
+<span class="n">get_abs_pos</span>
 </pre></div>
 
 
+<hr />
 <p>Lastly, see the file <code>MIDI/src/constants.jl</code> for message types, event types, etc.</p>
                 
                   
@@ -636,7 +696,7 @@
       
     </div>
     
-      <script src="../../assets/javascripts/application.a59e2a89.js"></script>
+      <script src="../../assets/javascripts/application.30f6b8b1.js"></script>
       
       <script>app.initialize({version:"0.17.5",url:{base:"../.."}})</script>
       

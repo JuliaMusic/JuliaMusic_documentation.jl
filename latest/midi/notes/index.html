@@ -36,7 +36,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-0.17.5, mkdocs-material-2.9.2">
+      <meta name="generator" content="mkdocs-0.17.5, mkdocs-material-2.9.4">
     
     
       
@@ -44,9 +44,9 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application.ba0fd1a6.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application.451f80e5.css">
       
-        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.6079476c.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.22915126.css">
       
       
         
@@ -209,11 +209,11 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <span class="md-nav__button md-logo">
+    <a href="../.." title="JuliaMusic" class="md-nav__button md-logo">
       
         <i class="md-icon"></i>
       
-    </span>
+    </a>
     JuliaMusic
   </label>
   
@@ -318,6 +318,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#convenience-tools" title="Convenience Tools" class="md-nav__link">
+    Convenience Tools
+  </a>
+  
+</li>
+      
       
       
       
@@ -349,6 +356,30 @@
   <li class="md-nav__item">
     <a href="../../mm/extraction/" title="Music Data Extraction" class="md-nav__link">
       Music Data Extraction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../motif/basic/" title="Motif Sequence Generation" class="md-nav__link">
+      Motif Sequence Generation
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../motif/musicexample/" title="Music Motifs Example" class="md-nav__link">
+      Music Motifs Example
     </a>
   </li>
 
@@ -390,6 +421,13 @@
         <li class="md-nav__item">
   <a href="#pitch-to-int-convertion" title="Pitch to Int convertion" class="md-nav__link">
     Pitch to Int convertion
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#convenience-tools" title="Convenience Tools" class="md-nav__link">
+    Convenience Tools
   </a>
   
 </li>
@@ -442,9 +480,10 @@
 <p><strong>Fields:</strong></p>
 <ul>
 <li><code>notes::Vector{N}</code></li>
-<li><code>tpq::Int16</code> : Ticks per quarter note. Defines the fundamental unit of measurement  of a note's position and duration, as well as the length of one quarter note.  Takes pitchs from 1 to 960.</li>
+<li><code>tpq::Int16</code> : Ticks per quarter note. Defines the fundamental unit of measurement  of a note's position and duration, as well as the length of one quarter note.  Takes values from 1 to 960.</li>
 </ul>
 <p><code>Notes</code> is iterated and accessed as if iterating or accessing its field <code>notes</code>.</p>
+<hr />
 <p>To get all the notes in a <a href="../io/#MIDI.MIDITrack"><code>MIDITrack</code></a>, you can use</p>
 <p><a id='MIDI.getnotes' href='#MIDI.getnotes'>#</a>
 <strong><code>MIDI.getnotes</code></strong> &mdash; <em>Function</em>.</p>
@@ -460,6 +499,7 @@
 
 <p>Find the notes from <code>track</code> directly, passing also the ticks per quarter note.</p>
 <p>Returns: <code>Notes{Note}</code>, setting the ticks per quarter note as <code>tpq</code>. You can find the originally exported ticks per quarter note from the original <code>MIDIFile</code> through <code>midi.tpq</code>.</p>
+<hr />
 <p>If you have some notes and you want to add them to a track, use</p>
 <p><a id='MIDI.addnotes!' href='#MIDI.addnotes!'>#</a>
 <strong><code>MIDI.addnotes!</code></strong> &mdash; <em>Function</em>.</p>
@@ -468,6 +508,7 @@
 
 
 <p>Add given <code>notes</code> to given <code>track</code>, internally doing all translations from absolute time to relative time.</p>
+<hr />
 <p>Finally, you can use the function <code>getnotnotes(track)</code> to get all <code>TrackEvents</code> that are <em>not</em> <code>NOTEON</code> or <code>NOTEOFF</code>.</p>
 <p><a id='Write-Example-1'></a></p>
 <h2 id="write-example">Write Example</h2>
@@ -479,7 +520,7 @@
 <span class="n">inc</span> <span class="o">=</span> <span class="mi">192</span>
 <span class="n">file</span> <span class="o">=</span> <span class="n">MIDIFile</span><span class="p">()</span>
 <span class="n">track</span> <span class="o">=</span> <span class="n">MIDITrack</span><span class="p">()</span>
-<span class="n">notes</span> <span class="o">=</span> <span class="n">Notes</span><span class="p">()</span>
+<span class="n">notes</span> <span class="o">=</span> <span class="n">Notes</span><span class="p">()</span> <span class="c"># tpq automatically = 960</span>
 
 <span class="n">push!</span><span class="p">(</span><span class="n">notes</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
 <span class="n">push!</span><span class="p">(</span><span class="n">notes</span><span class="p">,</span> <span class="n">E</span><span class="p">)</span>
@@ -489,7 +530,6 @@
 <span class="n">C</span> <span class="o">=</span> <span class="n">Note</span><span class="p">(</span><span class="mi">60</span> <span class="o">+</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">96</span><span class="p">,</span> <span class="n">C</span><span class="o">.</span><span class="n">position</span><span class="o">+</span><span class="n">inc</span><span class="p">,</span> <span class="mi">192</span><span class="p">)</span>
 <span class="n">E</span> <span class="o">=</span> <span class="n">Note</span><span class="p">(</span><span class="mi">64</span> <span class="o">+</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">96</span><span class="p">,</span> <span class="n">E</span><span class="o">.</span><span class="n">position</span><span class="o">+</span><span class="n">inc</span><span class="p">,</span> <span class="mi">144</span><span class="p">)</span>
 <span class="n">G</span> <span class="o">=</span> <span class="n">Note</span><span class="p">(</span><span class="mi">67</span> <span class="o">+</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">96</span><span class="p">,</span> <span class="n">G</span><span class="o">.</span><span class="n">position</span><span class="o">+</span><span class="n">inc</span><span class="p">,</span> <span class="mi">96</span><span class="p">)</span>
-<span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
 
 <span class="n">addnotes!</span><span class="p">(</span><span class="n">track</span><span class="p">,</span> <span class="n">notes</span><span class="p">)</span>
 <span class="n">addtrackname!</span><span class="p">(</span><span class="n">track</span><span class="p">,</span> <span class="s">&quot;simple track&quot;</span><span class="p">)</span>
@@ -500,56 +540,74 @@
 
 <p><a id='Read-Example-1'></a></p>
 <h2 id="read-example">Read Example</h2>
-<div class="codehilite"><pre><span></span><span class="n">cd</span><span class="p">(</span><span class="n">Pkg</span><span class="o">.</span><span class="n">dir</span><span class="p">(</span><span class="s">&quot;MusicManipulations&quot;</span><span class="p">)</span><span class="o">*</span><span class="s">&quot;/test&quot;</span><span class="p">)</span>
-<span class="n">midi</span> <span class="o">=</span> <span class="n">readMIDIfile</span><span class="p">(</span><span class="s">&quot;serenade_full.mid&quot;</span><span class="p">)</span>
-<span class="c"># Track number 3 is a quantized bass MIDI track</span>
-<span class="n">bass</span> <span class="o">=</span> <span class="n">midi</span><span class="o">.</span><span class="n">tracks</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
-<span class="n">notes</span> <span class="o">=</span> <span class="n">getnotes</span><span class="p">(</span><span class="n">bass</span><span class="p">,</span> <span class="n">midi</span><span class="o">.</span><span class="n">tpq</span><span class="p">)</span>
-<span class="n">println</span><span class="p">(</span><span class="s">&quot;Notes of track </span><span class="si">$</span><span class="p">(</span><span class="n">trackname</span><span class="p">(</span><span class="n">bass</span><span class="p">))</span><span class="s">:&quot;</span><span class="p">)</span>
-<span class="n">Base</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">notes</span><span class="p">)</span>
-</pre></div>
-
-
-<p>gives</p>
-<div class="codehilite"><pre><span></span>Notes of track Bass:
-256 Notes with tpq=960
- Note F3   | vel = 76  | pos = 0, dur = 1196
- Note F3   | vel = 75  | pos = 1600, dur = 273
- Note D♯3  | vel = 58  | pos = 1920, dur = 1496
- Note D♯3  | vel = 56  | pos = 3520, dur = 274
- Note C♯3  | vel = 60  | pos = 3840, dur = 1421
- Note C♯3  | vel = 58  | pos = 5440, dur = 228
- Note C3   | vel = 73  | pos = 5760, dur = 889
- Note D♯3  | vel = 77  | pos = 6720, dur = 967
- Note F3   | vel = 76  | pos = 7680, dur = 1196
- Note F3   | vel = 75  | pos = 9280, dur = 273
-  ⋮
+<p>```@example midi
+using MIDI
+midi = readMIDIfile(testmidi())</p>
+<div class="codehilite"><pre><span></span>```@example midi
+# Track number 3 is a quantized bass MIDI track
+bass = midi.tracks[3]
+notes = getnotes(bass, midi.tpq)
+println(&quot;Notes of track $(trackname(bass)):&quot;)
+notes
 </pre></div>
 
 
 <p><a id='Pitch-to-Int-convertion-1'></a></p>
 <h2 id="pitch-to-int-convertion">Pitch to <code>Int</code> convertion</h2>
-<p>To get the pitch number for a specific note, multiply 12 by the octave number, and add it to one of the following</p>
+<p><a id='MIDI.name_to_pitch' href='#MIDI.name_to_pitch'>#</a>
+<strong><code>MIDI.name_to_pitch</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span>name_to_pitch(p::String) -&gt; Int
+</pre></div>
+
+
+<p>Return the pitch value of the given note name <code>p</code>, which can be of the form <code>capital_letter*sharp*octave</code>. E.g. <code>name_to_pitch(D#6)</code> gives <code>75</code>.</p>
 <ul>
-<li>C  = 0</li>
-<li>C♯ = 1</li>
-<li>D♭ = 1</li>
-<li>D  = 2</li>
-<li>D♯ = 3</li>
-<li>E♭ = 3</li>
-<li>E  = 4</li>
-<li>F  = 5</li>
-<li>F♯ = 6</li>
-<li>Gb = 6</li>
-<li>G  = 7</li>
-<li>G♯ = 8</li>
-<li>A♭ = 8</li>
-<li>A  = 9</li>
-<li>A♯ = 10</li>
-<li>B♭ = 10</li>
-<li>B  = 11</li>
-<li>C♭ = 11</li>
+<li><code>capital_letter</code> : from <code>"A"</code> to <code>"G"</code>.</li>
+<li><code>sharp</code> : one of <code>"#"</code> <code>"♯"</code> or <code>""</code>.</li>
+<li><code>octave</code> : any integer (as a string), the octave number (an octave is 12 pitches). If not given it is assumed <code>"5"</code>.</li>
 </ul>
+<p>Reminder: middle C has pitch <code>60</code> and is displayed as <code>C5</code>.</p>
+<p><a id='MIDI.pitch_to_name' href='#MIDI.pitch_to_name'>#</a>
+<strong><code>MIDI.pitch_to_name</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span>pitch_to_name(pitch) -&gt; string
+</pre></div>
+
+
+<p>Return the name of the pitch, e.g. <code>F5</code>, <code>A♯3</code> etc. in modern notation given the value in integer.</p>
+<p>Reminder: middle C has pitch <code>60</code> and is displayed as <code>C5</code>.</p>
+<p><a id='Convenience-Tools-1'></a></p>
+<h2 id="convenience-tools">Convenience Tools</h2>
+<p>The functions <code>velocities, positions, pitches, durations</code> return the respective property when given some <a href="./#MIDI.Notes"><code>Notes</code></a>.</p>
+<p>Other convenience functions follow:</p>
+<p><a id='MusicManipulations.translate' href='#MusicManipulations.translate'>#</a>
+<strong><code>MusicManipulations.translate</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span>translate(notes, ticks)
+</pre></div>
+
+
+<p>Translate the <code>notes</code> for the given amount of <code>ticks</code>.</p>
+<p><a id='Base.transpose' href='#Base.transpose'>#</a>
+<strong><code>Base.transpose</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span>transpose(notes, semitones)
+</pre></div>
+
+
+<p>Transpose the <code>notes</code> for the given amount of <code>semitones</code>.</p>
+<p><a id='MusicManipulations.randomnotes' href='#MusicManipulations.randomnotes'>#</a>
+<strong><code>MusicManipulations.randomnotes</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span>randomnotes(n::Int, tpq = 960)
+</pre></div>
+
+
+<p>Generate some random notes that start sequentially.</p>
+<p><a id='MusicManipulations.subdivision' href='#MusicManipulations.subdivision'>#</a>
+<strong><code>MusicManipulations.subdivision</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span>subdivision(n::Int, tpq)
+</pre></div>
+
+
+<p>Return how many ticks is the duration of the subdivision of a 4/4-bar into <code>n</code> equal parts, assuming the ticks per quarter note are <code>tpq</code>.</p>
+<p>For example, for sixteenth notes you would do <code>subdivision(16, tpq)</code>, for eigth-note triplets <code>subdivision(12, tpq)</code> and so on.</p>
                 
                   
                 
@@ -628,7 +686,7 @@
       
     </div>
     
-      <script src="../../assets/javascripts/application.a59e2a89.js"></script>
+      <script src="../../assets/javascripts/application.30f6b8b1.js"></script>
       
       <script>app.initialize({version:"0.17.5",url:{base:"../.."}})</script>
       
