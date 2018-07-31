@@ -359,6 +359,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#adding-alternating-hands-and-lyrics" title="Adding alternating hands and Lyrics" class="md-nav__link">
+    Adding alternating hands and Lyrics
+  </a>
+  
+</li>
+      
       
       
       
@@ -404,6 +411,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#adding-alternating-hands-and-lyrics" title="Adding alternating hands and Lyrics" class="md-nav__link">
+    Adding alternating hands and Lyrics
+  </a>
+  
+</li>
+      
       
       
       
@@ -444,82 +458,112 @@
 <p><a id='Defining-the-Notes-1'></a></p>
 <h2 id="defining-the-notes">Defining the <code>Notes</code></h2>
 <p>We first have to define the <code>Notes</code> instances that will correspond to those four basic patterns.</p>
-<p>```@example musicexample
-using MusicManipulations # re-exports MIDI</p>
-<p>tpq = 960 #
-sixt = 240 # duration of sixteenth note
-left = name_to_pitch("A5")
-right = name_to_pitch("E6")</p>
-<div class="codehilite"><pre><span></span>Reminder: `Note(pitch, intensity, start, duration)`
+<div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">MusicManipulations</span> <span class="c"># re-exports MIDI</span>
+
+<span class="n">tpq</span> <span class="o">=</span> <span class="mi">960</span> <span class="c">#</span>
+<span class="n">sixt</span> <span class="o">=</span> <span class="mi">240</span> <span class="c"># duration of sixteenth note</span>
+<span class="n">left</span> <span class="o">=</span> <span class="n">name_to_pitch</span><span class="p">(</span><span class="s">&quot;A5&quot;</span><span class="p">)</span>
+<span class="n">right</span> <span class="o">=</span> <span class="n">name_to_pitch</span><span class="p">(</span><span class="s">&quot;E6&quot;</span><span class="p">)</span>
+</pre></div>
 
 
-```@example musicexample
-motif1 = [ # motif 5a
-Note(right, 100, 0, sixt),
-Note(left, 50, sixt, sixt),
-Note(right, 100, 2sixt, sixt),
-Note(left, 50, 3sixt, sixt),
-Note(left, 50, 4sixt, sixt)
-]
+<div class="codehilite"><pre><span></span>76
+</pre></div>
 
 
-motif2 = [ # motif 5b
-Note(right, 100, 0, sixt),
-Note(left, 50, sixt, sixt),
-Note(left, 50, 2sixt, sixt),
-Note(right, 50, 3sixt, sixt),
-Note(right, 50, 4sixt, sixt)
-]
+<p>Reminder: <code>Note(pitch, intensity, start, duration)</code></p>
+<div class="codehilite"><pre><span></span><span class="n">motif1</span> <span class="o">=</span> <span class="p">[</span> <span class="c"># motif 5a</span>
+<span class="n">Note</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sixt</span><span class="p">),</span>
+<span class="n">Note</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">sixt</span><span class="p">,</span> <span class="n">sixt</span><span class="p">),</span>
+<span class="n">Note</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="n">sixt</span><span class="p">,</span> <span class="n">sixt</span><span class="p">),</span>
+<span class="n">Note</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">3</span><span class="n">sixt</span><span class="p">,</span> <span class="n">sixt</span><span class="p">),</span>
+<span class="n">Note</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">4</span><span class="n">sixt</span><span class="p">,</span> <span class="n">sixt</span><span class="p">)</span>
+<span class="p">]</span>
 
-motif3 = [ # motif 3
-Note(right, 100, 0, sixt),
-Note(left, 50, sixt, sixt),
-Note(left, 50, 2sixt, sixt),
-]
 
-motif4 = [ # motif 4
-Note(right, 100, 0, sixt),
-Note(left, 50, sixt, sixt),
-Note(right, 50, 2sixt, sixt),
-Note(right, 50, 3sixt, sixt),
-]
+<span class="n">motif2</span> <span class="o">=</span> <span class="p">[</span> <span class="c"># motif 5b</span>
+<span class="n">Note</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sixt</span><span class="p">),</span>
+<span class="n">Note</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">sixt</span><span class="p">,</span> <span class="n">sixt</span><span class="p">),</span>
+<span class="n">Note</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">2</span><span class="n">sixt</span><span class="p">,</span> <span class="n">sixt</span><span class="p">),</span>
+<span class="n">Note</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">3</span><span class="n">sixt</span><span class="p">,</span> <span class="n">sixt</span><span class="p">),</span>
+<span class="n">Note</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">4</span><span class="n">sixt</span><span class="p">,</span> <span class="n">sixt</span><span class="p">)</span>
+<span class="p">]</span>
 
-motifs = Notes.([motif1, motif2, motif3, motif4], tpq)
+<span class="n">motif3</span> <span class="o">=</span> <span class="p">[</span> <span class="c"># motif 3</span>
+<span class="n">Note</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sixt</span><span class="p">),</span>
+<span class="n">Note</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">sixt</span><span class="p">,</span> <span class="n">sixt</span><span class="p">),</span>
+<span class="n">Note</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">2</span><span class="n">sixt</span><span class="p">,</span> <span class="n">sixt</span><span class="p">),</span>
+<span class="p">]</span>
 
-#%% #srs
+<span class="n">motif4</span> <span class="o">=</span> <span class="p">[</span> <span class="c"># motif 4</span>
+<span class="n">Note</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sixt</span><span class="p">),</span>
+<span class="n">Note</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">sixt</span><span class="p">,</span> <span class="n">sixt</span><span class="p">),</span>
+<span class="n">Note</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">2</span><span class="n">sixt</span><span class="p">,</span> <span class="n">sixt</span><span class="p">),</span>
+<span class="n">Note</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">3</span><span class="n">sixt</span><span class="p">,</span> <span class="n">sixt</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="n">motifs</span> <span class="o">=</span> <span class="n">Notes</span><span class="o">.</span><span class="p">([</span><span class="n">motif1</span><span class="p">,</span> <span class="n">motif2</span><span class="p">,</span> <span class="n">motif3</span><span class="p">,</span> <span class="n">motif4</span><span class="p">],</span> <span class="n">tpq</span><span class="p">)</span>
+
+<span class="c">#%% #srs</span>
 </pre></div>
 
 
 <p>Now <code>motifs</code> stands for a pool of note sequences we can draw random samples from. Let's generate sequences that are 8-bars long (i.e. 32 quarter notes)</p>
-<p>```@example musicexample
-q = tpq*32</p>
-<p>notes, seq = random_notes_sequence(motifs, q)
-notes</p>
-<div class="codehilite"><pre><span></span>and now we can write these to a MIDI file simply by doing `writeMIDIfile(&quot;drums_patterns.mid&quot;, notes)`.
+<div class="codehilite"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="n">tpq</span><span class="o">*</span><span class="mi">32</span>
+
+<span class="n">notes</span><span class="p">,</span> <span class="n">seq</span> <span class="o">=</span> <span class="n">random_notes_sequence</span><span class="p">(</span><span class="n">motifs</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span>
+<span class="n">notes</span>
+</pre></div>
 
 
-Afterwards we can drag-n-drop the midi file into a music score editor, like e.g. [MuseScore](https://musescore.org/en), to visualize and print the result:
+<div class="codehilite"><pre><span></span>128 Notes with tpq=960
+ Note E6  | vel = 100 | pos = 0, dur = 240
+ Note A5  | vel = 50  | pos = 240, dur = 240
+ Note A5  | vel = 50  | pos = 480, dur = 240
+ Note E6  | vel = 100 | pos = 720, dur = 240
+ Note A5  | vel = 50  | pos = 960, dur = 240
+ Note A5  | vel = 50  | pos = 1200, dur = 240
+ Note E6  | vel = 50  | pos = 1440, dur = 240
+ Note E6  | vel = 50  | pos = 1680, dur = 240
+ Note E6  | vel = 100 | pos = 1920, dur = 240
+ Note A5  | vel = 50  | pos = 2160, dur = 240
+  ⋮
+</pre></div>
 
 
-![32-bar pattern sequence](drums_patterns.png)
+<p>and now we can write these to a MIDI file simply by doing <code>writeMIDIfile("drums_patterns.mid", notes)</code>.</p>
+<p>Afterwards we can drag-n-drop the midi file into a music score editor, like e.g. <a href="https://musescore.org/en">MuseScore</a>, to visualize and print the result:</p>
+<p><img alt="32-bar pattern sequence" src="../drums_patterns.png" /></p>
+<p><em>this is a pre-made figure - your random sequence will probably differ</em></p>
+<p>This worked nicely, but there is a problem: The sequence does not respect the fact that some specific patterns (<code>5a</code> and <code>4</code>) swap the leading hand. This is what we tackle in the next section.</p>
+<p><a id='Adding-alternating-hands-and-Lyrics-1'></a></p>
+<h2 id="adding-alternating-hands-and-lyrics">Adding alternating hands and Lyrics</h2>
+<p>Notice that <code>random_note_sequence</code> also returns the indices of the motifs that were used to create the sequence:</p>
+<div class="codehilite"><pre><span></span><span class="n">seq</span>
+</pre></div>
 
 
-*this is a pre-made figure - your random sequence will probably differ*
-
-
-This worked nicely, but there is a problem: The sequence does not respect the fact that some specific patterns (`5a` and `4`) swap the leading hand. This is what we tackle in the next section.
-
-
-<span class="nt">&lt;a</span> <span class="na">id=</span><span class="s">&#39;Adding-alternating-hands-and-Lyrics-1&#39;</span><span class="nt">&gt;&lt;/a&gt;</span>
-
-## Adding alternating hands and Lyrics
-
-
-Notice that `random_note_sequence` also returns the indices of the motifs that were used to create the sequence:
-
-
-```@example musicexample
-seq
+<div class="codehilite"><pre><span></span>30-element Array{Int64,1}:
+ 3
+ 2
+ 2
+ 2
+ 2
+ 4
+ 3
+ 4
+ 1
+ 2
+ ⋮
+ 1
+ 1
+ 2
+ 4
+ 3
+ 3
+ 2
+ 1
+ 4
 </pre></div>
 
 
@@ -542,43 +586,43 @@ seq
 
 <p>The first entry of each tuple is simply the name of the pattern which we will also show in our music score as "lyrics". The second entry of the tuple simply denotes whether the pattern swaps the leading hand.</p>
 <p>The function that will "inverse" a note sticking is:</p>
-<p>```@example musicexample
-inverse!(n::Note) = (n.pitch = (n.pitch == left ? right : left));</p>
-<div class="codehilite"><pre><span></span><span class="nt">The</span> <span class="nt">function</span> <span class="nt">that</span> <span class="nt">will</span> <span class="s2">&quot;count&quot;</span> <span class="nt">how</span> <span class="nt">long</span> <span class="nt">is</span> <span class="nt">each</span> <span class="nt">pattern</span><span class="o">,</span> <span class="nt">so</span> <span class="nt">that</span> <span class="nt">we</span> <span class="nt">put</span> <span class="nt">the</span> <span class="nt">lyrics</span> <span class="nt">on</span> <span class="nt">the</span> <span class="nt">correct</span> <span class="nt">positions</span> <span class="nt">in</span> <span class="nt">the</span> <span class="nt">score</span><span class="o">,</span> <span class="nt">will</span> <span class="nt">be</span><span class="o">:</span>
+<div class="codehilite"><pre><span></span><span class="n">inverse!</span><span class="p">(</span><span class="n">n</span><span class="o">::</span><span class="n">Note</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">pitch</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">pitch</span> <span class="o">==</span> <span class="n">left</span> <span class="o">?</span> <span class="n">right</span> <span class="o">:</span> <span class="n">left</span><span class="p">));</span>
+</pre></div>
 
 
-<span class="err">```</span><span class="nt">julia</span>
-<span class="nt">note_length</span><span class="o">(</span><span class="nt">s</span><span class="p">::</span><span class="nd">String</span><span class="o">)</span> <span class="o">=</span> <span class="nt">parse</span><span class="o">(</span><span class="nt">Int</span><span class="o">,</span> <span class="nt">s</span><span class="cp">[</span><span class="mi">1</span><span class="cp">]</span><span class="o">);</span>
+<p>The function that will "count" how long is each pattern, so that we put the lyrics on the correct positions in the score, will be:</p>
+<div class="codehilite"><pre><span></span><span class="n">note_length</span><span class="p">(</span><span class="n">s</span><span class="o">::</span><span class="n">String</span><span class="p">)</span> <span class="o">=</span> <span class="n">parse</span><span class="p">(</span><span class="kt">Int</span><span class="p">,</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
 </pre></div>
 
 
 <p>(remember: <code>sixt</code> is the duration of one sixteenth note). We now initialize an empty <a href="../../midi/io/#MIDI.MIDITrack"><code>MIDITrack</code></a> and add all events to it!</p>
-<p>```@example musicexample
-track = MIDITrack()
-ℓ = 0
-right_leads = true</p>
-<p>for i in 1:length(seq)</p>
-<div class="codehilite"><pre><span></span>s = accents[seq[i]][1]
-le = textevent(:lyric, s)
-addevent!(track, ℓ*sixt, le)
+<div class="codehilite"><pre><span></span><span class="n">track</span> <span class="o">=</span> <span class="n">MIDITrack</span><span class="p">()</span>
+<span class="n">ℓ</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">right_leads</span> <span class="o">=</span> <span class="kc">true</span>
 
-if !right_leads # Invert notes
-    for j in ℓ+1:ℓ+note_length(s)
-        inverse!(notes[j])
-    end
-end
+<span class="k">for</span> <span class="n">i</span> <span class="kp">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">length</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
 
-global ℓ += note_length(s)
+    <span class="n">s</span> <span class="o">=</span> <span class="n">accents</span><span class="p">[</span><span class="n">seq</span><span class="p">[</span><span class="n">i</span><span class="p">]][</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">le</span> <span class="o">=</span> <span class="n">textevent</span><span class="p">(</span><span class="o">:</span><span class="n">lyric</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+    <span class="n">addevent!</span><span class="p">(</span><span class="n">track</span><span class="p">,</span> <span class="n">ℓ</span><span class="o">*</span><span class="n">sixt</span><span class="p">,</span> <span class="n">le</span><span class="p">)</span>
 
-change = accents[seq[i]][2]
-global right_leads = xor(right_leads, change)
+    <span class="k">if</span> <span class="o">!</span><span class="n">right_leads</span> <span class="c"># Invert notes</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="kp">in</span> <span class="n">ℓ</span><span class="o">+</span><span class="mi">1</span><span class="o">:</span><span class="n">ℓ</span><span class="o">+</span><span class="n">note_length</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+            <span class="n">inverse!</span><span class="p">(</span><span class="n">notes</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+        <span class="k">end</span>
+    <span class="k">end</span>
+
+    <span class="kd">global</span> <span class="n">ℓ</span> <span class="o">+=</span> <span class="n">note_length</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+    <span class="n">change</span> <span class="o">=</span> <span class="n">accents</span><span class="p">[</span><span class="n">seq</span><span class="p">[</span><span class="n">i</span><span class="p">]][</span><span class="mi">2</span><span class="p">]</span>
+    <span class="kd">global</span> <span class="n">right_leads</span> <span class="o">=</span> <span class="n">xor</span><span class="p">(</span><span class="n">right_leads</span><span class="p">,</span> <span class="n">change</span><span class="p">)</span>
+<span class="k">end</span>
+<span class="o">!</span><span class="n">right_leads</span> <span class="o">&amp;&amp;</span> <span class="n">inverse!</span><span class="p">(</span><span class="n">notes</span><span class="p">[</span><span class="k">end</span><span class="p">])</span>
+
+<span class="n">addnotes!</span><span class="p">(</span><span class="n">track</span><span class="p">,</span> <span class="n">notes</span><span class="p">)</span>
 </pre></div>
 
 
-<p>end
-!right_leads &amp;&amp; inverse!(notes[end])</p>
-<p>addnotes!(track, notes)
-```</p>
 <p>Finally, we write the track as a midi file using <code>writeMIDIfile("drums_patterns_with_names.mid", MIDIFile(0, tpq, [track]))</code> and then we drag-n-drop the midi file into <a href="https://musescore.org/en">MuseScore</a>.</p>
 <p><img alt="Correct 32-bar pattern sequence" src="../drums_patterns_with_names.png" /></p>
 <p><em>This page was generated using <a href="https://github.com/fredrikekre/Literate.jl">Literate.jl</a>.</em></p>

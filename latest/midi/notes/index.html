@@ -540,15 +540,39 @@
 
 <p><a id='Read-Example-1'></a></p>
 <h2 id="read-example">Read Example</h2>
-<p>```@example midi
-using MIDI
-midi = readMIDIfile(testmidi())</p>
-<div class="codehilite"><pre><span></span>```@example midi
-# Track number 3 is a quantized bass MIDI track
-bass = midi.tracks[3]
-notes = getnotes(bass, midi.tpq)
-println(&quot;Notes of track $(trackname(bass)):&quot;)
-notes
+<div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">MIDI</span>
+<span class="n">midi</span> <span class="o">=</span> <span class="n">readMIDIfile</span><span class="p">(</span><span class="n">testmidi</span><span class="p">())</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="n">MIDIFile</span><span class="o">:</span>
+  <span class="n">format</span><span class="o">:</span> <span class="mi">1</span>
+  <span class="n">tracks</span><span class="o">:</span> <span class="mi">4</span>
+  <span class="n">tpq</span><span class="o">:</span> <span class="mi">960</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="c"># Track number 3 is a quantized bass MIDI track</span>
+<span class="n">bass</span> <span class="o">=</span> <span class="n">midi</span><span class="o">.</span><span class="n">tracks</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">notes</span> <span class="o">=</span> <span class="n">getnotes</span><span class="p">(</span><span class="n">bass</span><span class="p">,</span> <span class="n">midi</span><span class="o">.</span><span class="n">tpq</span><span class="p">)</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;Notes of track </span><span class="si">$</span><span class="p">(</span><span class="n">trackname</span><span class="p">(</span><span class="n">bass</span><span class="p">))</span><span class="s">:&quot;</span><span class="p">)</span>
+<span class="n">notes</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span>Notes of track Bass:
+177 Notes with tpq=960
+ Note A♯3 | vel = 95  | pos = 7680, dur = 690
+ Note A♯3 | vel = 71  | pos = 9280, dur = 308
+ Note G♯3 | vel = 52  | pos = 9600, dur = 668
+ Note G♯3 | vel = 58  | pos = 11200, dur = 338
+ Note G3  | vel = 71  | pos = 11520, dur = 701
+ Note G♯3 | vel = 83  | pos = 13120, dur = 281
+ Note G3  | vel = 73  | pos = 13440, dur = 855
+ Note D3  | vel = 80  | pos = 14400, dur = 848
+ Note C3  | vel = 68  | pos = 15360, dur = 986
+ Note F♯2 | vel = 72  | pos = 16320, dur = 866
+  ⋮
 </pre></div>
 
 

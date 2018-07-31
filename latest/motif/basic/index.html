@@ -471,11 +471,11 @@
 
 
 <div class="codehilite"><pre><span></span>5-element Array{Main.ex-shout.Shout,1}:
- Main.ex-shout.Shout(&quot;GAIHE&quot;, 1)
- Main.ex-shout.Shout(&quot;UPFEI&quot;, 21)
- Main.ex-shout.Shout(&quot;2HW&quot;, 9)
- Main.ex-shout.Shout(&quot;HFIPY&quot;, 95)
- Main.ex-shout.Shout(&quot;5R9B&quot;, 63)
+ Main.ex-shout.Shout(&quot;JBT&quot;, 76)
+ Main.ex-shout.Shout(&quot;SVG&quot;, 76)
+ Main.ex-shout.Shout(&quot;LYUS7&quot;, 11)
+ Main.ex-shout.Shout(&quot;WZKP&quot;, 40)
+ Main.ex-shout.Shout(&quot;9O8P&quot;, 68)
 </pre></div>
 
 
@@ -489,14 +489,36 @@
 
 <p>This means that we accept that the temporal length of a <code>Shout</code> is <code>length(s.shout) + 1</code>.</p>
 <p>We can now create random sequences of shouts that have total length of <em>exactly</em> <code>q</code>:</p>
-<p>```@example shout
-using MotifSequenceGenerator
-q = 30
-sequence, idxs = random_sequence(shouts, q, shoutlimits, shouttranslate)
-sequence</p>
-<div class="codehilite"><pre><span></span>```@example shout
-sequence, idxs = random_sequence(shouts, q, shoutlimits, shouttranslate)
-sequence
+<div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">MotifSequenceGenerator</span>
+<span class="n">q</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">sequence</span><span class="p">,</span> <span class="n">idxs</span> <span class="o">=</span> <span class="n">random_sequence</span><span class="p">(</span><span class="n">shouts</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">shoutlimits</span><span class="p">,</span> <span class="n">shouttranslate</span><span class="p">)</span>
+<span class="n">sequence</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span>7-element Array{Main.ex-shout.Shout,1}:
+ Main.ex-shout.Shout(&quot;JBT&quot;, 0)
+ Main.ex-shout.Shout(&quot;9O8P&quot;, 4)
+ Main.ex-shout.Shout(&quot;SVG&quot;, 9)
+ Main.ex-shout.Shout(&quot;SVG&quot;, 13)
+ Main.ex-shout.Shout(&quot;JBT&quot;, 17)
+ Main.ex-shout.Shout(&quot;JBT&quot;, 21)
+ Main.ex-shout.Shout(&quot;9O8P&quot;, 25)
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="n">sequence</span><span class="p">,</span> <span class="n">idxs</span> <span class="o">=</span> <span class="n">random_sequence</span><span class="p">(</span><span class="n">shouts</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">shoutlimits</span><span class="p">,</span> <span class="n">shouttranslate</span><span class="p">)</span>
+<span class="n">sequence</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span>6-element Array{Main.ex-shout.Shout,1}:
+ Main.ex-shout.Shout(&quot;WZKP&quot;, 0)
+ Main.ex-shout.Shout(&quot;LYUS7&quot;, 5)
+ Main.ex-shout.Shout(&quot;SVG&quot;, 11)
+ Main.ex-shout.Shout(&quot;SVG&quot;, 15)
+ Main.ex-shout.Shout(&quot;9O8P&quot;, 19)
+ Main.ex-shout.Shout(&quot;LYUS7&quot;, 24)
 </pre></div>
 
 
@@ -504,22 +526,50 @@ sequence
 <p><a id='Floating-point-lengths-1'></a></p>
 <h2 id="floating-point-lengths">Floating point lengths</h2>
 <p>The lengths of the motifs do not have to be integers. When using motifs with floating lengths, it is advised to give a non-0 <code>δq</code> to <a href="./#MotifSequenceGenerator.random_sequence"><code>random_sequence</code></a>. The following example modifies the <code>Shout</code> struct and shows how it can be done with floating length.</p>
-<p>```@example shout
-struct FloatShout
-  shout::String
-  dur::Float64
-  start::Float64
-end</p>
-<p>rs(x) = uppercase(randstring(x))</p>
-<p>shouts = [FloatShout(rs(rand(3:5)), rand()+1, rand()) for k in 1:5]
-shoutlimits(s::FloatShout) = (s.start, s.start + s.dur);
-shouttranslate(s::FloatShout, n) = FloatShout(s.shout, s.dur, s.start + n);</p>
-<p>q = 10.0
-δq = 1.0</p>
-<p>r, s = random_sequence(shouts, q, shoutlimits, shouttranslate, δq)</p>
-<p>r</p>
-<div class="codehilite"><pre><span></span>```@example shout
-s
+<div class="codehilite"><pre><span></span><span class="n">struct</span> <span class="n">FloatShout</span>
+  <span class="n">shout</span><span class="o">::</span><span class="n">String</span>
+  <span class="n">dur</span><span class="o">::</span><span class="kt">Float64</span>
+  <span class="n">start</span><span class="o">::</span><span class="kt">Float64</span>
+<span class="k">end</span>
+
+<span class="n">rs</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="n">uppercase</span><span class="p">(</span><span class="n">randstring</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+<span class="n">shouts</span> <span class="o">=</span> <span class="p">[</span><span class="n">FloatShout</span><span class="p">(</span><span class="n">rs</span><span class="p">(</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="o">:</span><span class="mi">5</span><span class="p">)),</span> <span class="n">rand</span><span class="p">()</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">rand</span><span class="p">())</span> <span class="k">for</span> <span class="n">k</span> <span class="kp">in</span> <span class="mi">1</span><span class="o">:</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">shoutlimits</span><span class="p">(</span><span class="n">s</span><span class="o">::</span><span class="n">FloatShout</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">start</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">start</span> <span class="o">+</span> <span class="n">s</span><span class="o">.</span><span class="n">dur</span><span class="p">);</span>
+<span class="n">shouttranslate</span><span class="p">(</span><span class="n">s</span><span class="o">::</span><span class="n">FloatShout</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="o">=</span> <span class="n">FloatShout</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">shout</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">dur</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">start</span> <span class="o">+</span> <span class="n">n</span><span class="p">);</span>
+
+<span class="n">q</span> <span class="o">=</span> <span class="mf">10.0</span>
+<span class="n">δq</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="n">r</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">random_sequence</span><span class="p">(</span><span class="n">shouts</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">shoutlimits</span><span class="p">,</span> <span class="n">shouttranslate</span><span class="p">,</span> <span class="n">δq</span><span class="p">)</span>
+
+<span class="n">r</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span>7-element Array{Main.ex-shout.FloatShout,1}:
+ Main.ex-shout.FloatShout(&quot;KQVG&quot;, 1.7632044775444418, 0.0)
+ Main.ex-shout.FloatShout(&quot;GU3Z&quot;, 1.4757994674614614, 1.7632044775444415)
+ Main.ex-shout.FloatShout(&quot;QHU0&quot;, 1.298742167046937, 3.239003945005903)
+ Main.ex-shout.FloatShout(&quot;KQVG&quot;, 1.7632044775444418, 4.53774611205284)
+ Main.ex-shout.FloatShout(&quot;8WG&quot;, 1.1416360103186425, 6.3009505895972815)
+ Main.ex-shout.FloatShout(&quot;GU3Z&quot;, 1.4757994674614614, 7.4425865999159235)
+ Main.ex-shout.FloatShout(&quot;QHU0&quot;, 1.298742167046937, 8.918386067377385)
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="n">s</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span>7-element Array{Int64,1}:
+ 4
+ 5
+ 1
+ 4
+ 2
+ 5
+ 1
 </pre></div>
                 
                   

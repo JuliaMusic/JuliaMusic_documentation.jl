@@ -316,6 +316,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#classification" title="Classification" class="md-nav__link">
+    Classification
+  </a>
+  
+</li>
+      
       
       
       
@@ -390,6 +397,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#classification" title="Classification" class="md-nav__link">
+    Classification
+  </a>
+  
+</li>
+      
       
       
       
@@ -426,32 +440,43 @@
 <p>This function respects the notes' absolute position and quantizes in absolute position, not relative.</p>
 <hr />
 <p>Here are some examples</p>
-<p>```@example
-using MusicManipulations
-midi = readMIDIfile(testmidi())
-notes = getnotes(midi, 4)</p>
-<p>sixteens = 0:1//4:1</p>
-<p>notes16 = quantize(notes, sixteens)</p>
-<p>swung_8s = [0, 2//3, 1]</p>
-<p>swung_notes = quantize(notes, swung_8s)</p>
-<div class="codehilite"><pre><span></span>The first quantization quantized the notes on the 16-th subdivision. The second one did something a bit more specialized, as it separated the notes to &quot;quarter notes&quot; and swung 8th notes, the typical way a Jazz standard (like Serenade To A Cuckoo) is played.
+<div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">MusicManipulations</span>
+<span class="n">midi</span> <span class="o">=</span> <span class="n">readMIDIfile</span><span class="p">(</span><span class="n">testmidi</span><span class="p">())</span>
+<span class="n">notes</span> <span class="o">=</span> <span class="n">getnotes</span><span class="p">(</span><span class="n">midi</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+
+<span class="n">sixteens</span> <span class="o">=</span> <span class="mi">0</span><span class="o">:</span><span class="mi">1</span><span class="o">//</span><span class="mi">4</span><span class="o">:</span><span class="mi">1</span>
+
+<span class="n">notes16</span> <span class="o">=</span> <span class="n">quantize</span><span class="p">(</span><span class="n">notes</span><span class="p">,</span> <span class="n">sixteens</span><span class="p">)</span>
+
+<span class="n">swung_8s</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">//</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="n">swung_notes</span> <span class="o">=</span> <span class="n">quantize</span><span class="p">(</span><span class="n">notes</span><span class="p">,</span> <span class="n">swung_8s</span><span class="p">)</span>
+</pre></div>
 
 
-<span class="nt">&lt;a</span> <span class="na">id=</span><span class="s">&#39;Classification-1&#39;</span><span class="nt">&gt;&lt;/a&gt;</span>
+<div class="codehilite"><pre><span></span>533 Notes with tpq=960
+ Note F5  | vel = 69  | pos = 7360, dur = 181
+ Note A♯5 | vel = 85  | pos = 7680, dur = 450
+ Note D6  | vel = 91  | pos = 8320, dur = 356
+ Note D5  | vel = 88  | pos = 8320, dur = 314
+ Note G♯4 | vel = 88  | pos = 8320, dur = 358
+ Note A♯5 | vel = 76  | pos = 8640, dur = 575
+ Note G5  | vel = 66  | pos = 9280, dur = 273
+ Note A♯5 | vel = 94  | pos = 9600, dur = 666
+ Note F♯4 | vel = 98  | pos = 10240, dur = 307
+ Note C5  | vel = 87  | pos = 10240, dur = 285
+  ⋮
+</pre></div>
 
-## Classification
 
-
-[`quantize`](quantizing.md#MusicManipulations.quantize) works in two steps. In the first step, each note is &quot;classified&quot;, according to which is the closest grid point to this note (modulo the quarter note).
-
-<span class="nt">&lt;a</span> <span class="na">id=</span><span class="s">&#39;MusicManipulations.classify&#39;</span> <span class="na">href=</span><span class="s">&#39;#MusicManipulations.classify&#39;</span><span class="nt">&gt;</span>#<span class="nt">&lt;/a&gt;</span>
-**`MusicManipulations.classify`** <span class="ni">&amp;mdash;</span> *Function*.
-
-
-
-```julia
-classify(notes::Notes, grid)
-classify(note::AbstractNote, grid, tpq::Integer)
+<p>The first quantization quantized the notes on the 16-th subdivision. The second one did something a bit more specialized, as it separated the notes to "quarter notes" and swung 8th notes, the typical way a Jazz standard (like Serenade To A Cuckoo) is played.</p>
+<p><a id='Classification-1'></a></p>
+<h2 id="classification">Classification</h2>
+<p><a href="./#MusicManipulations.quantize"><code>quantize</code></a> works in two steps. In the first step, each note is "classified", according to which is the closest grid point to this note (modulo the quarter note).</p>
+<p><a id='MusicManipulations.classify' href='#MusicManipulations.classify'>#</a>
+<strong><code>MusicManipulations.classify</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span><span class="n">classify</span><span class="p">(</span><span class="n">notes</span><span class="o">::</span><span class="n">Notes</span><span class="p">,</span> <span class="n">grid</span><span class="p">)</span>
+<span class="n">classify</span><span class="p">(</span><span class="n">note</span><span class="o">::</span><span class="n">AbstractNote</span><span class="p">,</span> <span class="n">grid</span><span class="p">,</span> <span class="n">tpq</span><span class="o">::</span><span class="kt">Integer</span><span class="p">)</span>
 </pre></div>
 
 
