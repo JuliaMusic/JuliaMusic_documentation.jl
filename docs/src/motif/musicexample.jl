@@ -76,7 +76,7 @@ Note(right, 50, 3sixt, sixt),
 
 motifs = Notes.([motif1, motif2, motif3, motif4], tpq)
 
-#%% #srs
+#%% #src
 # Now `motifs` stands for a pool of note sequences we can draw random samples from.
 # Let's generate sequences that are 8-bars long (i.e. 32 quarter notes)
 
