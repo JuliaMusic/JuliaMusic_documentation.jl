@@ -15,6 +15,7 @@ for file in tobe
     f = docdir*file
     Literate.markdown(f, dirname(f))
     # Literate.notebook(f, dirname(f))
+    # Literate.script(f, dirname(f);name = f[1:end-3]*"_script")
 end
 
 makedocs(modules=[JuliaMusic_documentation], doctest=false)
