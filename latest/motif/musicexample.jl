@@ -38,10 +38,8 @@ tpq = 960 # ticks per quarter note
 sixt = 240 # duration of sixteenth note
 left = name_to_pitch("A5")
 right = name_to_pitch("E6")
-
-# Reminder: `Note(pitch, intensity, start, duration)`
-
 #%% #src
+# Reminder: `Note(pitch, intensity, start, duration)`
 
 motif1 = [ # motif 5a
 Note(right, 100, 0, sixt),
@@ -50,7 +48,6 @@ Note(right, 100, 2sixt, sixt),
 Note(left, 50, 3sixt, sixt),
 Note(left, 50, 4sixt, sixt)
 ]
-
 #%% #src
 
 motif2 = [ # motif 5b
