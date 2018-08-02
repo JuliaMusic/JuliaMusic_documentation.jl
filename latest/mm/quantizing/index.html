@@ -430,13 +430,14 @@
 <p><em>Quantization</em> is the process of moving all note starting positions to a specified and periodic grid. This "grid" does not have the be equi-spaced but it has to be periodic per quarter note.</p>
 <p><a id='MusicManipulations.quantize' href='#MusicManipulations.quantize'>#</a>
 <strong><code>MusicManipulations.quantize</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span><span class="n">quantize</span><span class="p">(</span><span class="n">notes</span><span class="o">::</span><span class="n">Notes</span><span class="p">,</span> <span class="n">grid</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="n">quantize</span><span class="p">(</span><span class="n">notes</span><span class="o">::</span><span class="n">Notes</span><span class="p">,</span> <span class="n">grid</span><span class="p">,</span> <span class="n">duration</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span>
 <span class="n">quantize</span><span class="p">(</span><span class="n">note</span><span class="o">::</span><span class="n">AbstractNote</span><span class="p">,</span> <span class="n">grid</span><span class="p">,</span> <span class="n">tpq</span><span class="o">::</span><span class="kt">Integer</span><span class="p">)</span>
 </pre></div>
 
 
 <p>Return a quantized copy of the given notes on the given <code>grid</code>, which can be any sorted iterable that starts on <code>0</code> and ends on <code>1</code>.</p>
 <p>Each note is quantized (relocated) to its closest point of the <code>grid</code>, by first identifying that point using <a href="./#MusicManipulations.classify"><code>classify</code></a>. It is assumed that the grid is the same for all quarter notes of the track.</p>
+<p>If <code>duration</code> is <code>true</code>, the function also quantizes the duration of the notes on the same grid.</p>
 <p>This function respects the notes' absolute position and quantizes in absolute position, not relative.</p>
 <hr />
 <p>Here are some examples</p>
@@ -455,16 +456,16 @@
 
 
 <div class="codehilite"><pre><span></span>533 Notes with tpq=960
- Note F5  | vel = 69  | pos = 7360, dur = 181
- Note A♯5 | vel = 85  | pos = 7680, dur = 450
- Note D6  | vel = 91  | pos = 8320, dur = 356
- Note D5  | vel = 88  | pos = 8320, dur = 314
- Note G♯4 | vel = 88  | pos = 8320, dur = 358
- Note A♯5 | vel = 76  | pos = 8640, dur = 575
- Note G5  | vel = 66  | pos = 9280, dur = 273
- Note A♯5 | vel = 94  | pos = 9600, dur = 666
- Note F♯4 | vel = 98  | pos = 10240, dur = 307
- Note C5  | vel = 87  | pos = 10240, dur = 285
+ Note F5  | vel = 69  | pos = 7360, dur = 320
+ Note A♯5 | vel = 85  | pos = 7680, dur = 640
+ Note D6  | vel = 91  | pos = 8320, dur = 320
+ Note D5  | vel = 88  | pos = 8320, dur = 320
+ Note G♯4 | vel = 88  | pos = 8320, dur = 320
+ Note A♯5 | vel = 76  | pos = 8640, dur = 640
+ Note G5  | vel = 66  | pos = 9280, dur = 320
+ Note A♯5 | vel = 94  | pos = 9600, dur = 640
+ Note F♯4 | vel = 98  | pos = 10240, dur = 320
+ Note C5  | vel = 87  | pos = 10240, dur = 320
   ⋮
 </pre></div>
 

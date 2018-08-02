@@ -446,7 +446,7 @@
 </pre></div>
 
 
-<p>Create a random sequence from a pool of notes (<code>motifs</code>) such that it has total length exactly <code>q ± δq</code>. Notice that <code>q</code> is measured in <strong>ticks</strong>.</p>
+<p>Create a random sequence from a pool of notes (<code>motifs</code>) such that it has total length <code>ℓ</code> exactly <code>q - δq ≤ ℓ ≤ q + δq</code>.  Notice that <code>q</code> is measured in <strong>ticks</strong>.</p>
 <p>Return the result as a single <code>Notes</code> container, and also return the sequence of motifs used.</p>
 <p>This function uses <a href="../basic/#MotifSequenceGenerator.random_sequence"><code>random_sequence</code></a> from the module <a href="../basic/#MotifSequenceGenerator.MotifSequenceGenerator"><code>MotifSequenceGenerator</code></a>, adapted to the <a href="../../midi/notes/#MIDI.Notes"><code>Notes</code></a> struct.</p>
 <p><a id='Motifs:-Basic-drum-patterns-1'></a></p>
@@ -524,13 +524,13 @@
 <div class="codehilite"><pre><span></span>128 Notes with tpq=960
  Note E6  | vel = 100 | pos = 0, dur = 240
  Note A5  | vel = 50  | pos = 240, dur = 240
- Note E6  | vel = 50  | pos = 480, dur = 240
- Note E6  | vel = 50  | pos = 720, dur = 240
- Note E6  | vel = 100 | pos = 960, dur = 240
- Note A5  | vel = 50  | pos = 1200, dur = 240
- Note E6  | vel = 50  | pos = 1440, dur = 240
- Note E6  | vel = 50  | pos = 1680, dur = 240
- Note E6  | vel = 100 | pos = 1920, dur = 240
+ Note E6  | vel = 100 | pos = 480, dur = 240
+ Note A5  | vel = 50  | pos = 720, dur = 240
+ Note A5  | vel = 50  | pos = 960, dur = 240
+ Note E6  | vel = 100 | pos = 1200, dur = 240
+ Note A5  | vel = 50  | pos = 1440, dur = 240
+ Note E6  | vel = 100 | pos = 1680, dur = 240
+ Note A5  | vel = 50  | pos = 1920, dur = 240
  Note A5  | vel = 50  | pos = 2160, dur = 240
   ⋮
 </pre></div>
@@ -548,26 +548,26 @@
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span>31-element Array{Int64,1}:
- 4
- 4
- 4
- 2
- 2
- 3
- 4
- 4
+<div class="codehilite"><pre><span></span>29-element Array{Int64,1}:
+ 1
  1
  4
- ⋮
+ 1
+ 1
+ 2
+ 2
+ 4
  2
  3
- 4
- 4
+ ⋮
+ 2
  2
  4
+ 3
  4
  2
+ 2
+ 3
  4
 </pre></div>
 
@@ -631,13 +631,13 @@
 <div class="codehilite"><pre><span></span>128 Notes with tpq=960
  Note E6  | vel = 100 | pos = 0, dur = 240
  Note A5  | vel = 50  | pos = 240, dur = 240
- Note E6  | vel = 50  | pos = 480, dur = 240
- Note E6  | vel = 50  | pos = 720, dur = 240
- Note A5  | vel = 100 | pos = 960, dur = 240
- Note E6  | vel = 50  | pos = 1200, dur = 240
+ Note E6  | vel = 100 | pos = 480, dur = 240
+ Note A5  | vel = 50  | pos = 720, dur = 240
+ Note A5  | vel = 50  | pos = 960, dur = 240
+ Note E6  | vel = 100 | pos = 1200, dur = 240
  Note A5  | vel = 50  | pos = 1440, dur = 240
- Note A5  | vel = 50  | pos = 1680, dur = 240
- Note E6  | vel = 100 | pos = 1920, dur = 240
+ Note E6  | vel = 100 | pos = 1680, dur = 240
+ Note A5  | vel = 50  | pos = 1920, dur = 240
  Note A5  | vel = 50  | pos = 2160, dur = 240
   ⋮
 </pre></div>
