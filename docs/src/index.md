@@ -4,7 +4,7 @@ and saving data related with music. Most of the functionality
 comes in the form of the [MIDI](https://en.wikipedia.org/wiki/MIDI) format
 which is described later on this page.
 
-The current documentation was built with the following versions
+The current documentation was built with the following package versions
 ```@setup versions
 using Pkg.API: installed
 ins = installed()
@@ -17,6 +17,7 @@ end
 ```@example versions
 f() # hide
 ```
+using [Material+MkDocs](https://squidfunk.github.io/mkdocs-material/),  [Literate.jl](https://github.com/fredrikekre/Literate.jl) and [Documenter.jl](https://github.com/JuliaDocs/Documenter.jl/).
 
 ## Overview
 
@@ -36,6 +37,7 @@ The [MusicManipulations.jl](https://github.com/JuliaMusic/MusicManipulations.jl)
 1. [Convenience tools](midi/notes/#convenience-tools).
 1. [Quantizing & Classifying Notes](mm/quantizing) on a given grid.
 2. [Advanced Music Data Extraction](mm/extraction).
+3. [Printing notes into a Score](printplot/musescore)
 3. More coming soon.
 
 ### MotifSequenceGenerator

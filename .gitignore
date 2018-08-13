@@ -3,5 +3,11 @@
 *.jl.mem
 docs/build
 Manifest.toml
-drums_patterns_with_names.mid
-drums_patterns.mid
+*.png
+*.mid
+*.pdf
+
+# Don't ignore:
+!bass-1.png
+!doxy.pdf
+!doxy-1.png
