@@ -10,6 +10,6 @@ notifications:
     on_failure: never
 
 after_success:
-  - julia -e 'Pkg.add("Documenter"); Pkg.add("Literate")'
-  - julia -e 'Pkg.add("MIDI"); Pkg.add("MotifSequenceGenerator"); Pkg.add("MusicManipulations")'
-  - julia -e 'cd(Pkg.dir("JuliaMusic_documentation")); include(joinpath("docs", "make.jl"))'
+  - julia -e 'using Pkg; Pkg.add("Documenter"); Pkg.add("Literate")'
+  - julia -e 'using Pkg; Pkg.add("MIDI"); Pkg.add("MotifSequenceGenerator"); Pkg.add("MusicManipulations")'
+  - julia -e 'using Pkg; cd(Pkg.dir("JuliaMusic_documentation")); include(joinpath("docs", "make.jl"))'
