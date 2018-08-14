@@ -29,7 +29,7 @@ We first load the test MIDI file "Doxy".
 The third track has the notes of the Bass:
 
 ```@example musescore
-midi = readMIDIfile()
+midi = readMIDIfile() # read the "test" Doxy MIDI recording.
 bass = getnotes(midi, 3)
 basstrim = bass[1:50]
 ```
@@ -53,14 +53,14 @@ You can also pass a full MIDI file to [`musescore`](@ref).
 piano = getnotes(midi, 4)
 ```
 
-however, MuseScore has decent results only with quantized notes.
-Let's quantize on a triplet grid
+However, MuseScore has decent results only with quantized notes.
+Let's quantize on a triplet grid using [`quantize`](@ref).
 
 ```@example musescore
 qpiano = quantize(piano, [0, 1//3, 2//3, 1])
 ```
 
-and save both notes into a midi file:
+and save both tracks into a midi file:
 
 ```@example musescore
 ptrack = MIDITrack()
@@ -69,7 +69,7 @@ addtrackname!(ptrack, "Doxy")
 smidi = MIDIFile(1, 960, [midi.tracks[3], ptrack])
 ```
 
-and save the full thing as `.pdf`:
+and then save the full thing as `.pdf`:
 
 ```julia
 musescore("doxy.pdf", smidi)
@@ -79,6 +79,6 @@ You can find the produced `.pdf` file
 [here](https://github.com/JuliaMusic/JuliaMusic_documentation.jl/tree/master/docs/src/printplot/doxy.pdf).
 The first page looks like this:
 ![Full score](doxy-1.png)
-MuseScore displays the name of the track ([`trackname`](@ref)),
+When given multiple tracks MuseScore displays the name of the track ([`trackname`](@ref)),
 as well as the instrument it automatically chose to represent it.
 
