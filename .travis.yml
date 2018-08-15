@@ -9,9 +9,8 @@ notifications:
     on_success: never
     on_failure: never
 
-before_install: sudo pip istall --upgrade pip
-
 after_success:
+  - sudo pip install --upgrade pip
   - julia -e 'using Pkg; Pkg.add("Documenter"); Pkg.add("Literate")'
   - julia -e 'using Pkg; Pkg.add("MIDI"); Pkg.add("MotifSequenceGenerator"); Pkg.add("MusicManipulations")'
   - julia -e 'using Pkg, JuliaMusic_documentation; cd(joinpath(dirname(pathof(JuliaMusic_documentation)), "..")); include(joinpath("docs", "make.jl"))'
