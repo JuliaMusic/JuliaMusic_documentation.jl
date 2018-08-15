@@ -24,7 +24,7 @@ makedocs(modules=[JuliaMusic_documentation], doctest=false)
 #%% Deploy
 
 deploydocs(
-    deps   = Deps.pip("Tornado>=4.0.0,<5.0.0", "mkdocs",
+    deps   = Deps.pip("mkdocs",
     "mkdocs-material" ,"python-markdown-math", "pygments", "pymdown-extensions"),
     repo   = "github.com/JuliaMusic/JuliaMusic_documentation.jl.git",
     julia  = "nightly",
