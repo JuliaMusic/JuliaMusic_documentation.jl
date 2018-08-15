@@ -24,7 +24,9 @@ makedocs(modules=[JuliaMusic_documentation], doctest=false)
 #%% Deploy
 
 deploydocs(
-    deps   = Deps.pip("mkdocs", "mkdocs-material" ,"python-markdown-math", "pygments", "pymdown-extensions"),
+    deps   = Deps.pip(
+    ["mkdocs", "mkdocs-material"],
+    "python-markdown-math", "pygments", "pymdown-extensions"),
     repo   = "github.com/JuliaMusic/JuliaMusic_documentation.jl.git",
     julia  = "1.0",
     osname = "linux"
