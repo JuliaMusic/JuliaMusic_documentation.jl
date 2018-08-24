@@ -83,14 +83,17 @@ notes, seq = random_notes_sequence(motifs, q)
 notes
 
 # and now we can write these to a MIDI file simply by doing
-# `writeMIDIfile("drums_patterns.mid", notes)`.
-
-# Afterwards we can drag-n-drop the midi file into a music score editor,
-# like e.g. [MuseScore](https://musescore.org/en), to visualize and print
-# the result:
+# `writeMIDIfile("drums_patterns.mid", notes)` if we want to.
+# We can also use [MuseScore](https://musescore.org), to visualize and print
+# the result. The function [`musescore`](@ref) provides this interface.
+musescore("drums_patterns.png", notes) #src
+#md # ```julia
+#md # musescore("drums_patterns.png", notes)
+#md # ```
 
 # ![32-bar pattern sequence](drums_patterns.png)
 
+#%% #src
 # *this is a pre-made figure - your random sequence will probably differ*
 
 # This worked nicely, but there is a problem: The sequence does not respect
@@ -151,7 +154,13 @@ end
 addnotes!(track, notes)
 notes
 
-# Finally, we write the track as a midi file using `writeMIDIfile("drums_patterns_with_names.mid", MIDIFile(0, tpq, [track]))`
-# and then we drag-n-drop the midi file into [MuseScore](https://musescore.org/en).
+# Finally, to visualize, we use [`musescore`](@ref) again, using a midi file as an
+# input
+musescore("drums.pdf", MIDIFile(1, 960, [track])) #src
+#md # ```julia
+#md # musescore("drums_patterns_with_names.png", MIDIFile(1, 960, [track]))
+#md # ```
 
 # ![Correct 32-bar pattern sequence](drums_patterns_with_names.png)
+
+# Isn't it cool that even the lyrics text was displayed so seamlessly?

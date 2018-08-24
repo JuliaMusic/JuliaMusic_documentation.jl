@@ -40,7 +40,7 @@
     
     
       
-        <title>Music Data Extraction - JuliaMusic</title>
+        <title>Printing Notes into Score - JuliaMusic</title>
       
     
     
@@ -104,7 +104,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#music-data-extraction" tabindex="1" class="md-skip">
+      <a href="#printing-into-a-score" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -130,7 +130,7 @@
                 JuliaMusic
               </span>
               <span class="md-header-nav__topic">
-                Music Data Extraction
+                Printing Notes into Score
               </span>
             
           
@@ -283,8 +283,20 @@
 
 
   <li class="md-nav__item">
-    <a href="../quantizing/" title="Quantizing" class="md-nav__link">
+    <a href="../../mm/quantizing/" title="Quantizing" class="md-nav__link">
       Quantizing
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../mm/extraction/" title="Music Data Extraction" class="md-nav__link">
+      Music Data Extraction
     </a>
   </li>
 
@@ -303,22 +315,59 @@
       
     
     
-    <a href="./" title="Music Data Extraction" class="md-nav__link md-nav__link--active">
-      Music Data Extraction
-    </a>
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Printing Notes into Score
+      </label>
     
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../../printplot/musescore/" title="Printing Notes into Score" class="md-nav__link">
+    <a href="./" title="Printing Notes into Score" class="md-nav__link md-nav__link--active">
       Printing Notes into Score
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#musescore" title="MuseScore" class="md-nav__link">
+    MuseScore
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-score-out-of-some-notes" title="Creating a Score out of some Notes" class="md-nav__link">
+    Creating a Score out of some Notes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-full-score-out-of-a-midi-file" title="Creating a full Score out of a MIDI file" class="md-nav__link">
+    Creating a full Score out of a MIDI file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
     
@@ -363,6 +412,42 @@
     
   
   
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#musescore" title="MuseScore" class="md-nav__link">
+    MuseScore
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-score-out-of-some-notes" title="Creating a Score out of some Notes" class="md-nav__link">
+    Creating a Score out of some Notes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-full-score-out-of-a-midi-file" title="Creating a full Score out of a MIDI file" class="md-nav__link">
+    Creating a full Score out of a MIDI file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -373,43 +458,124 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/JuliaMusic/edit/master/docs/mm/extraction.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/JuliaMusic/edit/master/docs/printplot/musescore.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <p><a id='Music-Data-Extraction-1'></a></p>
-<h1 id="music-data-extraction">Music Data Extraction</h1>
-<p>The functions described in this page allow for easier extraction of data from music recordings (in the form of MIDI).</p>
-<p><a id='MusicManipulations.firstnotes' href='#MusicManipulations.firstnotes'>#</a>
-<strong><code>MusicManipulations.firstnotes</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>firstnotes(notes, grid)
+                <p><a id='Printing-into-a-Score-1'></a></p>
+<h1 id="printing-into-a-score">Printing into a Score</h1>
+<p><a id='MuseScore-1'></a></p>
+<h2 id="musescore">MuseScore</h2>
+<p><a href="https://musescore.org">MuseScore</a> is a wonderful and open source <em>professional</em> music score editor with a huge amount of capabilities. <code>MusicManipulations</code> provides a convenient interface that can instantly print any <a href="../../midi/notes/#MIDI.Notes"><code>Notes</code></a> or <a href="../../midi/io/#MIDI.MIDIFile"><code>MIDIFile</code></a> structure via MuseScore.</p>
+<p><a id='MusicManipulations.MuseScore.musescore' href='#MusicManipulations.MuseScore.musescore'>#</a>
+<strong><code>MusicManipulations.MuseScore.musescore</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span>musescore(file, notes | midi; display = true)
 </pre></div>
 
 
-<p>Return the notes that first appear in each grid point, <em>without quantizing them</em>.</p>
-<p>This function <em>does not</em> consider the notes modulo the quarter note! Different quarter notes have different grid points.</p>
-<p><a id='MusicManipulations.allowedpitches' href='#MusicManipulations.allowedpitches'>#</a>
-<strong><code>MusicManipulations.allowedpitches</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>allowedpitches(notes::Notes, allowed) -&gt; newnotes
+<p>Use the open source software "MuseScore" to create a score and save the output to <code>file</code>. By default it will also display the created <code>file</code>, which can be either a <code>.pdf</code> or a <code>.png</code>.</p>
+<p>If given a <code>.png</code> the actual file name will end with <code>-1</code>, <code>-2</code> etc. for each page of the score. Notice that MuseScore must be accessible from the command line for this function to work.</p>
+<div class="admonition tip">
+<p class="admonition-title">Quantize your notes!</p>
+<p>Keep in mind that the score creation capabilities of MuseScore rely upon having well-defined notes. This means that you should use the function <a href="../../mm/quantizing/#MusicManipulations.quantize"><code>quantize</code></a> to quantize both the position and duration of your notes!</p>
+</div>
+<p><a id='Creating-a-Score-out-of-some-Notes-1'></a></p>
+<h3 id="creating-a-score-out-of-some-notes">Creating a Score out of some Notes</h3>
+<div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">MusicManipulations</span>
 </pre></div>
 
 
-<p>Only keep the notes that have a pitch specified in <code>allowed</code> (one or many pitches).</p>
-<p><a id='MusicManipulations.separatepitches' href='#MusicManipulations.separatepitches'>#</a>
-<strong><code>MusicManipulations.separatepitches</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>separatepitches(notes::Notes [, allowed])
+<p>We first load the test MIDI file "Doxy". The third track has the notes of the Bass:</p>
+<div class="codehilite"><pre><span></span><span class="n">midi</span> <span class="o">=</span> <span class="n">readMIDIfile</span><span class="p">()</span> <span class="c"># read the &quot;test&quot; Doxy MIDI recording.</span>
+<span class="n">bass</span> <span class="o">=</span> <span class="n">getnotes</span><span class="p">(</span><span class="n">midi</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">basstrim</span> <span class="o">=</span> <span class="n">bass</span><span class="p">[</span><span class="mi">1</span><span class="o">:</span><span class="mi">50</span><span class="p">]</span>
 </pre></div>
 
 
-<p>Get a dictionary "pitch"=&gt;"notes of that pitch". Optionally only keep pitches that are contained in <code>allowed</code>.</p>
-<p><a id='MusicManipulations.timeseries' href='#MusicManipulations.timeseries'>#</a>
-<strong><code>MusicManipulations.timeseries</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>timeseries(notes::Notes, property, f [, grid]) -&gt; tvec, ts
+<div class="codehilite"><pre><span></span>50 Notes with tpq=960
+ Note A♯3 | vel = 95  | pos = 7680, dur = 690
+ Note A♯3 | vel = 71  | pos = 9280, dur = 308
+ Note G♯3 | vel = 52  | pos = 9600, dur = 668
+ Note G♯3 | vel = 58  | pos = 11200, dur = 338
+ Note G3  | vel = 71  | pos = 11520, dur = 701
+ Note G♯3 | vel = 83  | pos = 13120, dur = 281
+ Note G3  | vel = 73  | pos = 13440, dur = 855
+ Note D3  | vel = 80  | pos = 14400, dur = 848
+ Note C3  | vel = 68  | pos = 15360, dur = 986
+ Note F♯2 | vel = 72  | pos = 16320, dur = 866
+  ⋮
 </pre></div>
 
 
-<p>Produce a timeseries of the <code>property</code> of the given notes, optionally first quantizing on the given <code>grid</code>.</p>
-<p>After quantization, it is often the case that many notes are in the same bin of the grid. The <strong>function</strong> <code>f</code> denotes which value of the vector of the <code>property</code> of the notes to keep. Typical values are <code>minimum, maximum, mean</code>, etc (<em>for type stability the returned timeseries are always <code>Float64</code></em>).</p>
-<p>The <code>property</code> can be <code>:velocity</code>, <code>:pitch</code>, or <code>:duration</code>. Grid bins without any notes are given the value <code>0</code>. This <strong>can be problematic</strong> if you request for <code>:pitch</code> and your <code>notes</code> also include notes which actually have pitch <code>0</code>, i.e. <code>C0</code>.</p>
+<p>Because the notes of the Bass are already quantized we can already print them into a staff using MuseScore:</p>
+<div class="codehilite"><pre><span></span><span class="n">musescore</span><span class="p">(</span><span class="n">bass</span><span class="p">,</span> <span class="n">notes</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="Bass score" src="../bass-1.png" /></p>
+<p>Amazingly MuseScore deduces automatically the clef and even the key of the piece!</p>
+<p><a id='Creating-a-full-Score-out-of-a-MIDI-file-1'></a></p>
+<h3 id="creating-a-full-score-out-of-a-midi-file">Creating a full Score out of a MIDI file</h3>
+<p>You can also pass a full MIDI file to <a href="./#MusicManipulations.MuseScore.musescore"><code>musescore</code></a>.</p>
+<div class="codehilite"><pre><span></span><span class="n">piano</span> <span class="o">=</span> <span class="n">getnotes</span><span class="p">(</span><span class="n">midi</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span>533 Notes with tpq=960
+ Note F5  | vel = 69  | pos = 7427, dur = 181
+ Note A♯5 | vel = 85  | pos = 7760, dur = 450
+ Note D6  | vel = 91  | pos = 8319, dur = 356
+ Note D5  | vel = 88  | pos = 8323, dur = 314
+ Note G♯4 | vel = 88  | pos = 8327, dur = 358
+ Note A♯5 | vel = 76  | pos = 8694, dur = 575
+ Note G5  | vel = 66  | pos = 9281, dur = 273
+ Note A♯5 | vel = 94  | pos = 9594, dur = 666
+ Note F♯4 | vel = 98  | pos = 10189, dur = 307
+ Note C5  | vel = 87  | pos = 10206, dur = 285
+  ⋮
+</pre></div>
+
+
+<p>However, MuseScore has decent results only with quantized notes. Let's quantize on a triplet grid using <a href="../../mm/quantizing/#MusicManipulations.quantize"><code>quantize</code></a>.</p>
+<div class="codehilite"><pre><span></span><span class="n">qpiano</span> <span class="o">=</span> <span class="n">quantize</span><span class="p">(</span><span class="n">piano</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="o">//</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="o">//</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span>533 Notes with tpq=960
+ Note F5  | vel = 69  | pos = 7360, dur = 320
+ Note A♯5 | vel = 85  | pos = 7680, dur = 320
+ Note D6  | vel = 91  | pos = 8320, dur = 320
+ Note D5  | vel = 88  | pos = 8320, dur = 320
+ Note G♯4 | vel = 88  | pos = 8320, dur = 320
+ Note A♯5 | vel = 76  | pos = 8640, dur = 640
+ Note G5  | vel = 66  | pos = 9280, dur = 320
+ Note A♯5 | vel = 94  | pos = 9600, dur = 640
+ Note F♯4 | vel = 98  | pos = 10240, dur = 320
+ Note C5  | vel = 87  | pos = 10240, dur = 320
+  ⋮
+</pre></div>
+
+
+<p>and save both tracks into a midi file:</p>
+<div class="codehilite"><pre><span></span><span class="n">ptrack</span> <span class="o">=</span> <span class="n">MIDITrack</span><span class="p">()</span>
+<span class="n">addnotes!</span><span class="p">(</span><span class="n">ptrack</span><span class="p">,</span> <span class="n">qpiano</span><span class="p">)</span>
+<span class="n">addtrackname!</span><span class="p">(</span><span class="n">ptrack</span><span class="p">,</span> <span class="s">&quot;Doxy&quot;</span><span class="p">)</span>
+<span class="n">smidi</span> <span class="o">=</span> <span class="n">MIDIFile</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">960</span><span class="p">,</span> <span class="p">[</span><span class="n">midi</span><span class="o">.</span><span class="n">tracks</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">ptrack</span><span class="p">])</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="n">MIDIFile</span><span class="o">:</span>
+  <span class="n">format</span><span class="o">:</span> <span class="mi">1</span>
+  <span class="n">tracks</span><span class="o">:</span> <span class="mi">2</span>
+  <span class="n">tpq</span><span class="o">:</span> <span class="mi">960</span>
+</pre></div>
+
+
+<p>and then save the full thing as <code>.pdf</code>:</p>
+<div class="codehilite"><pre><span></span><span class="n">musescore</span><span class="p">(</span><span class="s">&quot;doxy.pdf&quot;</span><span class="p">,</span> <span class="n">smidi</span><span class="p">)</span>
+</pre></div>
+
+
+<p>You can find the produced <code>.pdf</code> file <a href="https://github.com/JuliaMusic/JuliaMusic_documentation.jl/tree/master/docs/src/printplot/doxy.pdf">here</a>. The first page looks like this: <img alt="Full score" src="../doxy-1.png" /> When given multiple tracks MuseScore displays the name of the track (<a href="../../midi/io/#MIDI.trackname"><code>trackname</code></a>), as well as the instrument it automatically chose to represent it.</p>
                 
                   
                 
@@ -430,7 +596,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../quantizing/" title="Quantizing" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../../mm/extraction/" title="Music Data Extraction" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -439,19 +605,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Quantizing
+                Music Data Extraction
               </span>
             </div>
           </a>
         
         
-          <a href="../../printplot/musescore/" title="Printing Notes into Score" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../motif/basic/" title="Motif Sequence Generation" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Printing Notes into Score
+                Motif Sequence Generation
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
