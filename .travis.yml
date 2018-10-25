@@ -15,6 +15,6 @@ before_install:
 after_success:
   - sudo pip install --upgrade pip
   - pip install --user mkdocs mkdocs-material
-  - julia -e 'using Pkg; Pkg.add("Documenter"); Pkg.add("Literate")'
+  - julia -e 'using Pkg; ps=PackageSpec(name="Documenter", version="0.19"); Pkg.add(ps); Pkg.pin(ps); Pkg.add("Literate")'
   - julia -e 'using Pkg; Pkg.add("MIDI"); Pkg.add("MotifSequenceGenerator"); Pkg.add("MusicManipulations")'
   - julia -e 'using Pkg, JuliaMusic_documentation; cd(joinpath(dirname(pathof(JuliaMusic_documentation)), "..")); include(joinpath("docs", "make.jl"))'
