@@ -2,42 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
      <loc>/</loc>
-     <lastmod>2018-08-24</lastmod>
+     <lastmod>2019-01-31</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/midi/io/</loc>
-     <lastmod>2018-08-24</lastmod>
+     <lastmod>2019-01-31</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/midi/notes/</loc>
-     <lastmod>2018-08-24</lastmod>
+     <lastmod>2019-01-31</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/mm/quantizing/</loc>
-     <lastmod>2018-08-24</lastmod>
+     <lastmod>2019-01-31</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/mm/extraction/</loc>
-     <lastmod>2018-08-24</lastmod>
+     <lastmod>2019-01-31</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/printplot/musescore/</loc>
-     <lastmod>2018-08-24</lastmod>
+     <lastmod>2019-01-31</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/motif/basic/</loc>
-     <lastmod>2018-08-24</lastmod>
+     <lastmod>2019-01-31</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>/motif/musicexample/</loc>
-     <lastmod>2018-08-24</lastmod>
+     <lastmod>2019-01-31</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>

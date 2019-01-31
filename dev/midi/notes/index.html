@@ -546,14 +546,14 @@
 <span class="n">addnotes!</span><span class="p">(</span><span class="n">track</span><span class="p">,</span> <span class="n">notes</span><span class="p">)</span>
 <span class="n">addtrackname!</span><span class="p">(</span><span class="n">track</span><span class="p">,</span> <span class="s">&quot;simple track&quot;</span><span class="p">)</span>
 <span class="n">push!</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">tracks</span><span class="p">,</span> <span class="n">track</span><span class="p">)</span>
-<span class="n">writeMIDIfile</span><span class="p">(</span><span class="s">&quot;test.mid&quot;</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+<span class="n">writeMIDIFile</span><span class="p">(</span><span class="s">&quot;test.mid&quot;</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
 </pre></div>
 
 
 <p><a id='Read-Example-1'></a></p>
 <h2 id="read-example">Read Example</h2>
 <div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">MIDI</span>
-<span class="n">midi</span> <span class="o">=</span> <span class="n">readMIDIfile</span><span class="p">(</span><span class="n">testmidi</span><span class="p">())</span>
+<span class="n">midi</span> <span class="o">=</span> <span class="n">readMIDIFile</span><span class="p">(</span><span class="n">testmidi</span><span class="p">())</span>
 </pre></div>
 
 
@@ -574,17 +574,21 @@
 
 <div class="codehilite"><pre><span></span>Notes of track Bass:
 177 Notes with tpq=960
- Note A♯3 | vel = 95  | pos = 7680, dur = 690
- Note A♯3 | vel = 71  | pos = 9280, dur = 308
- Note G♯3 | vel = 52  | pos = 9600, dur = 668
- Note G♯3 | vel = 58  | pos = 11200, dur = 338
- Note G3  | vel = 71  | pos = 11520, dur = 701
- Note G♯3 | vel = 83  | pos = 13120, dur = 281
- Note G3  | vel = 73  | pos = 13440, dur = 855
- Note D3  | vel = 80  | pos = 14400, dur = 848
- Note C3  | vel = 68  | pos = 15360, dur = 986
- Note F♯2 | vel = 72  | pos = 16320, dur = 866
+ Note A♯2 | vel = 95  | pos = 7680, dur = 690
+ Note A♯2 | vel = 71  | pos = 9280, dur = 308
+ Note G♯2 | vel = 52  | pos = 9600, dur = 668
+ Note G♯2 | vel = 58  | pos = 11200, dur = 338
+ Note G2  | vel = 71  | pos = 11520, dur = 701
+ Note G♯2 | vel = 83  | pos = 13120, dur = 281
+ Note G2  | vel = 73  | pos = 13440, dur = 855
   ⋮
+ Note F♯1 | vel = 73  | pos = 185280, dur = 878
+ Note F1  | vel = 85  | pos = 186240, dur = 964
+ Note A1  | vel = 88  | pos = 187200, dur = 904
+ Note A♯1 | vel = 81  | pos = 188160, dur = 900
+ Note B1  | vel = 77  | pos = 189120, dur = 945
+ Note C2  | vel = 83  | pos = 190080, dur = 847
+ Note F2  | vel = 90  | pos = 191040, dur = 713
 </pre></div>
 
 
@@ -596,13 +600,14 @@
 </pre></div>
 
 
-<p>Return the pitch value of the given note name <code>p</code>, which can be of the form <code>capital_letter*sharp*octave</code>. E.g. <code>name_to_pitch(D#6)</code> gives <code>75</code>.</p>
+<p>Return the pitch value of the given note name <code>p</code>, which can be of the form <code>capital_letter*sharp*octave</code> where:</p>
 <ul>
 <li><code>capital_letter</code> : from <code>"A"</code> to <code>"G"</code>.</li>
 <li><code>sharp</code> : one of <code>"#"</code> <code>"♯"</code> or <code>""</code>.</li>
 <li><code>octave</code> : any integer (as a string), the octave number (an octave is 12 pitches). If not given it is assumed <code>"5"</code>.</li>
 </ul>
-<p>Reminder: middle C has pitch <code>60</code> and is displayed as <code>C5</code>.</p>
+<p>We define E.g. <code>name_to_pitch("C4") === 60</code> (i.e. string <code>"C4"</code>, representing the middle-C, corresponds to be pitch <code>60</code>).</p>
+<p>See http://newt.phys.unsw.edu.au/jw/notes.html and https://en.wikipedia.org/wiki/C<em>(musical</em>note) .</p>
 <p><a id='MIDI.pitch_to_name' href='#MIDI.pitch_to_name'>#</a>
 <strong><code>MIDI.pitch_to_name</code></strong> &mdash; <em>Function</em>.</p>
 <div class="codehilite"><pre><span></span>pitch_to_name(pitch) -&gt; string
@@ -610,7 +615,7 @@
 
 
 <p>Return the name of the pitch, e.g. <code>F5</code>, <code>A♯3</code> etc. in modern notation given the value in integer.</p>
-<p>Reminder: middle C has pitch <code>60</code> and is displayed as <code>C5</code>.</p>
+<p>Reminder: middle C has pitch <code>60</code> and is displayed as <code>C4</code>.</p>
 <p><a id='Convenience-Tools-1'></a></p>
 <h2 id="convenience-tools">Convenience Tools</h2>
 <p>The functions <code>velocities, positions, pitches, durations</code> return the respective property when given some <a href="./#MIDI.Notes"><code>Notes</code></a>.</p>
