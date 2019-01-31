@@ -28,7 +28,7 @@ fundamental types like tracks, reading/writing functionality, note functionality
 basic stuff.
 
 1. [Basic MIDI API](midi/io) : The API of basic types like midi files and tracks, as well as IO. Various utility functions are included as well.
-2. [Notes](midi/notes) : The [`Note`](@ref) construct describes a music note. Many convenience tools are also provided in the same page, like e.g. turning a not pitch to a string like `A♯3`.
+2. [Notes](midi/notes) : The [`Note`](@ref) construct describes a music note. Many convenience tools are also provided in the same page, like e.g. turning a note pitch to a string like `A♯3`.
 
 ### MusicManipulations
 
