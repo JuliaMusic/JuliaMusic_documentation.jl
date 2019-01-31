@@ -1,4 +1,3 @@
-using JuliaMusic_documentation
 using MIDI, MusicManipulations, MotifSequenceGenerator
 using Documenter, Literate, DocumenterMarkdown
 #%% Literate Conversions
@@ -19,7 +18,7 @@ for file in tobe
     # Literate.script(f, dirname(f);name = f[1:end-3]*"_script")
 end
 
-makedocs(modules=[JuliaMusic_documentation, MIDI,
+makedocs(modules=[MIDI,
 MusicManipulations, MotifSequenceGenerator],
 doctest=false, root = @__DIR__, format = Markdown())
 
