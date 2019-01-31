@@ -83,7 +83,7 @@ notes, seq = random_notes_sequence(motifs, q)
 notes
 
 # and now we can write these to a MIDI file simply by doing
-# `writeMIDIfile("drums_patterns.mid", notes)` if we want to.
+# `writeMIDIFile("drums_patterns.mid", notes)` if we want to.
 # We can also use [MuseScore](https://musescore.org), to visualize and print
 # the result. The function [`musescore`](@ref) provides this interface.
 musescore("drums_patterns.png", notes) #src

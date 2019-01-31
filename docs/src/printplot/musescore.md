@@ -29,7 +29,7 @@ We first load the test MIDI file "Doxy".
 The third track has the notes of the Bass:
 
 ```@example musescore
-midi = readMIDIfile() # read the "test" Doxy MIDI recording.
+midi = readMIDIFile() # read the "test" Doxy MIDI recording.
 bass = getnotes(midi, 3)
 basstrim = bass[1:50]
 ```

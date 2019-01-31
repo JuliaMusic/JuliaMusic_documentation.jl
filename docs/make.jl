@@ -1,6 +1,6 @@
 using JuliaMusic_documentation
-
-using Documenter, Literate
+using MIDI, MusicManipulations, MotifSequenceGenerator
+using Documenter, Literate, DocumenterMarkdown
 #%% Literate Conversions
 
 docdir = @__DIR__
@@ -19,14 +19,17 @@ for file in tobe
     # Literate.script(f, dirname(f);name = f[1:end-3]*"_script")
 end
 
-makedocs(modules=[JuliaMusic_documentation], doctest=false)
+makedocs(modules=[JuliaMusic_documentation, MIDI,
+MusicManipulations, MotifSequenceGenerator],
+doctest=false, root = @__DIR__, format = Markdown())
 
 #%% Deploy
-
-deploydocs(
-    deps   = Deps.pip("mkdocs==0.17.5", "mkdocs-material==2.9.4",
-    "python-markdown-math", "pygments", "pymdown-extensions"),
-    repo   = "github.com/JuliaMusic/JuliaMusic_documentation.jl.git",
-    julia  = "1.0",
-    osname = "linux"
-)
+if !Sys.iswindows()
+    deploydocs(
+        deps   = Deps.pip("mkdocs==0.17.5", "mkdocs-material==2.9.4",
+        "python-markdown-math", "pygments", "pymdown-extensions"),
+        repo   = "github.com/JuliaMusic/JuliaMusic_documentation.jl.git",
+        julia  = "1.0",
+        osname = "linux"
+    )
+end

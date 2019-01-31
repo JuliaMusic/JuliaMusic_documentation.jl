@@ -1,20 +1,25 @@
 language: julia
 os:
   - linux
+
 julia:
-  - 1.0
+  - 1.1
+
+matrix:
+  allow_failures:
+  - julia: nightly
+
 notifications:
   email:
     on_success: never
     on_failure: never
 
-before_install:
-- sudo apt-get update
-- sudo apt-get install python3
-
-after_success:
-  - sudo pip install --upgrade pip
-  - pip install --user mkdocs mkdocs-material
-  - julia -e 'using Pkg; Pkg.add("Documenter"); Pkg.add("Literate")'
-  - julia -e 'using Pkg; Pkg.add("MIDI"); Pkg.add("MotifSequenceGenerator"); Pkg.add("MusicManipulations")'
-  - julia -e 'using Pkg, JuliaMusic_documentation; cd(joinpath(dirname(pathof(JuliaMusic_documentation)), "..")); include(joinpath("docs", "make.jl"))'
+jobs:
+  include:
+    - stage: "Documentation"
+      julia: 1.1
+      os: linux
+      script:
+        - julia -e 'using Pkg; Pkg.add("Documenter"); Pkg.add("Literate") Pkg.add("DocumenterMarkdown")'
+        - julia -e 'using Pkg; Pkg.add("MIDI"); Pkg.add("MotifSequenceGenerator"); Pkg.add("MusicManipulations")'
+        - julia -e 'using Pkg, JuliaMusic_documentation; cd(joinpath(dirname(pathof(JuliaMusic_documentation)), "..")); include(joinpath("docs", "make.jl"))'

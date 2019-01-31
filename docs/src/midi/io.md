@@ -7,8 +7,8 @@ MIDIFile
 
 To read and write a MIDI file, use
 ```@docs
-readMIDIfile
-writeMIDIfile
+readMIDIFile
+writeMIDIFile
 ```
 
 ---

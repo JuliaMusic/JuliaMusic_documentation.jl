@@ -14,7 +14,7 @@ quantize
 Here are some examples
 ```@example
 using MusicManipulations
-midi = readMIDIfile(testmidi())
+midi = readMIDIFile(testmidi())
 notes = getnotes(midi, 4)
 
 sixteens = 0:1//4:1

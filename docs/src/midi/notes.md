@@ -51,13 +51,13 @@ G = Note(67 + 12, 96, G.position+inc, 96)
 addnotes!(track, notes)
 addtrackname!(track, "simple track")
 push!(file.tracks, track)
-writeMIDIfile("test.mid", file)
+writeMIDIFile("test.mid", file)
 ```
 
 ## Read Example
 ```@example midi
 using MIDI
-midi = readMIDIfile(testmidi())
+midi = readMIDIFile(testmidi())
 ```
 
 ```@example midi
