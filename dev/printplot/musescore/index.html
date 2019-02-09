@@ -104,7 +104,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#printing-into-a-score" tabindex="1" class="md-skip">
+      <a href="#printing-into-a-score-using-musescore" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -334,29 +334,23 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#musescore" title="MuseScore" class="md-nav__link">
-    MuseScore
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#creating-a-score-out-of-some-notes" title="Creating a Score out of some Notes" class="md-nav__link">
     Creating a Score out of some Notes
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#creating-a-full-score-out-of-a-midi-file" title="Creating a full Score out of a MIDI file" class="md-nav__link">
     Creating a full Score out of a MIDI file
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#drum-notation" title="Drum notation" class="md-nav__link">
+    Drum notation
+  </a>
   
 </li>
       
@@ -416,29 +410,23 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#musescore" title="MuseScore" class="md-nav__link">
-    MuseScore
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#creating-a-score-out-of-some-notes" title="Creating a Score out of some Notes" class="md-nav__link">
     Creating a Score out of some Notes
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#creating-a-full-score-out-of-a-midi-file" title="Creating a full Score out of a MIDI file" class="md-nav__link">
     Creating a full Score out of a MIDI file
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#drum-notation" title="Drum notation" class="md-nav__link">
+    Drum notation
+  </a>
   
 </li>
       
@@ -461,11 +449,9 @@
                   <a href="https://github.com/JuliaMusic/edit/master/docs/printplot/musescore.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <p><a id='Printing-into-a-Score-1'></a></p>
-<h1 id="printing-into-a-score">Printing into a Score</h1>
-<p><a id='MuseScore-1'></a></p>
-<h2 id="musescore">MuseScore</h2>
-<p><a href="https://musescore.org">MuseScore</a> is a wonderful and open source <em>professional</em> music score editor with a huge amount of capabilities. <code>MusicManipulations</code> provides a convenient interface that can instantly print any <a href="../../midi/notes/#MIDI.Notes"><code>Notes</code></a> or <a href="../../midi/io/#MIDI.MIDIFile"><code>MIDIFile</code></a> structure via MuseScore.</p>
+                <p><a id='Printing-into-a-Score-using-MuseScore-1'></a></p>
+<h1 id="printing-into-a-score-using-musescore">Printing into a Score using MuseScore</h1>
+<p><a href="https://musescore.org">MuseScore</a> is a wonderful and open source professional music score editor. <code>MusicManipulations</code> provides a convenient interface that can instantly print any <a href="../../midi/notes/#MIDI.Notes"><code>Notes</code></a> or <a href="../../midi/io/#MIDI.MIDIFile"><code>MIDIFile</code></a> structure via MuseScore.</p>
 <p><a id='MusicManipulations.MuseScore.musescore' href='#MusicManipulations.MuseScore.musescore'>#</a>
 <strong><code>MusicManipulations.MuseScore.musescore</code></strong> &mdash; <em>Function</em>.</p>
 <div class="codehilite"><pre><span></span>musescore(file, notes | midi; display = true)
@@ -479,7 +465,7 @@
 <p>Keep in mind that the score creation capabilities of MuseScore rely upon having well-defined notes. This means that you should use the function <a href="../../mm/quantizing/#MusicManipulations.quantize"><code>quantize</code></a> to quantize both the position and duration of your notes!</p>
 </div>
 <p><a id='Creating-a-Score-out-of-some-Notes-1'></a></p>
-<h3 id="creating-a-score-out-of-some-notes">Creating a Score out of some Notes</h3>
+<h2 id="creating-a-score-out-of-some-notes">Creating a Score out of some Notes</h2>
 <div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">MusicManipulations</span>
 </pre></div>
 
@@ -518,7 +504,7 @@
 <p><img alt="Bass score" src="../bass-1.png" /></p>
 <p>Amazingly MuseScore deduces automatically the clef and even the key of the piece!</p>
 <p><a id='Creating-a-full-Score-out-of-a-MIDI-file-1'></a></p>
-<h3 id="creating-a-full-score-out-of-a-midi-file">Creating a full Score out of a MIDI file</h3>
+<h2 id="creating-a-full-score-out-of-a-midi-file">Creating a full Score out of a MIDI file</h2>
 <p>You can also pass a full MIDI file to <a href="./#MusicManipulations.MuseScore.musescore"><code>musescore</code></a>.</p>
 <div class="codehilite"><pre><span></span><span class="n">piano</span> <span class="o">=</span> <span class="n">getnotes</span><span class="p">(</span><span class="n">midi</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 </pre></div>
@@ -588,6 +574,52 @@
 
 
 <p>You can find the produced <code>.pdf</code> file <a href="https://github.com/JuliaMusic/JuliaMusic_documentation.jl/tree/master/docs/src/printplot/doxy.pdf">here</a>. The first page looks like this: <img alt="Full score" src="../doxy-1.png" /> When given multiple tracks MuseScore displays the name of the track (<a href="../../midi/io/#MIDI.trackname"><code>trackname</code></a>), as well as the instrument it automatically chose to represent it.</p>
+<p><a id='Drum-notation-1'></a></p>
+<h2 id="drum-notation">Drum notation</h2>
+<p>To export directly into drum notation you need to make two changes to your notes:</p>
+<ol>
+<li>Create your notes into channel <code>9</code> instead of the default <code>0</code>.</li>
+<li>Use the appropriate pitches that correspond to the drum instruments. For this you can use the dictionary <code>MuseScore.drumkey</code> (which follows the GM mapping).</li>
+</ol>
+<p>For example, let's make a standard rock drums pattern:</p>
+<div class="codehilite"><pre><span></span><span class="n">bass</span> <span class="o">=</span> <span class="n">MuseScore</span><span class="o">.</span><span class="n">drumkey</span><span class="p">[</span><span class="s">&quot;Acoustic Bass Drum&quot;</span><span class="p">]</span>
+<span class="n">snare</span> <span class="o">=</span> <span class="n">MuseScore</span><span class="o">.</span><span class="n">drumkey</span><span class="p">[</span><span class="s">&quot;Acoustic Snare&quot;</span><span class="p">]</span>
+<span class="n">hihat</span> <span class="o">=</span> <span class="n">MuseScore</span><span class="o">.</span><span class="n">drumkey</span><span class="p">[</span><span class="s">&quot;Closed Hi-Hat&quot;</span><span class="p">]</span>
+<span class="n">midichannel</span> <span class="o">=</span> <span class="mi">9</span>
+
+<span class="n">tpq</span> <span class="o">=</span> <span class="mi">960</span>
+<span class="n">ei</span> <span class="o">=</span> <span class="n">subdivision</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">tpq</span><span class="p">)</span>
+
+<span class="n">rock</span> <span class="o">=</span> <span class="p">[</span><span class="n">Note</span><span class="p">(</span><span class="n">hihat</span><span class="p">,</span> <span class="n">iseven</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">?</span> <span class="mi">100</span> <span class="o">:</span> <span class="mi">60</span><span class="p">,</span> <span class="n">ei</span><span class="o">*</span><span class="n">i</span><span class="p">,</span> <span class="n">ei</span><span class="p">,</span> <span class="n">midichannel</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="kp">in</span> <span class="mi">0</span><span class="o">:</span><span class="mi">7</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="kp">in</span> <span class="mi">1</span><span class="o">:</span><span class="mi">2</span>
+    <span class="n">push!</span><span class="p">(</span><span class="n">rock</span><span class="p">,</span> <span class="n">Note</span><span class="p">(</span><span class="n">bass</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">4</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="n">ei</span><span class="p">,</span> <span class="mi">2</span><span class="n">ei</span><span class="p">,</span> <span class="n">midichannel</span><span class="p">))</span>
+    <span class="n">push!</span><span class="p">(</span><span class="n">rock</span><span class="p">,</span> <span class="n">Note</span><span class="p">(</span><span class="n">snare</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">4</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="n">ei</span> <span class="o">+</span> <span class="mi">2</span><span class="n">ei</span><span class="p">,</span> <span class="mi">2</span><span class="n">ei</span><span class="p">,</span> <span class="n">midichannel</span><span class="p">))</span>
+<span class="k">end</span>
+<span class="n">rock</span> <span class="o">=</span> <span class="n">Notes</span><span class="p">(</span><span class="n">rock</span><span class="p">,</span> <span class="n">tpq</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span>12 Notes with tpq=960
+ Note F♯2 | vel = 100 | pos = 0, dur = 480 | channel 9
+ Note F♯2 | vel = 60  | pos = 480, dur = 480 | channel 9
+ Note F♯2 | vel = 100 | pos = 960, dur = 480 | channel 9
+ Note F♯2 | vel = 60  | pos = 1440, dur = 480 | channel 9
+ Note F♯2 | vel = 100 | pos = 1920, dur = 480 | channel 9
+ Note F♯2 | vel = 60  | pos = 2400, dur = 480 | channel 9
+ Note F♯2 | vel = 100 | pos = 2880, dur = 480 | channel 9
+ Note F♯2 | vel = 60  | pos = 3360, dur = 480 | channel 9
+ Note B1  | vel = 100 | pos = 0, dur = 960 | channel 9
+ Note D2  | vel = 100 | pos = 960, dur = 960 | channel 9
+ Note B1  | vel = 100 | pos = 1920, dur = 960 | channel 9
+ Note D2  | vel = 100 | pos = 2880, dur = 960 | channel 9
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="n">musescore</span><span class="p">(</span><span class="s">&quot;rock.png&quot;</span><span class="p">,</span> <span class="n">rock</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="drums" src="../rock-1.png" /></p>
                 
                   
                 
