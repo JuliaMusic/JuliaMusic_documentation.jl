@@ -594,28 +594,12 @@
 
 <p><a id='Pitch-to-Int-convertion-1'></a></p>
 <h2 id="pitch-to-int-convertion">Pitch to <code>Int</code> convertion</h2>
-<p><a id='MIDI.name_to_pitch' href='#MIDI.name_to_pitch'>#</a>
-<strong><code>MIDI.name_to_pitch</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>name_to_pitch(p::String) -&gt; Int
+<div class="codehilite"><pre><span></span>name_to_pitch
+pitch_to_name
+note_to_fundamental
 </pre></div>
 
 
-<p>Return the pitch value of the given note name <code>p</code>, which can be of the form <code>capital_letter*sharp*octave</code> where:</p>
-<ul>
-<li><code>capital_letter</code> : from <code>"A"</code> to <code>"G"</code>.</li>
-<li><code>sharp</code> : one of <code>"#"</code> <code>"♯"</code> or <code>""</code>.</li>
-<li><code>octave</code> : any integer (as a string), the octave number (an octave is 12 pitches). If not given it is assumed <code>"5"</code>.</li>
-</ul>
-<p>We define E.g. <code>name_to_pitch("C4") === 60</code> (i.e. string <code>"C4"</code>, representing the middle-C, corresponds to be pitch <code>60</code>).</p>
-<p>See http://newt.phys.unsw.edu.au/jw/notes.html and https://en.wikipedia.org/wiki/C<em>(musical</em>note) .</p>
-<p><a id='MIDI.pitch_to_name' href='#MIDI.pitch_to_name'>#</a>
-<strong><code>MIDI.pitch_to_name</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>pitch_to_name(pitch) -&gt; string
-</pre></div>
-
-
-<p>Return the name of the pitch, e.g. <code>F5</code>, <code>A♯3</code> etc. in modern notation given the value in integer.</p>
-<p>Reminder: middle C has pitch <code>60</code> and is displayed as <code>C4</code>.</p>
 <p><a id='Convenience-Tools-1'></a></p>
 <h2 id="convenience-tools">Convenience Tools</h2>
 <p>The functions <code>velocities, positions, pitches, durations</code> return the respective property when given some <a href="./#MIDI.Notes"><code>Notes</code></a>.</p>
