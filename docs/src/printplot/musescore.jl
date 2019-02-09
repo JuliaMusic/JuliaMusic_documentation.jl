@@ -1,6 +1,5 @@
-# # Printing into a Score
+# # Printing into a Score using MuseScore
 
-# ## MuseScore
 # [MuseScore](https://musescore.org) is a wonderful and open source _professional_
 # music score editor with a huge amount of capabilities. `MusicManipulations`
 # provides a convenient interface that can instantly print any [`Notes`](@ref)
@@ -17,7 +16,7 @@
 
 
 
-# ### Creating a Score out of some Notes
+# ## Creating a Score out of some Notes
 
 using MusicManipulations
 cd(@__DIR__) #src

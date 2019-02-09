@@ -7,7 +7,7 @@ docdir *= "/src/"
 
 # all files in `tobe` will be converted
 tobe = [
-"printplot/musescore.jl"
+# "printplot/musescore.jl"
 "motif/musicexample.jl"
 ]
 
