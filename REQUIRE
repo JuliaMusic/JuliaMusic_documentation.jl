@@ -2,4 +2,4 @@ julia 1.1
 Reexport
 MIDI 1.1
 MotifSequenceGenerator 0.1
-MusicManipulations 0.3
+MusicManipulations 0.6
