@@ -2,11 +2,10 @@
 EditURL = "https://github.com/TRAVIS_REPO_SLUG/blob/master/"
 ```
 
-# Printing into a Score
+# Printing into a Score using MuseScore
 
-## MuseScore
-[MuseScore](https://musescore.org) is a wonderful and open source _professional_
-music score editor with a huge amount of capabilities. `MusicManipulations`
+[MuseScore](https://musescore.org) is a wonderful and open source professional
+music score editor. `MusicManipulations`
 provides a convenient interface that can instantly print any [`Notes`](@ref)
 or [`MIDIFile`](@ref) structure via MuseScore.
 
@@ -19,7 +18,7 @@ musescore
     having well-defined notes. This means that you should use the function
     [`quantize`](@ref) to quantize both the position and duration of your notes!
 
-### Creating a Score out of some Notes
+## Creating a Score out of some Notes
 
 ```@example musescore
 using MusicManipulations
@@ -46,7 +45,7 @@ musescore(bass, notes)
 Amazingly MuseScore deduces automatically the clef and even the key of
 the piece!
 
-### Creating a full Score out of a MIDI file
+## Creating a full Score out of a MIDI file
 You can also pass a full MIDI file to [`musescore`](@ref).
 
 ```@example musescore
@@ -82,3 +81,32 @@ The first page looks like this:
 When given multiple tracks MuseScore displays the name of the track ([`trackname`](@ref)),
 as well as the instrument it automatically chose to represent it.
 
+## Drum notation
+
+To export directly into drum notation you need to make two changes to your notes:
+
+1. Create your notes into channel `9` instead of the default `0`.
+2. Use the appropriate pitches that correspond to the drum instruments. For this you can use the dictionary `MuseScore.drumkey` (which follows the GM mapping).
+
+For example, let's make a standard rock drums pattern:
+```@example musescore
+bass = MuseScore.drumkey["Acoustic Bass Drum"]
+snare = MuseScore.drumkey["Acoustic Snare"]
+hihat = MuseScore.drumkey["Closed Hi-Hat"]
+midichannel = 9
+
+tpq = 960
+ei = subdivision(8, tpq)
+
+rock = [Note(hihat, iseven(i) ? 100 : 60, ei*i, ei, midichannel) for i in 0:7]
+for i in 1:2
+    push!(rock, Note(bass, 100, 4(i-1)ei, 2ei, midichannel))
+    push!(rock, Note(snare, 100, 4(i-1)ei + 2ei, 2ei, midichannel))
+end
+rock = Notes(rock, tpq)
+```
+```julia
+musescore("rock.png", rock)
+```
+
+![drums](rock-1.png)

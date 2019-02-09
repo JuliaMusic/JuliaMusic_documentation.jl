@@ -73,6 +73,7 @@ notes
 ```@docs
 name_to_pitch
 pitch_to_name
+note_to_fundamental
 ```
 
 ## Convenience Tools
