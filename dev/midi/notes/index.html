@@ -504,7 +504,7 @@
 
 
 <p>Find all NOTEON and NOTEOFF midi events in the <code>trackno</code> track of a <code>midi</code>, that correspond to the same note value (pitch) and convert them into the <code>Note</code> datatype. There are special cases where NOTEOFF is actually encoded as NOTEON with 0 velocity. <code>getnotes</code> takes care of this.</p>
-<p>Notice that the first track of a <code>midi</code> doesn't have any notes.</p>
+<p>Notice that the first track of a <code>midi</code> typically doesn't have any notes, which is why the function defaults to track 2.</p>
 <div class="codehilite"><pre><span></span>getnotes(track::MIDITrack, tpq = 960)
 </pre></div>
 
