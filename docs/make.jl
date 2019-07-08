@@ -1,5 +1,5 @@
 using MIDI, MusicManipulations, MotifSequenceGenerator
-using Documenter, Literate, DocumenterMarkdown, PyPlot
+using Documenter, Literate, DocumenterMarkdown, PyPlot, Statistics
 #%% Literate Conversions
 
 docdir = @__DIR__

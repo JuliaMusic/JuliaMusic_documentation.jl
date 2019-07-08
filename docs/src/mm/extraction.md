@@ -19,7 +19,7 @@ timeseries
 
 Here is an example:
 ```@example
-using MusicManipulations, PyPlot
+using MusicManipulations, PyPlot, Statistics
 midi = readMIDIFile(testmidi())
 notes = getnotes(midi, 4)
 
