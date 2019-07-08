@@ -474,23 +474,26 @@
 <p>After quantization, it is often the case that many notes are in the same bin of the grid. The <strong>function</strong> <code>f</code> denotes which value of the vector of the <code>property</code> of the notes to keep. Typical values are <code>minimum, maximum, mean</code>, etc. Notice that bins without any note in them obtain the value <code>missing</code>, regardless of the function <code>f</code> or the <code>property</code>.</p>
 <p>If the <code>property</code> is <code>:velocity</code>, <code>:pitch</code>, or <code>:duration</code> the function behaves exactly as described. The <code>property</code> can also be <code>:position</code>. In this case, the timeseries <code>ts</code> contain the timing deviations of the notes with respect to the <code>tvec</code> vector (these numbers are known as <em>microtiming deviations</em> in the literature.)</p>
 <p>Here is an example:</p>
-<p>```@example
-using MusicManipulations, PyPlot
-midi = readMIDIFile(testmidi())
-notes = getnotes(midi, 4)</p>
-<p>swung_8s = [0, 2//3, 1]
-t, vel = timeseries(notes, :velocity, mean, swung_8s)</p>
-<p>notmiss = findall(!ismissing, vel)</p>
-<p>fig, (ax1, ax2) = subplots(2,1)
-ax1.scatter(t[notmiss], vel[notmiss])
-ax1.set_ylabel("velocity")</p>
-<p>t, mtd = timeseries(notes, :position, mean, swung_8s)
-ax2.scatter(t[notmiss], mtd[notmiss], color = "C1")
-ax2.set_ylabel("timing deviations")
-ax2.set_xlabel("ticks")
-tight_layout() # hide
-savefig("timeseries.png"); nothing # hide
-```</p>
+<div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">MusicManipulations</span><span class="p">,</span> <span class="n">PyPlot</span><span class="p">,</span> <span class="n">Statistics</span>
+<span class="n">midi</span> <span class="o">=</span> <span class="n">readMIDIFile</span><span class="p">(</span><span class="n">testmidi</span><span class="p">())</span>
+<span class="n">notes</span> <span class="o">=</span> <span class="n">getnotes</span><span class="p">(</span><span class="n">midi</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+
+<span class="n">swung_8s</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">//</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">t</span><span class="p">,</span> <span class="n">vel</span> <span class="o">=</span> <span class="n">timeseries</span><span class="p">(</span><span class="n">notes</span><span class="p">,</span> <span class="o">:</span><span class="n">velocity</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">swung_8s</span><span class="p">)</span>
+
+<span class="n">notmiss</span> <span class="o">=</span> <span class="n">findall</span><span class="p">(</span><span class="o">!</span><span class="n">ismissing</span><span class="p">,</span> <span class="n">vel</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">notmiss</span><span class="p">],</span> <span class="n">vel</span><span class="p">[</span><span class="n">notmiss</span><span class="p">])</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&quot;velocity&quot;</span><span class="p">)</span>
+
+<span class="n">t</span><span class="p">,</span> <span class="n">mtd</span> <span class="o">=</span> <span class="n">timeseries</span><span class="p">(</span><span class="n">notes</span><span class="p">,</span> <span class="o">:</span><span class="n">position</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">swung_8s</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">notmiss</span><span class="p">],</span> <span class="n">mtd</span><span class="p">[</span><span class="n">notmiss</span><span class="p">],</span> <span class="n">color</span> <span class="o">=</span> <span class="s">&quot;C1&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&quot;timing deviations&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&quot;ticks&quot;</span><span class="p">)</span>
+</pre></div>
+
+
 <p><img alt="" src="../timeseries.png" /></p>
                 
                   
