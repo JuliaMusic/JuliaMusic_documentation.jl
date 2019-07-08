@@ -4,6 +4,12 @@ and saving data related with music. Most of the functionality
 comes in the form of the [MIDI](https://en.wikipedia.org/wiki/MIDI) format
 which is described later on this page.
 
+!!! info "News"
+    Check out the page "News" for the latest updates to our packages.
+
+    Latest news: brand new [`timeseries`](@ref) function!
+
+
 The current documentation was built with the following package versions
 ```@setup versions
 using Pkg.API: installed
