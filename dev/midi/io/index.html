@@ -469,7 +469,7 @@
 <h2 id="midifile"><code>MIDIFile</code></h2>
 <p><a id='MIDI.MIDIFile' href='#MIDI.MIDIFile'>#</a>
 <strong><code>MIDI.MIDIFile</code></strong> &mdash; <em>Type</em>.</p>
-<div class="codehilite"><pre><span></span>MIDIFile &lt;: Any
+<div class="codehilite"><pre><span></span><span class="n">MIDIFile</span> <span class="o">&lt;:</span> <span class="kt">Any</span>
 </pre></div>
 
 
@@ -483,19 +483,19 @@
 <p>To read and write a MIDI file, use</p>
 <p><a id='MIDI.readMIDIFile' href='#MIDI.readMIDIFile'>#</a>
 <strong><code>MIDI.readMIDIFile</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>readMIDIFile(filename::AbstractString)
+<div class="codehilite"><pre><span></span><span class="n">readMIDIFile</span><span class="p">(</span><span class="n">filename</span><span class="o">::</span><span class="kt">AbstractString</span><span class="p">)</span>
 </pre></div>
 
 
 <p>Read a file into a <code>MIDIFile</code> data type.</p>
 <p><a id='MIDI.writeMIDIFile' href='#MIDI.writeMIDIFile'>#</a>
 <strong><code>MIDI.writeMIDIFile</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>writeMIDIFile(filename::AbstractString, data::MIDIFile)
+<div class="codehilite"><pre><span></span><span class="n">writeMIDIFile</span><span class="p">(</span><span class="n">filename</span><span class="o">::</span><span class="kt">AbstractString</span><span class="p">,</span> <span class="n">data</span><span class="o">::</span><span class="n">MIDIFile</span><span class="p">)</span>
 </pre></div>
 
 
 <p>Write a <code>MIDIFile</code> as a ".mid" file to the given filename.</p>
-<div class="codehilite"><pre><span></span>writeMIDIFile(filename::AbstractString, notes::Notes)
+<div class="codehilite"><pre><span></span><span class="n">writeMIDIFile</span><span class="p">(</span><span class="n">filename</span><span class="p">::</span><span class="n">AbstractString</span><span class="p">,</span> <span class="n">notes</span><span class="p">::</span><span class="n">Notes</span><span class="p">)</span>
 </pre></div>
 
 
@@ -506,7 +506,7 @@
 <p>The most important field of a <code>MIDIFile</code> is the <code>tracks</code> field. It contains as many tracks as the user wants. The tracks themselves contain all "musical" information in the form of the "events" we mentioned in the introduction:</p>
 <p><a id='MIDI.MIDITrack' href='#MIDI.MIDITrack'>#</a>
 <strong><code>MIDI.MIDITrack</code></strong> &mdash; <em>Type</em>.</p>
-<div class="codehilite"><pre><span></span>MIDITrack &lt;: Any
+<div class="codehilite"><pre><span></span><span class="n">MIDITrack</span> <span class="o">&lt;:</span> <span class="kt">Any</span>
 </pre></div>
 
 
@@ -514,7 +514,7 @@
 <p>Track chunks begin with four bytes spelling out "MTrk", followed by the length (in bytes) of the track (see <a href="./#MIDI.readvariablelength"><code>readvariablelength</code></a>), followed by a sequence of events.</p>
 <p><a id='MIDI.TrackEvent' href='#MIDI.TrackEvent'>#</a>
 <strong><code>MIDI.TrackEvent</code></strong> &mdash; <em>Type</em>.</p>
-<div class="codehilite"><pre><span></span>TrackEvent &lt;: Any
+<div class="codehilite"><pre><span></span><span class="n">TrackEvent</span> <span class="o">&lt;:</span> <span class="kt">Any</span>
 </pre></div>
 
 
@@ -524,19 +524,19 @@
 <p><code>MetaEvent</code>s and <code>SysexEvent</code>s both resume with a specific byte (see <code>constants.jl</code>).</p>
 <hr />
 <p>The <code>TrackEvent</code> themselves can be one of three types:</p>
-<div class="codehilite"><pre><span></span><span class="n">struct</span> <span class="n">MIDIEvent</span> <span class="o">&lt;:</span> <span class="n">TrackEvent</span>
+<div class="codehilite"><pre><span></span><span class="k">struct</span> <span class="n">MIDIEvent</span> <span class="o">&lt;:</span> <span class="n">TrackEvent</span>
     <span class="n">dT</span><span class="o">::</span><span class="kt">Int</span>
     <span class="n">status</span><span class="o">::</span><span class="kt">UInt8</span>
     <span class="n">data</span><span class="o">::</span><span class="kt">Array</span><span class="p">{</span><span class="kt">UInt8</span><span class="p">,</span><span class="mi">1</span><span class="p">}</span>
 <span class="k">end</span>
 
-<span class="n">struct</span> <span class="n">MetaEvent</span> <span class="o">&lt;:</span> <span class="n">TrackEvent</span>
+<span class="k">struct</span> <span class="n">MetaEvent</span> <span class="o">&lt;:</span> <span class="n">TrackEvent</span>
     <span class="n">dT</span><span class="o">::</span><span class="kt">Int</span>
     <span class="n">metatype</span><span class="o">::</span><span class="kt">UInt8</span>
     <span class="n">data</span><span class="o">::</span><span class="kt">Array</span><span class="p">{</span><span class="kt">UInt8</span><span class="p">,</span><span class="mi">1</span><span class="p">}</span>
 <span class="k">end</span>
 
-<span class="n">struct</span> <span class="n">SysexEvent</span> <span class="o">&lt;:</span> <span class="n">TrackEvent</span>
+<span class="k">struct</span> <span class="n">SysexEvent</span> <span class="o">&lt;:</span> <span class="n">TrackEvent</span>
     <span class="n">dT</span><span class="o">::</span><span class="kt">Int</span>
     <span class="n">data</span><span class="o">::</span><span class="kt">Array</span><span class="p">{</span><span class="kt">UInt8</span><span class="p">,</span><span class="mi">1</span><span class="p">}</span>
 <span class="k">end</span>
@@ -548,22 +548,22 @@
 <h2 id="utility-functions">Utility functions</h2>
 <p><a id='MIDI.BPM' href='#MIDI.BPM'>#</a>
 <strong><code>MIDI.BPM</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>BPM(midi)
+<div class="codehilite"><pre><span></span><span class="n">BPM</span><span class="p">(</span><span class="n">midi</span><span class="p">)</span>
 </pre></div>
 
 
 <p>Return the BPM where the given <code>MIDIFile</code> was exported at.</p>
 <p><a id='MIDI.ms_per_tick' href='#MIDI.ms_per_tick'>#</a>
 <strong><code>MIDI.ms_per_tick</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>ms_per_tick(tpq, bpm)
-ms_per_tick(midi::MIDIFile)
+<div class="codehilite"><pre><span></span><span class="n">ms_per_tick</span><span class="p">(</span><span class="n">tpq</span><span class="p">,</span> <span class="n">bpm</span><span class="p">)</span>
+<span class="n">ms_per_tick</span><span class="p">(</span><span class="n">midi</span><span class="o">::</span><span class="n">MIDIFile</span><span class="p">)</span>
 </pre></div>
 
 
 <p>Return how many miliseconds is one tick, based on the beats per minute <code>bpm</code> and ticks per quarter note <code>tpq</code>.</p>
 <p><a id='MIDI.addevent!' href='#MIDI.addevent!'>#</a>
 <strong><code>MIDI.addevent!</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>addevent!(track::MIDITrack, time::Int, event::TrackEvent)
+<div class="codehilite"><pre><span></span><span class="n">addevent!</span><span class="p">(</span><span class="n">track</span><span class="o">::</span><span class="n">MIDITrack</span><span class="p">,</span> <span class="n">time</span><span class="o">::</span><span class="kt">Int</span><span class="p">,</span> <span class="n">event</span><span class="o">::</span><span class="n">TrackEvent</span><span class="p">)</span>
 </pre></div>
 
 
@@ -571,7 +571,7 @@ ms_per_tick(midi::MIDIFile)
 <p>If you want to add multiple events in one go, you should use the <a href="./#MIDI.addevents!"><code>addevents!</code></a> function instead.</p>
 <p><a id='MIDI.addevents!' href='#MIDI.addevents!'>#</a>
 <strong><code>MIDI.addevents!</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>addevents!(track::MIDITrack, times, events)
+<div class="codehilite"><pre><span></span><span class="n">addevents!</span><span class="p">(</span><span class="n">track</span><span class="o">::</span><span class="n">MIDITrack</span><span class="p">,</span> <span class="n">times</span><span class="p">,</span> <span class="n">events</span><span class="p">)</span>
 </pre></div>
 
 
@@ -579,21 +579,21 @@ ms_per_tick(midi::MIDIFile)
 <p>Using this function is more efficient than a loop over single <a href="./#MIDI.addevent!"><code>addevent!</code></a> calls.</p>
 <p><a id='MIDI.trackname' href='#MIDI.trackname'>#</a>
 <strong><code>MIDI.trackname</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>trackname(track::MIDI.MIDITrack)
+<div class="codehilite"><pre><span></span><span class="n">trackname</span><span class="p">(</span><span class="n">track</span><span class="o">::</span><span class="n">MIDI</span><span class="o">.</span><span class="n">MIDITrack</span><span class="p">)</span>
 </pre></div>
 
 
 <p>Return the name of the given <code>track</code> as a string, by finding the "track name" <code>MetaEvent</code>.</p>
 <p><a id='MIDI.addtrackname!' href='#MIDI.addtrackname!'>#</a>
 <strong><code>MIDI.addtrackname!</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>addtrackname!(track::MIDI.MIDITrack, name::String)
+<div class="codehilite"><pre><span></span><span class="n">addtrackname!</span><span class="p">(</span><span class="n">track</span><span class="o">::</span><span class="n">MIDI</span><span class="o">.</span><span class="n">MIDITrack</span><span class="p">,</span> <span class="n">name</span><span class="o">::</span><span class="n">String</span><span class="p">)</span>
 </pre></div>
 
 
 <p>Add a name to the given <code>track</code> by attaching the "track name" <code>MetaEvent</code> to the start of the <code>track</code>.</p>
 <p><a id='MIDI.textevent' href='#MIDI.textevent'>#</a>
 <strong><code>MIDI.textevent</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>textevent(eventtype, text)
+<div class="codehilite"><pre><span></span><span class="n">textevent</span><span class="p">(</span><span class="n">eventtype</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
 </pre></div>
 
 
@@ -602,7 +602,7 @@ ms_per_tick(midi::MIDIFile)
 <p><em>Notice</em> - Cubase can read the marker events and MuseScore can read the lyrics events. We haven't seen any editor that can read the text events, so far.</p>
 <p><a id='MIDI.findtextevents' href='#MIDI.findtextevents'>#</a>
 <strong><code>MIDI.findtextevents</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>findtextevents(eventtype, track)
+<div class="codehilite"><pre><span></span><span class="n">findtextevents</span><span class="p">(</span><span class="n">eventtype</span><span class="p">,</span> <span class="n">track</span><span class="p">)</span>
 </pre></div>
 
 
@@ -614,7 +614,7 @@ ms_per_tick(midi::MIDIFile)
 <p>In this section we show the low-level API that allows one to actually read bytes from a file and transform them into Julia structures.</p>
 <p><a id='MIDI.readvariablelength' href='#MIDI.readvariablelength'>#</a>
 <strong><code>MIDI.readvariablelength</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>readvariablelength(f::IO)
+<div class="codehilite"><pre><span></span><span class="n">readvariablelength</span><span class="p">(</span><span class="n">f</span><span class="o">::</span><span class="kt">IO</span><span class="p">)</span>
 </pre></div>
 
 

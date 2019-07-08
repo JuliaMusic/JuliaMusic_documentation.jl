@@ -439,14 +439,14 @@
 <h1 id="motif-sequence-generation">Motif Sequence Generation</h1>
 <p><a id='MotifSequenceGenerator' href='#MotifSequenceGenerator'>#</a>
 <strong><code>MotifSequenceGenerator</code></strong> &mdash; <em>Module</em>.</p>
-<div class="codehilite"><pre><span></span>MotifSequenceGenerator
+<div class="codehilite"><pre><span></span><span class="n">MotifSequenceGenerator</span>
 </pre></div>
 
 
 <p>This module generates random sequences of motifs, under the constrain that the sequence has some total length ℓ so that <code>q - δq ≤ ℓ ≤ q + δq</code>. All main functionality is given by the function <a href="./#MotifSequenceGenerator.random_sequence"><code>random_sequence</code></a>.</p>
 <p><a id='MotifSequenceGenerator.random_sequence' href='#MotifSequenceGenerator.random_sequence'>#</a>
 <strong><code>MotifSequenceGenerator.random_sequence</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span><span class="nt">random_sequence</span><span class="o">(</span><span class="nt">motifs</span><span class="p">::</span><span class="nd">Vector</span><span class="p">{</span><span class="err">M</span><span class="p">}</span><span class="o">,</span> <span class="nt">q</span><span class="o">,</span> <span class="nt">limits</span><span class="o">,</span> <span class="nt">translate</span><span class="o">,</span> <span class="err">δ</span><span class="nt">q</span> <span class="o">=</span> <span class="nt">0</span><span class="o">;</span> <span class="nt">kwargs</span><span class="o">...)</span>
+<div class="codehilite"><pre><span></span><span class="n">random_sequence</span><span class="p">(</span><span class="n">motifs</span><span class="o">::</span><span class="kt">Vector</span><span class="p">{</span><span class="n">M</span><span class="p">},</span> <span class="n">q</span><span class="p">,</span> <span class="n">limits</span><span class="p">,</span> <span class="n">translate</span><span class="p">,</span> <span class="n">δq</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">kwargs</span><span class="o">...</span><span class="p">)</span>
 </pre></div>
 
 
@@ -469,7 +469,7 @@
 <p>This example illustrates how the module <a href="./#MotifSequenceGenerator"><code>MotifSequenceGenerator</code></a> works using a simple <code>struct</code>. For a more realistic, and much more complex example, see the <a href="../musicexample/">example using music notes</a>.</p>
 <hr />
 <p>Let's say that we want to create a random sequence of "shouts", which are described by the <code>struct</code></p>
-<div class="codehilite"><pre><span></span><span class="n">struct</span> <span class="n">Shout</span>
+<div class="codehilite"><pre><span></span><span class="k">struct</span> <span class="n">Shout</span>
   <span class="n">shout</span><span class="o">::</span><span class="n">String</span>
   <span class="n">start</span><span class="o">::</span><span class="kt">Int</span>
 <span class="k">end</span>
@@ -482,12 +482,12 @@
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span>5-element Array{Main.ex-shout.Shout,1}:
- Main.ex-shout.Shout(&quot;HV9&quot;, 62)
- Main.ex-shout.Shout(&quot;ZNPF&quot;, 83)
- Main.ex-shout.Shout(&quot;THN&quot;, 78)
- Main.ex-shout.Shout(&quot;8B93&quot;, 17)
- Main.ex-shout.Shout(&quot;TI9NE&quot;, 63)
+<div class="codehilite"><pre><span></span><span class="mi">5</span><span class="o">-</span><span class="n">element</span> <span class="nb">Array</span><span class="err">{</span><span class="n">Main</span><span class="p">.</span><span class="n">ex</span><span class="o">-</span><span class="n">shout</span><span class="p">.</span><span class="n">Shout</span><span class="p">,</span><span class="mi">1</span><span class="err">}</span><span class="p">:</span>
+ <span class="n">Main</span><span class="p">.</span><span class="n">ex</span><span class="o">-</span><span class="n">shout</span><span class="p">.</span><span class="n">Shout</span><span class="p">(</span><span class="ss">&quot;IKF2&quot;</span><span class="p">,</span> <span class="mi">52</span><span class="p">)</span> 
+ <span class="n">Main</span><span class="p">.</span><span class="n">ex</span><span class="o">-</span><span class="n">shout</span><span class="p">.</span><span class="n">Shout</span><span class="p">(</span><span class="ss">&quot;EY2&quot;</span><span class="p">,</span> <span class="mi">33</span><span class="p">)</span>  
+ <span class="n">Main</span><span class="p">.</span><span class="n">ex</span><span class="o">-</span><span class="n">shout</span><span class="p">.</span><span class="n">Shout</span><span class="p">(</span><span class="ss">&quot;U8Q7&quot;</span><span class="p">,</span> <span class="mi">79</span><span class="p">)</span> 
+ <span class="n">Main</span><span class="p">.</span><span class="n">ex</span><span class="o">-</span><span class="n">shout</span><span class="p">.</span><span class="n">Shout</span><span class="p">(</span><span class="ss">&quot;ORS&quot;</span><span class="p">,</span> <span class="mi">92</span><span class="p">)</span>  
+ <span class="n">Main</span><span class="p">.</span><span class="n">ex</span><span class="o">-</span><span class="n">shout</span><span class="p">.</span><span class="n">Shout</span><span class="p">(</span><span class="ss">&quot;OHKMZ&quot;</span><span class="p">,</span> <span class="mi">17</span><span class="p">)</span>
 </pre></div>
 
 
@@ -499,7 +499,7 @@
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span>shouttranslate (generic function with 1 method)
+<div class="codehilite"><pre><span></span><span class="n">shouttranslate</span> <span class="p">(</span><span class="n">generic</span> <span class="k">function</span> <span class="k">with</span> <span class="mi">1</span> <span class="k">method</span><span class="p">)</span>
 </pre></div>
 
 
@@ -512,14 +512,13 @@
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span>7-element Array{Main.ex-shout.Shout,1}:
- Main.ex-shout.Shout(&quot;HV9&quot;, 0)
- Main.ex-shout.Shout(&quot;THN&quot;, 4)
- Main.ex-shout.Shout(&quot;HV9&quot;, 8)
- Main.ex-shout.Shout(&quot;HV9&quot;, 12)
- Main.ex-shout.Shout(&quot;TI9NE&quot;, 16)
- Main.ex-shout.Shout(&quot;THN&quot;, 22)
- Main.ex-shout.Shout(&quot;THN&quot;, 26)
+<div class="codehilite"><pre><span></span><span class="mi">6</span><span class="o">-</span><span class="n">element</span> <span class="nb">Array</span><span class="err">{</span><span class="n">Main</span><span class="p">.</span><span class="n">ex</span><span class="o">-</span><span class="n">shout</span><span class="p">.</span><span class="n">Shout</span><span class="p">,</span><span class="mi">1</span><span class="err">}</span><span class="p">:</span>
+ <span class="n">Main</span><span class="p">.</span><span class="n">ex</span><span class="o">-</span><span class="n">shout</span><span class="p">.</span><span class="n">Shout</span><span class="p">(</span><span class="ss">&quot;IKF2&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  
+ <span class="n">Main</span><span class="p">.</span><span class="n">ex</span><span class="o">-</span><span class="n">shout</span><span class="p">.</span><span class="n">Shout</span><span class="p">(</span><span class="ss">&quot;EY2&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>   
+ <span class="n">Main</span><span class="p">.</span><span class="n">ex</span><span class="o">-</span><span class="n">shout</span><span class="p">.</span><span class="n">Shout</span><span class="p">(</span><span class="ss">&quot;OHKMZ&quot;</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span> 
+ <span class="n">Main</span><span class="p">.</span><span class="n">ex</span><span class="o">-</span><span class="n">shout</span><span class="p">.</span><span class="n">Shout</span><span class="p">(</span><span class="ss">&quot;EY2&quot;</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>  
+ <span class="n">Main</span><span class="p">.</span><span class="n">ex</span><span class="o">-</span><span class="n">shout</span><span class="p">.</span><span class="n">Shout</span><span class="p">(</span><span class="ss">&quot;IKF2&quot;</span><span class="p">,</span> <span class="mi">19</span><span class="p">)</span> 
+ <span class="n">Main</span><span class="p">.</span><span class="n">ex</span><span class="o">-</span><span class="n">shout</span><span class="p">.</span><span class="n">Shout</span><span class="p">(</span><span class="ss">&quot;OHKMZ&quot;</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span>
 </pre></div>
 
 
@@ -528,13 +527,13 @@
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span>6-element Array{Main.ex-shout.Shout,1}:
- Main.ex-shout.Shout(&quot;TI9NE&quot;, 0)
- Main.ex-shout.Shout(&quot;ZNPF&quot;, 6)
- Main.ex-shout.Shout(&quot;ZNPF&quot;, 11)
- Main.ex-shout.Shout(&quot;THN&quot;, 16)
- Main.ex-shout.Shout(&quot;TI9NE&quot;, 20)
- Main.ex-shout.Shout(&quot;THN&quot;, 26)
+<div class="codehilite"><pre><span></span><span class="mi">6</span><span class="o">-</span><span class="n">element</span> <span class="nb">Array</span><span class="err">{</span><span class="n">Main</span><span class="p">.</span><span class="n">ex</span><span class="o">-</span><span class="n">shout</span><span class="p">.</span><span class="n">Shout</span><span class="p">,</span><span class="mi">1</span><span class="err">}</span><span class="p">:</span>
+ <span class="n">Main</span><span class="p">.</span><span class="n">ex</span><span class="o">-</span><span class="n">shout</span><span class="p">.</span><span class="n">Shout</span><span class="p">(</span><span class="ss">&quot;ORS&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  
+ <span class="n">Main</span><span class="p">.</span><span class="n">ex</span><span class="o">-</span><span class="n">shout</span><span class="p">.</span><span class="n">Shout</span><span class="p">(</span><span class="ss">&quot;U8Q7&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> 
+ <span class="n">Main</span><span class="p">.</span><span class="n">ex</span><span class="o">-</span><span class="n">shout</span><span class="p">.</span><span class="n">Shout</span><span class="p">(</span><span class="ss">&quot;OHKMZ&quot;</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+ <span class="n">Main</span><span class="p">.</span><span class="n">ex</span><span class="o">-</span><span class="n">shout</span><span class="p">.</span><span class="n">Shout</span><span class="p">(</span><span class="ss">&quot;U8Q7&quot;</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+ <span class="n">Main</span><span class="p">.</span><span class="n">ex</span><span class="o">-</span><span class="n">shout</span><span class="p">.</span><span class="n">Shout</span><span class="p">(</span><span class="ss">&quot;U8Q7&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+ <span class="n">Main</span><span class="p">.</span><span class="n">ex</span><span class="o">-</span><span class="n">shout</span><span class="p">.</span><span class="n">Shout</span><span class="p">(</span><span class="ss">&quot;IKF2&quot;</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
 </pre></div>
 
 
@@ -542,7 +541,7 @@
 <p><a id='Floating-point-lengths-1'></a></p>
 <h2 id="floating-point-lengths">Floating point lengths</h2>
 <p>The lengths of the motifs do not have to be integers. When using motifs with floating lengths, it is advised to give a non-0 <code>δq</code> to <a href="./#MotifSequenceGenerator.random_sequence"><code>random_sequence</code></a>. The following example modifies the <code>Shout</code> struct and shows how it can be done with floating length.</p>
-<div class="codehilite"><pre><span></span><span class="n">struct</span> <span class="n">FloatShout</span>
+<div class="codehilite"><pre><span></span><span class="k">struct</span> <span class="n">FloatShout</span>
   <span class="n">shout</span><span class="o">::</span><span class="n">String</span>
   <span class="n">dur</span><span class="o">::</span><span class="kt">Float64</span>
   <span class="n">start</span><span class="o">::</span><span class="kt">Float64</span>
@@ -563,14 +562,14 @@
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span>7-element Array{Main.ex-shout.FloatShout,1}:
- Main.ex-shout.FloatShout(&quot;TJTF&quot;, 1.2900407248638317, 0.0)
- Main.ex-shout.FloatShout(&quot;TJTF&quot;, 1.2900407248638317, 1.2900407248638317)
- Main.ex-shout.FloatShout(&quot;TJTF&quot;, 1.2900407248638317, 2.5800814497276634)
- Main.ex-shout.FloatShout(&quot;TJTF&quot;, 1.2900407248638317, 3.8701221745914953)
- Main.ex-shout.FloatShout(&quot;TJTF&quot;, 1.2900407248638317, 5.160162899455327)
- Main.ex-shout.FloatShout(&quot;R6KB&quot;, 1.8424347951131328, 6.450203624319158)
- Main.ex-shout.FloatShout(&quot;CRVG&quot;, 1.3488167576298367, 8.292638419432292)
+<div class="codehilite"><pre><span></span><span class="mi">7</span><span class="o">-</span><span class="n">element</span> <span class="nb">Array</span><span class="err">{</span><span class="n">Main</span><span class="p">.</span><span class="n">ex</span><span class="o">-</span><span class="n">shout</span><span class="p">.</span><span class="n">FloatShout</span><span class="p">,</span><span class="mi">1</span><span class="err">}</span><span class="p">:</span>
+ <span class="n">Main</span><span class="p">.</span><span class="n">ex</span><span class="o">-</span><span class="n">shout</span><span class="p">.</span><span class="n">FloatShout</span><span class="p">(</span><span class="ss">&quot;TCZCH&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">.</span><span class="mi">9293977321310762</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span>               
+ <span class="n">Main</span><span class="p">.</span><span class="n">ex</span><span class="o">-</span><span class="n">shout</span><span class="p">.</span><span class="n">FloatShout</span><span class="p">(</span><span class="ss">&quot;WCN&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">.</span><span class="mi">6800738303287193</span><span class="p">,</span> <span class="mi">1</span><span class="p">.</span><span class="mi">9293977321310762</span><span class="p">)</span>  
+ <span class="n">Main</span><span class="p">.</span><span class="n">ex</span><span class="o">-</span><span class="n">shout</span><span class="p">.</span><span class="n">FloatShout</span><span class="p">(</span><span class="ss">&quot;2QRMK&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">.</span><span class="mi">1473288132605168</span><span class="p">,</span> <span class="mi">3</span><span class="p">.</span><span class="mi">6094715624597953</span><span class="p">)</span>
+ <span class="n">Main</span><span class="p">.</span><span class="n">ex</span><span class="o">-</span><span class="n">shout</span><span class="p">.</span><span class="n">FloatShout</span><span class="p">(</span><span class="ss">&quot;YJ82&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">.</span><span class="mi">349513678787482</span><span class="p">,</span> <span class="mi">4</span><span class="p">.</span><span class="mi">756800375720312</span><span class="p">)</span>   
+ <span class="n">Main</span><span class="p">.</span><span class="n">ex</span><span class="o">-</span><span class="n">shout</span><span class="p">.</span><span class="n">FloatShout</span><span class="p">(</span><span class="ss">&quot;YJ82&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">.</span><span class="mi">349513678787482</span><span class="p">,</span> <span class="mi">6</span><span class="p">.</span><span class="mi">106314054507794</span><span class="p">)</span>   
+ <span class="n">Main</span><span class="p">.</span><span class="n">ex</span><span class="o">-</span><span class="n">shout</span><span class="p">.</span><span class="n">FloatShout</span><span class="p">(</span><span class="ss">&quot;YJ82&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">.</span><span class="mi">349513678787482</span><span class="p">,</span> <span class="mi">7</span><span class="p">.</span><span class="mi">455827733295276</span><span class="p">)</span>   
+ <span class="n">Main</span><span class="p">.</span><span class="n">ex</span><span class="o">-</span><span class="n">shout</span><span class="p">.</span><span class="n">FloatShout</span><span class="p">(</span><span class="ss">&quot;2QRMK&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">.</span><span class="mi">1473288132605168</span><span class="p">,</span> <span class="mi">8</span><span class="p">.</span><span class="mi">805341412082758</span><span class="p">)</span> 
 </pre></div>
 
 
@@ -578,14 +577,14 @@
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span>7-element Array{Int64,1}:
- 1
- 1
- 1
- 1
- 1
- 4
- 3
+<div class="codehilite"><pre><span></span><span class="mi">7</span><span class="o">-</span><span class="n">element</span> <span class="nb">Array</span><span class="err">{</span><span class="n">Int64</span><span class="p">,</span><span class="mi">1</span><span class="err">}</span><span class="p">:</span>
+ <span class="mi">2</span>
+ <span class="mi">5</span>
+ <span class="mi">3</span>
+ <span class="mi">1</span>
+ <span class="mi">1</span>
+ <span class="mi">1</span>
+ <span class="mi">3</span>
 </pre></div>
                 
                   

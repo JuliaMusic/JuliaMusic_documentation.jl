@@ -303,9 +303,45 @@
       
     
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Music Data Extraction
+      </label>
+    
     <a href="./" title="Music Data Extraction" class="md-nav__link md-nav__link--active">
       Music Data Extraction
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#basic-data-extraction" title="Basic Data Extraction" class="md-nav__link">
+    Basic Data Extraction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#timeseries-extraction" title="Timeseries Extraction" class="md-nav__link">
+    Timeseries Extraction
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -363,6 +399,29 @@
     
   
   
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#basic-data-extraction" title="Basic Data Extraction" class="md-nav__link">
+    Basic Data Extraction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#timeseries-extraction" title="Timeseries Extraction" class="md-nav__link">
+    Timeseries Extraction
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -378,10 +437,12 @@
                 
                 <p><a id='Music-Data-Extraction-1'></a></p>
 <h1 id="music-data-extraction">Music Data Extraction</h1>
-<p>The functions described in this page allow for easier extraction of data from music recordings (in the form of MIDI).</p>
+<p>The functions described in this page allow for easier extraction of data from music recordings (in the form of MIDI). A highlight of JuliaMusic is the <a href="./#MusicManipulations.timeseries"><code>timeseries</code></a> function, which allows one to directly get gridded timeseries from arbitrary <code>Notes</code> structures.</p>
+<p><a id='Basic-Data-Extraction-1'></a></p>
+<h2 id="basic-data-extraction">Basic Data Extraction</h2>
 <p><a id='MusicManipulations.firstnotes' href='#MusicManipulations.firstnotes'>#</a>
 <strong><code>MusicManipulations.firstnotes</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>firstnotes(notes, grid)
+<div class="codehilite"><pre><span></span><span class="n">firstnotes</span><span class="p">(</span><span class="n">notes</span><span class="p">,</span> <span class="n">grid</span><span class="p">)</span>
 </pre></div>
 
 
@@ -389,27 +450,48 @@
 <p>This function <em>does not</em> consider the notes modulo the quarter note! Different quarter notes have different grid points.</p>
 <p><a id='MusicManipulations.allowedpitches' href='#MusicManipulations.allowedpitches'>#</a>
 <strong><code>MusicManipulations.allowedpitches</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>allowedpitches(notes::Notes, allowed) -&gt; newnotes
+<div class="codehilite"><pre><span></span><span class="n">allowedpitches</span><span class="p">(</span><span class="n">notes</span><span class="o">::</span><span class="n">Notes</span><span class="p">,</span> <span class="n">allowed</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">newnotes</span>
 </pre></div>
 
 
 <p>Only keep the notes that have a pitch specified in <code>allowed</code> (one or many pitches).</p>
 <p><a id='MusicManipulations.separatepitches' href='#MusicManipulations.separatepitches'>#</a>
 <strong><code>MusicManipulations.separatepitches</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>separatepitches(notes::Notes [, allowed])
+<div class="codehilite"><pre><span></span><span class="n">separatepitches</span><span class="p">(</span><span class="n">notes</span><span class="o">::</span><span class="n">Notes</span> <span class="p">[,</span> <span class="n">allowed</span><span class="p">])</span>
 </pre></div>
 
 
 <p>Get a dictionary "pitch"=&gt;"notes of that pitch". Optionally only keep pitches that are contained in <code>allowed</code>.</p>
+<p><a id='Timeseries-Extraction-1'></a></p>
+<h2 id="timeseries-extraction">Timeseries Extraction</h2>
 <p><a id='MusicManipulations.timeseries' href='#MusicManipulations.timeseries'>#</a>
 <strong><code>MusicManipulations.timeseries</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>timeseries(notes::Notes, property, f [, grid]) -&gt; tvec, ts
+<div class="codehilite"><pre><span></span><span class="n">timeseries</span><span class="p">(</span><span class="n">notes</span><span class="o">::</span><span class="n">Notes</span><span class="p">,</span> <span class="n">property</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">grid</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">tvec</span><span class="p">,</span> <span class="n">ts</span>
 </pre></div>
 
 
-<p>Produce a timeseries of the <code>property</code> of the given notes, optionally first quantizing on the given <code>grid</code>.</p>
-<p>After quantization, it is often the case that many notes are in the same bin of the grid. The <strong>function</strong> <code>f</code> denotes which value of the vector of the <code>property</code> of the notes to keep. Typical values are <code>minimum, maximum, mean</code>, etc (<em>for type stability the returned timeseries are always <code>Float64</code></em>).</p>
-<p>The <code>property</code> can be <code>:velocity</code>, <code>:pitch</code>, or <code>:duration</code>. Grid bins without any notes are given the value <code>0</code>. This <strong>can be problematic</strong> if you request for <code>:pitch</code> and your <code>notes</code> also include notes which actually have pitch <code>0</code>, i.e. <code>C0</code>.</p>
+<p>Produce a timeseries of the <code>property</code> of the given notes, by first quantizing on the given <code>grid</code> (to avoid actual quantization use the grid <code>0:1//notes.tpq:1</code>). Return the time vector <code>tvec</code> in ticks and the produced timeseries <code>ts</code>.</p>
+<p>After quantization, it is often the case that many notes are in the same bin of the grid. The <strong>function</strong> <code>f</code> denotes which value of the vector of the <code>property</code> of the notes to keep. Typical values are <code>minimum, maximum, mean</code>, etc. Notice that bins without any note in them obtain the value <code>missing</code>, regardless of the function <code>f</code> or the <code>property</code>.</p>
+<p>If the <code>property</code> is <code>:velocity</code>, <code>:pitch</code>, or <code>:duration</code> the function behaves exactly as described. The <code>property</code> can also be <code>:position</code>. In this case, the timeseries <code>ts</code> contain the timing deviations of the notes with respect to the <code>tvec</code> vector (these numbers are known as <em>microtiming deviations</em> in the literature.)</p>
+<p>Here is an example:</p>
+<p>```@example
+using MusicManipulations, PyPlot
+midi = readMIDIFile(testmidi())
+notes = getnotes(midi, 4)</p>
+<p>swung_8s = [0, 2//3, 1]
+t, vel = timeseries(notes, :velocity, mean, swung_8s)</p>
+<p>notmiss = findall(!ismissing, vel)</p>
+<p>fig, (ax1, ax2) = subplots(2,1)
+ax1.scatter(t[notmiss], vel[notmiss])
+ax1.set_ylabel("velocity")</p>
+<p>t, mtd = timeseries(notes, :position, mean, swung_8s)
+ax2.scatter(t[notmiss], mtd[notmiss], color = "C1")
+ax2.set_ylabel("timing deviations")
+ax2.set_xlabel("ticks")
+tight_layout() # hide
+savefig("timeseries.png"); nothing # hide
+```</p>
+<p><img alt="" src="../timeseries.png" /></p>
                 
                   
                 
