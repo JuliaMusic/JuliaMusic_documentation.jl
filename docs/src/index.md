@@ -1,8 +1,6 @@
 # Introduction
-This documentation describes how to use packages of the [JuliaMusic](https://github.com/JuliaMusic). They are about reading, manipulating
-and saving data related with music. Most of the functionality
-comes in the form of the [MIDI](https://en.wikipedia.org/wiki/MIDI) format
-which is described later on this page.
+This documentation describes how to use packages of the [JuliaMusic](https://github.com/JuliaMusic), which are about reading, manipulating and saving data related with music, and are written in the [Julia](https://julialang.org/) programming language.
+Most of the functionality comes in the form of the [MIDI](https://en.wikipedia.org/wiki/MIDI) format which is described later on this page.
 
 !!! info "News"
     Check out the page "News" for the latest updates to our packages.
@@ -24,6 +22,9 @@ end
 f() # hide
 ```
 using [Material+MkDocs](https://squidfunk.github.io/mkdocs-material/),  [Literate.jl](https://github.com/fredrikekre/Literate.jl) and [Documenter.jl](https://github.com/JuliaDocs/Documenter.jl/).
+
+## Getting Started
+The current documentation assumes that you are already familiar with the MIDI format and the [Julia](https://julialang.org/) language. After you have installed Julia, you can install the packages you'd like by pressing `]` in the Julia REPL (to access the package manager mode) and then `add MIDI MusicManipulations`. To learn a bit more about the MIDI format you can see the [MIDI: The least you need to know](@ref) section. The [Overview](@ref) section displays the offered functionality of JuliaMusic.
 
 ## Citing
 

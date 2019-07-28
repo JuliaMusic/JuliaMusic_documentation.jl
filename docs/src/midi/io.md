@@ -1,22 +1,22 @@
 # Basic MIDI Structures
-
+MIDI files are loaded to/from disc and transformed into a Julia structure `MIDIFile`, which contains `MIDITrack`s.
 ## `MIDIFile`
-```@docs
-MIDIFile
-```
-
 To read and write a MIDI file, use
 ```@docs
 readMIDIFile
 writeMIDIFile
 ```
-
+---
+The above functions return / use the `MIDIFile` type:
+```@docs
+MIDIFile
+```
 ---
 
 ## `MIDITrack`
 The most important field of a `MIDIFile` is the `tracks` field. It contains as
 many tracks as the user wants. The tracks themselves contain all "musical" information
-in the form of the "events" we mentioned in the introduction:
+in the form of the "events" we mentioned in [MIDI: The least you need to know](@ref).
 ```@docs
 MIDITrack
 TrackEvent

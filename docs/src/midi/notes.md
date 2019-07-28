@@ -1,19 +1,15 @@
 # Notes
 
 Note information in MIDI files is typically encoded using `NOTEON` and `NOTEOFF` events.
-A music note however contains more information besides the start and end; we bundle this information with the following two types:
+A music note however contains more information besides the start and end; we bundle this information into the types [`Note`](@ref) and [`Notes`](@ref).
+These two structures are central to the way JuliaMusic operates.
+In addition, all note events of a [`MIDITrack`](@ref) can be obtained with the function [`getnotes`](@ref).
+
 ```@docs
 Note
 Notes
-```
-
----
-
-To get all the notes in a [`MIDITrack`](@ref), you can use
-```@docs
 getnotes
 ```
-
 ---
 
 If you have some notes and you want to add them to a track, use
