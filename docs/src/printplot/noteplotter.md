@@ -13,9 +13,10 @@ using MusicManipulations, PyPlot
 testdir = joinpath(dirname(dirname(pathof(MusicManipulations))), "test")
 midi = readMIDIFile(joinpath(testdir, "mfi_grapevine_1.mid"))
 
-piano = getnotes(midi, 4)
 grid = 0:1//4:1
-
+piano = getnotes(midi, 4)
+```
+```@example noteplot
 noteplotter(piano; st = 15300, grid = grid)
 tight_layout() # hide
 savefig("pianoroll.png"); nothing # hide
