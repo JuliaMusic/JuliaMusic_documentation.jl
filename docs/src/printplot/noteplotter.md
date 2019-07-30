@@ -10,7 +10,7 @@ noteplotter
 ```@example noteplot
 using MusicManipulations, PyPlot
 
-testdir = joinpath(pathof(MusicManipulations), "..", "..", "test")
+testdir = joinpath(dirname(dirname(pathof(MusicManipulations))), "test")
 midi = readMIDIFile(joinpath(testdir, "mfi_grapevine_1.mid"))
 
 piano = getnotes(midi, 4)
