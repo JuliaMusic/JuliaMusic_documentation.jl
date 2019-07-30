@@ -7,7 +7,7 @@ A highlight of JuliaMusic is the [`timeseries`](@ref) function, which allows one
 
 ```@docs
 firstnotes
-allowedpitches
+filterpitches
 separatepitches
 ```
 

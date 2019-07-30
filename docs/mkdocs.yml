@@ -40,6 +40,7 @@ pages:
 - Quantizing: mm/quantizing.md
 - Music Data Extraction: mm/extraction.md
 - Printing Notes into Score: printplot/musescore.md
+- Plotting Notes: printplot/noteplotter.md
 - Motif Sequence Generation: motif/basic.md
 - Music Motifs Example: motif/musicexample.md
 - News: news.md

@@ -5,7 +5,7 @@ Most of the functionality comes in the form of the [MIDI](https://en.wikipedia.o
 !!! info "News"
     Check out the page "News" for the latest updates to our packages.
 
-    Latest news: brand new [`timeseries`](@ref) function!
+    Latest news: functionality to plot notes like a "piano roll"! See [`noteplotter`](@ref) for examples!
 
 
 The current documentation was built with the following package versions

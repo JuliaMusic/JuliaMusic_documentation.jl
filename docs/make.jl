@@ -17,10 +17,12 @@ for file in tobe
     # Literate.notebook(f, dirname(f))
     # Literate.script(f, dirname(f);name = f[1:end-3]*"_script")
 end
-
+PyPlot.ioff()
 makedocs(modules=[MIDI,
 MusicManipulations, MotifSequenceGenerator],
 doctest=false, root = @__DIR__, format = Markdown())
+PyPlot.close("all")
+PyPlot.ion()
 
 #%% Deploy
 if !Sys.iswindows()

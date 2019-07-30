@@ -1,5 +1,5 @@
 ```@meta
-EditURL = "https://github.com/TRAVIS_REPO_SLUG/blob/master/"
+EditURL = "@__REPO_ROOT_URL__/"
 ```
 
 # Music Motif Examples
@@ -37,8 +37,8 @@ using MusicManipulations # re-exports MIDI
 
 tpq = 960 # ticks per quarter note
 sixt = 240 # duration of sixteenth note
-left = name_to_pitch("A4")
-right = name_to_pitch("E5")
+left = name_to_pitch("A5")
+right = name_to_pitch("E6")
 ```
 
 Reminder: `Note(pitch, intensity, start, duration)`
@@ -178,3 +178,4 @@ musescore("drums_patterns_with_names.png", MIDIFile(1, 960, [track]))
 ![Correct 32-bar pattern sequence](drums_patterns_with_names.png)
 
 Isn't it cool that even the lyrics text was displayed so seamlessly?
+
