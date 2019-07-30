@@ -476,7 +476,7 @@
 <h2 id="piano-notes">Piano notes</h2>
 <p>```@example noteplot
 using MusicManipulations, PyPlot</p>
-<p>testdir = joinpath(pathof(MusicManipulations), "..", "..", "test")
+<p>testdir = joinpath(dirname(dirname(pathof(MusicManipulations))), "test")
 midi = readMIDIFile(joinpath(testdir, "mfi_grapevine_1.mid"))</p>
 <p>piano = getnotes(midi, 4)
 grid = 0:1//4:1</p>
