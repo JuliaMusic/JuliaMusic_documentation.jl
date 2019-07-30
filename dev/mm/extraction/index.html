@@ -364,6 +364,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../printplot/noteplotter/" title="Plotting Notes" class="md-nav__link">
+      Plotting Notes
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
     <a href="../../motif/basic/" title="Motif Sequence Generation" class="md-nav__link">
       Motif Sequence Generation
     </a>
@@ -460,13 +472,13 @@
 
 <p>Return the notes that first appear in each grid point, <em>without quantizing them</em>.</p>
 <p>This function <em>does not</em> consider the notes modulo the quarter note! Different quarter notes have different grid points.</p>
-<p><a id='MusicManipulations.allowedpitches' href='#MusicManipulations.allowedpitches'>#</a>
-<strong><code>MusicManipulations.allowedpitches</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span><span class="n">allowedpitches</span><span class="p">(</span><span class="n">notes</span><span class="o">::</span><span class="n">Notes</span><span class="p">,</span> <span class="n">allowed</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">newnotes</span>
+<p><a id='MusicManipulations.filterpitches' href='#MusicManipulations.filterpitches'>#</a>
+<strong><code>MusicManipulations.filterpitches</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span><span class="n">filterpitches</span><span class="p">(</span><span class="n">notes</span><span class="o">::</span><span class="n">Notes</span><span class="p">,</span> <span class="n">filters</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">newnotes</span>
 </pre></div>
 
 
-<p>Only keep the notes that have a pitch specified in <code>allowed</code> (one or many pitches).</p>
+<p>Only keep the notes that have a pitch specified in <code>filters</code> (one or many pitches).</p>
 <p><a id='MusicManipulations.separatepitches' href='#MusicManipulations.separatepitches'>#</a>
 <strong><code>MusicManipulations.separatepitches</code></strong> &mdash; <em>Function</em>.</p>
 <div class="codehilite"><pre><span></span><span class="n">separatepitches</span><span class="p">(</span><span class="n">notes</span><span class="o">::</span><span class="n">Notes</span> <span class="p">[,</span> <span class="n">allowed</span><span class="p">])</span>

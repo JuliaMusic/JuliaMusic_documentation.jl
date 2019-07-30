@@ -378,6 +378,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../printplot/noteplotter/" title="Plotting Notes" class="md-nav__link">
+      Plotting Notes
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
     <a href="../../motif/basic/" title="Motif Sequence Generation" class="md-nav__link">
       Motif Sequence Generation
     </a>
@@ -477,17 +489,17 @@
                 
                 <p><a id='Notes-1'></a></p>
 <h1 id="notes">Notes</h1>
-<p>Note information in MIDI files is typically encoded using <code>NOTEON</code> and <code>NOTEOFF</code> events. A music note however contains more information besides the start and end; we bundle this information with the following two types:</p>
+<p>Note information in MIDI files is typically encoded using <code>NOTEON</code> and <code>NOTEOFF</code> events. A music note however contains more information besides the start and end; we bundle this information into the types <a href="./#MIDI.Note"><code>Note</code></a> and <a href="./#MIDI.Notes"><code>Notes</code></a>. These two structures are central to the way JuliaMusic operates. In addition, all note events of a <a href="../io/#MIDI.MIDITrack"><code>MIDITrack</code></a> can be obtained with the function <a href="./#MIDI.getnotes"><code>getnotes</code></a>.</p>
 <p><a id='MIDI.Note' href='#MIDI.Note'>#</a>
 <strong><code>MIDI.Note</code></strong> &mdash; <em>Type</em>.</p>
 <div class="codehilite"><pre><span></span><span class="n">Note</span> <span class="o">&lt;:</span> <span class="n">AbstractNote</span>
 </pre></div>
 
 
-<p>Data structure describing a "music note".</p>
+<p>Mutable data structure describing a "music note". A bundle of many notes results in the <a href="./#MIDI.Notes"><code>Notes</code></a> struct, which is the output of the <a href="./#MIDI.getnotes"><code>getnotes</code></a> function.</p>
 <p><strong>Fields:</strong></p>
 <ul>
-<li><code>pitch::UInt8</code> : Pitch, starting from C0 = 0, adding one per semitone (middle-C is 60).</li>
+<li><code>pitch::UInt8</code> : Pitch, starting from C-1 = 0, adding one per semitone. Use the functions <a href="./#MIDI.name_to_pitch"><code>name_to_pitch</code></a> and <a href="./#MIDI.pitch_to_name"><code>pitch_to_name</code></a> for integer and string representations.</li>
 <li><code>velocity::UInt8</code> : Dynamic intensity. Cannot be higher than 127 (0x7F).</li>
 <li><code>position::UInt</code> : Position in absolute time (since beginning of track), in ticks.</li>
 <li><code>duration::UInt</code> : Duration in ticks.</li>
@@ -503,12 +515,10 @@
 <p>Data structure describing a collection of "music notes", bundled with a ticks per quarter note measure.</p>
 <p><strong>Fields:</strong></p>
 <ul>
-<li><code>notes::Vector{N}</code></li>
+<li><code>notes::Vector{N} where {N &lt;: Notes}</code></li>
 <li><code>tpq::Int16</code> : Ticks per quarter note. Defines the fundamental unit of measurement  of a note's position and duration, as well as the length of one quarter note.  Takes values from 1 to 960.</li>
 </ul>
 <p><code>Notes</code> is iterated and accessed as if iterating or accessing its field <code>notes</code>.</p>
-<hr />
-<p>To get all the notes in a <a href="../io/#MIDI.MIDITrack"><code>MIDITrack</code></a>, you can use</p>
 <p><a id='MIDI.getnotes' href='#MIDI.getnotes'>#</a>
 <strong><code>MIDI.getnotes</code></strong> &mdash; <em>Function</em>.</p>
 <div class="codehilite"><pre><span></span><span class="n">getnotes</span><span class="p">(</span><span class="n">midi</span><span class="o">::</span><span class="n">MIDIFile</span><span class="p">,</span> <span class="n">trackno</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
@@ -617,7 +627,7 @@
 <li><code>sharp</code> : one of <code>"#"</code> <code>"♯"</code> or <code>""</code>.</li>
 <li><code>octave</code> : any integer (as a string), the octave number (an octave is 12 pitches). If not given it is assumed <code>"5"</code>.</li>
 </ul>
-<p>We define E.g. <code>name_to_pitch("C4") === 60</code> (i.e. string <code>"C4"</code>, representing the middle-C, corresponds to be pitch <code>60</code>).</p>
+<p>We define E.g. <code>name_to_pitch("C4") === 60</code> (i.e. string <code>"C4"</code>, representing the middle-C, corresponds to pitch <code>60</code>).</p>
 <p>See http://newt.phys.unsw.edu.au/jw/notes.html and https://en.wikipedia.org/wiki/C<em>(musical</em>note) .</p>
 <p><a id='MIDI.pitch_to_name' href='#MIDI.pitch_to_name'>#</a>
 <strong><code>MIDI.pitch_to_name</code></strong> &mdash; <em>Function</em>.</p>
@@ -625,7 +635,7 @@
 </pre></div>
 
 
-<p>Return the name of the pitch, e.g. <code>F5</code>, <code>A♯3</code> etc. in modern notation given the value in integer.</p>
+<p>Return the name of the pitch, e.g. <code>F5</code>, <code>A♯3</code> etc. in modern notation given the pitch value in integer.</p>
 <p>Reminder: middle C has pitch <code>60</code> and is displayed as <code>C4</code>.</p>
 <p><a id='MusicManipulations.note_to_fundamental' href='#MusicManipulations.note_to_fundamental'>#</a>
 <strong><code>MusicManipulations.note_to_fundamental</code></strong> &mdash; <em>Function</em>.</p>

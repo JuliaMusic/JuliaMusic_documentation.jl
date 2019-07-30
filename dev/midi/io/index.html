@@ -378,6 +378,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../printplot/noteplotter/" title="Plotting Notes" class="md-nav__link">
+      Plotting Notes
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
     <a href="../../motif/basic/" title="Motif Sequence Generation" class="md-nav__link">
       Motif Sequence Generation
     </a>
@@ -477,21 +489,9 @@
                 
                 <p><a id='Basic-MIDI-Structures-1'></a></p>
 <h1 id="basic-midi-structures">Basic MIDI Structures</h1>
+<p>MIDI files are loaded to/from disc and transformed into a Julia structure <code>MIDIFile</code>, which contains <code>MIDITrack</code>s.</p>
 <p><a id='MIDIFile-1'></a></p>
 <h2 id="midifile"><code>MIDIFile</code></h2>
-<p><a id='MIDI.MIDIFile' href='#MIDI.MIDIFile'>#</a>
-<strong><code>MIDI.MIDIFile</code></strong> &mdash; <em>Type</em>.</p>
-<div class="codehilite"><pre><span></span><span class="n">MIDIFile</span> <span class="o">&lt;:</span> <span class="kt">Any</span>
-</pre></div>
-
-
-<p>Type representing a file of MIDI data.</p>
-<p><strong>Fields</strong></p>
-<ul>
-<li><code>format::UInt16</code> : The format of the file. Can be 0, 1 or 2.</li>
-<li><code>tpq::Int16</code> : The time division of the track, ticks-per-quarter-note.</li>
-<li><code>tracks::Array{MIDITrack, 1}</code> : The array of contained tracks.</li>
-</ul>
 <p>To read and write a MIDI file, use</p>
 <p><a id='MIDI.readMIDIFile' href='#MIDI.readMIDIFile'>#</a>
 <strong><code>MIDI.readMIDIFile</code></strong> &mdash; <em>Function</em>.</p>
@@ -513,9 +513,24 @@
 
 <p>Create a <code>MIDIFile</code> directly from <code>notes</code>, using format 1.</p>
 <hr />
+<p>The above functions return / use the <code>MIDIFile</code> type:</p>
+<p><a id='MIDI.MIDIFile' href='#MIDI.MIDIFile'>#</a>
+<strong><code>MIDI.MIDIFile</code></strong> &mdash; <em>Type</em>.</p>
+<div class="codehilite"><pre><span></span><span class="n">MIDIFile</span> <span class="o">&lt;:</span> <span class="kt">Any</span>
+</pre></div>
+
+
+<p>Type representing a file of MIDI data.</p>
+<p><strong>Fields</strong></p>
+<ul>
+<li><code>format::UInt16</code> : The format of the file. Can be 0, 1 or 2.</li>
+<li><code>tpq::Int16</code> : The time division of the track, ticks-per-quarter-note.</li>
+<li><code>tracks::Array{MIDITrack, 1}</code> : The array of contained tracks.</li>
+</ul>
+<hr />
 <p><a id='MIDITrack-1'></a></p>
 <h2 id="miditrack"><code>MIDITrack</code></h2>
-<p>The most important field of a <code>MIDIFile</code> is the <code>tracks</code> field. It contains as many tracks as the user wants. The tracks themselves contain all "musical" information in the form of the "events" we mentioned in the introduction:</p>
+<p>The most important field of a <code>MIDIFile</code> is the <code>tracks</code> field. It contains as many tracks as the user wants. The tracks themselves contain all "musical" information in the form of the "events" we mentioned in <a href="../..#MIDI:-The-least-you-need-to-know-1">MIDI: The least you need to know</a>.</p>
 <p><a id='MIDI.MIDITrack' href='#MIDI.MIDITrack'>#</a>
 <strong><code>MIDI.MIDITrack</code></strong> &mdash; <em>Type</em>.</p>
 <div class="codehilite"><pre><span></span><span class="n">MIDITrack</span> <span class="o">&lt;:</span> <span class="kt">Any</span>
