@@ -474,13 +474,37 @@
 <hr />
 <p><a id='Piano-notes-1'></a></p>
 <h2 id="piano-notes">Piano notes</h2>
+<div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">MusicManipulations</span><span class="p">,</span> <span class="n">PyPlot</span>
+
+<span class="n">testdir</span> <span class="o">=</span> <span class="n">joinpath</span><span class="p">(</span><span class="n">dirname</span><span class="p">(</span><span class="n">dirname</span><span class="p">(</span><span class="n">pathof</span><span class="p">(</span><span class="n">MusicManipulations</span><span class="p">))),</span> <span class="s">&quot;test&quot;</span><span class="p">)</span>
+<span class="n">midi</span> <span class="o">=</span> <span class="n">readMIDIFile</span><span class="p">(</span><span class="n">joinpath</span><span class="p">(</span><span class="n">testdir</span><span class="p">,</span> <span class="s">&quot;mfi_grapevine_1.mid&quot;</span><span class="p">))</span>
+
+<span class="n">grid</span> <span class="o">=</span> <span class="mi">0</span><span class="o">:</span><span class="mi">1</span><span class="o">//</span><span class="mi">4</span><span class="o">:</span><span class="mi">1</span>
+<span class="n">piano</span> <span class="o">=</span> <span class="n">getnotes</span><span class="p">(</span><span class="n">midi</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="mi">822</span> <span class="n">Notes</span> <span class="k">with</span> <span class="n">tpq</span><span class="o">=</span><span class="mi">960</span>
+ <span class="n">Note</span> <span class="n">C2</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">78</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">291</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">154</span>
+ <span class="n">Note</span> <span class="n">D2</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">53</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">503</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">206</span>
+ <span class="n">Note</span> <span class="n">C2</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">80</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">621</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">194</span>
+ <span class="n">Note</span> <span class="n">F4</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">99</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">15319</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">1217</span>
+ <span class="n">Note</span> <span class="n">A4</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">99</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">15319</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">1275</span>
+ <span class="n">Note</span> <span class="n">D5</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">97</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">15328</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">1314</span>
+ <span class="n">Note</span> <span class="n">D3</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">97</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">15342</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">1772</span>
+  <span class="err">⋮</span>
+ <span class="n">Note</span> <span class="n">E5</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">87</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">317175</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">114</span>
+ <span class="n">Note</span> <span class="n">F5</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">81</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">317614</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">233</span>
+ <span class="n">Note</span> <span class="n">G4</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">82</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">317622</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">196</span>
+ <span class="n">Note</span> <span class="n">B4</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">58</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">317624</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">197</span>
+ <span class="n">Note</span> <span class="n">G4</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">92</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">318077</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">197</span>
+ <span class="n">Note</span> <span class="n">E5</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">99</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">318082</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">181</span>
+ <span class="n">Note</span> <span class="n">B4</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">56</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">318120</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">104</span>
+</pre></div>
+
+
 <p>```@example noteplot
-using MusicManipulations, PyPlot</p>
-<p>testdir = joinpath(dirname(dirname(pathof(MusicManipulations))), "test")
-midi = readMIDIFile(joinpath(testdir, "mfi_grapevine_1.mid"))</p>
-<p>piano = getnotes(midi, 4)
-grid = 0:1//4:1</p>
-<p>noteplotter(piano; st = 15300, grid = grid)
+noteplotter(piano; st = 15300, grid = grid)
 tight_layout() # hide
 savefig("pianoroll.png"); nothing # hide</p>
 <div class="codehilite"><pre><span></span><span class="o">!</span>[]<span class="ss">(</span><span class="nv">pianoroll</span>.<span class="nv">png</span><span class="ss">)</span>
