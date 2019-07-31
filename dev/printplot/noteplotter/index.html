@@ -352,6 +352,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#drum-notes" title="Drum notes" class="md-nav__link">
+    Drum notes
+  </a>
+  
+</li>
+      
       
       
       
@@ -426,6 +433,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#drum-notes" title="Drum notes" class="md-nav__link">
+    Drum notes
+  </a>
+  
+</li>
+      
       
       
       
@@ -460,6 +474,7 @@
 <li>y axis being the "pitch" or "value" of the notes (see below)</li>
 <li>color being the velocity of the notes</li>
 </ul>
+<p>Then return the values of the y axis.</p>
 <p><strong>Keywords</strong></p>
 <ul>
 <li><code>st = (notes[1].position ÷ notes.tpq) * notes.tpq</code>  time to start plotting from</li>
@@ -503,55 +518,45 @@
 </pre></div>
 
 
-<p>```@example noteplot
-noteplotter(piano; st = 15300, grid = grid)
-tight_layout() # hide
-savefig("pianoroll.png"); nothing # hide</p>
-<div class="codehilite"><pre><span></span><span class="o">!</span>[]<span class="ss">(</span><span class="nv">pianoroll</span>.<span class="nv">png</span><span class="ss">)</span>
+<div class="codehilite"><pre><span></span><span class="n">noteplotter</span><span class="p">(</span><span class="n">piano</span><span class="p">;</span> <span class="n">st</span> <span class="o">=</span> <span class="mi">15300</span><span class="p">,</span> <span class="n">grid</span> <span class="o">=</span> <span class="n">grid</span><span class="p">)</span>
+</pre></div>
 
 
-<span class="o">&lt;</span><span class="nv">a</span> <span class="nv">id</span><span class="o">=</span><span class="s1">&#39;</span><span class="s">Drum-notes-1</span><span class="s1">&#39;</span><span class="o">&gt;&lt;/</span><span class="nv">a</span><span class="o">&gt;</span>
-
-## <span class="nv">Drum</span> <span class="nv">notes</span>
-
-
-<span class="nv">The</span> <span class="nv">nice</span> <span class="nv">thing</span> <span class="nv">about</span> [`<span class="nv">noteplotter</span>`]<span class="ss">(</span><span class="nv">noteplotter</span>.<span class="nv">md</span>#<span class="nv">MusicManipulations</span>.<span class="nv">noteplotter</span><span class="ss">)</span> <span class="nv">is</span> <span class="nv">that</span> <span class="nv">it</span> <span class="nv">is</span> <span class="nv">fully</span> <span class="nv">customizable</span>, <span class="nv">via</span> <span class="nv">its</span> <span class="nv">argument</span> `<span class="nv">plotnote</span><span class="o">!</span>`. <span class="nv">In</span> <span class="nv">this</span> <span class="nv">section</span> <span class="nv">we</span> <span class="k">show</span> <span class="nv">an</span> <span class="nv">example</span> <span class="nv">of</span> <span class="nv">how</span> [`<span class="nv">noteplotter</span>`]<span class="ss">(</span><span class="nv">noteplotter</span>.<span class="nv">md</span>#<span class="nv">MusicManipulations</span>.<span class="nv">noteplotter</span><span class="ss">)</span> <span class="nv">can</span> <span class="nv">be</span> <span class="nv">used</span> <span class="nv">to</span> <span class="nv">plot</span> <span class="nv">drum</span> <span class="nv">notes</span> <span class="nv">in</span> <span class="nv">drum</span> <span class="nv">notation</span>, <span class="nv">similarly</span> <span class="nv">to</span> <span class="nv">Cubase</span><span class="s1">&#39;</span><span class="s">s GM Map.</span>
-
-
-<span class="nv">The</span> <span class="nv">first</span> <span class="nv">step</span> <span class="nv">is</span> <span class="nv">defining</span> <span class="nv">a</span> <span class="nv">specific</span> <span class="nv">function</span> <span class="k">for</span> `<span class="nv">plotnote</span><span class="o">!</span>`. <span class="nv">Since</span> <span class="nv">the</span> <span class="nv">duration</span> <span class="nv">of</span> <span class="nv">the</span> <span class="nv">notes</span> <span class="nv">does</span> <span class="nv">not</span> <span class="nv">have</span> <span class="nv">meaning</span> <span class="nv">in</span> <span class="nv">this</span> <span class="nv">case</span>, <span class="nv">we</span> <span class="nv">can</span> <span class="nv">just</span> <span class="nv">scatter</span> <span class="nv">plot</span> <span class="nv">their</span> <span class="nv">position</span>. <span class="nv">Also</span>, <span class="nv">we</span> <span class="nv">can</span> <span class="nv">use</span> <span class="nv">different</span> <span class="nv">symbols</span> <span class="k">for</span> <span class="nv">different</span> <span class="nv">drum</span> <span class="nv">parts</span>, <span class="nv">e</span>.<span class="nv">g</span>. <span class="nv">circles</span> <span class="k">for</span> <span class="nv">snare</span> <span class="nv">and</span> <span class="nv">bass</span> <span class="nv">drum</span> <span class="nv">and</span> <span class="nv">Xs</span> <span class="k">for</span> <span class="nv">hihat</span> <span class="nv">and</span> <span class="nv">cymbals</span>.
-
-
-```<span class="nv">julia</span>
-<span class="nv">function</span> <span class="nv">plotdrumnote</span><span class="o">!</span><span class="ss">(</span><span class="nv">ax</span>, <span class="nv">note</span>, <span class="nv">cmap</span><span class="ss">)</span>
-    <span class="nv">p</span> <span class="o">=</span> <span class="nv">note</span>.<span class="nv">pitch</span>
-    <span class="k">if</span> <span class="nv">p</span> <span class="o">==</span> <span class="mi">0</span><span class="nv">x24</span> # <span class="nv">kick</span>
-        <span class="nv">v</span>, <span class="nv">m</span> <span class="o">=</span> <span class="mi">1</span>, <span class="s2">&quot;</span><span class="s">o</span><span class="s2">&quot;</span>
-    <span class="k">elseif</span> <span class="nv">p</span> ∈ <span class="ss">(</span><span class="mi">0</span><span class="nv">x26</span>, <span class="mi">0</span><span class="nv">x28</span><span class="ss">)</span> # <span class="nv">snare</span>
-        <span class="nv">v</span>, <span class="nv">m</span> <span class="o">=</span> <span class="mi">3</span>, <span class="s2">&quot;</span><span class="s">o</span><span class="s2">&quot;</span>
-    <span class="k">elseif</span> <span class="nv">p</span> ∈ <span class="ss">(</span><span class="mi">0</span><span class="nv">x16</span>, <span class="mi">0</span><span class="nv">x1a</span><span class="ss">)</span> # <span class="nv">hihat</span> <span class="nv">rim</span>
-        <span class="nv">v</span>, <span class="nv">m</span> <span class="o">=</span> <span class="mi">5</span>, <span class="s2">&quot;</span><span class="s">X</span><span class="s2">&quot;</span>
-    <span class="k">elseif</span> <span class="nv">p</span> ∈ <span class="ss">(</span><span class="mi">0</span><span class="nv">x2e</span>, <span class="mi">0</span><span class="nv">x2a</span><span class="ss">)</span> # <span class="nv">hihat</span> <span class="nv">head</span>
-        <span class="nv">v</span>, <span class="nv">m</span> <span class="o">=</span> <span class="mi">5</span>, <span class="s2">&quot;</span><span class="s">x</span><span class="s2">&quot;</span>
-    <span class="k">elseif</span> <span class="nv">p</span> <span class="o">==</span> <span class="mi">0</span><span class="nv">x35</span> # <span class="nv">ride</span> <span class="nv">bell</span>
-        <span class="nv">v</span>, <span class="nv">m</span> <span class="o">=</span> <span class="mi">6</span>, <span class="s2">&quot;</span><span class="s">D</span><span class="s2">&quot;</span>
-    <span class="k">elseif</span> <span class="nv">p</span> <span class="o">==</span> <span class="mi">0</span><span class="nv">x33</span> # <span class="nv">ride</span> <span class="nv">head</span>
-        <span class="nv">v</span>, <span class="nv">m</span> <span class="o">=</span> <span class="mi">6</span>, <span class="s2">&quot;</span><span class="s">x</span><span class="s2">&quot;</span>
-    <span class="k">elseif</span> <span class="nv">p</span> <span class="o">==</span> <span class="mi">0</span><span class="nv">x3b</span> # <span class="nv">ride</span> <span class="nv">rim</span>
-        <span class="nv">v</span>, <span class="nv">m</span> <span class="o">=</span> <span class="mi">6</span>, <span class="s2">&quot;</span><span class="s">X</span><span class="s2">&quot;</span>
-    <span class="k">elseif</span> <span class="nv">p</span> ∈ <span class="ss">(</span><span class="mi">0</span><span class="nv">x30</span>, <span class="mi">0</span><span class="nv">x32</span><span class="ss">)</span> # <span class="nv">tom</span> <span class="mi">1</span>
-        <span class="nv">v</span>, <span class="nv">m</span> <span class="o">=</span> <span class="mi">4</span>, <span class="s2">&quot;</span><span class="s">s</span><span class="s2">&quot;</span>
-    <span class="k">elseif</span> <span class="nv">p</span> ∈ <span class="ss">(</span><span class="mi">0</span><span class="nv">x2b</span>, <span class="mi">0</span><span class="nv">x3a</span><span class="ss">)</span> # <span class="nv">tom</span> <span class="mi">3</span>
-        <span class="nv">v</span>, <span class="nv">m</span> <span class="o">=</span> <span class="mi">2</span>, <span class="s2">&quot;</span><span class="s">s</span><span class="s2">&quot;</span>
-    <span class="k">elseif</span> <span class="nv">p</span> ∈ <span class="ss">(</span><span class="mi">0</span><span class="nv">x31</span>, <span class="mi">0</span><span class="nv">x37</span>, <span class="mi">0</span><span class="nv">x34</span>, <span class="mi">0</span><span class="nv">x39</span><span class="ss">)</span>
-        <span class="nv">v</span>, <span class="nv">m</span> <span class="o">=</span> <span class="mi">7</span>, <span class="s2">&quot;</span><span class="s">X</span><span class="s2">&quot;</span>
-    <span class="k">elseif</span> <span class="nv">p</span> <span class="o">==</span> <span class="mi">0</span><span class="nv">x2c</span> # <span class="nv">hihat</span> <span class="nv">foot</span>
-        <span class="nv">v</span>, <span class="nv">m</span> <span class="o">=</span> <span class="mi">1</span>, <span class="s2">&quot;</span><span class="s">x</span><span class="s2">&quot;</span>
+<p><img alt="" src="../pianoroll.png" /></p>
+<p><a id='Drum-notes-1'></a></p>
+<h2 id="drum-notes">Drum notes</h2>
+<p>The nice thing about <a href="./#MusicManipulations.noteplotter"><code>noteplotter</code></a> is that it is fully customizable, via its argument <code>plotnote!</code>. In this section we show an example of how <a href="./#MusicManipulations.noteplotter"><code>noteplotter</code></a> can be used to plot drum notes in drum notation, similarly to Cubase's GM Map.</p>
+<p>The first step is defining a specific function for <code>plotnote!</code>. Since the duration of the notes does not have meaning in this case, we can just scatter plot their position. Also, we can use different symbols for different drum parts, e.g. circles for snare and bass drum and Xs for hihat and cymbals.</p>
+<div class="codehilite"><pre><span></span><span class="k">function</span> <span class="n">plotdrumnote!</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">note</span><span class="p">,</span> <span class="n">cmap</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">note</span><span class="o">.</span><span class="n">pitch</span>
+    <span class="k">if</span> <span class="n">p</span> <span class="o">==</span> <span class="mh">0x24</span> <span class="c"># kick</span>
+        <span class="n">v</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&quot;o&quot;</span>
+    <span class="k">elseif</span> <span class="n">p</span> <span class="o">∈</span> <span class="p">(</span><span class="mh">0x26</span><span class="p">,</span> <span class="mh">0x28</span><span class="p">)</span> <span class="c"># snare</span>
+        <span class="n">v</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="s">&quot;o&quot;</span>
+    <span class="k">elseif</span> <span class="n">p</span> <span class="o">∈</span> <span class="p">(</span><span class="mh">0x16</span><span class="p">,</span> <span class="mh">0x1a</span><span class="p">)</span> <span class="c"># hihat rim</span>
+        <span class="n">v</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="s">&quot;X&quot;</span>
+    <span class="k">elseif</span> <span class="n">p</span> <span class="o">∈</span> <span class="p">(</span><span class="mh">0x2e</span><span class="p">,</span> <span class="mh">0x2a</span><span class="p">)</span> <span class="c"># hihat head</span>
+        <span class="n">v</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="s">&quot;x&quot;</span>
+    <span class="k">elseif</span> <span class="n">p</span> <span class="o">==</span> <span class="mh">0x35</span> <span class="c"># ride bell</span>
+        <span class="n">v</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span> <span class="s">&quot;D&quot;</span>
+    <span class="k">elseif</span> <span class="n">p</span> <span class="o">==</span> <span class="mh">0x33</span> <span class="c"># ride head</span>
+        <span class="n">v</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span> <span class="s">&quot;x&quot;</span>
+    <span class="k">elseif</span> <span class="n">p</span> <span class="o">==</span> <span class="mh">0x3b</span> <span class="c"># ride rim</span>
+        <span class="n">v</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span> <span class="s">&quot;X&quot;</span>
+    <span class="k">elseif</span> <span class="n">p</span> <span class="o">∈</span> <span class="p">(</span><span class="mh">0x30</span><span class="p">,</span> <span class="mh">0x32</span><span class="p">)</span> <span class="c"># tom 1</span>
+        <span class="n">v</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="s">&quot;s&quot;</span>
+    <span class="k">elseif</span> <span class="n">p</span> <span class="o">∈</span> <span class="p">(</span><span class="mh">0x2b</span><span class="p">,</span> <span class="mh">0x3a</span><span class="p">)</span> <span class="c"># tom 3</span>
+        <span class="n">v</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="s">&quot;s&quot;</span>
+    <span class="k">elseif</span> <span class="n">p</span> <span class="o">∈</span> <span class="p">(</span><span class="mh">0x31</span><span class="p">,</span> <span class="mh">0x37</span><span class="p">,</span> <span class="mh">0x34</span><span class="p">,</span> <span class="mh">0x39</span><span class="p">)</span>
+        <span class="n">v</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="mi">7</span><span class="p">,</span> <span class="s">&quot;X&quot;</span>
+    <span class="k">elseif</span> <span class="n">p</span> <span class="o">==</span> <span class="mh">0x2c</span> <span class="c"># hihat foot</span>
+        <span class="n">v</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="s">&quot;x&quot;</span>
     <span class="k">else</span>
-        <span class="nv">error</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">Unknown pitch $(UInt8(p))</span><span class="s2">&quot;</span><span class="ss">)</span>
+        <span class="n">error</span><span class="p">(</span><span class="s">&quot;Unknown pitch </span><span class="si">$</span><span class="p">(</span><span class="kt">UInt8</span><span class="p">(</span><span class="n">p</span><span class="p">))</span><span class="s">&quot;</span><span class="p">)</span>
     <span class="k">end</span>
-    <span class="nv">ax</span>.<span class="nv">scatter</span><span class="ss">(</span><span class="nv">note</span>.<span class="nv">position</span>, <span class="nv">v</span>, <span class="nv">marker</span> <span class="o">=</span> <span class="nv">m</span>, <span class="nv">s</span> <span class="o">=</span> <span class="mi">250</span>,
-        <span class="nv">color</span> <span class="o">=</span> <span class="nv">cmap</span><span class="ss">(</span><span class="nv">min</span><span class="ss">(</span><span class="nv">note</span>.<span class="nv">velocity</span>, <span class="mi">127</span><span class="ss">)</span><span class="o">/</span><span class="mi">127</span><span class="ss">))</span>
-    <span class="k">return</span> <span class="nv">v</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">note</span><span class="o">.</span><span class="n">position</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="n">m</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">250</span><span class="p">,</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="n">cmap</span><span class="p">(</span><span class="n">min</span><span class="p">(</span><span class="n">note</span><span class="o">.</span><span class="n">velocity</span><span class="p">,</span> <span class="mi">127</span><span class="p">)</span><span class="o">/</span><span class="mi">127</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">v</span>
 <span class="k">end</span>
 </pre></div>
 
@@ -586,13 +591,13 @@ savefig("pianoroll.png"); nothing # hide</p>
 
 
 <p>And now here is how plotting some drum notes looks like:</p>
-<p>```@example noteplot
-drums = getnotes(midi, 3)</p>
-<p>noteplotter(drums; st = 15300, grid = grid,
-                   names=TD50_PLOT, plotnote! = plotdrumnote!)
-tight_layout() # hide
-savefig("drumroll.png"); nothing # hide
-```</p>
+<div class="codehilite"><pre><span></span><span class="n">drums</span> <span class="o">=</span> <span class="n">getnotes</span><span class="p">(</span><span class="n">midi</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="n">noteplotter</span><span class="p">(</span><span class="n">drums</span><span class="p">;</span> <span class="n">st</span> <span class="o">=</span> <span class="mi">15300</span><span class="p">,</span> <span class="n">grid</span> <span class="o">=</span> <span class="n">grid</span><span class="p">,</span>
+                   <span class="n">names</span><span class="o">=</span><span class="n">TD50_PLOT</span><span class="p">,</span> <span class="n">plotnote!</span> <span class="o">=</span> <span class="n">plotdrumnote!</span><span class="p">)</span>
+</pre></div>
+
+
 <p><img alt="" src="../drumroll.png" /></p>
                 
                   
