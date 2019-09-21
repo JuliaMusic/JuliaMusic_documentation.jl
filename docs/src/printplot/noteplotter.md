@@ -13,11 +13,11 @@ using MusicManipulations, PyPlot
 testdir = joinpath(dirname(dirname(pathof(MusicManipulations))), "test")
 midi = readMIDIFile(joinpath(testdir, "mfi_grapevine_1.mid"))
 
-grid = 0:1//4:1
+grid16 = 0:1//4:1
 piano = getnotes(midi, 4)
 ```
 ```@example noteplot
-noteplotter(piano; st = 15300, grid = grid)
+noteplotter(piano; st = 15300, grid = grid16)
 tight_layout() # hide
 savefig("pianoroll.png"); nothing # hide
 ```
@@ -80,7 +80,7 @@ And now here is how plotting some drum notes looks like:
 ```@example noteplot
 drums = getnotes(midi, 3)
 
-noteplotter(drums; st = 15300, grid = grid,
+noteplotter(drums; st = 15300, grid = grid16,
                    names=TD50_PLOT, plotnote! = plotdrumnote!)
 tight_layout() # hide
 savefig("drumroll.png"); nothing # hide

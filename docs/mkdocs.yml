@@ -39,8 +39,13 @@ pages:
 - Notes: midi/notes.md
 - Quantizing: mm/quantizing.md
 - Music Data Extraction: mm/extraction.md
-- Printing Notes into Score: printplot/musescore.md
-- Plotting Notes: printplot/noteplotter.md
+- Visualization:
+  - Printing Notes into Score: printplot/musescore.md
+  - Plotting Notes: printplot/noteplotter.md
 - Motif Sequence Generation: motif/basic.md
-- Music Motifs Example: motif/musicexample.md
+- Music Motifs: motif/musicexample.md
+- Becoming a better drummer:
+  - Introduction: blog/intro.md
+  - Ep. 1 - Mixing Drum Patterns: blog/drumpatterns.md
+  - Ep. 2 - Garibaldi inspired dragaddidle: blog/garibaldi_dragadiddle.md
 - News: news.md
