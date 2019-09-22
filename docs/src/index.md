@@ -2,10 +2,8 @@
 This documentation describes how to use packages of the [JuliaMusic](https://github.com/JuliaMusic), which are about reading, manipulating and saving data related with music, and are written in the [Julia](https://julialang.org/) programming language.
 Most of the functionality comes in the form of the [MIDI](https://en.wikipedia.org/wiki/MIDI) format which is described later on this page.
 
-!!! info "News"
-    Check out the page "News" for the latest updates to our packages.
-
-    Latest news: functionality to plot notes like a "piano roll"! See [`noteplotter`](@ref) for examples!
+!!! info "Latest News"
+    Functionality to plot notes like a "piano roll"! See [`noteplotter`](@ref) for examples!
 
 
 The current documentation was built with the following package versions
