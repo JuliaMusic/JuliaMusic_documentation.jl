@@ -28,7 +28,7 @@
 # First, let's define the basic variables necessary for the code.
 
 using MusicManipulations # re-exports MIDI
-cd(@__DIR__)
+cd(@__DIR__) #src
 
 bass = MuseScore.drumkey["Acoustic Bass Drum"]
 snare = MuseScore.drumkey["Acoustic Snare"]
@@ -80,7 +80,7 @@ for j in 1:4 # create the 4 possible variations
     append!(exercises, translate(exercise, (j-1)*bars*16*sixt))
 end
 
-# %% Generate double exercises # src
+# %% Generate double exercises #src
 # We then create a second exrcise type where one quarter note will contain
 # two doubles of foot+hand. There are two ways for this (assuming that we do *not*
 # want the doubles to be next to each other).
@@ -149,6 +149,7 @@ motifs = Notes.([motif0, motif2], tpq)
 # This is easily done by adjusting the  `weight` keyword:
 
 rseq, = random_notes_sequence(motifs, 16sixt*16; weights = [4, 1])
+rseq
 writeMIDIFile("garibaldi_draga_sequence_easy.mid", rseq); #src
 
 # ![exercises](garibaldi_draga_sequence_easy.PNG)
@@ -158,7 +159,7 @@ writeMIDIFile("garibaldi_draga_sequence_easy.mid", rseq); #src
 # more frequently.
 
 rseq, = random_notes_sequence(motifs, 16sixt*16; weights = [2, 1])
-
+rseq
 writeMIDIFile("garibaldi_draga_sequence_hard.mid", rseq); #src
 
 # ![exercises](garibaldi_draga_sequence_hard.PNG)
