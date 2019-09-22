@@ -63,20 +63,20 @@ exercises = Note[]
 
 for j in 1:4 # create the 4 possible variations
 
-    # Create 1 quarter note of the variations
+    ## Create 1 quarter note of the variations
     exercise = [translate(motif0, k*sixt) for k in 0:3]
     exercise[j] = translate(motif1, (j-1)*sixt)
     exercise = vcat(exercise...)
     ex0 = copy(exercise)
 
-    # Repeat to fill one bar with variation. 1 quarter note = 4sixt
+    ## Repeat to fill one bar with variation. 1 quarter note = 4sixt
     for k in 1:3; append!(exercise, translate(ex0, 4k*sixt)); end
     ex0 = copy(exercise)
 
-    # Repeat as many bars as needed. 1 bar = 16 sixt
+    ## Repeat as many bars as needed. 1 bar = 16 sixt
     for b in 0:bars-1; append!(exercise, translate(ex0, 16b*sixt)); end
 
-    # Add it to the exercises (but translated for the bars)
+    ## Add it to the exercises (but translated for the bars)
     append!(exercises, translate(exercise, (j-1)*bars*16*sixt))
 end
 
@@ -93,15 +93,15 @@ for j in 5:6
     exercise = vcat(exercise...)
     ex0 = copy(exercise)
 
-    # Repeat to fill one bar with variation. 1 quarter note = 4sixt
-    # Notice this is a 2 quarter not pattern
+    ## Repeat to fill one bar with variation. 1 quarter note = 4sixt
+    ## Notice this is a 2 quarter not pattern
     for k in 1:1; append!(exercise, translate(ex0, 8k*sixt)); end
     ex0 = copy(exercise)
 
-    # Repeat as many bars as needed. 1 bar = 16 sixt
+    ## Repeat as many bars as needed. 1 bar = 16 sixt
     for b in 0:bars-1; append!(exercise, translate(ex0, 16b*sixt)); end
 
-    # Add it to the exercises (but translated for the bars)
+    ## Add it to the exercises (but translated for the bars)
     append!(exercises, translate(exercise, (j-1)*bars*16*sixt))
 end
 
@@ -151,7 +151,6 @@ rseq, = random_notes_sequence(motifs, 16sixt*16; weights = [4, 1])
 writeMIDIFile("garibaldi_draga_sequence_easy.mid", rseq)
 
 # ![exercises](garibaldi_draga_sequence_easy.PNG)
-
 
 # %% Generate harder random sequence (32nd notes are more frequent)
 # Finally, I'll make one more exercise where the foot+hand double appears a bit

@@ -4,13 +4,13 @@ using Documenter, Literate, DocumenterMarkdown, PyPlot, Statistics
 #%% Literate Conversions
 # all files in `tobe` will be converted
 tobe = [
-# "printplot/musescore.jl"
-"blog/drumpatterns.jl"
-"blog/garibaldi_dragadiddle.jl"
+    # "printplot/musescore.jl"
+    "blog/drumpatterns.jl"
+    "blog/garibaldi_dragadiddle.jl"
 ]
 
 for file in tobe
-    f = joinpath(@__DIR__, "/src/", file)
+    f = joinpath(@__DIR__, "src", file)
     Literate.markdown(f, dirname(f); credit = false)
     # Literate.notebook(f, dirname(f))
     # Literate.script(f, dirname(f);name = f[1:end-3]*"_script")
