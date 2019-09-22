@@ -536,10 +536,10 @@
                 <p><a id='Garibaldi's-FootHand-doubles-1'></a></p>
 <h1 id="garibaldis-foothand-doubles">Garibaldi's Foot+Hand doubles</h1>
 <p>Have a look at the following simple rudiment involving a double stroke</p>
-<p><img alt="dragadiddle" src="../draga_example_1.png" /></p>
+<p><img alt="dragadiddle" src="../draga_example_1.PNG" /></p>
 <p>Here the sticking could be single strokes, as in <strong>Rr L R L</strong> on repeat, or it can also follow the standard "dragadiddle", <strong>Rr L R R Ll R L L</strong>.</p>
 <p>David Garibaldi uses and teaches an interesting concept that replaces the double stroke by a foot+hand combination. This works irrespectively of the above stickings, and the double stroke bomes a foot stroke and a tom stroke. It looks like this:</p>
-<p><img alt="dragadiddle_garibalid" src="../draga_example_2.png" /></p>
+<p><img alt="dragadiddle_garibalid" src="../draga_example_2.PNG" /></p>
 <p>I wished to study this concept in detail, and in the following I set up some code that produces exercises for me to work on. It also uses a relatively new feature of <a href="../../motif/musicexample/#MusicManipulations.random_notes_sequence"><code>random_notes_sequence</code></a> which can weight different patterns with different probabilities, so that they appear more or less frequently.</p>
 <p><a id='Textbook-exercises-1'></a></p>
 <h2 id="textbook-exercises">Textbook exercises</h2>
@@ -668,7 +668,7 @@
 
 
 <p>Save a midi file and make a chart</p>
-<p><img alt="exercises" src="../garibaldi_draga_exercise.png" /></p>
+<p><img alt="exercises" src="../garibaldi_draga_exercise.PNG" /></p>
 <p><a id='Randomized-exercises-1'></a></p>
 <h2 id="randomized-exercises">Randomized exercises</h2>
 <p>Now I want to have random sequences with a foot+hand double stroke springled into random locations. This is easy to do with<a href="../@ref"><code>random_note_sequence</code></a>. However, I want to be sure that a double stroke will never be followed by another double stroke. To ensure this, I define</p>
@@ -703,21 +703,21 @@
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">Notes</span><span class="err">{</span><span class="n">Note</span><span class="err">}</span> <span class="k">with</span> <span class="mi">296</span> <span class="n">notes</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span>  <span class="err">…</span>  <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">Notes</span><span class="err">{</span><span class="n">Note</span><span class="err">}</span> <span class="k">with</span> <span class="mi">296</span> <span class="n">notes</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>  <span class="err">…</span>  <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 </pre></div>
 
 
-<p><img alt="exercises" src="../garibaldi_draga_sequence_easy.png" /></p>
+<p><img alt="exercises" src="../garibaldi_draga_sequence_easy.PNG" /></p>
 <p>Finally, I'll make one more exercise where the foot+hand double appears a bit more frequently.</p>
 <div class="codehilite"><pre><span></span><span class="n">rseq</span><span class="p">,</span> <span class="o">=</span> <span class="n">random_notes_sequence</span><span class="p">(</span><span class="n">motifs</span><span class="p">,</span> <span class="mi">16</span><span class="n">sixt</span><span class="o">*</span><span class="mi">16</span><span class="p">;</span> <span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">Notes</span><span class="err">{</span><span class="n">Note</span><span class="err">}</span> <span class="k">with</span> <span class="mi">317</span> <span class="n">notes</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>  <span class="err">…</span>  <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<div class="codehilite"><pre><span></span><span class="p">(</span><span class="n">Notes</span><span class="err">{</span><span class="n">Note</span><span class="err">}</span> <span class="k">with</span> <span class="mi">322</span> <span class="n">notes</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span>  <span class="err">…</span>  <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 </pre></div>
 
 
-<p><img alt="exercises" src="../garibaldi_draga_sequence_hard.png" /></p>
+<p><img alt="exercises" src="../garibaldi_draga_sequence_hard.PNG" /></p>
                 
                   
                 
