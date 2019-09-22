@@ -1,7 +1,7 @@
 # # Garibaldi's Foot+Hand doubles
 # Have a look at the following simple rudiment involving a double stroke
 #
-# ![dragadiddle](draga_example_1.png)
+# ![dragadiddle](draga_example_1.PNG)
 #
 # Here the sticking could be single strokes, as in **Rr L R L** on repeat, or
 # it can also follow the standard "dragadiddle", **Rr L R R Ll R L L**.
@@ -11,7 +11,7 @@
 # above stickings, and the double stroke bomes a foot stroke and a tom stroke.
 # It looks like this:
 #
-# ![dragadiddle_garibalid](draga_example_2.png)
+# ![dragadiddle_garibalid](draga_example_2.PNG)
 #
 # I wished to study this concept in detail, and in the following I set up
 # some code that produces exercises for me to work on. It also
@@ -124,7 +124,7 @@ exercises
 # Save a midi file and make a chart
 writeMIDIFile("garibaldi_draga_exercise.mid", Notes(exercises, tpq)) #src
 
-# ![exercises](garibaldi_draga_exercise.png)
+# ![exercises](garibaldi_draga_exercise.PNG)
 
 # ## Randomized exercises
 # %% Generate simple random sequence of this thing! #src
@@ -151,7 +151,7 @@ motifs = Notes.([motif0, motif2], tpq)
 rseq, = random_notes_sequence(motifs, 16sixt*16; weights = [4, 1])
 writeMIDIFile("garibaldi_draga_sequence_easy.mid", rseq); #src
 
-# ![exercises](garibaldi_draga_sequence_easy.png)
+# ![exercises](garibaldi_draga_sequence_easy.PNG)
 
 # %% Generate harder random sequence #src
 # Finally, I'll make one more exercise where the foot+hand double appears a bit
@@ -161,4 +161,4 @@ rseq, = random_notes_sequence(motifs, 16sixt*16; weights = [2, 1])
 
 writeMIDIFile("garibaldi_draga_sequence_hard.mid", rseq); #src
 
-# ![exercises](garibaldi_draga_sequence_hard.png)
+# ![exercises](garibaldi_draga_sequence_hard.PNG)
