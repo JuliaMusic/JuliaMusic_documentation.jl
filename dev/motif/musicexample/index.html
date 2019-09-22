@@ -40,7 +40,7 @@
     
     
       
-        <title>Music Motifs Example - JuliaMusic</title>
+        <title>Music Motifs - JuliaMusic</title>
       
     
     
@@ -130,7 +130,7 @@
                 JuliaMusic
               </span>
               <span class="md-header-nav__topic">
-                Music Motifs Example
+                Music Motifs
               </span>
             
           
@@ -306,22 +306,46 @@
       
 
 
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Visualization
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Visualization
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
   <li class="md-nav__item">
     <a href="../../printplot/musescore/" title="Printing Notes into Score" class="md-nav__link">
       Printing Notes into Score
     </a>
   </li>
 
-    
-      
-      
-      
+        
+          
+          
+          
 
 
   <li class="md-nav__item">
     <a href="../../printplot/noteplotter/" title="Plotting Notes" class="md-nav__link">
       Plotting Notes
     </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
     
@@ -351,53 +375,70 @@
       
     
     
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Music Motifs Example
-      </label>
-    
-    <a href="./" title="Music Motifs Example" class="md-nav__link md-nav__link--active">
-      Music Motifs Example
+    <a href="./" title="Music Motifs" class="md-nav__link md-nav__link--active">
+      Music Motifs
     </a>
     
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
+  </li>
+
     
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#motifs-basic-drum-patterns" title="Motifs: Basic drum patterns" class="md-nav__link">
-    Motifs: Basic drum patterns
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#defining-the-notes" title="Defining the Notes" class="md-nav__link">
-    Defining the Notes
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#adding-alternating-hands-and-lyrics" title="Adding alternating hands and Lyrics" class="md-nav__link">
-    Adding alternating hands and Lyrics
-  </a>
-  
-</li>
       
       
       
-      
-      
-    </ul>
-  
-</nav>
+
+
+  <li class="md-nav__item md-nav__item--nested">
     
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      Becoming a better drummer
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        Becoming a better drummer
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../blog/intro/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../blog/drumpatterns/" title="Ep. 1 - Mixing Drum Patterns" class="md-nav__link">
+      Ep. 1 - Mixing Drum Patterns
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../blog/garibaldi_dragadiddle/" title="Ep. 2 - Garibaldi inspired dragaddidle" class="md-nav__link">
+      Ep. 2 - Garibaldi inspired dragaddidle
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
     
@@ -430,36 +471,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#motifs-basic-drum-patterns" title="Motifs: Basic drum patterns" class="md-nav__link">
-    Motifs: Basic drum patterns
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#defining-the-notes" title="Defining the Notes" class="md-nav__link">
-    Defining the Notes
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#adding-alternating-hands-and-lyrics" title="Adding alternating hands and Lyrics" class="md-nav__link">
-    Adding alternating hands and Lyrics
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -475,7 +486,7 @@
                 
                 <p><a id='Music-Motif-Examples-1'></a></p>
 <h1 id="music-motif-examples">Music Motif Examples</h1>
-<p>In this page <a href="../basic/#MotifSequenceGenerator"><code>MotifSequenceGenerator</code></a> is applied in a real world case using the function <a href="./#MusicManipulations.random_notes_sequence"><code>random_notes_sequence</code></a>:</p>
+<p><a href="../basic/#MotifSequenceGenerator"><code>MotifSequenceGenerator</code></a> can be applied directly to music-related setting, via <a href="../../midi/notes/#MIDI.Notes"><code>Notes</code></a>, with the function <a href="./#MusicManipulations.random_notes_sequence"><code>random_notes_sequence</code></a>. In the "Becoming a better musician" section of this documentation, this function (and others from JuliaMusic) are taken advantage of in real-life scenarios.</p>
 <p><a id='MusicManipulations.random_notes_sequence' href='#MusicManipulations.random_notes_sequence'>#</a>
 <strong><code>MusicManipulations.random_notes_sequence</code></strong> &mdash; <em>Function</em>.</p>
 <div class="codehilite"><pre><span></span><span class="n">random_notes_sequence</span><span class="p">(</span><span class="n">motifs</span><span class="o">::</span><span class="kt">Vector</span><span class="p">{</span><span class="n">Notes</span><span class="p">{</span><span class="n">N</span><span class="p">}},</span> <span class="n">q</span><span class="p">,</span> <span class="n">δq</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">weights</span><span class="p">)</span>
@@ -485,226 +496,6 @@
 <p>Create a random sequence from a pool of notes (<code>motifs</code>) such that it has total length <code>ℓ</code> exactly <code>q - δq ≤ ℓ ≤ q + δq</code>. Notice that <code>q</code> is measured in <strong>ticks</strong>. Optionally pass keyword <code>weights</code> to sample different motifs with different weights (either as frequencies or as probabilities).</p>
 <p>Return the result as a single <code>Notes</code> container, and also return the sequence of motifs used.</p>
 <p>This function uses <a href="../basic/#MotifSequenceGenerator.random_sequence"><code>random_sequence</code></a> from the module <a href="../@ref"><code>MotifSequenceGenerator</code></a>, adapted to the <a href="../../midi/notes/#MIDI.Notes"><code>Notes</code></a> struct.</p>
-<p><a id='Motifs:-Basic-drum-patterns-1'></a></p>
-<h2 id="motifs-basic-drum-patterns">Motifs: Basic drum patterns</h2>
-<p>Let's say that we have some basic drum patterns that we want to be able to combine freely at random combinations. For example,</p>
-<p><img alt="Basic drum patterns" src="../basic_motifs.PNG" /></p>
-<p>where the note E means right hand, while A means left hand. These patterns can be easily combined to fill a bar, like for example <code>5b -&gt; 5b -&gt; 3 -&gt; 3</code> or <code>5a -&gt; 4 -&gt; 4 -&gt; 3</code>, etc. They can also be combined to fill two bars and so on. Notice that some sequences, like e.g. the <code>5a -&gt; 4 -&gt; 4 -&gt; 3</code>, result in <em>alternating hands</em>: each time the sequence is played the hand that "leads" is swapped. This will be important later on.</p>
-<p>The goal is to be able to play arbitrary sequences of them for arbitrary lengths. How does one practice that? We will use <a href="./#MusicManipulations.random_notes_sequence"><code>random_notes_sequence</code></a> to create longer 8-bar sequences faster with the help of Julia.</p>
-<p><a id='Defining-the-Notes-1'></a></p>
-<h2 id="defining-the-notes">Defining the <code>Notes</code></h2>
-<p>We first have to define the <code>Notes</code> instances that will correspond to those four basic patterns.</p>
-<div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">MusicManipulations</span> <span class="c"># re-exports MIDI</span>
-
-<span class="n">tpq</span> <span class="o">=</span> <span class="mi">960</span> <span class="c"># ticks per quarter note</span>
-<span class="n">sixt</span> <span class="o">=</span> <span class="mi">240</span> <span class="c"># duration of sixteenth note</span>
-<span class="n">left</span> <span class="o">=</span> <span class="n">name_to_pitch</span><span class="p">(</span><span class="s">&quot;A5&quot;</span><span class="p">)</span>
-<span class="n">right</span> <span class="o">=</span> <span class="n">name_to_pitch</span><span class="p">(</span><span class="s">&quot;E6&quot;</span><span class="p">)</span>
-</pre></div>
-
-
-<div class="codehilite"><pre><span></span><span class="mi">88</span>
-</pre></div>
-
-
-<p>Reminder: <code>Note(pitch, intensity, start, duration)</code></p>
-<div class="codehilite"><pre><span></span><span class="n">motif1</span> <span class="o">=</span> <span class="p">[</span> <span class="c"># motif 5a</span>
-<span class="n">Note</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sixt</span><span class="p">),</span>
-<span class="n">Note</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">sixt</span><span class="p">,</span> <span class="n">sixt</span><span class="p">),</span>
-<span class="n">Note</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">2</span><span class="n">sixt</span><span class="p">,</span> <span class="n">sixt</span><span class="p">),</span>
-<span class="n">Note</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">3</span><span class="n">sixt</span><span class="p">,</span> <span class="n">sixt</span><span class="p">),</span>
-<span class="n">Note</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">4</span><span class="n">sixt</span><span class="p">,</span> <span class="n">sixt</span><span class="p">)</span>
-<span class="p">]</span>
-
-<span class="n">motif2</span> <span class="o">=</span> <span class="p">[</span> <span class="c"># motif 5b</span>
-<span class="n">Note</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sixt</span><span class="p">),</span>
-<span class="n">Note</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">sixt</span><span class="p">,</span> <span class="n">sixt</span><span class="p">),</span>
-<span class="n">Note</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">2</span><span class="n">sixt</span><span class="p">,</span> <span class="n">sixt</span><span class="p">),</span>
-<span class="n">Note</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">3</span><span class="n">sixt</span><span class="p">,</span> <span class="n">sixt</span><span class="p">),</span>
-<span class="n">Note</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">4</span><span class="n">sixt</span><span class="p">,</span> <span class="n">sixt</span><span class="p">)</span>
-<span class="p">]</span>
-
-<span class="n">motif3</span> <span class="o">=</span> <span class="p">[</span> <span class="c"># motif 3</span>
-<span class="n">Note</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sixt</span><span class="p">),</span>
-<span class="n">Note</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">sixt</span><span class="p">,</span> <span class="n">sixt</span><span class="p">),</span>
-<span class="n">Note</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">2</span><span class="n">sixt</span><span class="p">,</span> <span class="n">sixt</span><span class="p">),</span>
-<span class="p">]</span>
-
-<span class="n">motif4</span> <span class="o">=</span> <span class="p">[</span> <span class="c"># motif 4</span>
-<span class="n">Note</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sixt</span><span class="p">),</span>
-<span class="n">Note</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">sixt</span><span class="p">,</span> <span class="n">sixt</span><span class="p">),</span>
-<span class="n">Note</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">2</span><span class="n">sixt</span><span class="p">,</span> <span class="n">sixt</span><span class="p">),</span>
-<span class="n">Note</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">3</span><span class="n">sixt</span><span class="p">,</span> <span class="n">sixt</span><span class="p">),</span>
-<span class="p">]</span>
-
-<span class="n">motifs</span> <span class="o">=</span> <span class="n">Notes</span><span class="o">.</span><span class="p">([</span><span class="n">motif1</span><span class="p">,</span> <span class="n">motif2</span><span class="p">,</span> <span class="n">motif3</span><span class="p">,</span> <span class="n">motif4</span><span class="p">],</span> <span class="n">tpq</span><span class="p">)</span>
-</pre></div>
-
-
-<div class="codehilite"><pre><span></span><span class="mi">4</span><span class="o">-</span><span class="n">element</span> <span class="nb">Array</span><span class="err">{</span><span class="n">Notes</span><span class="err">{</span><span class="n">Note</span><span class="err">}</span><span class="p">,</span><span class="mi">1</span><span class="err">}</span><span class="p">:</span>
- <span class="n">Notes</span><span class="err">{</span><span class="n">Note</span><span class="err">}</span> <span class="k">with</span> <span class="mi">5</span> <span class="n">notes</span>
- <span class="n">Notes</span><span class="err">{</span><span class="n">Note</span><span class="err">}</span> <span class="k">with</span> <span class="mi">5</span> <span class="n">notes</span>
- <span class="n">Notes</span><span class="err">{</span><span class="n">Note</span><span class="err">}</span> <span class="k">with</span> <span class="mi">3</span> <span class="n">notes</span>
- <span class="n">Notes</span><span class="err">{</span><span class="n">Note</span><span class="err">}</span> <span class="k">with</span> <span class="mi">4</span> <span class="n">notes</span>
-</pre></div>
-
-
-<p>Now <code>motifs</code> stands for a pool of note sequences we can draw random samples from. Let's generate sequences that are 8-bars long (i.e. 32 quarter notes)</p>
-<div class="codehilite"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="n">tpq</span><span class="o">*</span><span class="mi">32</span>
-
-<span class="n">notes</span><span class="p">,</span> <span class="n">seq</span> <span class="o">=</span> <span class="n">random_notes_sequence</span><span class="p">(</span><span class="n">motifs</span><span class="p">,</span> <span class="n">q</span><span class="p">)</span>
-<span class="n">notes</span>
-</pre></div>
-
-
-<div class="codehilite"><pre><span></span><span class="mi">128</span> <span class="n">Notes</span> <span class="k">with</span> <span class="n">tpq</span><span class="o">=</span><span class="mi">960</span>
- <span class="n">Note</span> <span class="n">E6</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">240</span>
- <span class="n">Note</span> <span class="n">A5</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">50</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">240</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">240</span>
- <span class="n">Note</span> <span class="n">E6</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">480</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">240</span>
- <span class="n">Note</span> <span class="n">A5</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">50</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">720</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">240</span>
- <span class="n">Note</span> <span class="n">A5</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">50</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">960</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">240</span>
- <span class="n">Note</span> <span class="n">E6</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">1200</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">240</span>
- <span class="n">Note</span> <span class="n">A5</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">50</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">1440</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">240</span>
-  <span class="err">⋮</span>
- <span class="n">Note</span> <span class="n">E6</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">29040</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">240</span>
- <span class="n">Note</span> <span class="n">A5</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">50</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">29280</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">240</span>
- <span class="n">Note</span> <span class="n">A5</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">50</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">29520</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">240</span>
- <span class="n">Note</span> <span class="n">E6</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">29760</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">240</span>
- <span class="n">Note</span> <span class="n">A5</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">50</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">30000</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">240</span>
- <span class="n">Note</span> <span class="n">E6</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">50</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">30240</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">240</span>
- <span class="n">Note</span> <span class="n">E6</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">50</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">30480</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">240</span>
-</pre></div>
-
-
-<p>and now we can write these to a MIDI file simply by doing <code>writeMIDIFile("drums_patterns.mid", notes)</code> if we want to. We can also use <a href="https://musescore.org">MuseScore</a>, to visualize and print the result. The function <a href="../../printplot/musescore/#MusicManipulations.MuseScore.musescore"><code>musescore</code></a> provides this interface.</p>
-<div class="codehilite"><pre><span></span><span class="n">musescore</span><span class="p">(</span><span class="s">&quot;drums_patterns.png&quot;</span><span class="p">,</span> <span class="n">notes</span><span class="p">)</span>
-</pre></div>
-
-
-<p><img alt="32-bar pattern sequence" src="../drums_patterns.png" /></p>
-<p><em>this is a pre-made figure - your random sequence will probably differ</em></p>
-<p>This worked nicely, but there is a problem: The sequence does not respect the fact that some specific patterns (<code>5b</code> and <code>4</code>) swap the leading hand. This is what we tackle in the next section.</p>
-<p><a id='Adding-alternating-hands-and-Lyrics-1'></a></p>
-<h2 id="adding-alternating-hands-and-lyrics">Adding alternating hands and Lyrics</h2>
-<p>Notice that <code>random_note_sequence</code> also returns the indices of the motifs that were used to create the sequence:</p>
-<div class="codehilite"><pre><span></span><span class="n">seq</span>
-</pre></div>
-
-
-<div class="codehilite"><pre><span></span><span class="mi">31</span><span class="o">-</span><span class="n">element</span> <span class="nb">Array</span><span class="err">{</span><span class="n">Int64</span><span class="p">,</span><span class="mi">1</span><span class="err">}</span><span class="p">:</span>
- <span class="mi">1</span>
- <span class="mi">2</span>
- <span class="mi">1</span>
- <span class="mi">3</span>
- <span class="mi">3</span>
- <span class="mi">4</span>
- <span class="mi">4</span>
- <span class="mi">3</span>
- <span class="mi">3</span>
- <span class="mi">2</span>
- <span class="err">⋮</span>
- <span class="mi">4</span>
- <span class="mi">2</span>
- <span class="mi">4</span>
- <span class="mi">4</span>
- <span class="mi">4</span>
- <span class="mi">3</span>
- <span class="mi">3</span>
- <span class="mi">3</span>
- <span class="mi">4</span>
-</pre></div>
-
-
-<p>We can use this information to put the correct "stickings". To alternate hands we simply need to replace the necessary E notes with A and vice versa. Let's define some "meta-data" like structures</p>
-<div class="codehilite"><pre><span></span><span class="n">accent1</span> <span class="o">=</span> <span class="p">(</span><span class="s">&quot;5a&quot;</span><span class="p">,</span> <span class="kc">false</span><span class="p">)</span>
-<span class="n">accent2</span> <span class="o">=</span> <span class="p">(</span><span class="s">&quot;5b&quot;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
-<span class="n">accent3</span> <span class="o">=</span> <span class="p">(</span><span class="s">&quot;3&quot;</span><span class="p">,</span> <span class="kc">false</span><span class="p">)</span>
-<span class="n">accent4</span> <span class="o">=</span> <span class="p">(</span><span class="s">&quot;4&quot;</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
-<span class="n">accents</span> <span class="o">=</span> <span class="p">[</span><span class="n">accent1</span><span class="p">,</span> <span class="n">accent2</span><span class="p">,</span> <span class="n">accent3</span><span class="p">,</span> <span class="n">accent4</span><span class="p">]</span>
-</pre></div>
-
-
-<div class="codehilite"><pre><span></span><span class="mi">4</span><span class="o">-</span><span class="n">element</span> <span class="nb">Array</span><span class="err">{</span><span class="n">Tuple</span><span class="err">{</span><span class="n">String</span><span class="p">,</span><span class="n">Bool</span><span class="err">}</span><span class="p">,</span><span class="mi">1</span><span class="err">}</span><span class="p">:</span>
- <span class="p">(</span><span class="ss">&quot;5a&quot;</span><span class="p">,</span> <span class="k">false</span><span class="p">)</span>
- <span class="p">(</span><span class="ss">&quot;5b&quot;</span><span class="p">,</span> <span class="k">true</span><span class="p">)</span> 
- <span class="p">(</span><span class="ss">&quot;3&quot;</span><span class="p">,</span> <span class="k">false</span><span class="p">)</span> 
- <span class="p">(</span><span class="ss">&quot;4&quot;</span><span class="p">,</span> <span class="k">true</span><span class="p">)</span>  
-</pre></div>
-
-
-<p>The first entry of each tuple is simply the name of the pattern which we will also show in our music score as "lyrics". The second entry of the tuple simply denotes whether the pattern swaps the leading hand.</p>
-<p>The function that will "inverse" a note sticking is:</p>
-<div class="codehilite"><pre><span></span><span class="n">inverse!</span><span class="p">(</span><span class="n">n</span><span class="o">::</span><span class="n">Note</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">pitch</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">pitch</span> <span class="o">==</span> <span class="n">left</span> <span class="o">?</span> <span class="n">right</span> <span class="o">:</span> <span class="n">left</span><span class="p">));</span>
-</pre></div>
-
-
-<div class="codehilite"><pre><span></span><span class="n">inverse</span><span class="o">!</span> <span class="p">(</span><span class="n">generic</span> <span class="k">function</span> <span class="k">with</span> <span class="mi">1</span> <span class="k">method</span><span class="p">)</span>
-</pre></div>
-
-
-<p>The function that will "count" how long is each pattern, so that we put the lyrics on the correct positions in the score, will be:</p>
-<div class="codehilite"><pre><span></span><span class="n">note_length</span><span class="p">(</span><span class="n">s</span><span class="o">::</span><span class="n">String</span><span class="p">)</span> <span class="o">=</span> <span class="n">parse</span><span class="p">(</span><span class="kt">Int</span><span class="p">,</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
-</pre></div>
-
-
-<div class="codehilite"><pre><span></span><span class="n">note_length</span> <span class="p">(</span><span class="n">generic</span> <span class="k">function</span> <span class="k">with</span> <span class="mi">1</span> <span class="k">method</span><span class="p">)</span>
-</pre></div>
-
-
-<p>(remember: <code>sixt</code> is the duration of one sixteenth note). We now initialize an empty <a href="../../midi/io/#MIDI.MIDITrack"><code>MIDITrack</code></a> and add all events to it!</p>
-<div class="codehilite"><pre><span></span><span class="n">track</span> <span class="o">=</span> <span class="n">MIDITrack</span><span class="p">()</span>
-<span class="n">ℓ</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">right_leads</span> <span class="o">=</span> <span class="kc">true</span>
-
-<span class="k">for</span> <span class="n">i</span> <span class="kp">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">length</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
-
-    <span class="n">s</span> <span class="o">=</span> <span class="n">accents</span><span class="p">[</span><span class="n">seq</span><span class="p">[</span><span class="n">i</span><span class="p">]][</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">le</span> <span class="o">=</span> <span class="n">textevent</span><span class="p">(</span><span class="o">:</span><span class="n">lyric</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
-    <span class="n">addevent!</span><span class="p">(</span><span class="n">track</span><span class="p">,</span> <span class="n">ℓ</span><span class="o">*</span><span class="n">sixt</span><span class="p">,</span> <span class="n">le</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="o">!</span><span class="n">right_leads</span> <span class="c"># Invert notes</span>
-        <span class="k">for</span> <span class="n">j</span> <span class="kp">in</span> <span class="n">ℓ</span><span class="o">+</span><span class="mi">1</span><span class="o">:</span><span class="n">ℓ</span><span class="o">+</span><span class="n">note_length</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-            <span class="n">inverse!</span><span class="p">(</span><span class="n">notes</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
-        <span class="k">end</span>
-    <span class="k">end</span>
-
-    <span class="kd">global</span> <span class="n">ℓ</span> <span class="o">+=</span> <span class="n">note_length</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-
-    <span class="n">change</span> <span class="o">=</span> <span class="n">accents</span><span class="p">[</span><span class="n">seq</span><span class="p">[</span><span class="n">i</span><span class="p">]][</span><span class="mi">2</span><span class="p">]</span>
-    <span class="kd">global</span> <span class="n">right_leads</span> <span class="o">=</span> <span class="n">xor</span><span class="p">(</span><span class="n">right_leads</span><span class="p">,</span> <span class="n">change</span><span class="p">)</span>
-<span class="k">end</span>
-
-<span class="n">addnotes!</span><span class="p">(</span><span class="n">track</span><span class="p">,</span> <span class="n">notes</span><span class="p">)</span>
-<span class="n">notes</span>
-</pre></div>
-
-
-<div class="codehilite"><pre><span></span><span class="mi">128</span> <span class="n">Notes</span> <span class="k">with</span> <span class="n">tpq</span><span class="o">=</span><span class="mi">960</span>
- <span class="n">Note</span> <span class="n">E6</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">240</span>
- <span class="n">Note</span> <span class="n">A5</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">50</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">240</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">240</span>
- <span class="n">Note</span> <span class="n">E6</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">480</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">240</span>
- <span class="n">Note</span> <span class="n">A5</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">50</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">720</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">240</span>
- <span class="n">Note</span> <span class="n">A5</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">50</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">960</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">240</span>
- <span class="n">Note</span> <span class="n">E6</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">1200</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">240</span>
- <span class="n">Note</span> <span class="n">A5</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">50</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">1440</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">240</span>
-  <span class="err">⋮</span>
- <span class="n">Note</span> <span class="n">E6</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">29040</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">240</span>
- <span class="n">Note</span> <span class="n">A5</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">50</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">29280</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">240</span>
- <span class="n">Note</span> <span class="n">A5</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">50</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">29520</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">240</span>
- <span class="n">Note</span> <span class="n">E6</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">29760</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">240</span>
- <span class="n">Note</span> <span class="n">A5</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">50</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">30000</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">240</span>
- <span class="n">Note</span> <span class="n">E6</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">50</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">30240</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">240</span>
- <span class="n">Note</span> <span class="n">E6</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">50</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">30480</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">240</span>
-</pre></div>
-
-
-<p>Finally, to visualize, we use <a href="../../printplot/musescore/#MusicManipulations.MuseScore.musescore"><code>musescore</code></a> again, using a midi file as an input</p>
-<div class="codehilite"><pre><span></span><span class="n">musescore</span><span class="p">(</span><span class="s">&quot;drums_patterns_with_names.png&quot;</span><span class="p">,</span> <span class="n">MIDIFile</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">960</span><span class="p">,</span> <span class="p">[</span><span class="n">track</span><span class="p">]))</span>
-</pre></div>
-
-
-<p><img alt="Correct 32-bar pattern sequence" src="../drums_patterns_with_names.png" /></p>
-<p>Isn't it cool that even the lyrics text was displayed so seamlessly?</p>
                 
                   
                 
@@ -740,13 +531,13 @@
           </a>
         
         
-          <a href="../../news/" title="News" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../blog/intro/" title="Introduction" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                News
+                Introduction
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

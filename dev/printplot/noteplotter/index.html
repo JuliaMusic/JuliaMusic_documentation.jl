@@ -305,6 +305,27 @@
       
       
 
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+    
+    <label class="md-nav__link" for="nav-6">
+      Visualization
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Visualization
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
 
   <li class="md-nav__item">
     <a href="../musescore/" title="Printing Notes into Score" class="md-nav__link">
@@ -312,10 +333,10 @@
     </a>
   </li>
 
-    
-      
-      
-      
+        
+          
+          
+          
 
   
 
@@ -369,6 +390,11 @@
     
   </li>
 
+        
+      </ul>
+    </nav>
+  </li>
+
     
       
       
@@ -388,9 +414,69 @@
 
 
   <li class="md-nav__item">
-    <a href="../../motif/musicexample/" title="Music Motifs Example" class="md-nav__link">
-      Music Motifs Example
+    <a href="../../motif/musicexample/" title="Music Motifs" class="md-nav__link">
+      Music Motifs
     </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      Becoming a better drummer
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        Becoming a better drummer
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../blog/intro/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../blog/drumpatterns/" title="Ep. 1 - Mixing Drum Patterns" class="md-nav__link">
+      Ep. 1 - Mixing Drum Patterns
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../blog/garibaldi_dragadiddle/" title="Ep. 2 - Garibaldi inspired dragaddidle" class="md-nav__link">
+      Ep. 2 - Garibaldi inspired dragaddidle
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
     
@@ -479,13 +565,13 @@
 <ul>
 <li><code>st = (notes[1].position ÷ notes.tpq) * notes.tpq</code>  time to start plotting from</li>
 <li><code>fi = st + 16notes.tpq</code> time to stop plotting at, by default 16 quarter notes, i.e. four bars. Give <code>Inf</code> if you want to plot until the end of the notes.</li>
-<li><code>ax = gca()</code> the axis to plot on.</li>
+<li><code>ax = (PyPlot.figure(); PyPlot.gca())</code> the axis to plot on.</li>
 <li><code>cmap = "viridis"</code> the colormap to use for the velocity.</li>
 <li><code>grid = 0:0.25:1</code> a grid to plot along with the notes (by default the 16th notes). Give nothing if you don't want grid lines to be plotted.</li>
-<li><code>names = Dict(p =&gt; pitch_to_name(p) for p in unique(pitches(notes)))</code> a dictionary that given the y-axis value returns how this value should be named.</li>
+<li><code>names</code> : a dictionary that given the y-axis value returns how this value should be named. By default the function <a href="../../midi/notes/#MIDI.pitch_to_name"><code>pitch_to_name</code></a> is used, along with a heuristic to only name around 7 notes.</li>
 <li><code>plotnote!</code> A function with call arguments <code>plotnote!(ax, note, cmap)</code> (with <code>cmap</code> a colormap instance, not a string), that actually plots the notes. By default plots a "piano-roll".</li>
 </ul>
-<p>The <code>plotnote!</code> argument allows for customization. The function is supposed to plot a note on the given axis <strong>and return</strong> the "value" of the note. See the official documentation for an example of how this is taken advantage of, to plot drum notes.</p>
+<p>The <code>plotnote!</code> argument allows for customization. The function is supposed to plot a note on the given axis <strong>and return</strong> the "value" of the note. See the official documentation for an example of how this is taken advantage of to e.g. plot drum notes.</p>
 <hr />
 <p><a id='Piano-notes-1'></a></p>
 <h2 id="piano-notes">Piano notes</h2>
@@ -494,7 +580,7 @@
 <span class="n">testdir</span> <span class="o">=</span> <span class="n">joinpath</span><span class="p">(</span><span class="n">dirname</span><span class="p">(</span><span class="n">dirname</span><span class="p">(</span><span class="n">pathof</span><span class="p">(</span><span class="n">MusicManipulations</span><span class="p">))),</span> <span class="s">&quot;test&quot;</span><span class="p">)</span>
 <span class="n">midi</span> <span class="o">=</span> <span class="n">readMIDIFile</span><span class="p">(</span><span class="n">joinpath</span><span class="p">(</span><span class="n">testdir</span><span class="p">,</span> <span class="s">&quot;mfi_grapevine_1.mid&quot;</span><span class="p">))</span>
 
-<span class="n">grid</span> <span class="o">=</span> <span class="mi">0</span><span class="o">:</span><span class="mi">1</span><span class="o">//</span><span class="mi">4</span><span class="o">:</span><span class="mi">1</span>
+<span class="n">grid16</span> <span class="o">=</span> <span class="mi">0</span><span class="o">:</span><span class="mi">1</span><span class="o">//</span><span class="mi">4</span><span class="o">:</span><span class="mi">1</span>
 <span class="n">piano</span> <span class="o">=</span> <span class="n">getnotes</span><span class="p">(</span><span class="n">midi</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 </pre></div>
 
@@ -518,7 +604,7 @@
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="n">noteplotter</span><span class="p">(</span><span class="n">piano</span><span class="p">;</span> <span class="n">st</span> <span class="o">=</span> <span class="mi">15300</span><span class="p">,</span> <span class="n">grid</span> <span class="o">=</span> <span class="n">grid</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="n">noteplotter</span><span class="p">(</span><span class="n">piano</span><span class="p">;</span> <span class="n">st</span> <span class="o">=</span> <span class="mi">15300</span><span class="p">,</span> <span class="n">grid</span> <span class="o">=</span> <span class="n">grid16</span><span class="p">)</span>
 </pre></div>
 
 
@@ -593,7 +679,7 @@
 <p>And now here is how plotting some drum notes looks like:</p>
 <div class="codehilite"><pre><span></span><span class="n">drums</span> <span class="o">=</span> <span class="n">getnotes</span><span class="p">(</span><span class="n">midi</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 
-<span class="n">noteplotter</span><span class="p">(</span><span class="n">drums</span><span class="p">;</span> <span class="n">st</span> <span class="o">=</span> <span class="mi">15300</span><span class="p">,</span> <span class="n">grid</span> <span class="o">=</span> <span class="n">grid</span><span class="p">,</span>
+<span class="n">noteplotter</span><span class="p">(</span><span class="n">drums</span><span class="p">;</span> <span class="n">st</span> <span class="o">=</span> <span class="mi">15300</span><span class="p">,</span> <span class="n">grid</span> <span class="o">=</span> <span class="n">grid16</span><span class="p">,</span>
                    <span class="n">names</span><span class="o">=</span><span class="n">TD50_PLOT</span><span class="p">,</span> <span class="n">plotnote!</span> <span class="o">=</span> <span class="n">plotdrumnote!</span><span class="p">)</span>
 </pre></div>
 
