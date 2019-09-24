@@ -1,4 +1,7 @@
 # # Mixing basic drum patterns
+# !!! note
+#     This page is also available as a YouTube video here: https://youtu.be/Oog_aunpVms
+#
 # Let's say that we have some basic drum patterns that we want to be
 # able to combine freely at random combinations. For example,
 #
