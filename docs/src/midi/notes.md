@@ -81,6 +81,6 @@ Other convenience functions follow:
 ```@docs
 translate
 transpose
+louden
 randomnotes
-subdivision
 ```

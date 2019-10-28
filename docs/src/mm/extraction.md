@@ -9,6 +9,13 @@ A highlight of JuliaMusic is the [`timeseries`](@ref) function, which allows one
 firstnotes
 filterpitches
 separatepitches
+relpos
+```
+
+## Advanced Data Extraction
+```@docs
+estimate_delay
+estimate_delay_recursive
 ```
 
 ## Timeseries Extraction
