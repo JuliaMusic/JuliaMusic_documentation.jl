@@ -20,5 +20,5 @@ jobs:
       os: linux
       script:
         - julia -e 'using Pkg; Pkg.add("Documenter"); Pkg.add("Literate"); Pkg.add("DocumenterMarkdown")'
-        - julia -e 'using Pkg; Pkg.add("MIDI"); Pkg.add("MotifSequenceGenerator"); Pkg.add("MusicManipulations"); pkg"add https://github.com/JuliaMusic/JuliaMusic_documentation.jl"'
+        - julia -e 'using Pkg; Pkg.add("MIDI"); Pkg.add("MotifSequenceGenerator"); Pkg.add("MusicManipulations");'
         - julia -e 'using Pkg, JuliaMusic_documentation; cd(joinpath(dirname(pathof(JuliaMusic_documentation)), "..")); include(joinpath("docs", "make.jl"))'
