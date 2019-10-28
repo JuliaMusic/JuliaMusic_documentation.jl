@@ -1,0 +1,12 @@
+name = "JuliaMusic_documentation"
+uuid = "73360936-bd48-4820-9984-8be205e8d065"
+version = "0.0.1"
+
+[deps]
+MIDI = "f57c4921-e30c-5f49-b073-3f2f2ada663e"
+MotifSequenceGenerator = "7d228ccb-0fc9-53c8-a429-8c9b5b572bc3"
+MusicManipulations = "274955c0-c284-5bf7-b122-5ecd51c559de"
+Reexport = "189a3867-3050-52da-a836-e630ba90ab69"
+
+[compat]
+julia = "1"
