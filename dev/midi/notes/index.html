@@ -727,6 +727,7 @@
 
 
 <p>Translate the <code>notes</code> for the given amount of <code>ticks</code>.</p>
+<p>The unicode symbol <code>▷</code> (<code>\triangleright&lt;tab&gt;</code>) is equivalent to <code>translate</code>.</p>
 <p><a id='Base.transpose' href='#Base.transpose'>#</a>
 <strong><code>Base.transpose</code></strong> &mdash; <em>Function</em>.</p>
 <div class="codehilite"><pre><span></span><span class="n">transpose</span><span class="p">(</span><span class="n">notes</span><span class="p">,</span> <span class="n">semitones</span><span class="p">)</span>
@@ -734,10 +735,15 @@
 
 
 <p>Transpose the <code>notes</code> for the given amount of <code>semitones</code>.</p>
-<div class="admonition warning">
-<p class="admonition-title">Missing docstring.</p>
-<p>Missing docstring for <code>louden</code>. Check Documenter's build log for details.</p>
-</div>
+<p>The unicode symbol <code>□</code> (<code>\square</code>) is equivalent with <code>transpose</code>.</p>
+<p><a id='MusicManipulations.louden' href='#MusicManipulations.louden'>#</a>
+<strong><code>MusicManipulations.louden</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span><span class="n">louden</span><span class="p">(</span><span class="n">notes</span><span class="p">,</span> <span class="n">v</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Increase the velocity of the notes by <code>v</code>.</p>
+<p>The unicode symbol <code>◇</code> (<code>\mdlgwhtdiamond</code>) is equivalent with <code>louden</code>.</p>
 <p><a id='MusicManipulations.randomnotes' href='#MusicManipulations.randomnotes'>#</a>
 <strong><code>MusicManipulations.randomnotes</code></strong> &mdash; <em>Function</em>.</p>
 <div class="codehilite"><pre><span></span><span class="n">randomnotes</span><span class="p">(</span><span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">,</span> <span class="n">tpq</span> <span class="o">=</span> <span class="mi">960</span><span class="p">)</span>
