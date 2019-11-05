@@ -24,6 +24,8 @@ estimate_delay_recursive
 timeseries
 ```
 
+---
+
 Here is an example:
 ```@example
 using MusicManipulations, PyPlot, Statistics
@@ -47,3 +49,18 @@ tight_layout() # hide
 savefig("timeseries.png"); nothing # hide
 ```
 ![](timeseries.png)
+
+---
+
+An example code that obtains the velocity of the notes with highest pitch in each bin is this one:
+```julia
+notes = getnotes(midi, 4)
+
+function f(notes)
+    m, i = findmax(pitches(notes))
+    notes[i].velocity
+end
+
+grid = 0:1//3:1
+tvec2, ts2 = timeseries(notes, f, grid)
+```
