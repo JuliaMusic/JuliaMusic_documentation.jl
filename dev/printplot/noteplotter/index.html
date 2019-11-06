@@ -563,16 +563,36 @@
 <hr />
 <p><a id='Piano-notes-1'></a></p>
 <h2 id="piano-notes">Piano notes</h2>
-<p>```@example noteplot
-using MusicManipulations, PyPlot</p>
-<p>testdir = joinpath(dirname(dirname(pathof(MusicManipulations))), "test")
-midi = readMIDIFile(joinpath(testdir, "mfi_grapevine_1.mid"))</p>
-<p>grid16 = 0:1//4:1
-piano = getnotes(midi, 4)</p>
-<div class="codehilite"><pre><span></span><span class="err">```</span><span class="nv">@example</span><span class="w"> </span><span class="n">noteplot</span><span class="w"></span>
-<span class="n">noteplotter</span><span class="p">(</span><span class="n">piano</span><span class="p">;</span><span class="w"> </span><span class="n">st</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15300</span><span class="p">,</span><span class="w"> </span><span class="n">grid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">grid16</span><span class="p">)</span><span class="w"></span>
-<span class="n">tight_layout</span><span class="p">()</span><span class="w"> </span><span class="err">#</span><span class="w"> </span><span class="n">hide</span><span class="w"></span>
-<span class="n">savefig</span><span class="p">(</span><span class="ss">&quot;pianoroll.png&quot;</span><span class="p">);</span><span class="w"> </span><span class="n">nothing</span><span class="w"> </span><span class="err">#</span><span class="w"> </span><span class="n">hide</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">MusicManipulations</span><span class="p">,</span> <span class="n">PyPlot</span>
+
+<span class="c"># load a band performance (with metronome)</span>
+<span class="n">midi</span> <span class="o">=</span> <span class="n">readMIDIFile</span><span class="p">(</span><span class="n">joinpath</span><span class="p">(</span><span class="nd">@__DIR__</span><span class="p">,</span> <span class="s">&quot;mfi_grapevine_1.mid&quot;</span><span class="p">))</span>
+
+<span class="n">grid</span> <span class="o">=</span> <span class="mi">0</span><span class="o">:</span><span class="mi">1</span><span class="o">//</span><span class="mi">4</span><span class="o">:</span><span class="mi">1</span>
+<span class="n">piano</span> <span class="o">=</span> <span class="n">getnotes</span><span class="p">(</span><span class="n">midi</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="mi">819</span> <span class="n">Notes</span> <span class="k">with</span> <span class="n">tpq</span><span class="o">=</span><span class="mi">960</span>
+ <span class="n">Note</span> <span class="n">F4</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">99</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">8981</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">1217</span>
+ <span class="n">Note</span> <span class="n">A4</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">99</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">8981</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">1275</span>
+ <span class="n">Note</span> <span class="n">D5</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">97</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">8990</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">1314</span>
+ <span class="n">Note</span> <span class="n">D3</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">97</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">9004</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">1772</span>
+ <span class="n">Note</span> <span class="n">D4</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">81</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">9015</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">1287</span>
+ <span class="n">Note</span> <span class="n">F4</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">84</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">10496</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">130</span>
+ <span class="n">Note</span> <span class="n">A4</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">87</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">10504</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">175</span>
+  <span class="err">⋮</span>
+ <span class="n">Note</span> <span class="n">E5</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">87</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">310837</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">114</span>
+ <span class="n">Note</span> <span class="n">F5</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">81</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">311276</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">233</span>
+ <span class="n">Note</span> <span class="n">G4</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">82</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">311284</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">196</span>
+ <span class="n">Note</span> <span class="n">B4</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">58</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">311286</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">197</span>
+ <span class="n">Note</span> <span class="n">G4</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">92</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">311739</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">197</span>
+ <span class="n">Note</span> <span class="n">E5</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">99</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">311744</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">181</span>
+ <span class="n">Note</span> <span class="n">B4</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">56</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">311782</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">104</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="n">noteplotter</span><span class="p">(</span><span class="n">piano</span><span class="p">;</span> <span class="n">st</span> <span class="o">=</span> <span class="mi">15300</span><span class="p">,</span> <span class="n">grid</span> <span class="o">=</span> <span class="n">grid</span><span class="p">)</span>
 </pre></div>
 
 
@@ -645,13 +665,14 @@ piano = getnotes(midi, 4)</p>
 
 
 <p>And now here is how plotting some drum notes looks like:</p>
-<p>```@example noteplot
-drums = getnotes(midi, 3)</p>
-<p>noteplotter(drums; st = 15300, grid = grid16,
-                   names=TD50_PLOT, plotnote! = plotdrumnote!)
-tight_layout() # hide
-savefig("drumroll.png"); nothing # hide
-```</p>
+<div class="codehilite"><pre><span></span><span class="n">drums</span> <span class="o">=</span> <span class="n">getnotes</span><span class="p">(</span><span class="n">midi</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">drums</span> <span class="o">=</span> <span class="n">translate</span><span class="p">(</span><span class="n">drums</span><span class="p">,</span> <span class="o">-</span><span class="mi">300</span><span class="p">)</span> <span class="c"># constant delay</span>
+
+<span class="n">noteplotter</span><span class="p">(</span><span class="n">drums</span><span class="p">;</span> <span class="n">st</span> <span class="o">=</span> <span class="mi">15300</span><span class="p">,</span> <span class="n">grid</span> <span class="o">=</span> <span class="n">grid</span><span class="p">,</span>
+                   <span class="n">names</span><span class="o">=</span><span class="n">TD50_PLOT</span><span class="p">,</span> <span class="n">plotnote!</span> <span class="o">=</span> <span class="n">plotdrumnote!</span><span class="p">)</span>
+</pre></div>
+
+
 <p><img alt="" src="../drumroll.png" /></p>
                 
                   
