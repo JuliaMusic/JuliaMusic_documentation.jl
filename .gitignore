@@ -3,7 +3,6 @@
 *.jl.mem
 docs/build
 Manifest.toml
-*.mid
 *.pdf
 
 # Don't ignore:

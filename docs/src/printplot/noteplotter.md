@@ -10,14 +10,14 @@ noteplotter
 ```@example noteplot
 using MusicManipulations, PyPlot
 
-testdir = joinpath(dirname(dirname(pathof(MusicManipulations))), "test")
-midi = readMIDIFile(joinpath(testdir, "mfi_grapevine_1.mid"))
+# load a band performance (with metronome)
+midi = readMIDIFile(joinpath(@__DIR__, "mfi_grapevine_1.mid"))
 
-grid16 = 0:1//4:1
+grid = 0:1//4:1
 piano = getnotes(midi, 4)
 ```
 ```@example noteplot
-noteplotter(piano; st = 15300, grid = grid16)
+noteplotter(piano; st = 15300, grid = grid)
 tight_layout() # hide
 savefig("pianoroll.png"); nothing # hide
 ```
@@ -79,8 +79,9 @@ TD50_PLOT = Dict(
 And now here is how plotting some drum notes looks like:
 ```@example noteplot
 drums = getnotes(midi, 3)
+drums = translate(drums, -300) # constant delay
 
-noteplotter(drums; st = 15300, grid = grid16,
+noteplotter(drums; st = 15300, grid = grid,
                    names=TD50_PLOT, plotnote! = plotdrumnote!)
 tight_layout() # hide
 savefig("drumroll.png"); nothing # hide
