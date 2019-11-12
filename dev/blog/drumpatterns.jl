@@ -25,7 +25,7 @@
 # to those four basic patterns.
 
 #%% #src
-using MusicManipulations # re-exports MIDI
+using MusicManipulations, MusicVisualizations
 
 tpq = 960 # ticks per quarter note
 sixt = 240 # duration of sixteenth note

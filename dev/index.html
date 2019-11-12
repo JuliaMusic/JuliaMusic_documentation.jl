@@ -274,20 +274,6 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#getting-started" title="Getting Started" class="md-nav__link">
-    Getting Started
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#citing" title="Citing" class="md-nav__link">
-    Citing
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#overview" title="Overview" class="md-nav__link">
     Overview
   </a>
@@ -412,8 +398,8 @@
 
 
   <li class="md-nav__item">
-    <a href="printplot/musescore/" title="Printing Notes into Score" class="md-nav__link">
-      Printing Notes into Score
+    <a href="printplot/noteplotter/" title="Plotting Notes" class="md-nav__link">
+      Plotting Notes
     </a>
   </li>
 
@@ -424,8 +410,8 @@
 
 
   <li class="md-nav__item">
-    <a href="printplot/noteplotter/" title="Plotting Notes" class="md-nav__link">
-      Plotting Notes
+    <a href="printplot/musescore/" title="Printing Notes into Score" class="md-nav__link">
+      Printing Notes into Score
     </a>
   </li>
 
@@ -540,20 +526,6 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#getting-started" title="Getting Started" class="md-nav__link">
-    Getting Started
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#citing" title="Citing" class="md-nav__link">
-    Citing
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#overview" title="Overview" class="md-nav__link">
     Overview
   </a>
@@ -621,32 +593,41 @@
 <p>Functionality to plot notes like a "piano roll"! See <a href="printplot/noteplotter/#MusicVisualizations.noteplotter"><code>noteplotter</code></a> for examples!</p>
 </div>
 <p>The current documentation was built with the following package versions</p>
-<div class="codehilite"><pre><span></span> <span class="o">*</span> <span class="n">MIDI</span> <span class="p">......................</span> <span class="mi">1</span><span class="p">.</span><span class="mi">5</span><span class="p">.</span><span class="mi">1</span>
- <span class="o">*</span> <span class="n">MotifSequenceGenerator</span> <span class="p">....</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
- <span class="o">*</span> <span class="n">MusicManipulations</span> <span class="p">........</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span>
-</pre></div>
+<p>```@example versions
+f() # hide</p>
+<div class="codehilite"><pre><span></span><span class="s s-Atom">using</span> <span class="p">[</span><span class="nv">Material</span><span class="o">+</span><span class="nv">MkDocs</span><span class="p">](</span><span class="nn">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">squidfunk</span><span class="p">.</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">io</span><span class="o">/</span><span class="s s-Atom">mkdocs</span><span class="o">-</span><span class="s s-Atom">material/</span><span class="p">),</span>  <span class="p">[</span><span class="nv">Literate</span><span class="p">.</span><span class="s s-Atom">jl</span><span class="p">](</span><span class="nn">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="s s-Atom">fredrikekre</span><span class="o">/</span><span class="nv">Literate</span><span class="p">.</span><span class="s s-Atom">jl</span><span class="p">)</span> <span class="s s-Atom">and</span> <span class="p">[</span><span class="nv">Documenter</span><span class="p">.</span><span class="s s-Atom">jl</span><span class="p">](</span><span class="nn">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">github</span><span class="p">.</span><span class="s s-Atom">com</span><span class="o">/</span><span class="nv">JuliaDocs</span><span class="o">/</span><span class="nv">Documenter</span><span class="p">.</span><span class="s s-Atom">jl/</span><span class="p">).</span>
 
 
-<p>using <a href="https://squidfunk.github.io/mkdocs-material/">Material+MkDocs</a>,  <a href="https://github.com/fredrikekre/Literate.jl">Literate.jl</a> and <a href="https://github.com/JuliaDocs/Documenter.jl/">Documenter.jl</a>.</p>
-<p><a id='Getting-Started-1'></a></p>
-<h2 id="getting-started">Getting Started</h2>
-<p>The current documentation assumes that you are already familiar with the MIDI format and the <a href="https://julialang.org/">Julia</a> language. After you have installed Julia, you can install the packages you'd like by pressing <code>]</code> in the Julia REPL (to access the package manager mode) and then <code>add MIDI MusicManipulations</code>. To learn a bit more about the MIDI format you can see the <a href=".#MIDI:-The-least-you-need-to-know-1">MIDI: The least you need to know</a> section. The <a href=".#Overview-1">Overview</a> section displays the offered functionality of JuliaMusic.</p>
-<p><a id='Citing-1'></a></p>
-<h2 id="citing">Citing</h2>
-<p>If you used <strong>MIDI.jl</strong> or <strong>MusicManipulations.jl</strong> in research that resulted in publication, then please cite our paper using the following BibTeX entry:</p>
-<div class="codehilite"><pre><span></span>@article<span class="nb">{</span>Datseris2019,
-  doi = <span class="nb">{</span>10.21105/joss.01166<span class="nb">}</span>,
-  url = <span class="nb">{</span>https://doi.org/10.21105/joss.01166<span class="nb">}</span>,
-  year  = <span class="nb">{</span>2019<span class="nb">}</span>,
-  month = <span class="nb">{</span>mar<span class="nb">}</span>,
-  publisher = <span class="nb">{</span>The Open Journal<span class="nb">}</span>,
-  volume = <span class="nb">{</span>4<span class="nb">}</span>,
-  number = <span class="nb">{</span>35<span class="nb">}</span>,
-  pages = <span class="nb">{</span>1166<span class="nb">}</span>,
-  author = <span class="nb">{</span>George Datseris and Joel Hobson<span class="nb">}</span>,
-  title = <span class="nb">{{</span>MIDI<span class="nb">}</span>.jl: Simple and intuitive handling of MIDI data.<span class="nb">}</span>,
-  journal = <span class="nb">{</span>The Journal of Open Source Software<span class="nb">}</span>
-<span class="nb">}</span>
+<span class="o">&lt;</span><span class="s s-Atom">a</span> <span class="s s-Atom">id=&#39;Getting-Started-1&#39;&gt;&lt;/a</span><span class="o">&gt;</span>
+
+<span class="s s-Atom">##</span> <span class="nv">Getting</span> <span class="nv">Started</span>
+
+
+<span class="nv">The</span> <span class="s s-Atom">current</span> <span class="s s-Atom">documentation</span> <span class="s s-Atom">assumes</span> <span class="s s-Atom">that</span> <span class="s s-Atom">you</span> <span class="s s-Atom">are</span> <span class="s s-Atom">already</span> <span class="s s-Atom">familiar</span> <span class="s s-Atom">with</span> <span class="s s-Atom">the</span> <span class="nv">MIDI</span> <span class="s s-Atom">format</span> <span class="s s-Atom">and</span> <span class="s s-Atom">the</span> <span class="p">[</span><span class="nv">Julia</span><span class="p">](</span><span class="nn">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">julialang</span><span class="p">.</span><span class="s s-Atom">org/</span><span class="p">)</span> <span class="s s-Atom">language</span><span class="p">.</span> <span class="nv">After</span> <span class="s s-Atom">you</span> <span class="s s-Atom">have</span> <span class="s s-Atom">installed</span> <span class="nv">Julia</span><span class="p">,</span> <span class="s s-Atom">you</span> <span class="s s-Atom">can</span> <span class="s s-Atom">install</span> <span class="s s-Atom">the</span> <span class="s s-Atom">packages</span> <span class="s s-Atom">you&#39;d like by pressing `]` in the Julia REPL (to access the package manager mode) and then `add MIDI MusicManipulations`. To learn a bit more about the MIDI format you can see the [MIDI: The least you need to know](index.md#MIDI:-The-least-you-need-to-know-1) section. The [Overview](index.md#Overview-1) section displays the offered functionality of JuliaMusic.</span>
+
+
+<span class="s s-Atom">&lt;a id=&#39;</span><span class="nv">Citing</span><span class="o">-</span><span class="mi">1</span><span class="err">&#39;</span><span class="s s-Atom">&gt;&lt;/a</span><span class="o">&gt;</span>
+
+<span class="s s-Atom">##</span> <span class="nv">Citing</span>
+
+
+<span class="nv">If</span> <span class="s s-Atom">you</span> <span class="s s-Atom">used</span> <span class="s s-Atom">**</span><span class="nv">MIDI</span><span class="p">.</span><span class="s s-Atom">jl**</span> <span class="s s-Atom">or</span> <span class="s s-Atom">**</span><span class="nv">MusicManipulations</span><span class="p">.</span><span class="s s-Atom">jl**</span> <span class="s s-Atom">in</span> <span class="s s-Atom">research</span> <span class="s s-Atom">that</span> <span class="s s-Atom">resulted</span> <span class="s s-Atom">in</span> <span class="s s-Atom">publication</span><span class="p">,</span> <span class="s s-Atom">then</span> <span class="s s-Atom">please</span> <span class="s s-Atom">cite</span> <span class="s s-Atom">our</span> <span class="s s-Atom">paper</span> <span class="s s-Atom">using</span> <span class="s s-Atom">the</span> <span class="s s-Atom">following</span> <span class="nv">BibTeX</span> <span class="nn">entry</span><span class="p">:</span>
+
+
+<span class="err">```</span><span class="s s-Atom">latex</span>
+<span class="s s-Atom">@article</span><span class="p">{</span><span class="nv">Datseris2019</span><span class="p">,</span>
+  <span class="s s-Atom">doi</span> <span class="o">=</span> <span class="p">{</span><span class="mf">10.21105</span><span class="o">/</span><span class="s s-Atom">joss</span><span class="mf">.01166</span><span class="p">},</span>
+  <span class="s s-Atom">url</span> <span class="o">=</span> <span class="p">{</span><span class="nn">https</span><span class="p">:</span><span class="o">//</span><span class="s s-Atom">doi</span><span class="p">.</span><span class="s s-Atom">org</span><span class="o">/</span><span class="mf">10.21105</span><span class="o">/</span><span class="s s-Atom">joss</span><span class="mf">.01166</span><span class="p">},</span>
+  <span class="s s-Atom">year</span>  <span class="o">=</span> <span class="p">{</span><span class="mi">2019</span><span class="p">},</span>
+  <span class="s s-Atom">month</span> <span class="o">=</span> <span class="p">{</span><span class="s s-Atom">mar</span><span class="p">},</span>
+  <span class="s s-Atom">publisher</span> <span class="o">=</span> <span class="p">{</span><span class="nv">The</span> <span class="nv">Open</span> <span class="nv">Journal</span><span class="p">},</span>
+  <span class="s s-Atom">volume</span> <span class="o">=</span> <span class="p">{</span><span class="mi">4</span><span class="p">},</span>
+  <span class="s s-Atom">number</span> <span class="o">=</span> <span class="p">{</span><span class="mi">35</span><span class="p">},</span>
+  <span class="s s-Atom">pages</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1166</span><span class="p">},</span>
+  <span class="s s-Atom">author</span> <span class="o">=</span> <span class="p">{</span><span class="nv">George</span> <span class="nv">Datseris</span> <span class="s s-Atom">and</span> <span class="nv">Joel</span> <span class="nv">Hobson</span><span class="p">},</span>
+  <span class="s s-Atom">title</span> <span class="o">=</span> <span class="p">{{</span><span class="nv">MIDI</span><span class="p">}.</span><span class="nn">jl</span><span class="p">:</span> <span class="nv">Simple</span> <span class="s s-Atom">and</span> <span class="s s-Atom">intuitive</span> <span class="s s-Atom">handling</span> <span class="s s-Atom">of</span> <span class="nv">MIDI</span> <span class="s s-Atom">data</span><span class="p">.},</span>
+  <span class="s s-Atom">journal</span> <span class="o">=</span> <span class="p">{</span><span class="nv">The</span> <span class="nv">Journal</span> <span class="s s-Atom">of</span> <span class="nv">Open</span> <span class="nv">Source</span> <span class="nv">Software</span><span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 
 

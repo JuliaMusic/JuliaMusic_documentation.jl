@@ -326,6 +326,18 @@
           
           
 
+
+  <li class="md-nav__item">
+    <a href="../noteplotter/" title="Plotting Notes" class="md-nav__link">
+      Plotting Notes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
   
 
 
@@ -383,18 +395,6 @@
   
 </nav>
     
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../noteplotter/" title="Plotting Notes" class="md-nav__link">
-      Plotting Notes
-    </a>
   </li>
 
         
@@ -549,7 +549,7 @@
                 
                 <p><a id='Printing-into-a-Score-using-MuseScore-1'></a></p>
 <h1 id="printing-into-a-score-using-musescore">Printing into a Score using MuseScore</h1>
-<p><a href="https://musescore.org">MuseScore</a> is a wonderful and open source professional music score editor. <code>MusicManipulations</code> provides a convenient interface that can instantly print any <a href="../../midi/notes/#MIDI.Notes"><code>Notes</code></a> or <a href="../../midi/io/#MIDI.MIDIFile"><code>MIDIFile</code></a> structure via MuseScore.</p>
+<p><a href="https://musescore.org">MuseScore</a> is a wonderful and open source professional music score editor. <code>MusicVisualizations</code> provides a convenient interface that can print any <a href="../../midi/notes/#MIDI.Notes"><code>Notes</code></a> or <a href="../../midi/io/#MIDI.MIDIFile"><code>MIDIFile</code></a> structure via MuseScore.</p>
 <p><a id='MusicVisualizations.musescore' href='#MusicVisualizations.musescore'>#</a>
 <strong><code>MusicVisualizations.musescore</code></strong> &mdash; <em>Function</em>.</p>
 <div class="codehilite"><pre><span></span><span class="n">musescore</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">notes</span> <span class="o">|</span> <span class="n">midi</span><span class="p">;</span> <span class="n">display</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span> <span class="n">rmmidi</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span>
@@ -565,12 +565,9 @@
 </div>
 <p><a id='Creating-a-Score-out-of-some-Notes-1'></a></p>
 <h2 id="creating-a-score-out-of-some-notes">Creating a Score out of some Notes</h2>
-<div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">MusicManipulations</span>
-</pre></div>
-
-
 <p>We first load the test MIDI file "Doxy". The third track has the notes of the Bass:</p>
-<div class="codehilite"><pre><span></span><span class="n">midi</span> <span class="o">=</span> <span class="n">readMIDIFile</span><span class="p">()</span> <span class="c"># read the &quot;test&quot; Doxy MIDI recording.</span>
+<div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">MusicManipulations</span><span class="p">,</span> <span class="n">MusicVisualizations</span>
+<span class="n">midi</span> <span class="o">=</span> <span class="n">readMIDIFile</span><span class="p">()</span> <span class="c"># read the &quot;test&quot; Doxy MIDI recording.</span>
 <span class="n">bass</span> <span class="o">=</span> <span class="n">getnotes</span><span class="p">(</span><span class="n">midi</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 <span class="n">basstrim</span> <span class="o">=</span> <span class="n">bass</span><span class="p">[</span><span class="mi">1</span><span class="o">:</span><span class="mi">50</span><span class="p">]</span>
 </pre></div>
@@ -681,9 +678,9 @@
 </ol>
 <p>For example, let's make a standard rock drums pattern:</p>
 <p>```@example musescore
-bass = MuseScore.drumkey["Acoustic Bass Drum"]
-snare = MuseScore.drumkey["Acoustic Snare"]
-hihat = MuseScore.drumkey["Closed Hi-Hat"]
+bass = musescore_drumkey["Acoustic Bass Drum"]
+snare = musescore_drumkey["Acoustic Snare"]
+hihat = musescore_drumkey["Closed Hi-Hat"]
 midichannel = 9</p>
 <p>tpq = 960
 ei = subdivision(8, tpq)</p>
@@ -719,7 +716,7 @@ rock = Notes(rock, tpq)</p>
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../../mm/extraction/" title="Music Data Extraction" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../noteplotter/" title="Plotting Notes" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -728,19 +725,19 @@ rock = Notes(rock, tpq)</p>
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Music Data Extraction
+                Plotting Notes
               </span>
             </div>
           </a>
         
         
-          <a href="../noteplotter/" title="Plotting Notes" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../motif/basic/" title="Motif Sequence Generation" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Plotting Notes
+                Motif Sequence Generation
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
