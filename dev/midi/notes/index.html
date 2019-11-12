@@ -593,11 +593,11 @@
 <p><code>Notes</code> is iterated and accessed as if iterating or accessing its field <code>notes</code>.</p>
 <p><a id='MIDI.getnotes' href='#MIDI.getnotes'>#</a>
 <strong><code>MIDI.getnotes</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span><span class="n">getnotes</span><span class="p">(</span><span class="n">midi</span><span class="o">::</span><span class="n">MIDIFile</span><span class="p">,</span> <span class="n">trackno</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="n">getnotes</span><span class="p">(</span><span class="n">midi</span><span class="o">::</span><span class="n">MIDIFile</span> <span class="p">[,</span> <span class="n">trackno</span><span class="p">])</span>
 </pre></div>
 
 
-<p>Find all NOTEON and NOTEOFF midi events in the <code>trackno</code> track of a <code>midi</code>, that correspond to the same note value (pitch) and convert them into the <code>Note</code> datatype. There are special cases where NOTEOFF is actually encoded as NOTEON with 0 velocity. <code>getnotes</code> takes care of this.</p>
+<p>Find all NOTEON and NOTEOFF midi events in the <code>trackno</code> track of a <code>midi</code> (default 1 or 2), that correspond to the same note value (pitch) and convert them into the <code>Note</code> datatype. There are special cases where NOTEOFF is actually encoded as NOTEON with 0 velocity, but <code>getnotes</code> takes care of this.</p>
 <p>Notice that the first track of a <code>midi</code> typically doesn't have any notes, which is why the function defaults to track 2.</p>
 <div class="codehilite"><pre><span></span><span class="n">getnotes</span><span class="p">(</span><span class="n">track</span><span class="p">::</span><span class="n">MIDITrack</span><span class="p">,</span> <span class="n">tpq</span> <span class="o">=</span> <span class="mi">960</span><span class="p">)</span>
 </pre></div>
@@ -728,23 +728,20 @@
 
 
 <p>Translate the <code>notes</code> for the given amount of <code>ticks</code>.</p>
-<p>The unicode symbol <code>▷</code> (<code>\triangleright&lt;tab&gt;</code>) is equivalent to <code>translate</code>.</p>
 <p><a id='Base.transpose' href='#Base.transpose'>#</a>
 <strong><code>Base.transpose</code></strong> &mdash; <em>Function</em>.</p>
 <div class="codehilite"><pre><span></span><span class="n">transpose</span><span class="p">(</span><span class="n">notes</span><span class="p">,</span> <span class="n">semitones</span><span class="p">)</span>
 </pre></div>
 
 
-<p>Transpose the <code>notes</code> for the given amount of <code>semitones</code>.</p>
-<p>The unicode symbol <code>□</code> (<code>\square</code>) is equivalent with <code>transpose</code>.</p>
+<p>Transpose the <code>notes</code> by the given amount of <code>semitones</code>.</p>
 <p><a id='MusicManipulations.louden' href='#MusicManipulations.louden'>#</a>
 <strong><code>MusicManipulations.louden</code></strong> &mdash; <em>Function</em>.</p>
 <div class="codehilite"><pre><span></span><span class="n">louden</span><span class="p">(</span><span class="n">notes</span><span class="p">,</span> <span class="n">v</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
 </pre></div>
 
 
-<p>Increase the velocity of the notes by <code>v</code>.</p>
-<p>The unicode symbol <code>◇</code> (<code>\mdlgwhtdiamond</code>) is equivalent with <code>louden</code>.</p>
+<p>Change the velocity of the notes by <code>v</code>.</p>
 <p><a id='MusicManipulations.randomnotes' href='#MusicManipulations.randomnotes'>#</a>
 <strong><code>MusicManipulations.randomnotes</code></strong> &mdash; <em>Function</em>.</p>
 <div class="codehilite"><pre><span></span><span class="n">randomnotes</span><span class="p">(</span><span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">,</span> <span class="n">tpq</span> <span class="o">=</span> <span class="mi">960</span><span class="p">)</span>
