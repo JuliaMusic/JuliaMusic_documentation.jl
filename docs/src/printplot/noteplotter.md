@@ -1,5 +1,5 @@
 # Plotting Notes
-With `MusicVisualizations` it is possible to plot [`Notes`](@ref) similarly to a "piano roll" that DAW like Cubase use. This is achieved with the [`noteplotter`](@ref) function, which becomes available only when `using PyPlot`.
+With `MusicVisualizations` it is possible to plot [`Notes`](@ref) similarly to a "piano roll" that DAW like Cubase use. This is achieved with the [`noteplotter`](@ref) function, which uses `PyPlot`.
 
 ```@docs
 noteplotter

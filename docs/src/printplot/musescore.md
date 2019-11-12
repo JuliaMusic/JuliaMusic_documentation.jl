@@ -89,7 +89,7 @@ hihat = musescore_drumkey["Closed Hi-Hat"]
 midichannel = 9
 
 tpq = 960
-ei = subdivision(8, tpq)
+ei = tpq//2 # 8-th notes
 
 rock = [Note(hihat, iseven(i) ? 100 : 60, ei*i, ei, midichannel) for i in 0:7]
 for i in 1:2

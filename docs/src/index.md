@@ -11,7 +11,8 @@ The current documentation was built with the following package versions
 using Pkg.API: installed
 ins = installed()
 function f()
-for pkg in ["MIDI", "MotifSequenceGenerator", "MusicManipulations"]
+for pkg in ["MIDI", "MotifSequenceGenerator",
+            "MusicManipulations", "MusicVisualizations"]
   println(rpad(" * $(pkg) ", 30, "."), " $(ins[pkg])")
 end
 end

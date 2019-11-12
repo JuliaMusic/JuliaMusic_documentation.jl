@@ -27,7 +27,7 @@
 #
 # First, let's define the basic variables necessary for the code.
 
-using MusicManipulations # re-exports MIDI
+using MusicVisualizations # re-exports MusicManipulations
 cd(@__DIR__) #src
 
 bass = musescore_drumkey["Acoustic Bass Drum"]
