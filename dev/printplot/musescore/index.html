@@ -677,21 +677,40 @@
 <li>Use the appropriate pitches that correspond to the drum instruments. For this you can use the dictionary <code>MuseScore.drumkey</code> (which follows the GM mapping).</li>
 </ol>
 <p>For example, let's make a standard rock drums pattern:</p>
-<p>```@example musescore
-bass = musescore_drumkey["Acoustic Bass Drum"]
-snare = musescore_drumkey["Acoustic Snare"]
-hihat = musescore_drumkey["Closed Hi-Hat"]
-midichannel = 9</p>
-<p>tpq = 960
-ei = subdivision(8, tpq)</p>
-<p>rock = [Note(hihat, iseven(i) ? 100 : 60, ei*i, ei, midichannel) for i in 0:7]
-for i in 1:2
-    push!(rock, Note(bass, 100, 4(i-1)ei, 2ei, midichannel))
-    push!(rock, Note(snare, 100, 4(i-1)ei + 2ei, 2ei, midichannel))
-end
-rock = Notes(rock, tpq)</p>
-<div class="codehilite"><pre><span></span><span class="o">```</span><span class="n">julia</span>
-<span class="n">musescore</span><span class="p">(</span><span class="ss">&quot;rock.png&quot;</span><span class="p">,</span> <span class="n">rock</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="n">bass</span> <span class="o">=</span> <span class="n">musescore_drumkey</span><span class="p">[</span><span class="s">&quot;Acoustic Bass Drum&quot;</span><span class="p">]</span>
+<span class="n">snare</span> <span class="o">=</span> <span class="n">musescore_drumkey</span><span class="p">[</span><span class="s">&quot;Acoustic Snare&quot;</span><span class="p">]</span>
+<span class="n">hihat</span> <span class="o">=</span> <span class="n">musescore_drumkey</span><span class="p">[</span><span class="s">&quot;Closed Hi-Hat&quot;</span><span class="p">]</span>
+<span class="n">midichannel</span> <span class="o">=</span> <span class="mi">9</span>
+
+<span class="n">tpq</span> <span class="o">=</span> <span class="mi">960</span>
+<span class="n">ei</span> <span class="o">=</span> <span class="n">tpq</span><span class="o">//</span><span class="mi">2</span> <span class="c"># 8-th notes</span>
+
+<span class="n">rock</span> <span class="o">=</span> <span class="p">[</span><span class="n">Note</span><span class="p">(</span><span class="n">hihat</span><span class="p">,</span> <span class="n">iseven</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">?</span> <span class="mi">100</span> <span class="o">:</span> <span class="mi">60</span><span class="p">,</span> <span class="n">ei</span><span class="o">*</span><span class="n">i</span><span class="p">,</span> <span class="n">ei</span><span class="p">,</span> <span class="n">midichannel</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="kp">in</span> <span class="mi">0</span><span class="o">:</span><span class="mi">7</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="kp">in</span> <span class="mi">1</span><span class="o">:</span><span class="mi">2</span>
+    <span class="n">push!</span><span class="p">(</span><span class="n">rock</span><span class="p">,</span> <span class="n">Note</span><span class="p">(</span><span class="n">bass</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">4</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="n">ei</span><span class="p">,</span> <span class="mi">2</span><span class="n">ei</span><span class="p">,</span> <span class="n">midichannel</span><span class="p">))</span>
+    <span class="n">push!</span><span class="p">(</span><span class="n">rock</span><span class="p">,</span> <span class="n">Note</span><span class="p">(</span><span class="n">snare</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">4</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="n">ei</span> <span class="o">+</span> <span class="mi">2</span><span class="n">ei</span><span class="p">,</span> <span class="mi">2</span><span class="n">ei</span><span class="p">,</span> <span class="n">midichannel</span><span class="p">))</span>
+<span class="k">end</span>
+<span class="n">rock</span> <span class="o">=</span> <span class="n">Notes</span><span class="p">(</span><span class="n">rock</span><span class="p">,</span> <span class="n">tpq</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="mi">12</span> <span class="n">Notes</span> <span class="k">with</span> <span class="n">tpq</span><span class="o">=</span><span class="mi">960</span>
+ <span class="n">Note</span> <span class="n">F</span><span class="err">♯</span><span class="mi">2</span> <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">480</span> <span class="o">|</span> <span class="n">channel</span> <span class="mi">9</span>
+ <span class="n">Note</span> <span class="n">F</span><span class="err">♯</span><span class="mi">2</span> <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">60</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">480</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">480</span> <span class="o">|</span> <span class="n">channel</span> <span class="mi">9</span>
+ <span class="n">Note</span> <span class="n">F</span><span class="err">♯</span><span class="mi">2</span> <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">960</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">480</span> <span class="o">|</span> <span class="n">channel</span> <span class="mi">9</span>
+ <span class="n">Note</span> <span class="n">F</span><span class="err">♯</span><span class="mi">2</span> <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">60</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">1440</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">480</span> <span class="o">|</span> <span class="n">channel</span> <span class="mi">9</span>
+ <span class="n">Note</span> <span class="n">F</span><span class="err">♯</span><span class="mi">2</span> <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">1920</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">480</span> <span class="o">|</span> <span class="n">channel</span> <span class="mi">9</span>
+ <span class="n">Note</span> <span class="n">F</span><span class="err">♯</span><span class="mi">2</span> <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">60</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">2400</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">480</span> <span class="o">|</span> <span class="n">channel</span> <span class="mi">9</span>
+ <span class="n">Note</span> <span class="n">F</span><span class="err">♯</span><span class="mi">2</span> <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">2880</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">480</span> <span class="o">|</span> <span class="n">channel</span> <span class="mi">9</span>
+ <span class="n">Note</span> <span class="n">F</span><span class="err">♯</span><span class="mi">2</span> <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">60</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">3360</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">480</span> <span class="o">|</span> <span class="n">channel</span> <span class="mi">9</span>
+ <span class="n">Note</span> <span class="n">B1</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">960</span> <span class="o">|</span> <span class="n">channel</span> <span class="mi">9</span>
+ <span class="n">Note</span> <span class="n">D2</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">960</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">960</span> <span class="o">|</span> <span class="n">channel</span> <span class="mi">9</span>
+ <span class="n">Note</span> <span class="n">B1</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">1920</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">960</span> <span class="o">|</span> <span class="n">channel</span> <span class="mi">9</span>
+ <span class="n">Note</span> <span class="n">D2</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">2880</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">960</span> <span class="o">|</span> <span class="n">channel</span> <span class="mi">9</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="n">musescore</span><span class="p">(</span><span class="s">&quot;rock.png&quot;</span><span class="p">,</span> <span class="n">rock</span><span class="p">)</span>
 </pre></div>
 
 
