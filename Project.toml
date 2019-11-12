@@ -6,8 +6,10 @@ version = "0.0.1"
 MIDI = "f57c4921-e30c-5f49-b073-3f2f2ada663e"
 MotifSequenceGenerator = "7d228ccb-0fc9-53c8-a429-8c9b5b572bc3"
 MusicManipulations = "274955c0-c284-5bf7-b122-5ecd51c559de"
-Reexport = "189a3867-3050-52da-a836-e630ba90ab69"
+MusicVisualizations = "8e838768-4b4f-4130-9d6d-43f7b35ca0d6"
 
 [compat]
 julia = "1"
-MusicManipulations = "0.10"
+MIDI = "1.5"
+MusicManipulations = "1.0"
+MusicVisualizations = "0.1"

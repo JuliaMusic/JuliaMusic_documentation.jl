@@ -1,4 +1,4 @@
-using MIDI, MusicManipulations, MotifSequenceGenerator
+using MIDI, MusicManipulations, MotifSequenceGenerator, MusicVisualizations
 using Documenter, Literate, DocumenterMarkdown, PyPlot, Statistics
 
 #%% Literate Conversions
@@ -16,7 +16,7 @@ for file in tobe
     # Literate.script(f, dirname(f);name = f[1:end-3]*"_script")
 end
 PyPlot.ioff()
-makedocs(modules=[MIDI,
+makedocs(modules=[MIDI, MusicVisualizations,
 MusicManipulations, MotifSequenceGenerator],
 doctest=false, root = @__DIR__, format = Markdown())
 PyPlot.close("all")
