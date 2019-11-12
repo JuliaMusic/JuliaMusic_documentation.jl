@@ -32,7 +32,7 @@ I also have exercise variants with two foot-hand strokes next to each other.
 First, let's define the basic variables necessary for the code.
 
 ```@example garibaldi_dragadiddle
-using MusicManipulations # re-exports MIDI
+using MusicVisualizations # re-exports MusicManipulations
 cd(@__DIR__)
 
 bass = MuseScore.drumkey["Acoustic Bass Drum"]
@@ -185,4 +185,3 @@ writeMIDIFile("garibaldi_draga_sequence_hard.mid", rseq)
 ```
 
 ![exercises](garibaldi_draga_sequence_hard.PNG)
-

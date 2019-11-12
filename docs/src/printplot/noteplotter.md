@@ -1,5 +1,5 @@
 # Plotting Notes
-With `MusicManipulations` it is possible to plot [`Notes`](@ref) similarly to a "piano roll" that DAW like Cubase use. This is achieved with the [`noteplotter`](@ref) function, which becomes available only when `using PyPlot`.
+With `MusicVisualizations` it is possible to plot [`Notes`](@ref) similarly to a "piano roll" that DAW like Cubase use. This is achieved with the [`noteplotter`](@ref) function, which becomes available only when `using PyPlot`.
 
 ```@docs
 noteplotter
@@ -8,7 +8,8 @@ noteplotter
 
 ## Piano notes
 ```@example noteplot
-using MusicManipulations, PyPlot
+using MusicVisualizations, PyPlot
+# MusicVisualizations reexports MusicManipulations for convenience
 
 # load a band performance (with metronome)
 midi = readMIDIFile(joinpath(@__DIR__, "mfi_grapevine_1.mid"))

@@ -1,12 +1,8 @@
-```@meta
-EditURL = "https://github.com/TRAVIS_REPO_SLUG/blob/master/"
-```
-
 # Printing into a Score using MuseScore
 
 [MuseScore](https://musescore.org) is a wonderful and open source professional
-music score editor. `MusicManipulations`
-provides a convenient interface that can instantly print any [`Notes`](@ref)
+music score editor. `MusicVisualizations`
+provides a convenient interface that can print any [`Notes`](@ref)
 or [`MIDIFile`](@ref) structure via MuseScore.
 
 ```@docs
@@ -20,14 +16,11 @@ musescore
 
 ## Creating a Score out of some Notes
 
-```@example musescore
-using MusicManipulations
-```
-
 We first load the test MIDI file "Doxy".
 The third track has the notes of the Bass:
 
 ```@example musescore
+using MusicManipulations, MusicVisualizations
 midi = readMIDIFile() # read the "test" Doxy MIDI recording.
 bass = getnotes(midi, 3)
 basstrim = bass[1:50]
@@ -90,9 +83,9 @@ To export directly into drum notation you need to make two changes to your notes
 
 For example, let's make a standard rock drums pattern:
 ```@example musescore
-bass = MuseScore.drumkey["Acoustic Bass Drum"]
-snare = MuseScore.drumkey["Acoustic Snare"]
-hihat = MuseScore.drumkey["Closed Hi-Hat"]
+bass = musescore_drumkey["Acoustic Bass Drum"]
+snare = musescore_drumkey["Acoustic Snare"]
+hihat = musescore_drumkey["Closed Hi-Hat"]
 midichannel = 9
 
 tpq = 960

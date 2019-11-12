@@ -30,9 +30,9 @@
 using MusicManipulations # re-exports MIDI
 cd(@__DIR__) #src
 
-bass = MuseScore.drumkey["Acoustic Bass Drum"]
-snare = MuseScore.drumkey["Acoustic Snare"]
-tom = MuseScore.drumkey["Low-Mid Tom"]
+bass = musescore_drumkey["Acoustic Bass Drum"]
+snare = musescore_drumkey["Acoustic Snare"]
+tom = musescore_drumkey["Low-Mid Tom"]
 midichannel = 9
 tpq = 960
 sixt = 960 ÷ 4

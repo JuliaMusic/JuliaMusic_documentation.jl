@@ -40,8 +40,8 @@ pages:
 - Quantizing: mm/quantizing.md
 - Music Data Extraction: mm/extraction.md
 - Visualization:
-  - Printing Notes into Score: printplot/musescore.md
   - Plotting Notes: printplot/noteplotter.md
+  - Printing Notes into Score: printplot/musescore.md
 - Motif Sequence Generation: motif/basic.md
 - Music Motifs: motif/musicexample.md
 - Becoming a better drummer:
