@@ -9,6 +9,7 @@ A highlight of JuliaMusic is the [`timeseries`](@ref) function, which allows one
 firstnotes
 filterpitches
 separatepitches
+combine
 relpos
 ```
 

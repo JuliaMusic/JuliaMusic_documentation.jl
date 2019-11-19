@@ -82,5 +82,8 @@ Other convenience functions follow:
 translate
 transpose
 louden
+timesort!
+testmidi
+testnotes
 randomnotes
 ```
