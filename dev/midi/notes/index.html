@@ -599,7 +599,7 @@
 
 <p>Find all NOTEON and NOTEOFF midi events in the <code>trackno</code> track of a <code>midi</code> (default 1 or 2), that correspond to the same note value (pitch) and convert them into the <code>Note</code> datatype. There are special cases where NOTEOFF is actually encoded as NOTEON with 0 velocity, but <code>getnotes</code> takes care of this.</p>
 <p>Notice that the first track of a <code>midi</code> typically doesn't have any notes, which is why the function defaults to track 2.</p>
-<div class="codehilite"><pre><span></span><span class="n">getnotes</span><span class="p">(</span><span class="n">track</span><span class="p">::</span><span class="n">MIDITrack</span><span class="p">,</span> <span class="n">tpq</span> <span class="o">=</span> <span class="mi">960</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="err">getnotes(track::MIDITrack, tpq = 960)</span>
 </pre></div>
 
 
@@ -651,11 +651,11 @@
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="n">MIDIFile</span> <span class="p">(</span><span class="n">format</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">tpq</span><span class="o">=</span><span class="mi">960</span><span class="p">)</span> <span class="k">with</span> <span class="n">tracks</span><span class="p">:</span>
- <span class="n">American</span> <span class="n">Rock</span> <span class="n">Beat</span> <span class="mi">06</span> <span class="n">Tom</span>
- <span class="n">Drums</span>
- <span class="n">Bass</span>
- <span class="n">ORIGINAL</span>
+<div class="codehilite"><pre><span></span><span class="err">MIDIFile (format=1, tpq=960) with tracks:</span>
+<span class="err"> American Rock Beat 06 Tom</span>
+<span class="err"> Drums</span>
+<span class="err"> Bass</span>
+<span class="err"> ORIGINAL</span>
 </pre></div>
 
 
@@ -667,22 +667,22 @@
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="mi">177</span> <span class="n">Notes</span> <span class="k">with</span> <span class="n">tpq</span><span class="o">=</span><span class="mi">960</span>
- <span class="n">Note</span> <span class="n">A</span><span class="err">♯</span><span class="mi">2</span> <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">95</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">7680</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">690</span>
- <span class="n">Note</span> <span class="n">A</span><span class="err">♯</span><span class="mi">2</span> <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">71</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">9280</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">308</span>
- <span class="n">Note</span> <span class="k">G</span><span class="err">♯</span><span class="mi">2</span> <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">52</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">9600</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">668</span>
- <span class="n">Note</span> <span class="k">G</span><span class="err">♯</span><span class="mi">2</span> <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">58</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">11200</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">338</span>
- <span class="n">Note</span> <span class="n">G2</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">71</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">11520</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">701</span>
- <span class="n">Note</span> <span class="k">G</span><span class="err">♯</span><span class="mi">2</span> <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">83</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">13120</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">281</span>
- <span class="n">Note</span> <span class="n">G2</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">73</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">13440</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">855</span>
-  <span class="err">⋮</span>
- <span class="n">Note</span> <span class="n">F</span><span class="err">♯</span><span class="mi">1</span> <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">73</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">185280</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">878</span>
- <span class="n">Note</span> <span class="n">F1</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">85</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">186240</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">964</span>
- <span class="n">Note</span> <span class="n">A1</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">88</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">187200</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">904</span>
- <span class="n">Note</span> <span class="n">A</span><span class="err">♯</span><span class="mi">1</span> <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">81</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">188160</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">900</span>
- <span class="n">Note</span> <span class="n">B1</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">77</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">189120</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">945</span>
- <span class="n">Note</span> <span class="n">C2</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">83</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">190080</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">847</span>
- <span class="n">Note</span> <span class="n">F2</span>  <span class="o">|</span> <span class="n">vel</span> <span class="o">=</span> <span class="mi">90</span>  <span class="o">|</span> <span class="n">pos</span> <span class="o">=</span> <span class="mi">191040</span><span class="p">,</span> <span class="n">dur</span> <span class="o">=</span> <span class="mi">713</span>
+<div class="codehilite"><pre><span></span><span class="err">177 Notes with tpq=960</span>
+<span class="err"> Note A♯2 | vel = 95  | pos = 7680, dur = 690</span>
+<span class="err"> Note A♯2 | vel = 71  | pos = 9280, dur = 308</span>
+<span class="err"> Note G♯2 | vel = 52  | pos = 9600, dur = 668</span>
+<span class="err"> Note G♯2 | vel = 58  | pos = 11200, dur = 338</span>
+<span class="err"> Note G2  | vel = 71  | pos = 11520, dur = 701</span>
+<span class="err"> Note G♯2 | vel = 83  | pos = 13120, dur = 281</span>
+<span class="err"> Note G2  | vel = 73  | pos = 13440, dur = 855</span>
+<span class="err">  ⋮</span>
+<span class="err"> Note F♯1 | vel = 73  | pos = 185280, dur = 878</span>
+<span class="err"> Note F1  | vel = 85  | pos = 186240, dur = 964</span>
+<span class="err"> Note A1  | vel = 88  | pos = 187200, dur = 904</span>
+<span class="err"> Note A♯1 | vel = 81  | pos = 188160, dur = 900</span>
+<span class="err"> Note B1  | vel = 77  | pos = 189120, dur = 945</span>
+<span class="err"> Note C2  | vel = 83  | pos = 190080, dur = 847</span>
+<span class="err"> Note F2  | vel = 90  | pos = 191040, dur = 713</span>
 </pre></div>
 
 

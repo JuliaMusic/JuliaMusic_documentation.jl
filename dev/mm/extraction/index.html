@@ -104,7 +104,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#music-data-extraction" tabindex="1" class="md-skip">
+      <a href="#data-extraction-manipulation" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -336,8 +336,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#timeseries-extraction" title="Timeseries Extraction" class="md-nav__link">
-    Timeseries Extraction
+  <a href="#timeseries" title="Timeseries" class="md-nav__link">
+    Timeseries
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#segmentation" title="Segmentation" class="md-nav__link">
+    Segmentation
   </a>
   
 </li>
@@ -520,8 +527,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#timeseries-extraction" title="Timeseries Extraction" class="md-nav__link">
-    Timeseries Extraction
+  <a href="#timeseries" title="Timeseries" class="md-nav__link">
+    Timeseries
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#segmentation" title="Segmentation" class="md-nav__link">
+    Segmentation
   </a>
   
 </li>
@@ -545,8 +559,8 @@
                   <a href="https://github.com/JuliaMusic/edit/master/docs/mm/extraction.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <p><a id='Music-Data-Extraction-1'></a></p>
-<h1 id="music-data-extraction">Music Data Extraction</h1>
+                <p><a id='Data-Extraction-and-Manipulation-1'></a></p>
+<h1 id="data-extraction-manipulation">Data Extraction &amp; Manipulation</h1>
 <p>The functions described in this page allow for easier extraction of data from music recordings (in the form of MIDI). A highlight of JuliaMusic is the <a href="./#MusicManipulations.timeseries"><code>timeseries</code></a> function, which allows one to directly get gridded timeseries from arbitrary <code>Notes</code> structures.</p>
 <p><a id='Basic-Data-Extraction-1'></a></p>
 <h2 id="basic-data-extraction">Basic Data Extraction</h2>
@@ -603,18 +617,19 @@
 
 <p>Do the same as <a href="./#MusicManipulations.estimate_delay"><code>estimate_delay</code></a> but for <code>m</code> times, while in each step shifting the notes by the previously found delay. This improves the accuracy of the algorithm, because the distribution of the quarter notes is estimated better and better each time. The function should typically converge after a couple of <code>m</code>.</p>
 <p>The returned result is the estimated delay, in integer (ticks), as only integers can be used to actually shift the notes around.</p>
-<p><a id='Timeseries-Extraction-1'></a></p>
-<h2 id="timeseries-extraction">Timeseries Extraction</h2>
+<p><a id='Timeseries-1'></a></p>
+<h2 id="timeseries">Timeseries</h2>
 <p><a id='MusicManipulations.timeseries' href='#MusicManipulations.timeseries'>#</a>
 <strong><code>MusicManipulations.timeseries</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span><span class="n">timeseries</span><span class="p">(</span><span class="n">notes</span><span class="o">::</span><span class="n">Notes</span><span class="p">,</span> <span class="n">property</span><span class="o">::</span><span class="kt">Symbol</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">grid</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">tvec</span><span class="p">,</span> <span class="n">ts</span>
+<div class="codehilite"><pre><span></span><span class="n">timeseries</span><span class="p">(</span><span class="n">notes</span><span class="o">::</span><span class="n">Notes</span><span class="p">,</span> <span class="n">property</span><span class="o">::</span><span class="kt">Symbol</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">grid</span><span class="p">;</span> <span class="n">segmented</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">tvec</span><span class="p">,</span> <span class="n">ts</span>
 </pre></div>
 
 
 <p>Produce a timeseries of the <code>property</code> of the given notes, by first quantizing on the given <code>grid</code> (to avoid actual quantization use the grid <code>0:1//notes.tpq:1</code>). Return the time vector <code>tvec</code> in ticks and the produced timeseries <code>ts</code>.</p>
 <p>After quantization, it is often the case that many notes are in the same bin of the grid. The <strong>function</strong> <code>f</code> denotes which value of the vector of the <code>property</code> of the notes to keep. Typical values are <code>minimum, maximum, mean</code>, etc. Notice that bins without any note in them obtain the value <code>missing</code>, regardless of the function <code>f</code> or the <code>property</code>.</p>
 <p>If the <code>property</code> is <code>:velocity</code>, <code>:pitch</code>, or <code>:duration</code> the function behaves exactly as described. The <code>property</code> can also be <code>:position</code>. In this case, the timeseries <code>ts</code> contain the timing deviations of the notes with respect to the <code>tvec</code> vector (these numbers are known as <em>microtiming deviations</em> in the literature).</p>
-<div class="codehilite"><pre><span></span><span class="n">timeseries</span><span class="p">(</span><span class="n">notes</span><span class="p">::</span><span class="n">Notes</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">grid</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">tvec</span><span class="p">,</span> <span class="n">ts</span>
+<p>If 'segmented = true', the notes are segmented according to the grid in order to respect the information of their duration, see <a href="./#MusicManipulations.segment"><code>segment</code></a>. Otherwise the notes are treated as point events with no duration (it makes no sense to choose <code>:duration</code> with <code>segmented</code>).</p>
+<div class="codehilite"><pre><span></span><span class="err">timeseries(notes::Notes, f, grid) -&gt; tvec, ts</span>
 </pre></div>
 
 
@@ -654,6 +669,17 @@
 <span class="n">grid</span> <span class="o">=</span> <span class="mi">0</span><span class="o">:</span><span class="mi">1</span><span class="o">//</span><span class="mi">3</span><span class="o">:</span><span class="mi">1</span>
 <span class="n">tvec2</span><span class="p">,</span> <span class="n">ts2</span> <span class="o">=</span> <span class="n">timeseries</span><span class="p">(</span><span class="n">notes</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">grid</span><span class="p">)</span>
 </pre></div>
+
+
+<p><a id='Segmentation-1'></a></p>
+<h2 id="segmentation">Segmentation</h2>
+<p><a id='MusicManipulations.segment' href='#MusicManipulations.segment'>#</a>
+<strong><code>MusicManipulations.segment</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span><span class="n">segment</span><span class="p">(</span><span class="n">notes</span><span class="p">,</span> <span class="n">grid</span><span class="p">)</span> <span class="n">→</span> <span class="n">segmented_notes</span>
+</pre></div>
+
+
+<p>Quantize the positions and durations of <code>notes</code> and then segment them (i.e. cut them into pieces) according to the duration of a grid unit. This function only works with <code>AbstractRange</code> grids, i.e. equi-spaced grids like <code>0:1//3:1</code>.</p>
                 
                   
                 
