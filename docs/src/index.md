@@ -3,7 +3,7 @@ This documentation describes how to use packages of the [JuliaMusic](https://git
 Most of the functionality comes in the form of the [MIDI](https://en.wikipedia.org/wiki/MIDI) format which is described later on this page.
 
 !!! info "Latest News"
-    Functionality to plot notes like a "piano roll"! See [`noteplotter`](@ref) for examples!
+    Segmentation of notes: [`segment`](@ref)!
 
 
 The current documentation was built with the following package versions

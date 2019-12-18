@@ -38,7 +38,7 @@ pages:
 - MIDI files: midi/io.md
 - Notes: midi/notes.md
 - Quantizing: mm/quantizing.md
-- Music Data Extraction: mm/extraction.md
+- Data Extraction & Manipulation: mm/extraction.md
 - Visualization:
   - Plotting Notes: printplot/noteplotter.md
   - Printing Notes into Score: printplot/musescore.md

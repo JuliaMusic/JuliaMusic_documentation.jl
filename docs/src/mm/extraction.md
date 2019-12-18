@@ -1,4 +1,4 @@
-# Music Data Extraction
+# Data Extraction & Manipulation
 The functions described in this page allow for easier extraction of data from music recordings (in the form of MIDI).
 A highlight of JuliaMusic is the [`timeseries`](@ref) function, which allows one to directly get gridded timeseries from arbitrary `Notes` structures.
 
@@ -19,7 +19,7 @@ estimate_delay
 estimate_delay_recursive
 ```
 
-## Timeseries Extraction
+## Timeseries
 
 ```@docs
 timeseries
@@ -64,4 +64,9 @@ end
 
 grid = 0:1//3:1
 tvec2, ts2 = timeseries(notes, f, grid)
+```
+
+## Segmentation
+```@docs
+segment
 ```
