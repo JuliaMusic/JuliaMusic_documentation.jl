@@ -283,6 +283,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../mm/notetools/" title="Note Tools" class="md-nav__link">
+      Note Tools
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
     <a href="../../mm/quantizing/" title="Quantizing" class="md-nav__link">
       Quantizing
     </a>
@@ -310,13 +322,13 @@
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" checked>
     
-    <label class="md-nav__link" for="nav-6">
+    <label class="md-nav__link" for="nav-7">
       Visualization
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-6">
+      <label class="md-nav__title" for="nav-7">
         Visualization
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -434,13 +446,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-10" type="checkbox" id="nav-10">
     
-    <label class="md-nav__link" for="nav-9">
+    <label class="md-nav__link" for="nav-10">
       Becoming a better drummer
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-9">
+      <label class="md-nav__title" for="nav-10">
         Becoming a better drummer
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -552,13 +564,13 @@
 <p><a href="https://musescore.org">MuseScore</a> is a wonderful and open source professional music score editor. <code>MusicVisualizations</code> provides a convenient interface that can print any <a href="../../midi/notes/#MIDI.Notes"><code>Notes</code></a> or <a href="../../midi/io/#MIDI.MIDIFile"><code>MIDIFile</code></a> structure via MuseScore.</p>
 <p><a id='MusicVisualizations.musescore' href='#MusicVisualizations.musescore'>#</a>
 <strong><code>MusicVisualizations.musescore</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span><span class="n">musescore</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">notes</span> <span class="o">|</span> <span class="n">midi</span><span class="p">;</span> <span class="n">display</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span> <span class="n">rmmidi</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="n">musescore</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">notes</span> <span class="o">|</span> <span class="n">midi</span><span class="p">;</span> <span class="n">keywords</span><span class="o">...</span><span class="p">)</span>
 </pre></div>
 
 
-<p>Use the open source software "MuseScore" to create a score and save the output to <code>file</code>. By default it will also display the created <code>file</code>, which can be either a <code>.pdf</code> or a <code>.png</code>. The function must first create a MIDI file (uses the same name as <code>file</code>). You can choose to delete it afterwards (<code>rmmidi</code>).</p>
-<p>MuseScore must be accessible from the command line. In Windows try <code>MuseScore -v</code> to ensure that, otherwise <code>mscore -v</code>.</p>
-<p>If given a <code>.png</code> the actual file name will end with <code>-1</code>, <code>-2</code> etc. for each page of the score.</p>
+<p>Use the open source software "MuseScore" to create a score and save the given <code>notes</code> (or an entire <code>midi</code> file) to <code>file</code>, which can be either a <code>.pdf</code> or a <code>.png</code>.If given a <code>.png</code> the actual file name will end with <code>-1</code>, <code>-2</code> etc. for each page of the score.</p>
+<p>MuseScore must be accessible from the command line for this to work (add the path to <code>MuseScore.exe</code> to your PATH environment variable (ask Google)).</p>
+<p>The keyword <code>display = true</code> will also display the created <code>file</code>. Keyword <code>rmmidi = true</code> deletes the MIDI file that has to be created inbetween score convertion (use <code>false</code> to keep it). MuseScore is run by default with commands <code>c =</code>-n -T 10<code>`, but you can change the keyword</code>c` to be whatever you want.</p>
 <div class="admonition tip">
 <p class="admonition-title">Quantize your notes!</p>
 <p>Keep in mind that the score creation capabilities of MuseScore rely upon having well-defined notes. This means that you should use the function <a href="../../mm/quantizing/#MusicManipulations.quantize"><code>quantize</code></a> to quantize both the position and duration of your notes!</p>

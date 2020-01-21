@@ -40,7 +40,7 @@
     
     
       
-        <title>Music Motifs - JuliaMusic</title>
+        <title>Note Tools - JuliaMusic</title>
       
     
     
@@ -104,7 +104,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#music-motif-examples" tabindex="1" class="md-skip">
+      <a href="#note-tools" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -130,7 +130,7 @@
                 JuliaMusic
               </span>
               <span class="md-header-nav__topic">
-                Music Motifs
+                Note Tools
               </span>
             
           
@@ -281,11 +281,20 @@
       
       
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../mm/notetools/" title="Note Tools" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+    <a href="./" title="Note Tools" class="md-nav__link md-nav__link--active">
       Note Tools
     </a>
+    
   </li>
 
     
@@ -295,7 +304,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../mm/quantizing/" title="Quantizing" class="md-nav__link">
+    <a href="../quantizing/" title="Quantizing" class="md-nav__link">
       Quantizing
     </a>
   </li>
@@ -307,7 +316,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../mm/extraction/" title="Data Extraction & Manipulation" class="md-nav__link">
+    <a href="../extraction/" title="Data Extraction & Manipulation" class="md-nav__link">
       Data Extraction & Manipulation
     </a>
   </li>
@@ -367,7 +376,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../basic/" title="Motif Sequence Generation" class="md-nav__link">
+    <a href="../../motif/basic/" title="Motif Sequence Generation" class="md-nav__link">
       Motif Sequence Generation
     </a>
   </li>
@@ -377,20 +386,11 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-    <a href="./" title="Music Motifs" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../motif/musicexample/" title="Music Motifs" class="md-nav__link">
       Music Motifs
     </a>
-    
   </li>
 
     
@@ -481,21 +481,73 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/JuliaMusic/edit/master/docs/motif/musicexample.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/JuliaMusic/edit/master/docs/mm/notetools.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <p><a id='Music-Motif-Examples-1'></a></p>
-<h1 id="music-motif-examples">Music Motif Examples</h1>
-<p><a href="../basic/#MotifSequenceGenerator"><code>MotifSequenceGenerator</code></a> can be applied directly to music-related setting, via <a href="../../midi/notes/#MIDI.Notes"><code>Notes</code></a>, with the function <a href="./#MusicManipulations.random_notes_sequence"><code>random_notes_sequence</code></a>. In the "Becoming a better musician" section of this documentation, this function (and others from JuliaMusic) are taken advantage of in real-life scenarios.</p>
-<p><a id='MusicManipulations.random_notes_sequence' href='#MusicManipulations.random_notes_sequence'>#</a>
-<strong><code>MusicManipulations.random_notes_sequence</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span><span class="n">random_notes_sequence</span><span class="p">(</span><span class="n">motifs</span><span class="o">::</span><span class="kt">Vector</span><span class="p">{</span><span class="n">Notes</span><span class="p">{</span><span class="n">N</span><span class="p">}},</span> <span class="n">q</span><span class="p">,</span> <span class="n">δq</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">weights</span><span class="p">)</span>
+                <p><a id='Note-Tools-1'></a></p>
+<h1 id="note-tools">Note Tools</h1>
+<p>This page describes functions that allow you to very conveniently work with and manipulate <code>Note</code>, <code>Notes</code>, and similar for example you can easily <a href="./#MusicManipulations.translate"><code>translate</code></a> in time or <a href="./#Base.transpose"><code>transpose</code></a> them in pitch.</p>
+<p>The functions <code>velocities, positions, pitches, durations</code> return the respective property when given some <a href="../../midi/notes/#MIDI.Notes"><code>Notes</code></a>.</p>
+<p>Other functions follow:</p>
+<p><a id='MusicManipulations.translate' href='#MusicManipulations.translate'>#</a>
+<strong><code>MusicManipulations.translate</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span><span class="n">translate</span><span class="p">(</span><span class="n">notes</span><span class="p">,</span> <span class="n">ticks</span><span class="p">)</span>
 </pre></div>
 
 
-<p>Create a random sequence from a pool of notes (<code>motifs</code>) such that it has total length <code>ℓ</code> exactly <code>q - δq ≤ ℓ ≤ q + δq</code>. Notice that <code>q</code> is measured in <strong>ticks</strong>. Optionally pass keyword <code>weights</code> to sample different motifs with different weights (either as frequencies or as probabilities).</p>
-<p>Return the result as a single <code>Notes</code> container, and also return the sequence of motifs used.</p>
-<p>This function uses <a href="../basic/#MotifSequenceGenerator.random_sequence"><code>random_sequence</code></a> from the module <a href="../@ref"><code>MotifSequenceGenerator</code></a>, adapted to the <a href="../../midi/notes/#MIDI.Notes"><code>Notes</code></a> struct.</p>
+<p>Translate the <code>notes</code> for the given amount of <code>ticks</code>. Also works for a single note.</p>
+<p><a id='Base.transpose' href='#Base.transpose'>#</a>
+<strong><code>Base.transpose</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span><span class="n">transpose</span><span class="p">(</span><span class="n">notes</span><span class="p">,</span> <span class="n">semitones</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Transpose the <code>notes</code> by the given amount of <code>semitones</code>. Also works for a single note.</p>
+<p><a id='MusicManipulations.louden' href='#MusicManipulations.louden'>#</a>
+<strong><code>MusicManipulations.louden</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span><span class="n">louden</span><span class="p">(</span><span class="n">notes</span><span class="p">,</span> <span class="n">v</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Change the velocity of the notes by <code>v</code> (which could also be negative). Also works for a single note.</p>
+<p><a id='Base.repeat' href='#Base.repeat'>#</a>
+<strong><code>Base.repeat</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span><span class="n">repeat</span><span class="p">(</span><span class="n">notes</span><span class="p">,</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Repeat the <code>notes</code> <code>i</code> times, by successively adding duplicates of <code>notes</code> shifted by the total duration of <code>notes</code>. Return a single <code>Notes</code> container for convenience.</p>
+<p>The function assumes that notes are <code>timesort</code>ed.</p>
+<p><a id='MusicManipulations.timesort!' href='#MusicManipulations.timesort!'>#</a>
+<strong><code>MusicManipulations.timesort!</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span><span class="n">timesort!</span><span class="p">(</span><span class="n">notes</span><span class="o">::</span><span class="n">Notes</span><span class="p">)</span>
+</pre></div>
+
+
+<p>In-place sort the <code>notes</code> by their temporal position. Use <code>timesort</code> for a non-mutating version.</p>
+<hr />
+<p>And for getting default notes:</p>
+<p><a id='MIDI.testmidi' href='#MIDI.testmidi'>#</a>
+<strong><code>MIDI.testmidi</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span><span class="n">testmidi</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Return the path to a test MIDI file.</p>
+<p><a id='MIDI.testnotes' href='#MIDI.testnotes'>#</a>
+<strong><code>MIDI.testnotes</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span><span class="n">testnotes</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Return a test set of human-played MIDI notes on the piano.</p>
+<p><a id='MusicManipulations.randomnotes' href='#MusicManipulations.randomnotes'>#</a>
+<strong><code>MusicManipulations.randomnotes</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span><span class="n">randomnotes</span><span class="p">(</span><span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">,</span> <span class="n">tpq</span> <span class="o">=</span> <span class="mi">960</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Generate some random notes that start sequentially.</p>
                 
                   
                 
@@ -516,7 +568,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../basic/" title="Motif Sequence Generation" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../../midi/notes/" title="Notes" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -525,19 +577,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Motif Sequence Generation
+                Notes
               </span>
             </div>
           </a>
         
         
-          <a href="../../blog/intro/" title="Introduction" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../quantizing/" title="Quantizing" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Introduction
+                Quantizing
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
