@@ -37,6 +37,7 @@ pages:
 - Introduction: index.md
 - MIDI files: midi/io.md
 - Notes: midi/notes.md
+- Note Tools: mm/notetools.md
 - Quantizing: mm/quantizing.md
 - Data Extraction & Manipulation: mm/extraction.md
 - Visualization:

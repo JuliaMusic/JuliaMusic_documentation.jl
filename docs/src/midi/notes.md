@@ -71,19 +71,3 @@ name_to_pitch
 pitch_to_name
 note_to_fundamental
 ```
-
-## Convenience Tools
-
-The functions `velocities, positions, pitches, durations` return
-the respective property when given some [`Notes`](@ref).
-
-Other convenience functions follow:
-```@docs
-translate
-transpose
-louden
-timesort!
-testmidi
-testnotes
-randomnotes
-```

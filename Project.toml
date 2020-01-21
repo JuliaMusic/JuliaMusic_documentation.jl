@@ -11,5 +11,5 @@ MusicVisualizations = "8e838768-4b4f-4130-9d6d-43f7b35ca0d6"
 [compat]
 julia = "1"
 MIDI = "1.5"
-MusicManipulations = "1.0"
+MusicManipulations = "1.3"
 MusicVisualizations = "≥ 0.2"
