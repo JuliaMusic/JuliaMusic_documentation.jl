@@ -20,7 +20,8 @@ end
 ```@example versions
 f() # hide
 ```
-using [Material+MkDocs](https://squidfunk.github.io/mkdocs-material/),  [Literate.jl](https://github.com/fredrikekre/Literate.jl) and [Documenter.jl](https://github.com/JuliaDocs/Documenter.jl/).
+using [Literate.jl](https://github.com/fredrikekre/Literate.jl) and [Documenter.jl](https://github.com/JuliaDocs/Documenter.jl/).
+The documentation is written and maintained by George Datseris.
 
 ## Getting Started
 The current documentation assumes that you are already familiar with the MIDI format and the [Julia](https://julialang.org/) language. After you have installed Julia, you can install the packages you'd like by pressing `]` in the Julia REPL (to access the package manager mode) and then `add MIDI MusicManipulations`. To learn a bit more about the MIDI format you can see the [MIDI: The least you need to know](@ref) section. The [Overview](@ref) section displays the offered functionality of JuliaMusic.
@@ -53,39 +54,27 @@ If you used **MIDI.jl** or **MusicManipulations.jl** in research that resulted i
 fundamental types like tracks, reading/writing functionality, note functionality and other
 basic stuff.
 
-1. [Basic MIDI API](midi/io) : The API of basic types like midi files and tracks, as well as IO. Various utility functions are included as well.
-2. [Notes](midi/notes) : The [`Note`](@ref) construct describes a music note. Many convenience tools are also provided in the same page, like e.g. turning a note pitch to a string like `A♯3`.
+1. [Basic MIDI structures](@ref) : The API of basic types like midi files and tracks, as well as IO. Various utility functions are included as well.
+2. [Notes](@ref) : The [`Note`](@ref) construct describes a music note. Many convenience tools are also provided in the same page, like e.g. turning a note pitch to a string like `A♯3`.
 
 ### MusicManipulations
 
 The [MusicManipulations.jl](https://github.com/JuliaMusic/MusicManipulations.jl) package has more advanced functionality about note processing, data extraction, quantizing and other similar processes that related to music data.
 
-1. [Convenience tools](midi/notes/#convenience-tools).
-1. [Quantizing & Classifying Notes](mm/quantizing) on a given grid.
-2. [Advanced Music Data Extraction](mm/extraction).
-3. [Printing notes into a Score](printplot/musescore)
-3. More coming soon.
+1. [Note Tools](@ref) for easy handling of notes.
+1. [Quantizing](@ref) for quantizing and classifying notes on a given grid.
+2. [Music data extraction](@ref).
+
+### MusicVisualizations
+This functionality allows you to either print MIDI data into a music score using [`musescore`](@ref), or plot notes directly like a "piano roll" with the customizable function [`noteplotter`](@ref).
+
 
 ### MotifSequenceGenerator
 
 [MotifSequenceGenerator.jl](https://github.com/JuliaMusic/MotifSequenceGenerator.jl) is a very simple module that does a very simple thing: based on a pool of motifs with specified lengths, it makes a random sequence out of them so that the sequence also has a specified length!
 
-1. [Motif Sequences](motif/basic.md) introduces the module and has a basic usage example.
-2. [Music Motifs Example](motif/musicexample.md) shows a real-world use case where the module is used to produce music sequences.
+1. [Motif sequence generation](@ref) introduces the module and has a basic usage example.
+2. [Music motifs](@ref) applies this to notes.
 
-
-## MIDI: The least you need to know
-*This section serves as a crash-course on the MIDI format. For more info
-see the [wikipedia](https://en.wikipedia.org/wiki/MIDI) page,
-read the [official MIDI specifications](https://www.midi.org/specifications) or
-have a look at the comprehensive tutorial [at recordingblogs.com](http://www.recordingblogs.com/wiki/musical-instrument-digital-interface-midi)*.
-
-A MIDI file typically comes in pieces called tracks that play simultaneously. Each track can have 16 different channels, numbered 0-15. Each channel can be thought of as a single instrument, though that instrument can be changed throughout that track. A track contains events. The three types of events are MIDI events, META events, and system exclusive (SYSEX) events.
-All events begin with the time since the last event (dT) in ticks. The number of ticks per quarter note is given by the `tpq` of the midi file, `MIDIFile.tpq` (see [`MIDIFile`](@ref)).
-
-* MIDI events handle things related to the actual notes as well as sound texture, such as playing a note or moving the pitch-wheel.
-
-* META events take care of things like adding copyright text, authorship information,
-  track naming etc.
-
-* SYSEX events are used to transmit arbitrary data. Their contents depend on the intended recipient.
+### Becoming a better drummer blog
+This section of the documentation is more like a blog than a documentation. In these  pages I describe how I use the packages of JuliaMusic, and the programming language Julia, to help myself become a better drummer.

@@ -1,4 +1,4 @@
-# Data Extraction & Manipulation
+# Music data extraction
 The functions described in this page allow for easier extraction of data from music recordings (in the form of MIDI).
 A highlight of JuliaMusic is the [`timeseries`](@ref) function, which allows one to directly get gridded timeseries from arbitrary `Notes` structures.
 

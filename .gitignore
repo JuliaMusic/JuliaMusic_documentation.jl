@@ -5,8 +5,11 @@ docs/build
 Manifest.toml
 *.pdf
 
+doxy-2.png
+doxy-3.png
+doxy-4.png
+
 # Don't ignore:
 !bass-1.png
-!doxy.pdf
 !doxy-1.png
 !rock-1.png
