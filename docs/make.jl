@@ -65,7 +65,7 @@ PyPlot.ion()
 
 if CI
     deploydocs(
-        repo = "github.com/JuliaDynamics/DrWatson.jl.git",
+        repo = "github.com/JuliaMusic/JuliaMusic_documentation.jl.git",
         target = "build",
         push_preview = true
     )
