@@ -33,7 +33,6 @@ musescore("bass.png", basstrim) #src
 #md # ```julia
 #md # musescore(bass, notes)
 #md # ```
-#nb musescore(bass, notes)
 
 # ![Bass score](bass-1.png)
 
@@ -55,18 +54,15 @@ addnotes!(ptrack, qpiano)
 addtrackname!(ptrack, "Doxy")
 smidi = MIDIFile(1, 960, [midi.tracks[3], ptrack])
 
-# and then save the full thing as `.pdf`:
-musescore("doxy.pdf", smidi) #src
+# and then save the full thing as `.pdf` or `.png`:
 musescore("doxy.png", smidi) #src
 
 #md # ```julia
-#md # musescore("doxy.pdf", smidi)
+#md # musescore("doxy.png", smidi)
 #md # ```
-#nb score("doxy.pdf", smidi)
 
-# You can find the produced `.pdf` file
-# [here](https://github.com/JuliaMusic/JuliaMusic_documentation.jl/tree/master/docs/src/printplot/doxy.pdf).
 # The first page looks like this:
 # ![Full score](doxy-1.png)
+
 # When given multiple tracks MuseScore displays the name of the track ([`trackname`](@ref)),
 # as well as the instrument it automatically chose to represent it.
