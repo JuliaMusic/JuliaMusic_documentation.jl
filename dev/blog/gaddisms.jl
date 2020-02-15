@@ -38,7 +38,7 @@
 
 using MusicManipulations # tools for handling MIDI data
 using MusicVisualizations # to be able to access MuseScore
-using Random # for random permutations
+using Random; Random.seed!(1234) #src
 cd(@__DIR__) #src
 channel = 9 # this is the dedicated drum channel for MuseScore
 mdk = musescore_drumkey # for typing less
@@ -229,6 +229,8 @@ function gaddism_matrix(first, second; dx = 2.6, dy = 1.2) # inches per pattern
             fig.add_artist(line)
         end
     end
+    axs[1,1].text(0.5,0.5, "Gaddism Matrix\n(flutter licks)\n"*
+                  "by George Datseris\nusing JuliaMusic", va="center", ha="center", size=12)
     for ax in axs; ax.axis("off"); end
     fig.tight_layout()
     fig.savefig("gaddmatrix_$(join(first))x$(join(second)).png", dpi = 1200)
@@ -237,6 +239,7 @@ end
 # This function is given two vectors of integer indices, each denoting which patterns from the
 # first and second half to include into the matrix:
 
+gaddism_matrix(1:4, 1:3) #src
 gaddism_matrix([1, 2, 4, 5, 7], [1, 8, 5]) #src
 # ```julia
 # gaddism_matrix([1, 2, 4, 5, 7], [1, 8, 5])
