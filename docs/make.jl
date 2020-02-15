@@ -36,6 +36,7 @@ makedocs(
         assets = [
             "assets/logo.ico",
             ],
+        collapselevel = 2,
         ),
     doctest=false,
     pages = [

@@ -45,6 +45,7 @@ If you used **MIDI.jl** or **MusicManipulations.jl** in research that resulted i
 }
 ```
 
+You can get an idea of the scientific projects that these software are used here: https://www.nature.com/articles/s41598-019-55981-3
 
 ## Overview
 

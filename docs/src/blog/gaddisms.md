@@ -29,6 +29,8 @@ of them into a score.
 
 The final output of this tutorial will be something like this:
 
+![](random1-1.png)
+
 and something like this:
 
 ![](gaddmatrix_1234x123.png)
