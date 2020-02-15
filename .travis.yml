@@ -10,6 +10,9 @@ notifications:
     on_success: never
     on_failure: never
 
+# before_install:
+#   - apt-get install -y musescore
+
 before_script:
   - julia -e 'using Pkg; ENV["PYTHON"]=""; Pkg.add("PyCall"); Pkg.build(); Pkg.add("PyPlot")'
 
