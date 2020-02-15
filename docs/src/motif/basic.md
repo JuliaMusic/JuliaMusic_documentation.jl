@@ -1,4 +1,4 @@
-# Motif Sequence Generation
+# Motif sequence generation
 
 ```@docs
 MotifSequenceGenerator

@@ -30,7 +30,7 @@
 using MusicVisualizations # re-exports MusicManipulations
 cd(@__DIR__) #src
 
-bass = musescore_drumkey["Acoustic Bass Drum"]
+bass = musescore_drumkey["Acoustic Bass Drum"] # for readability
 snare = musescore_drumkey["Acoustic Snare"]
 tom = musescore_drumkey["Low-Mid Tom"]
 midichannel = 9
@@ -121,10 +121,13 @@ exercise = vcat(exercise...)
 append!(exercises, translate(exercise, (j-1)*bars*16*sixt))
 exercises
 
-# Save a midi file and make a chart
-writeMIDIFile("garibaldi_draga_exercise.mid", Notes(exercises, tpq)) #src
+# Nowe we use [`musescore`](@ref) to make a sheet of the exercises
+musescore("garibaldi_draga_exercise.png", Notes(exercises, tpq)) #src
+# ```julia
+# musescore("garibaldi_draga_exercise.png", Notes(exercises, tpq))
+# ```
 
-# ![exercises](garibaldi_draga_exercise.PNG)
+# ![exercises](garibaldi_draga_exercise-1.png)
 
 # ## Randomized exercises
 # %% Generate simple random sequence of this thing! #src
@@ -145,21 +148,27 @@ Note(snare, 100, sixt, sixt, midichannel),
 
 motifs = Notes.([motif0, motif2], tpq)
 
-# To make the exercise easy, I want the double stroke to not appear more often.
+# To make the exercise easy, I want the double stroke to not appear too often.
 # This is easily done by adjusting the  `weight` keyword:
 
 rseq, = random_notes_sequence(motifs, 16sixt*16; weights = [4, 1])
 rseq
-writeMIDIFile("garibaldi_draga_sequence_easy.mid", rseq); #src
 
-# ![exercises](garibaldi_draga_sequence_easy.PNG)
+# And again, export it into a score:
+
+musescore("garibaldi_draga_sequence_easy.png", rseq) #src
+# ```julia
+# musescore("garibaldi_draga_sequence_easy.png", Notes(exercises, tpq))
+# ```
+# ![exercises](garibaldi_draga_sequence_easy-1.png)
 
 # %% Generate harder random sequence #src
 # Finally, I'll make one more exercise where the foot+hand double appears a bit
 # more frequently.
 
 rseq, = random_notes_sequence(motifs, 16sixt*16; weights = [2, 1])
-rseq
-writeMIDIFile("garibaldi_draga_sequence_hard.mid", rseq); #src
-
-# ![exercises](garibaldi_draga_sequence_hard.PNG)
+musescore("garibaldi_draga_sequence_hard.png", rseq) #src
+# ```julia
+# musescore("garibaldi_draga_sequence_hard.png", Notes(exercises, tpq))
+# ```
+# ![exercises](garibaldi_draga_sequence_hard-1.png)

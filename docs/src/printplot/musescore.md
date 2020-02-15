@@ -1,8 +1,12 @@
+```@meta
+EditURL = "<unknown>/../JuliaMusic_documentation.jl/docs/src/printplot/musescore.jl"
+```
+
 # Printing into a Score using MuseScore
 
-[MuseScore](https://musescore.org) is a wonderful and open source professional
-music score editor. `MusicVisualizations`
-provides a convenient interface that can print any [`Notes`](@ref)
+[MuseScore](https://musescore.org) is a wonderful and open source _professional_
+music score editor with a huge amount of capabilities. `MusicManipulations`
+provides a convenient interface that can instantly print any [`Notes`](@ref)
 or [`MIDIFile`](@ref) structure via MuseScore.
 
 ```@docs
@@ -16,11 +20,14 @@ musescore
 
 ## Creating a Score out of some Notes
 
+```@example musescore
+using MusicManipulations
+```
+
 We first load the test MIDI file "Doxy".
 The third track has the notes of the Bass:
 
 ```@example musescore
-using MusicManipulations, MusicVisualizations
 midi = readMIDIFile() # read the "test" Doxy MIDI recording.
 bass = getnotes(midi, 3)
 basstrim = bass[1:50]
@@ -38,7 +45,7 @@ musescore(bass, notes)
 Amazingly MuseScore deduces automatically the clef and even the key of
 the piece!
 
-## Creating a full Score out of a MIDI file
+### Creating a full Score out of a MIDI file
 You can also pass a full MIDI file to [`musescore`](@ref).
 
 ```@example musescore
@@ -61,45 +68,15 @@ addtrackname!(ptrack, "Doxy")
 smidi = MIDIFile(1, 960, [midi.tracks[3], ptrack])
 ```
 
-and then save the full thing as `.pdf`:
+and then save the full thing as `.pdf` or `.png`:
 
 ```julia
-musescore("doxy.pdf", smidi)
+musescore("doxy.png", smidi)
 ```
 
-You can find the produced `.pdf` file
-[here](https://github.com/JuliaMusic/JuliaMusic_documentation.jl/tree/master/docs/src/printplot/doxy.pdf).
 The first page looks like this:
 ![Full score](doxy-1.png)
+
 When given multiple tracks MuseScore displays the name of the track ([`trackname`](@ref)),
 as well as the instrument it automatically chose to represent it.
 
-## Drum notation
-
-To export directly into drum notation you need to make two changes to your notes:
-
-1. Create your notes into channel `9` instead of the default `0`.
-2. Use the appropriate pitches that correspond to the drum instruments. For this you can use the dictionary `MuseScore.drumkey` (which follows the GM mapping).
-
-For example, let's make a standard rock drums pattern:
-```@example musescore
-bass = musescore_drumkey["Acoustic Bass Drum"]
-snare = musescore_drumkey["Acoustic Snare"]
-hihat = musescore_drumkey["Closed Hi-Hat"]
-midichannel = 9
-
-tpq = 960
-ei = tpq//2 # 8-th notes
-
-rock = [Note(hihat, iseven(i) ? 100 : 60, ei*i, ei, midichannel) for i in 0:7]
-for i in 1:2
-    push!(rock, Note(bass, 100, 4(i-1)ei, 2ei, midichannel))
-    push!(rock, Note(snare, 100, 4(i-1)ei + 2ei, 2ei, midichannel))
-end
-rock = Notes(rock, tpq)
-```
-```julia
-musescore("rock.png", rock)
-```
-
-![drums](rock-1.png)

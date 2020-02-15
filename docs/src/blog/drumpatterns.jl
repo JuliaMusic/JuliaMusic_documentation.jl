@@ -26,6 +26,7 @@
 
 #%% #src
 using MusicManipulations, MusicVisualizations
+cd(@__DIR__) #src
 
 tpq = 960 # ticks per quarter note
 sixt = 240 # duration of sixteenth note
@@ -84,7 +85,7 @@ musescore("drums_patterns.png", notes) #src
 #md # musescore("drums_patterns.png", notes)
 #md # ```
 
-# ![32-bar pattern sequence](drums_patterns.png)
+# ![32-bar pattern sequence](drums_patterns-1.png)
 
 #%% #src
 # *this is a pre-made figure - your random sequence will probably differ*
@@ -149,11 +150,11 @@ notes
 
 # Finally, to visualize, we use [`musescore`](@ref) again, using a midi file as an
 # input
-musescore("drums.pdf", MIDIFile(1, 960, [track])) #src
+musescore("drums_patterns_with_names.png", MIDIFile(1, 960, [track])) #src
 #md # ```julia
 #md # musescore("drums_patterns_with_names.png", MIDIFile(1, 960, [track]))
 #md # ```
 
-# ![Correct 32-bar pattern sequence](drums_patterns_with_names.png)
+# ![Correct 32-bar pattern sequence](drums_patterns_with_names-1.png)
 
 # Isn't it cool that even the lyrics text was displayed so seamlessly?

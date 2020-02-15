@@ -1,4 +1,4 @@
-# Basic MIDI Structures
+# Basic MIDI structures
 MIDI files are loaded to/from disc and transformed into a Julia structure `MIDIFile`, which contains `MIDITrack`s.
 ## `MIDIFile`
 To read and write a MIDI file, use
@@ -79,3 +79,19 @@ get_abs_pos
 ---
 
 Lastly, see the file `MIDI/src/constants.jl` for message types, event types, etc.
+
+## MIDI: The least you need to know
+*This section serves as a crash-course on the MIDI format. For more info
+see the [wikipedia](https://en.wikipedia.org/wiki/MIDI) page,
+read the [official MIDI specifications](https://www.midi.org/specifications) or
+have a look at the comprehensive tutorial [at recordingblogs.com](http://www.recordingblogs.com/wiki/musical-instrument-digital-interface-midi)*.
+
+A MIDI file typically comes in pieces called tracks that play simultaneously. Each track can have 16 different channels, numbered 0-15. Each channel can be thought of as a single instrument, though that instrument can be changed throughout that track. A track contains events. The three types of events are MIDI events, META events, and system exclusive (SYSEX) events.
+All events begin with the time since the last event (dT) in ticks. The number of ticks per quarter note is given by the `tpq` of the midi file, `MIDIFile.tpq` (see [`MIDIFile`](@ref)).
+
+* MIDI events handle things related to the actual notes as well as sound texture, such as playing a note or moving the pitch-wheel.
+
+* META events take care of things like adding copyright text, authorship information,
+  track naming etc.
+
+* SYSEX events are used to transmit arbitrary data. Their contents depend on the intended recipient.
