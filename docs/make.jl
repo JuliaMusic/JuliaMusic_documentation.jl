@@ -5,7 +5,7 @@ be done on travis. one has to do it locally and push the result to the gh-pages 
 using Pkg
 Pkg.activate(@__DIR__)
 CI = get(ENV, "CI", nothing) == "true" || get(ENV, "GITHUB_TOKEN", nothing) !== nothing
-
+CI && Pkg.instantiate()
 using MIDI, MusicManipulations, MotifSequenceGenerator, MusicVisualizations
 using Documenter, Literate, PyPlot, Statistics
 
