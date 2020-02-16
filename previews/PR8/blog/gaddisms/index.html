@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Ep. 3 - Gaddisms · JuliaMusic</title><link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Mono" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link href="../../assets/logo.ico" rel="icon" type="image/x-icon"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-dark.css" data-theme-name="documenter-dark"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="../../assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="../../assets/themeswap.js"></script></head><body><div id="documenter"><nav class="docs-sidebar"><a class="docs-logo" href="../../"><img src="../../assets/logo.png" alt="JuliaMusic logo"/></a><div class="docs-package-name"><span class="docs-autofit">JuliaMusic</span></div><form class="docs-search" action="../../search/"><input class="docs-search-query" id="documenter-search-query" name="q" type="text" placeholder="Search docs"/></form><ul class="docs-menu"><li><a class="tocitem" href="../../">Introduction</a></li><li><a class="tocitem" href="../../midi/io/">Basic MIDI structures</a></li><li><a class="tocitem" href="../../midi/notes/">Notes</a></li><li><a class="tocitem" href="../../mm/notetools/">Note Tools</a></li><li><a class="tocitem" href="../../mm/quantizing/">Quantizing</a></li><li><a class="tocitem" href="../../mm/extraction/">Music data extraction</a></li><li><span class="tocitem">Visualization</span><ul><li><a class="tocitem" href="../../printplot/noteplotter/">Plotting notes</a></li><li><a class="tocitem" href="../../printplot/musescore/">Printing notes into a score</a></li></ul></li><li><span class="tocitem">Motif sequence</span><ul><li><a class="tocitem" href="../../motif/basic/">Motif sequence generator</a></li><li><a class="tocitem" href="../../motif/musicexample/">Music motifs</a></li></ul></li><li><span class="tocitem">Becoming a better drummer blog</span><ul><li><a class="tocitem" href="../drumpatterns/">Ep. 1 - Mixing drum patterns</a></li><li><a class="tocitem" href="../garibaldi_dragadiddle/">Ep. 2 - Garibaldi inspired dragaddidle</a></li><li class="is-active"><a class="tocitem" href>Ep. 3 - Gaddisms</a><ul class="internal"><li><a class="tocitem" href="#Introduction-1"><span>Introduction</span></a></li><li><a class="tocitem" href="#Creating-the-Gaddisms-with-Julia-code-1"><span>Creating the Gaddisms with Julia code</span></a></li><li><a class="tocitem" href="#Combining-Gaddisms-into-a-sequence-1"><span>Combining Gaddisms into a sequence</span></a></li><li><a class="tocitem" href="#Gaddism-Matrix-1"><span>Gaddism Matrix</span></a></li><li><a class="tocitem" href="#Putting-all-possible-Gaddism-combinations-into-a-PDF-1"><span>Putting all possible Gaddism combinations into a PDF</span></a></li></ul></li></ul></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><nav class="breadcrumb"><ul class="is-hidden-mobile"><li><a class="is-disabled">Becoming a better drummer blog</a></li><li class="is-active"><a href>Ep. 3 - Gaddisms</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>Ep. 3 - Gaddisms</a></li></ul></nav><div class="docs-right"><a class="docs-edit-link" href="https://github.com/JuliaMusic/JuliaMusic_documentation.jl/blob/master/docs/src/blog/gaddisms.jl" title="Edit on GitHub"><span class="docs-icon fab"></span><span class="docs-label is-hidden-touch">Edit on GitHub</span></a><a class="docs-settings-button fas fa-cog" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-sidebar-button fa fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a></div></header><article class="content" id="documenter-page"><h1 id="nd-note-Gaddisms-1"><a class="docs-heading-anchor" href="#nd-note-Gaddisms-1">32nd note Gaddisms</a><a class="docs-heading-anchor-permalink" href="#nd-note-Gaddisms-1" title="Permalink"></a></h1><h2 id="Introduction-1"><a class="docs-heading-anchor" href="#Introduction-1">Introduction</a><a class="docs-heading-anchor-permalink" href="#Introduction-1" title="Permalink"></a></h2><p>Steve Gadd is famous for being one of the first people to popularize playing fast 32nd notes between the hihat, snare and bass drum, typically using a combination of rudiments, like inverted doubles and paradiddles. Some people refer to these as &quot;Flutter Licks&quot;, but I will be using the name &quot;Gaddisms&quot; here.</p><p>I was originally introduced to this from a <a href="https://www.youtube.com/watch?v=HKtHGLvVSHk">YouTube video by Jungleritter</a>, but many other drum educators have approached this, for example <a href="https://www.youtube.com/watch?v=lS3G6woh9T8">Austin Burcham</a>. To get an idea you can watch the following Steve Gadd performances:</p><p><a href="https://www.youtube.com/watch?v=iupLvcpV3eU&amp;t=196"><img src="https://img.youtube.com/vi/iupLvcpV3eU/0.jpg" alt/></a></p><p><a href="https://www.youtube.com/watch?v=yikq4JZaNOk&amp;t=4"><img src="https://img.youtube.com/vi/yikq4JZaNOk/0.jpg" alt/></a></p><p>The most basic version of these Gaddisms is definitely the following:</p><p><img src="../standard-1.png" alt/></p><p>In this tutorial I&#39;ll be going through the process I followed, in order to create exercises that allow me to study these Gaddisms, without having to write any combination I come with one by one, and also allowing me to easily add more or print less of them into a score.</p><p>The final output of this tutorial will be something like this:</p><p><img src="../random1-1.png" alt/></p><p>and something like this:</p><p><img src="../gaddmatrix_1234x123.png" alt/></p><h2 id="Creating-the-Gaddisms-with-Julia-code-1"><a class="docs-heading-anchor" href="#Creating-the-Gaddisms-with-Julia-code-1">Creating the Gaddisms with Julia code</a><a class="docs-heading-anchor-permalink" href="#Creating-the-Gaddisms-with-Julia-code-1" title="Permalink"></a></h2><p>Let&#39;s first load some basic packages and define some handy commands</p><pre><code class="language-julia">using MusicManipulations # tools for handling MIDI data
+using MusicVisualizations # to be able to access MuseScore
+channel = 9 # this is the dedicated drum channel for MuseScore
+mdk = musescore_drumkey # for typing less</code></pre><pre><code class="language-none">Dict{String,Int64} with 15 entries:
+  &quot;Closed Hi-Hat&quot;      =&gt; 42
+  &quot;Acoustic Bass Drum&quot; =&gt; 35
+  &quot;Low-Mid Tom&quot;        =&gt; 47
+  &quot;Ride Cymbal&quot;        =&gt; 51
+  &quot;High Floor Tom&quot;     =&gt; 43
+  &quot;Cowbell&quot;            =&gt; 56
+  &quot;Crash Cymbal 2&quot;     =&gt; 57
+  &quot;Crash Cymbal 1&quot;     =&gt; 49
+  &quot;Acoustic Snare&quot;     =&gt; 38
+  &quot;Tambourine&quot;         =&gt; 54
+  &quot;Ride Bell&quot;          =&gt; 53
+  &quot;Side Stick&quot;         =&gt; 37
+  &quot;Pedal Hi-Hat&quot;       =&gt; 44
+  &quot;Open Hi-Hat&quot;        =&gt; 46
+  &quot;Low Floor Tom&quot;      =&gt; 41</code></pre><p>and then configure the subdivision of our notes</p><pre><code class="language-julia">tpq = 960          # Duration of a quarter note in ticks
+subdiv = tpq÷8     # note subdivision duration (32nd notes)
+patlen = 8*subdiv  # pattern length</code></pre><pre><code class="language-none">960</code></pre><p>Then we define the types of notes that will be part of the 32nd note patterns we will create:</p><pre><code class="language-julia">A = Note(mdk[&quot;Acoustic Snare&quot;], 100, 0, subdiv, channel)
+R = Note(mdk[&quot;Closed Hi-Hat&quot;], 70, 0, subdiv, channel)
+L = Note(mdk[&quot;Side Stick&quot;], 70, 0, subdiv, channel)
+K = Note(mdk[&quot;Low Floor Tom&quot;], 90, 0, subdiv, channel)</code></pre><pre><code class="language-none">Note F2  | vel = 90  | pos = 0, dur = 120 | channel 9</code></pre><p>I&#39;ve made the &quot;kick&quot; note <code>K</code> to be a floor tom simply because MuseScore writes bass drum notes on a different voice than the rest of the notes, which makes the final score hard to read. You could use the &quot;real&quot; bass drum note by using <code>mdk[&quot;Acoustic Bass Drum&quot;]</code> instead.</p><p>In any case, the goal is to combine these four notes to make &quot;Gaddisms&quot;, keeping in mind the following simple rules (to stay as close to the original Steve Gadd style as possible):</p><ol><li>Each Gaddism has 16 32nd notes (2 quarter notes)</li><li>The first half starts with a kick <code>K</code> and cannot end with a right hand</li><li>The second class starts with a right hand accent <code>A</code></li><li><code>R, L, K</code> can be repeated up to two times sequentially</li></ol><p>For example, the most &quot;standard&quot; pattern is <code>KLLRRLLK ALLRRLLK</code>: <img src="../standard-1.png" alt/></p><p>As we have defined the notes <code>A, ... K</code>, the simplest way to do make this pattern from notes programmatically is to combine them into a vector, e.g.</p><pre><code class="language-julia">[K, L, L, R, R, L, L, K]</code></pre><pre><code class="language-none">8-element Array{Note,1}:
+ Note F2  | vel = 90  | pos = 0, dur = 120 | channel 9
+ Note C♯2 | vel = 70  | pos = 0, dur = 120 | channel 9
+ Note C♯2 | vel = 70  | pos = 0, dur = 120 | channel 9
+ Note F♯2 | vel = 70  | pos = 0, dur = 120 | channel 9
+ Note F♯2 | vel = 70  | pos = 0, dur = 120 | channel 9
+ Note C♯2 | vel = 70  | pos = 0, dur = 120 | channel 9
+ Note C♯2 | vel = 70  | pos = 0, dur = 120 | channel 9
+ Note F2  | vel = 90  | pos = 0, dur = 120 | channel 9</code></pre><p>The problem unfortunately is that all of these notes start at the <em>same</em> time, so if we made them into a score, you&#39;d have 8 32nd notes all in the first 32nd note of the bar...</p><p>To be able to transform this vector of notes into notes that start sequentially we define the following function:</p><pre><code class="language-julia">&quot;&quot;&quot;
+Combine the given notes into a notes that start sequentially.
+&quot;&quot;&quot;
+function make_pattern(v::Vector{&lt;:AbstractNote})
+    n = Notes([v[1]], 960)
+    for i in 2:length(v)
+        push!(n, translate(v[i], (i-1)*subdiv))
+    end
+    return n
+end
+
+p1 = make_pattern([K, L, L, R, R, L, L, K])
+p2 = make_pattern([A, L, L, R, R, L, L, K])</code></pre><pre><code class="language-none">8 Notes with tpq=960
+ Note D2  | vel = 100 | pos = 0, dur = 120 | channel 9
+ Note C♯2 | vel = 70  | pos = 120, dur = 120 | channel 9
+ Note C♯2 | vel = 70  | pos = 240, dur = 120 | channel 9
+ Note F♯2 | vel = 70  | pos = 360, dur = 120 | channel 9
+ Note F♯2 | vel = 70  | pos = 480, dur = 120 | channel 9
+ Note C♯2 | vel = 70  | pos = 600, dur = 120 | channel 9
+ Note C♯2 | vel = 70  | pos = 720, dur = 120 | channel 9
+ Note F2  | vel = 90  | pos = 840, dur = 120 | channel 9</code></pre><p>And we can easily combine them and put them into MuseScore and see the output:</p><pre><code class="language-julia">x = combine([p1, translate(p2, patlen)])</code></pre><pre><code class="language-none">16 Notes with tpq=960
+ Note F2  | vel = 90  | pos = 0, dur = 120 | channel 9
+ Note C♯2 | vel = 70  | pos = 120, dur = 120 | channel 9
+ Note C♯2 | vel = 70  | pos = 240, dur = 120 | channel 9
+ Note F♯2 | vel = 70  | pos = 360, dur = 120 | channel 9
+ Note F♯2 | vel = 70  | pos = 480, dur = 120 | channel 9
+ Note C♯2 | vel = 70  | pos = 600, dur = 120 | channel 9
+ Note C♯2 | vel = 70  | pos = 720, dur = 120 | channel 9
+  ⋮
+ Note C♯2 | vel = 70  | pos = 1080, dur = 120 | channel 9
+ Note C♯2 | vel = 70  | pos = 1200, dur = 120 | channel 9
+ Note F♯2 | vel = 70  | pos = 1320, dur = 120 | channel 9
+ Note F♯2 | vel = 70  | pos = 1440, dur = 120 | channel 9
+ Note C♯2 | vel = 70  | pos = 1560, dur = 120 | channel 9
+ Note C♯2 | vel = 70  | pos = 1680, dur = 120 | channel 9
+ Note F2  | vel = 90  | pos = 1800, dur = 120 | channel 9</code></pre><pre><code class="language-julia">musescore(&quot;standard.png&quot;, x)</code></pre><p><img src="../standard-1.png" alt/></p><p>Notice the use of the <a href="../../mm/notetools/#MusicManipulations.translate"><code>translate</code></a> function, which ensures that the second part <code>p2</code> doesn&#39;t start at the same time as <code>p1</code>.</p><p>Alright, now it is only a matter of just writing down all &quot;Gaddisms&quot; that we would like to practice:</p><pre><code class="language-julia">first_half = make_pattern.([
+    [K, L, L, R, R, L, L, K],
+    [K, L, L, K, R, L, L, K],
+    [K, R, L, K, R, L, L, K],
+    [K, R, L, K, R, L, K, L],
+    [K, L, R, R, L, L, R, L],
+    [K, L, R, R, L, R, R, L],
+    [K, L, L, R, R, L, K, K],
+    [K, R, L, R, R, L, L, K],
+    [K, L, L, R, K, L, K, L],
+    [K, L, R, R, L, R, L, L],
+    [K, L, L, K, A, L, L, K],
+])
+
+second_half = make_pattern.([
+    [A, L, L, R, R, L, L, K],
+    [A, L, L, K, R, L, L, K],
+    [A, L, K, L, R, L, L, K],
+    [A, L, L, R, K, R, L, L],
+    [A, L, R, R, L, R, L, L],
+    [A, L, R, R, L, R, R, L],
+    [A, L, L, R, R, K, L, L],
+    [A, L, K, R, L, K, R, L],
+    [A, L, R, L, L, R, L, L],
+    [A, L, R, L, L, R, L, K],
+    [A, K, R, L, K, R, L, K],
+    [A, K, R, L, L, R, R, K],
+    [A, L, A, L, L, R, L, K],
+])
+
+second_half[3]</code></pre><pre><code class="language-none">8 Notes with tpq=960
+ Note D2  | vel = 100 | pos = 0, dur = 120 | channel 9
+ Note C♯2 | vel = 70  | pos = 120, dur = 120 | channel 9
+ Note F2  | vel = 90  | pos = 240, dur = 120 | channel 9
+ Note C♯2 | vel = 70  | pos = 360, dur = 120 | channel 9
+ Note F♯2 | vel = 70  | pos = 480, dur = 120 | channel 9
+ Note C♯2 | vel = 70  | pos = 600, dur = 120 | channel 9
+ Note C♯2 | vel = 70  | pos = 720, dur = 120 | channel 9
+ Note F2  | vel = 90  | pos = 840, dur = 120 | channel 9</code></pre><h2 id="Combining-Gaddisms-into-a-sequence-1"><a class="docs-heading-anchor" href="#Combining-Gaddisms-into-a-sequence-1">Combining Gaddisms into a sequence</a><a class="docs-heading-anchor-permalink" href="#Combining-Gaddisms-into-a-sequence-1" title="Permalink"></a></h2><p>By now every component we need is ready, and we could use any arbitrary Gaddisms to make a sequence, for example</p><pre><code class="language-julia">x = combine([first_half[5], translate(second_half[8], patlen)])</code></pre><pre><code class="language-none">16 Notes with tpq=960
+ Note F2  | vel = 90  | pos = 0, dur = 120 | channel 9
+ Note C♯2 | vel = 70  | pos = 120, dur = 120 | channel 9
+ Note F♯2 | vel = 70  | pos = 240, dur = 120 | channel 9
+ Note F♯2 | vel = 70  | pos = 360, dur = 120 | channel 9
+ Note C♯2 | vel = 70  | pos = 480, dur = 120 | channel 9
+ Note C♯2 | vel = 70  | pos = 600, dur = 120 | channel 9
+ Note F♯2 | vel = 70  | pos = 720, dur = 120 | channel 9
+  ⋮
+ Note C♯2 | vel = 70  | pos = 1080, dur = 120 | channel 9
+ Note F2  | vel = 90  | pos = 1200, dur = 120 | channel 9
+ Note F♯2 | vel = 70  | pos = 1320, dur = 120 | channel 9
+ Note C♯2 | vel = 70  | pos = 1440, dur = 120 | channel 9
+ Note F2  | vel = 90  | pos = 1560, dur = 120 | channel 9
+ Note F♯2 | vel = 70  | pos = 1680, dur = 120 | channel 9
+ Note C♯2 | vel = 70  | pos = 1800, dur = 120 | channel 9</code></pre><pre><code class="language-julia">musescore(&quot;another.png&quot;, x)</code></pre><p><img src="../another-1.png" alt/></p><p>The recipe is simple enough and we define a function that will just produce a sequence of arbitrary many gaddisms</p><pre><code class="language-julia">function random_gaddisms(n = 1)
+    @assert n ≤ min(length(first_half), length(second_half))
+    r1, r2 = randperm(length(first_half)), randperm(length(second_half))
+    final = Vector{Notes}()
+    c = 0
+    for i in 1:n
+        push!(final, translate(first_half[r1[i]],  c*patlen))
+        push!(final, translate(second_half[r2[i]], (c+1)*patlen))
+        c += 8 # this adds a bar of rest, for better layouting
+    end
+    return combine(final)
+end</code></pre><pre><code class="language-none">random_gaddisms (generic function with 2 methods)</code></pre><pre><code class="language-julia">musescore(&quot;random1.png&quot;, random_gaddisms(4))</code></pre><p><img src="../random1-1.png" alt/></p><pre><code class="language-julia">musescore(&quot;random2.png&quot;, random_gaddisms(8))</code></pre><p><img src="../random2-1.png" alt/></p><p>One can run this command arbitrary times to make arbitrary amount of random combinations, e.g. <code>[musescore(&quot;randgadd_$i.pdf&quot;, random_gaddisms(8)) for i in 1:4]</code>.</p><h2 id="Gaddism-Matrix-1"><a class="docs-heading-anchor" href="#Gaddism-Matrix-1">Gaddism Matrix</a><a class="docs-heading-anchor-permalink" href="#Gaddism-Matrix-1" title="Permalink"></a></h2><p>If you print and try to study many of these comdinations, as e.g. shown in the last section of this page, you will quickly realize that there <em>must</em> be some more efficient ways to present all this information. Well, the answer is a <strong>matrix</strong>! A matrix looks like this:</p><p><img src="../gaddmatrix_1234x123.png" alt/></p><p>How do you make such a matrix? with the following function:</p><pre><code class="language-julia">using PyPlot
+
+function gaddism_matrix(first, second; dx = 2.6, dy = 1.2) # inches per pattern
+    patternimg(path) = matplotlib.image.imread(path)[:, 640:2880, :]
+    Lf, Ls = length.((first, second))
+    fig, axs = subplots(Lf+1, Ls+1, figsize = ((Ls+1)*dx, (Lf+1)*dy))
+
+    for (fi, f) in enumerate(first)
+        musescore(&quot;f$(f).png&quot;, first_half[f], display = false)
+        fimg = patternimg(&quot;f$(f)-1.png&quot;)
+        axs[fi+1, 1].imshow(fimg)
+        rm(&quot;f$(f)-1.png&quot;)
+        for y in ((1 - fi/(Lf+1)), (1 - (fi+1)/(Lf+1)))
+            line = matplotlib.lines.Line2D([0, 1], [y, y], color=&quot;k&quot;, transform=fig.transFigure)
+            fig.add_artist(line)
+        end
+    end
+    for (si, s) in enumerate(second)
+        musescore(&quot;s$(s).png&quot;, second_half[s], display = false)
+        simg = patternimg(&quot;s$(s)-1.png&quot;)
+        axs[1, si+1].imshow(simg)
+        rm(&quot;s$(s)-1.png&quot;)
+        for x in (si/(Ls+1), (si+1)/(Ls+1))
+            line = matplotlib.lines.Line2D([x, x], [0, 1], color=&quot;k&quot;, transform=fig.transFigure)
+            fig.add_artist(line)
+        end
+    end
+    axs[1,1].text(0.5,0.5, &quot;Gaddism Matrix\n(flutter licks)\n&quot;*
+                  &quot;by George Datseris\nusing JuliaMusic&quot;, va=&quot;center&quot;, ha=&quot;center&quot;, size=12)
+    for ax in axs; ax.axis(&quot;off&quot;); end
+    fig.tight_layout()
+    fig.savefig(&quot;gaddmatrix_$(join(first))x$(join(second)).png&quot;, dpi = 1200)
+end</code></pre><pre><code class="language-none">gaddism_matrix (generic function with 1 method)</code></pre><p>This function is given two vectors of integer indices, each denoting which patterns from the first and second half to include into the matrix:</p><pre><code class="language-julia">gaddism_matrix([1, 2, 4, 5, 7], [1, 8, 5])</code></pre><p><img src="../gaddmatrix_12457x185.png" alt/></p><p>For example, the standard pattern shown in the introduction was made with this code:</p><pre><code class="language-julia">gaddism_matrix(1:4, 1:3)</code></pre><p>I won&#39;t go too deep into details about <code>gaddism_matrix</code>, because most of the code is plotting. In essence what the function does is saves each pattern by itself via MuseScore, then loads the image as numeric data (see <code>patternimg</code>) and plots this image using PyPlot. The rest of the code is just layouting and adding straight lines.</p><p>This function is <em>awesome</em> because it is scalable to arbitrary amounts of first and second half patterns! For example:</p><pre><code class="language-julia">gaddism_matrix([6, 8], 1:6)</code></pre><p><img src="../gaddmatrix_68x123456.png" alt/></p><p>The way I studied this is creating 3x3 matrices and really focusing on learning the individual patterns to the point I could arbitrarily combine most of them.</p><h2 id="Putting-all-possible-Gaddism-combinations-into-a-PDF-1"><a class="docs-heading-anchor" href="#Putting-all-possible-Gaddism-combinations-into-a-PDF-1">Putting all possible Gaddism combinations into a PDF</a><a class="docs-heading-anchor-permalink" href="#Putting-all-possible-Gaddism-combinations-into-a-PDF-1" title="Permalink"></a></h2><p>Putting all possible Gaddism combinations into a PDF is straightforward with the following simple function:</p><pre><code class="language-julia">function allgaddisms(first_half, second_half)
+    final = Vector{Notes}()
+    c = 0
+    for i in 1:length(first_half)
+        for j in 1:length(second_half)
+            push!(final, translate(first_half[i], c*patlen))
+            push!(final, translate(second_half[j], (c+1)*patlen))
+            c += 8
+        end
+    end
+    return combine(final)
+end</code></pre><pre><code class="language-none">allgaddisms (generic function with 1 method)</code></pre><pre><code class="language-julia">musescore(&quot;all.pdf&quot;, allgaddisms(first_half, second_half));</code></pre><p>Notice that this will make a huge pdf file. You can of course do:</p><pre><code class="language-julia">musescore(&quot;all_from_1.pdf&quot;, allgaddisms([first_half[1]], second_half));</code></pre><p>to only combine the first combination with all the others.</p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../garibaldi_dragadiddle/">« Ep. 2 - Garibaldi inspired dragaddidle</a></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> on <span class="colophon-date" title="Sunday 16 February 2020 16:34">Sunday 16 February 2020</span>. Using Julia version 1.3.1.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
