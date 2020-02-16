@@ -4,29 +4,30 @@
   start::Int
 end</code></pre><p>Let&#39;s first create a vector of shouts that will be used as the pool of possible motifs that will create the random sequence:</p><pre><code class="language-julia">using Random
 shouts = [Shout(uppercase(randstring(rand(3:5))), rand(1:100)) for k in 1:5]</code></pre><pre><code class="language-none">5-element Array{Main.ex-shout.Shout,1}:
- Main.ex-shout.Shout(&quot;CWPP&quot;, 77) 
- Main.ex-shout.Shout(&quot;Z50OA&quot;, 70)
- Main.ex-shout.Shout(&quot;06FXA&quot;, 9) 
- Main.ex-shout.Shout(&quot;KIY&quot;, 1)   
- Main.ex-shout.Shout(&quot;9BY&quot;, 40)  </code></pre><p>Notice that at the moment the values of the <code>.start</code> field of <code>Shout</code> are irrelevant. <code>MotifSequenceGenerator</code> will translate all motifs to start point 0 while operating.</p><p>Now, to create a random sequence, we need to define two concepts:</p><pre><code class="language-julia">shoutlimits(s::Shout) = (s.start, s.start + length(s.shout) + 1);
+ Main.ex-shout.Shout(&quot;XVSPK&quot;, 64)
+ Main.ex-shout.Shout(&quot;CMU&quot;, 81)  
+ Main.ex-shout.Shout(&quot;DVI&quot;, 37)  
+ Main.ex-shout.Shout(&quot;QAOD&quot;, 30) 
+ Main.ex-shout.Shout(&quot;IVVO9&quot;, 23)</code></pre><p>Notice that at the moment the values of the <code>.start</code> field of <code>Shout</code> are irrelevant. <code>MotifSequenceGenerator</code> will translate all motifs to start point 0 while operating.</p><p>Now, to create a random sequence, we need to define two concepts:</p><pre><code class="language-julia">shoutlimits(s::Shout) = (s.start, s.start + length(s.shout) + 1);
 
 shouttranslate(s::Shout, n) = Shout(s.shout, s.start + n);</code></pre><pre><code class="language-none">shouttranslate (generic function with 1 method)</code></pre><p>This means that we accept that the temporal length of a <code>Shout</code> is <code>length(s.shout) + 1</code>.</p><p>We can now create random sequences of shouts that have total length of <em>exactly</em> <code>q</code>:</p><pre><code class="language-julia">using MotifSequenceGenerator
 q = 30
 sequence, idxs = random_sequence(shouts, q, shoutlimits, shouttranslate)
+sequence</code></pre><pre><code class="language-none">7-element Array{Main.ex-shout.Shout,1}:
+ Main.ex-shout.Shout(&quot;IVVO9&quot;, 0)
+ Main.ex-shout.Shout(&quot;DVI&quot;, 6)  
+ Main.ex-shout.Shout(&quot;CMU&quot;, 10) 
+ Main.ex-shout.Shout(&quot;CMU&quot;, 14) 
+ Main.ex-shout.Shout(&quot;DVI&quot;, 18) 
+ Main.ex-shout.Shout(&quot;DVI&quot;, 22) 
+ Main.ex-shout.Shout(&quot;CMU&quot;, 26) </code></pre><pre><code class="language-julia">sequence, idxs = random_sequence(shouts, q, shoutlimits, shouttranslate)
 sequence</code></pre><pre><code class="language-none">6-element Array{Main.ex-shout.Shout,1}:
- Main.ex-shout.Shout(&quot;CWPP&quot;, 0)  
- Main.ex-shout.Shout(&quot;Z50OA&quot;, 5) 
- Main.ex-shout.Shout(&quot;CWPP&quot;, 11) 
- Main.ex-shout.Shout(&quot;06FXA&quot;, 16)
- Main.ex-shout.Shout(&quot;9BY&quot;, 22)  
- Main.ex-shout.Shout(&quot;9BY&quot;, 26)  </code></pre><pre><code class="language-julia">sequence, idxs = random_sequence(shouts, q, shoutlimits, shouttranslate)
-sequence</code></pre><pre><code class="language-none">6-element Array{Main.ex-shout.Shout,1}:
- Main.ex-shout.Shout(&quot;Z50OA&quot;, 0) 
- Main.ex-shout.Shout(&quot;CWPP&quot;, 6)  
- Main.ex-shout.Shout(&quot;Z50OA&quot;, 11)
- Main.ex-shout.Shout(&quot;CWPP&quot;, 17) 
- Main.ex-shout.Shout(&quot;KIY&quot;, 22)  
- Main.ex-shout.Shout(&quot;KIY&quot;, 26)  </code></pre><p>Notice that it is impossible to create a sequence of length e.g. <code>7</code> with the above pool. Doing <code>random_sequence(shouts, 7, shoutlimits, shouttranslate)</code> would throw an error.</p><h2 id="Floating-point-lengths-1"><a class="docs-heading-anchor" href="#Floating-point-lengths-1">Floating point lengths</a><a class="docs-heading-anchor-permalink" href="#Floating-point-lengths-1" title="Permalink"></a></h2><p>The lengths of the motifs do not have to be integers. When using motifs with floating lengths, it is advised to give a non-0 <code>δq</code> to <a href="#MotifSequenceGenerator.random_sequence"><code>random_sequence</code></a>. The following example modifies the <code>Shout</code> struct and shows how it can be done with floating length.</p><pre><code class="language-julia">struct FloatShout
+ Main.ex-shout.Shout(&quot;IVVO9&quot;, 0)
+ Main.ex-shout.Shout(&quot;IVVO9&quot;, 6)
+ Main.ex-shout.Shout(&quot;DVI&quot;, 12) 
+ Main.ex-shout.Shout(&quot;QAOD&quot;, 16)
+ Main.ex-shout.Shout(&quot;QAOD&quot;, 21)
+ Main.ex-shout.Shout(&quot;DVI&quot;, 26) </code></pre><p>Notice that it is impossible to create a sequence of length e.g. <code>7</code> with the above pool. Doing <code>random_sequence(shouts, 7, shoutlimits, shouttranslate)</code> would throw an error.</p><h2 id="Floating-point-lengths-1"><a class="docs-heading-anchor" href="#Floating-point-lengths-1">Floating point lengths</a><a class="docs-heading-anchor-permalink" href="#Floating-point-lengths-1" title="Permalink"></a></h2><p>The lengths of the motifs do not have to be integers. When using motifs with floating lengths, it is advised to give a non-0 <code>δq</code> to <a href="#MotifSequenceGenerator.random_sequence"><code>random_sequence</code></a>. The following example modifies the <code>Shout</code> struct and shows how it can be done with floating length.</p><pre><code class="language-julia">struct FloatShout
   shout::String
   dur::Float64
   start::Float64
@@ -44,17 +45,17 @@ q = 10.0
 r, s = random_sequence(shouts, q, shoutlimits, shouttranslate, δq)
 
 r</code></pre><pre><code class="language-none">7-element Array{Main.ex-shout.FloatShout,1}:
- Main.ex-shout.FloatShout(&quot;JFB&quot;, 1.3719734199312066, 0.0)                 
- Main.ex-shout.FloatShout(&quot;GVRZP&quot;, 1.5697812116940604, 1.3719734199312066)
- Main.ex-shout.FloatShout(&quot;HMG&quot;, 1.053720226455127, 2.9417546316252667)   
- Main.ex-shout.FloatShout(&quot;GVRZP&quot;, 1.5697812116940604, 3.995474858080394) 
- Main.ex-shout.FloatShout(&quot;EYP&quot;, 1.0476365068802433, 5.565256069774454)   
- Main.ex-shout.FloatShout(&quot;JFB&quot;, 1.3719734199312066, 6.612892576654698)   
- Main.ex-shout.FloatShout(&quot;EYP&quot;, 1.0476365068802433, 7.984865996585905)   </code></pre><pre><code class="language-julia">s</code></pre><pre><code class="language-none">7-element Array{Int64,1}:
+ Main.ex-shout.FloatShout(&quot;VWA&quot;, 1.8705413993783986, 0.0)               
+ Main.ex-shout.FloatShout(&quot;ZA0&quot;, 1.0131214926608938, 1.8705413993783988)
+ Main.ex-shout.FloatShout(&quot;VWA&quot;, 1.8705413993783986, 2.8836628920392924)
+ Main.ex-shout.FloatShout(&quot;FPBG&quot;, 1.3286791757587373, 4.754204291417691)
+ Main.ex-shout.FloatShout(&quot;FPBG&quot;, 1.3286791757587373, 6.082883467176429)
+ Main.ex-shout.FloatShout(&quot;ZA0&quot;, 1.0131214926608938, 7.411562642935166) 
+ Main.ex-shout.FloatShout(&quot;FPBG&quot;, 1.3286791757587373, 8.42468413559606) </code></pre><pre><code class="language-julia">s</code></pre><pre><code class="language-none">7-element Array{Int64,1}:
  5
- 1
- 2
- 1
+ 4
+ 5
  3
- 5
- 3</code></pre></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../../printplot/musescore/">« Printing notes into a score</a><a class="docs-footer-nextpage" href="../musicexample/">Music motifs »</a></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> on <span class="colophon-date" title="Sunday 16 February 2020 16:07">Sunday 16 February 2020</span>. Using Julia version 1.3.1.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+ 3
+ 4
+ 3</code></pre></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../../printplot/musescore/">« Printing notes into a score</a><a class="docs-footer-nextpage" href="../musicexample/">Music motifs »</a></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> on <span class="colophon-date" title="Sunday 16 February 2020 16:16">Sunday 16 February 2020</span>. Using Julia version 1.3.1.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
