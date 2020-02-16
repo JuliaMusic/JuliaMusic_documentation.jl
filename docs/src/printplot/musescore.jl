@@ -30,11 +30,7 @@ basstrim = bass[1:50]
 # Because the notes of the Bass are already quantized we can already
 # print them into a staff using MuseScore:
 
-musescore("bass.png", basstrim) #src
-# musescore("bass.png", basstrim) #src
-# ```julia
-# musescore("bass.png", basstrim)
-# ```
+musescore("bass.png", bass[end-50:end])
 
 # ![Bass score](bass-1.png)
 
