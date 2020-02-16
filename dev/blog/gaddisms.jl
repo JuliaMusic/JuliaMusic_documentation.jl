@@ -153,7 +153,7 @@ x = combine([first_half[5], translate(second_half[8], patlen)])
 
 musescore("another.png", x) #src
 # ```julia
-# musescore("another.png", x) #src
+# musescore("another.png", x)
 # ```
 
 # ![](another-1.png)
