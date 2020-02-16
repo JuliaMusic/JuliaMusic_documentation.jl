@@ -18,7 +18,8 @@
 
 # ## Creating a Score out of some Notes
 
-using MusicManipulations
+using MusicManipulations # tools for manipulating notes in Julia
+using MusicVisualizations # tools for visualizing these notes
 cd(@__DIR__) #src
 
 # We first load the test MIDI file "Doxy".
@@ -30,9 +31,10 @@ basstrim = bass[1:50]
 # print them into a staff using MuseScore:
 
 musescore("bass.png", basstrim) #src
-#md # ```julia
-#md # musescore(bass, notes)
-#md # ```
+# musescore("bass.png", basstrim) #src
+# ```julia
+# musescore("bass.png", basstrim)
+# ```
 
 # ![Bass score](bass-1.png)
 
