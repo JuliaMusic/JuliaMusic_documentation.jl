@@ -133,7 +133,7 @@ musescore("garibaldi_draga_exercise.png", Notes(exercises, tpq)) #src
 # %% Generate simple random sequence of this thing! #src
 
 # Now I want to have random sequences with a foot+hand double stroke springled
-# into random locations. This is easy to do with[`random_note_sequence`](@ref).
+# into random locations. This is easy to do with[`random_notes_sequence`](@ref).
 # However, I want to be sure that a double stroke will never be followed by
 # another double stroke. To ensure this, I define
 
