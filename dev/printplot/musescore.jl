@@ -31,10 +31,10 @@ basstrim = bass[1:50]
 # print them into a staff using MuseScore:
 
 musescore("bass.png", basstrim) #src
-musescore("bass.png", basstrim)
-#md # ```julia
-#md # musescore("bass.png", basstrim)
-#md # ```
+# musescore("bass.png", basstrim) #src
+# ```julia
+# musescore("bass.png", basstrim)
+# ```
 
 # ![Bass score](bass-1.png)
 
