@@ -1,4 +1,5 @@
 # # Garibaldi's Foot+Hand doubles
+#
 # Have a look at the following simple rudiment involving a double stroke
 #
 # ![dragadiddle](draga_example_1.PNG)
@@ -26,30 +27,27 @@
 # I also have exercise variants with two foot-hand strokes next to each other.
 #
 # First, let's define the basic variables necessary for the code.
+# Be sure that you have read the section on [Drum Notation](@ref) before reading this,
+# to be able to understand how I actually write drum notation in MuseScore.
+
 
 using MusicVisualizations # re-exports MusicManipulations
 cd(@__DIR__) #src
 
-bass = musescore_drumkey["Acoustic Bass Drum"] # for readability
-snare = musescore_drumkey["Acoustic Snare"]
-tom = musescore_drumkey["Low-Mid Tom"]
-midichannel = 9
-tpq = 960
-sixt = 960 ÷ 4
+bass = "Acoustic Bass Drum"
+snare = "Acoustic Snare"
+tom = "Low-Mid Tom"
+tpq = 960 # duration of a quarter note in ticks
+sixt = 960 ÷ 4 # duration of a sixteenth note in ticks
 
 # For creating the patterns, one should notice that only two different
 # "motifs" are necessary, one with the foot+hand double stroke and one
 # that is only a single stroke. We can then use clever programming to create
 # all possible combinations.
 
-motif0 = [
-Note(snare, 100, 0, sixt, midichannel),
-]
+motif0 = [DrumNote(snare, 0, sixt)]
 
-motif1 = [
-Note(bass, 100, 0, sixt÷2, midichannel),
-Note(tom, 100, sixt÷2, sixt÷2, midichannel),
-]
+motif1 = [DrumNote(bass, 0, sixt÷2), DrumNote(tom, sixt÷2, sixt÷2)]
 
 # %% Generate single exercises #src
 # The first step is to create some basic exercises that put this double foot+hand
@@ -109,10 +107,10 @@ end
 # every three sixteen-th notes.
 
 motif001 = [
-Note(bass, 100, 0, sixt÷2, midichannel),
-Note(tom, 100, sixt÷2, sixt÷2, midichannel),
-Note(snare, 100, sixt, sixt, midichannel),
-Note(snare, 100, 2sixt, sixt, midichannel),
+DrumNote(bass, 0, sixt÷2),
+DrumNote(tom, sixt÷2, sixt÷2),
+DrumNote(snare, sixt, sixt),
+DrumNote(snare,2sixt, sixt),
 ]
 
 j = 7
@@ -138,9 +136,9 @@ musescore("garibaldi_draga_exercise.png", Notes(exercises, tpq)) #src
 # another double stroke. To ensure this, I define
 
 motif2 = [
-Note(bass, 100, 0, sixt÷2, midichannel),
-Note(tom, 100, sixt÷2, sixt÷2, midichannel),
-Note(snare, 100, sixt, sixt, midichannel),
+DrumNote(bass, 0, sixt÷2),
+DrumNote(tom, sixt÷2, sixt÷2),
+DrumNote(snare, sixt, sixt),
 ]
 
 # Recall that `motif0` is a normal single stroke. Therefore, I have to randomly

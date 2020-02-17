@@ -40,7 +40,7 @@ musescore("bass.png", basstrim) #src
 # Amazingly MuseScore deduces automatically the clef and even the key of
 # the piece!
 
-# ### Creating a full Score out of a MIDI file
+# ## Creating a full Score out of a MIDI file
 # You can also pass a full MIDI file to [`musescore`](@ref).
 
 piano = getnotes(midi, 4)
@@ -59,7 +59,7 @@ smidi = MIDIFile(1, 960, [midi.tracks[3], ptrack])
 musescore("doxy.png", smidi) #src
 
 #md # ```julia
-#md # musescore("doxy.png", smidi)
+#md # musescore("doxy.pdf", smidi)
 #md # ```
 
 # The first page looks like this:
@@ -67,3 +67,46 @@ musescore("doxy.png", smidi) #src
 
 # When given multiple tracks MuseScore displays the name of the track ([`trackname`](@ref)),
 # as well as the instrument it automatically chose to represent it.
+
+# ## Drum Notation
+# It is also possible to use MuseScore to create drum notation.
+# The process for this is almost identical with the above, with two differences.
+# Firstly, the pitch of each note must have a specific value that maps
+# the the actual drum instrument, and secondly all notes must be written on channel `9`.
+
+# The function [`DrumNote`](@ref) simplifies this process:
+
+# ```@docs
+# DrumNote
+# ```
+
+# And this is the drum key we use:
+
+DRUMKEY
+
+# Here is an example where we create the "basic rock groove" in drum notation:
+
+tpq = 960; e = 960÷2 # eigth note = quarter note ÷ 2
+bass = "Acoustic Bass Drum"
+snare = "Acoustic Snare"
+hihat = "Closed Hi-Hat"
+
+# We make the 8 hihat notes
+rock = [DrumNote(hihat, i*e, e) for i in 0:7]
+
+# add 2 bass drums
+push!(rock, DrumNote(bass, 0, e), DrumNote(bass, 4e, e))
+
+# and add 2 snare drums
+push!(rock, DrumNote(snare, 2e, e), DrumNote(snare, 6e, e))
+
+# and finally bundle the notes with the ticks per quarter note
+rock = Notes(rock, tpq)
+
+# and then call MuseScore to actually make the score
+cd(@__DIR__) #src
+musescore("rock.png", rock) #src
+# ```julia
+# musescore("rock.png", rock)
+# ```
+# ![](rock-1.png)
