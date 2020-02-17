@@ -3,6 +3,7 @@ EditURL = "<unknown>/../JuliaMusic_documentation.jl/docs/src/blog/garibaldi_drag
 ```
 
 # Garibaldi's Foot+Hand doubles
+
 Have a look at the following simple rudiment involving a double stroke
 
 ![dragadiddle](draga_example_1.PNG)
@@ -30,16 +31,17 @@ locations in the bar. For the sticking, I assume the single strokes, so that
 I also have exercise variants with two foot-hand strokes next to each other.
 
 First, let's define the basic variables necessary for the code.
+Be sure that you have read the section on [Drum notation](@ref) before reading this,
+to be able to understand how I actually write drum notation in MuseScore.
 
 ```@example garibaldi_dragadiddle
 using MusicVisualizations # re-exports MusicManipulations
 
-bass = musescore_drumkey["Acoustic Bass Drum"] # for readability
-snare = musescore_drumkey["Acoustic Snare"]
-tom = musescore_drumkey["Low-Mid Tom"]
-midichannel = 9
-tpq = 960
-sixt = 960 ÷ 4
+bass = "Acoustic Bass Drum"
+snare = "Acoustic Snare"
+tom = "Low-Mid Tom"
+tpq = 960 # duration of a quarter note in ticks
+sixt = 960 ÷ 4 # duration of a sixteenth note in ticks
 ```
 
 For creating the patterns, one should notice that only two different
@@ -48,14 +50,9 @@ that is only a single stroke. We can then use clever programming to create
 all possible combinations.
 
 ```@example garibaldi_dragadiddle
-motif0 = [
-Note(snare, 100, 0, sixt, midichannel),
-]
+motif0 = [DrumNote(snare, 0, sixt)]
 
-motif1 = [
-Note(bass, 100, 0, sixt÷2, midichannel),
-Note(tom, 100, sixt÷2, sixt÷2, midichannel),
-]
+motif1 = [DrumNote(bass, 0, sixt÷2), DrumNote(tom, sixt÷2, sixt÷2)]
 ```
 
 The first step is to create some basic exercises that put this double foot+hand
@@ -119,10 +116,10 @@ every three sixteen-th notes.
 
 ```@example garibaldi_dragadiddle
 motif001 = [
-Note(bass, 100, 0, sixt÷2, midichannel),
-Note(tom, 100, sixt÷2, sixt÷2, midichannel),
-Note(snare, 100, sixt, sixt, midichannel),
-Note(snare, 100, 2sixt, sixt, midichannel),
+DrumNote(bass, 0, sixt÷2),
+DrumNote(tom, sixt÷2, sixt÷2),
+DrumNote(snare, sixt, sixt),
+DrumNote(snare,2sixt, sixt),
 ]
 
 j = 7
@@ -142,15 +139,15 @@ musescore("garibaldi_draga_exercise.png", Notes(exercises, tpq))
 ## Randomized exercises
 
 Now I want to have random sequences with a foot+hand double stroke springled
-into random locations. This is easy to do with[`random_note_sequence`](@ref).
+into random locations. This is easy to do with[`random_notes_sequence`](@ref).
 However, I want to be sure that a double stroke will never be followed by
 another double stroke. To ensure this, I define
 
 ```@example garibaldi_dragadiddle
 motif2 = [
-Note(bass, 100, 0, sixt÷2, midichannel),
-Note(tom, 100, sixt÷2, sixt÷2, midichannel),
-Note(snare, 100, sixt, sixt, midichannel),
+DrumNote(bass, 0, sixt÷2),
+DrumNote(tom, sixt÷2, sixt÷2),
+DrumNote(snare, sixt, sixt),
 ]
 ```
 

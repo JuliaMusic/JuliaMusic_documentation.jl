@@ -21,7 +21,8 @@ musescore
 ## Creating a Score out of some Notes
 
 ```@example musescore
-using MusicManipulations
+using MusicManipulations # tools for manipulating notes in Julia
+using MusicVisualizations # tools for visualizing these notes
 ```
 
 We first load the test MIDI file "Doxy".
@@ -37,7 +38,7 @@ Because the notes of the Bass are already quantized we can already
 print them into a staff using MuseScore:
 
 ```julia
-musescore(bass, notes)
+musescore("bass.png", basstrim)
 ```
 
 ![Bass score](bass-1.png)
@@ -45,7 +46,7 @@ musescore(bass, notes)
 Amazingly MuseScore deduces automatically the clef and even the key of
 the piece!
 
-### Creating a full Score out of a MIDI file
+## Creating a full Score out of a MIDI file
 You can also pass a full MIDI file to [`musescore`](@ref).
 
 ```@example musescore
@@ -71,7 +72,7 @@ smidi = MIDIFile(1, 960, [midi.tracks[3], ptrack])
 and then save the full thing as `.pdf` or `.png`:
 
 ```julia
-musescore("doxy.png", smidi)
+musescore("doxy.pdf", smidi)
 ```
 
 The first page looks like this:
@@ -79,4 +80,61 @@ The first page looks like this:
 
 When given multiple tracks MuseScore displays the name of the track ([`trackname`](@ref)),
 as well as the instrument it automatically chose to represent it.
+
+## Drum Notation
+It is also possible to use MuseScore to create drum notation.
+The process for this is almost identical with the above, with two differences.
+Firstly, the pitch of each note must have a specific value that maps
+the the actual drum instrument, and secondly all notes must be written on channel `9`.
+
+The function [`DrumNotes`](@ref) simplifies this process:
+
+```@docs
+DrumNote
+```
+
+And this is the drum key we use:
+
+```@example musescore
+DRUMKEY
+```
+
+Here is an example where we create the "basic rock groove" in drum notation:
+
+```@example musescore
+tpq = 960; e = 960÷2 # eigth note = quarter note ÷ 2
+bass = "Acoustic Bass Drum"
+snare = "Acoustic Snare"
+hihat = "Closed Hi-Hat"
+```
+
+We make the 8 hihat notes
+
+```@example musescore
+rock = [DrumNote(hihat, i*e, e) for i in 0:7]
+```
+
+add 2 bass drums
+
+```@example musescore
+push!(rock, DrumNote(bass, 0, e), DrumNote(bass, 4e, e))
+```
+
+and add 2 snare drums
+
+```@example musescore
+push!(rock, DrumNote(snare, 2e, e), DrumNote(snare, 6e, e))
+```
+
+and finally bundle the notes with the ticks per quarter note
+
+```@example musescore
+rock = Notes(rock, tpq)
+```
+
+and then call MuseScore to actually make the score
+```julia
+musescore("rock.png", rock)
+```
+![](rock-1.png)
 

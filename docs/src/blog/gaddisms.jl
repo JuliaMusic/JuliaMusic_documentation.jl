@@ -33,17 +33,20 @@
 
 
 # ## Creating the Gaddisms with Julia code
+# Be sure that you have read the section on [Drum Notation](@ref) before reading this,
+# to be able to understand how I actually write drum notation in MuseScore.
 
-# Let's first load some basic packages and define some handy commands
+# Alright, Let's first load some basic packages and define some quantities
 
 using MusicManipulations # tools for handling MIDI data
 using MusicVisualizations # to be able to access MuseScore
 using Random; Random.seed!(1234) #src
 cd(@__DIR__) #src
-channel = 9 # this is the dedicated drum channel for MuseScore
-mdk = musescore_drumkey # for typing less
 
-# and then configure the subdivision of our notes
+kick = "Low Floor Tom"
+snare = "Acoustic Snare"
+stick = "Side Stick"
+hihat = "Closed Hi-Hat"
 
 tpq = 960          # Duration of a quarter note in ticks
 subdiv = tpq÷8     # note subdivision duration (32nd notes)
@@ -52,10 +55,10 @@ patlen = 8*subdiv  # pattern length
 # Then we define the types of notes that will be part of the 32nd note
 # patterns we will create:
 
-A = Note(mdk["Acoustic Snare"], 100, 0, subdiv, channel)
-R = Note(mdk["Closed Hi-Hat"], 70, 0, subdiv, channel)
-L = Note(mdk["Side Stick"], 70, 0, subdiv, channel)
-K = Note(mdk["Low Floor Tom"], 90, 0, subdiv, channel)
+A = DrumNote(snare, 0, subdiv; velocity = 100)
+R = DrumNote(hihat, 0, subdiv; velocity = 70)
+L = DrumNote(stick, 0, subdiv; velocity = 70)
+K = DrumNote(kick,  0, subdiv; velocity = 80)
 
 # I've made the "kick" note `K` to be a floor tom simply because MuseScore
 # writes bass drum notes on a different voice than the rest of the notes,

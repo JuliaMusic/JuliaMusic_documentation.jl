@@ -36,20 +36,20 @@ and something like this:
 ![](gaddmatrix_1234x123.png)
 
 ## Creating the Gaddisms with Julia code
+Be sure that you have read the section on [Drum notation](@ref) before reading this,
+to be able to understand how I actually write drum notation in MuseScore.
 
-Let's first load some basic packages and define some handy commands
+Alright, Let's first load some basic packages and define some quantities
 
 ```@example gaddisms
 using MusicManipulations # tools for handling MIDI data
 using MusicVisualizations # to be able to access MuseScore
-using Random # for random permutations
-channel = 9 # this is the dedicated drum channel for MuseScore
-mdk = musescore_drumkey # for typing less
-```
 
-and then configure the subdivision of our notes
+kick = "Low Floor Tom"
+snare = "Acoustic Snare"
+stick = "Side Stick"
+hihat = "Closed Hi-Hat"
 
-```@example gaddisms
 tpq = 960          # Duration of a quarter note in ticks
 subdiv = tpq÷8     # note subdivision duration (32nd notes)
 patlen = 8*subdiv  # pattern length
@@ -59,10 +59,10 @@ Then we define the types of notes that will be part of the 32nd note
 patterns we will create:
 
 ```@example gaddisms
-A = Note(mdk["Acoustic Snare"], 100, 0, subdiv, channel)
-R = Note(mdk["Closed Hi-Hat"], 70, 0, subdiv, channel)
-L = Note(mdk["Side Stick"], 70, 0, subdiv, channel)
-K = Note(mdk["Low Floor Tom"], 90, 0, subdiv, channel)
+A = DrumNote(snare, 0, subdiv; velocity = 100)
+R = DrumNote(hihat, 0, subdiv; velocity = 70)
+L = DrumNote(stick, 0, subdiv; velocity = 70)
+K = DrumNote(kick,  0, subdiv; velocity = 80)
 ```
 
 I've made the "kick" note `K` to be a floor tom simply because MuseScore
@@ -172,6 +172,7 @@ x = combine([first_half[5], translate(second_half[8], patlen)])
 ```
 
 ```julia
+musescore("another.png", x)
 ```
 
 ![](another-1.png)
@@ -246,6 +247,8 @@ function gaddism_matrix(first, second; dx = 2.6, dy = 1.2) # inches per pattern
             fig.add_artist(line)
         end
     end
+    axs[1,1].text(0.5,0.5, "Gaddism Matrix\n(flutter licks)\n"*
+                  "by George Datseris\nusing JuliaMusic", va="center", ha="center", size=12)
     for ax in axs; ax.axis("off"); end
     fig.tight_layout()
     fig.savefig("gaddmatrix_$(join(first))x$(join(second)).png", dpi = 1200)
