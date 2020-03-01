@@ -31,6 +31,15 @@
 
 # ![](gaddmatrix_1234x123.png)
 
+# After I've practiced the crap out of these things, I could play things like the folloing
+# in my band's live:
+
+# ```@raw html
+# <audio controls>
+#  <source src="blackbitter.mp3" type="audio/mpeg">
+# </audio>
+# ```
+
 
 # ## Creating the Gaddisms with Julia code
 # Be sure that you have read the section on [Drum Notation](@ref) before reading this,
