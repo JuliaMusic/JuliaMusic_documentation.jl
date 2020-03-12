@@ -36,7 +36,7 @@
 
 # ```@raw html
 # <audio controls>
-#  <source src="blackbitter.mp3" type="audio/mpeg">
+#  <source src="../blackbitter.mp3" type="audio/mpeg">
 # </audio>
 # ```
 
