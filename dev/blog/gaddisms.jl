@@ -31,7 +31,7 @@
 
 # ![](gaddmatrix_1234x123.png)
 
-# After I've practiced the crap out of these things, I could play things like the folloing
+# After I've practiced the crap out of these things, I could play things like the following
 # in my band's live:
 
 # ```@raw html
