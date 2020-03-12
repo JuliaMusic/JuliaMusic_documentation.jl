@@ -24,6 +24,15 @@ for file in tobe
     # Literate.script(f, dirname(f);name = f[1:end-3]*"_script")
 end
 
+for w in ("light", "dark")
+    header = read(joinpath(@__DIR__, "style.scss"), String)
+    theme = read(joinpath(@__DIR__, "$(w)defs.scss"), String)
+    write(joinpath(@__DIR__, "$(w).scss"), header*"\n"*theme)
+end
+using DocumenterTools: Themes
+Themes.compile(joinpath(@__DIR__, "light.scss"), joinpath(@__DIR__, "src/assets/themes/documenter-light.css"))
+Themes.compile(joinpath(@__DIR__, "dark.scss"), joinpath(@__DIR__, "src/assets/themes/documenter-dark.css"))
+
 # %% actually make the docs
 PyPlot.ioff()
 makedocs(
@@ -35,6 +44,7 @@ makedocs(
         prettyurls = CI,
         assets = [
             "assets/logo.ico",
+            asset("https://fonts.googleapis.com/css?family=Montserrat|Source+Code+Pro&display=swap", class=:css),
             ],
         collapselevel = 2,
         ),

@@ -35,8 +35,17 @@ and something like this:
 
 ![](gaddmatrix_1234x123.png)
 
+After I've practiced the crap out of these things, I could play things like the folloing
+in my band's live:
+
+```@raw html
+<audio controls>
+ <source src="blackbitter.mp3" type="audio/mpeg">
+</audio>
+```
+
 ## Creating the Gaddisms with Julia code
-Be sure that you have read the section on [Drum notation](@ref) before reading this,
+Be sure that you have read the section on [Drum Notation](@ref) before reading this,
 to be able to understand how I actually write drum notation in MuseScore.
 
 Alright, Let's first load some basic packages and define some quantities

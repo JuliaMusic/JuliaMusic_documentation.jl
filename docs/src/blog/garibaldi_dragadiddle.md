@@ -31,7 +31,7 @@ locations in the bar. For the sticking, I assume the single strokes, so that
 I also have exercise variants with two foot-hand strokes next to each other.
 
 First, let's define the basic variables necessary for the code.
-Be sure that you have read the section on [Drum notation](@ref) before reading this,
+Be sure that you have read the section on [Drum Notation](@ref) before reading this,
 to be able to understand how I actually write drum notation in MuseScore.
 
 ```@example garibaldi_dragadiddle

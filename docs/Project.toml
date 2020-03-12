@@ -1,6 +1,7 @@
 [deps]
 Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
 DocumenterMarkdown = "997ab1e6-3595-5248-9280-8efb232c3433"
+DocumenterTools = "35a29f4d-8980-5a13-9543-d66fff28ecb8"
 Literate = "98b081ad-f1c9-55d3-8b20-4c87d4299306"
 MIDI = "f57c4921-e30c-5f49-b073-3f2f2ada663e"
 MotifSequenceGenerator = "7d228ccb-0fc9-53c8-a429-8c9b5b572bc3"

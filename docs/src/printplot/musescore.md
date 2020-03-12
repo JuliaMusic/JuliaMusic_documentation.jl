@@ -87,7 +87,7 @@ The process for this is almost identical with the above, with two differences.
 Firstly, the pitch of each note must have a specific value that maps
 the the actual drum instrument, and secondly all notes must be written on channel `9`.
 
-The function [`DrumNotes`](@ref) simplifies this process:
+The function [`DrumNote`](@ref) simplifies this process:
 
 ```@docs
 DrumNote
