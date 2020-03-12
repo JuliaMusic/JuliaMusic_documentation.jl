@@ -40,7 +40,7 @@ in my band's live:
 
 ```@raw html
 <audio controls>
- <source src="blackbitter.mp3" type="audio/mpeg">
+ <source src="../blackbitter.mp3" type="audio/mpeg">
 </audio>
 ```
 
@@ -327,4 +327,3 @@ musescore("all_from_1.pdf", allgaddisms([first_half[1]], second_half));
 ```
 
 to only combine the first combination with all the others.
-
