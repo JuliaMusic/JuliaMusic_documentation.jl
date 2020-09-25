@@ -3,7 +3,7 @@ This documentation describes how to use packages of the [JuliaMusic](https://git
 Most of the functionality comes in the form of the [MIDI](https://en.wikipedia.org/wiki/MIDI) format which is described later on this page.
 
 !!! info "Latest News"
-    Segmentation of notes: [`segment`](@ref)! Repetition of notes: [`repeat`](@ref)!
+    Humanizing: [`humanize!`](@ref)
 
 
 The current documentation was built with the following package versions

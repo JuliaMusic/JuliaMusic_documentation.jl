@@ -1,4 +1,4 @@
-# Quantizing
+# Quantizing & Humanizing
 
 ## Quantization
 *Quantization* is the process of moving all note starting positions to a specified
@@ -39,3 +39,8 @@ classify
 ```
 After the notes have been classified, this classification vector is used to simply
 relocate all notes to the closest grid point (modulo the quarter note).
+
+## Humanizing
+```@docs
+humanize!
+```
