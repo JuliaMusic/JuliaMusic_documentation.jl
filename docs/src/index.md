@@ -7,19 +7,12 @@ Most of the functionality comes in the form of the [MIDI](https://en.wikipedia.o
 
 
 The current documentation was built with the following package versions
-```@setup versions
-using Pkg.API: installed
-ins = installed()
-function f()
-for pkg in ["MIDI", "MotifSequenceGenerator",
-            "MusicManipulations", "MusicVisualizations"]
-  println(rpad(" * $(pkg) ", 30, "."), " $(ins[pkg])")
-end
-end
-```
 ```@example versions
-f() # hide
+using Pkg
+Pkg.status(["MIDI", "MotifSequenceGenerator",
+            "MusicManipulations", "MusicVisualizations"])
 ```
+
 using [Literate.jl](https://github.com/fredrikekre/Literate.jl) and [Documenter.jl](https://github.com/JuliaDocs/Documenter.jl/).
 The documentation is written and maintained by George Datseris.
 
