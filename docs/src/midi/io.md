@@ -49,7 +49,8 @@ For this reason, special functions [`getnotes`](@ref) and [`addnotes!`](@ref) ex
 
 ## Utility functions
 ```@docs
-BPM
+qpm
+bpm
 ms_per_tick
 addevent!
 addevents!
@@ -57,6 +58,7 @@ trackname
 addtrackname!
 textevent
 findtextevents
+tempochanges
 ```
 
 
