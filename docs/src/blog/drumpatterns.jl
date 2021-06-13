@@ -133,7 +133,7 @@ right_leads = true
 for i in 1:length(seq)
 
     s = accents[seq[i]][1]
-    le = Lyric(0, MIDI.LYRICEV, s)
+    le = MIDI.LyricEvent(0, MIDI.LYRICEV, s)
     addevent!(track, ℓ*sixt, le)
 
     if !right_leads # Invert notes

@@ -44,30 +44,30 @@ For this reason, special functions [`getnotes`](@ref) and [`addnotes!`](@ref) ex
 
 ## Meta Events
 ```@docs
-SequenceNumber
-TextEvent
-CopyrightNotice
-TrackName
-InstrumentName
-Lyric
-Marker
-CuePoint
-MIDIChannelPrefix
-EndOfTrack
-SetTempo
-TimeSignature
-KeySignature
+MIDI.SequenceNumberEvent
+MIDI.TextEvent
+MIDI.CopyrightNoticeEvent
+MIDI.TrackNameEvent
+MIDI.InstrumentNameEvent
+MIDI.LyricEvent
+MIDI.MarkerEvent
+MIDI.CuePointEvent
+MIDI.MIDIChannelPrefixEvent
+MIDI.EndOfTrackEvent
+MIDI.SetTempoEvent
+MIDI.TimeSignatureEvent
+MIDI.KeySignatureEvent
 ```
 
 ## MIDI Events
 ```@docs
-NoteOff
-NoteOn
-Aftertouch
-ControlChange
-ProgramChange
-ChannelPressure
-PitchBend
+MIDI.NoteOffEvent
+MIDI.NoteOnEvent
+MIDI.AftertouchEvent
+MIDI.ControlChangeEvent
+MIDI.ProgramChangeEvent
+MIDI.ChannelPressureEvent
+MIDI.PitchBendEvent
 ```
 
 ## Utility functions
