@@ -18,13 +18,14 @@
 
 # ## Creating a Score out of some Notes
 
+using FileIO # used for loading the midi files
 using MusicManipulations # tools for manipulating notes in Julia
 using MusicVisualizations # tools for visualizing these notes
 cd(@__DIR__) #src
 
 # We first load the test MIDI file "Doxy".
 # The third track has the notes of the Bass:
-midi = readMIDIFile() # read the "test" Doxy MIDI recording.
+midi = load(testmidi()) # read the "test" Doxy MIDI recording.
 bass = getnotes(midi, 3)
 basstrim = bass[1:50]
 # Because the notes of the Bass are already quantized we can already

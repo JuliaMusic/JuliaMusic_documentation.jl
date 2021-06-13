@@ -56,7 +56,7 @@ basic stuff.
 The [MusicManipulations.jl](https://github.com/JuliaMusic/MusicManipulations.jl) package has more advanced functionality about note processing, data extraction, quantizing and other similar processes that related to music data.
 
 1. [Note Tools](@ref) for easy handling of notes.
-1. [Quantizing](@ref) for quantizing and classifying notes on a given grid.
+1. [Quantizing & Humanizing](@ref) for quantizing and classifying notes on a given grid.
 2. [Music data extraction](@ref).
 
 ### MusicVisualizations
