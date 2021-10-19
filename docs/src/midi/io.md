@@ -1,10 +1,11 @@
 # Basic MIDI structures
 MIDI files are loaded to/from disc and transformed into a Julia structure `MIDIFile`, which contains `MIDITrack`s.
 ## `MIDIFile`
-To read and write a MIDI file, use
+To read and write a MIDI file, the `load` and `save` functions from `FileIO` can be used.
+
 ```@docs
-readMIDIFile
-writeMIDIFile
+MIDI.load
+MIDI.save
 ```
 ---
 The above functions return / use the `MIDIFile` type:
@@ -24,19 +25,11 @@ TrackEvent
 
 ---
 
-The `TrackEvent` themselves can be one of three types:
+The `TrackEvent` themselves can be broken into three types.
 ```julia
-struct MIDIEvent <: TrackEvent
-    dT::Int
-    status::UInt8
-    data::Array{UInt8,1}
-end
+abstract type MIDIEvent <: TrackEvent end
 
-struct MetaEvent <: TrackEvent
-    dT::Int
-    metatype::UInt8
-    data::Array{UInt8,1}
-end
+abstract type MetaEvent <: TrackEvent end
 
 struct SysexEvent <: TrackEvent
     dT::Int
@@ -44,8 +37,38 @@ struct SysexEvent <: TrackEvent
 end
 ```
 
+The various midi and meta events found in a midifile have their own types. More information can be found at the [Meta Events](@ref) and [MIDI Events](@ref) sections below.  
+
 Typically the most relevant information of a `MIDITrack` are the notes contained within.
-For this reason, special functions [`getnotes`](@ref) and [`addnotes!`](@ref) exist, which can be found in the [Notes](notes) page.
+For this reason, special functions [`getnotes`](@ref) and [`addnotes!`](@ref) exist, which can be found in the [Notes](@ref) page.
+
+## Meta Events
+```@docs
+MIDI.SequenceNumberEvent
+MIDI.TextEvent
+MIDI.CopyrightNoticeEvent
+MIDI.TrackNameEvent
+MIDI.InstrumentNameEvent
+MIDI.LyricEvent
+MIDI.MarkerEvent
+MIDI.CuePointEvent
+MIDI.MIDIChannelPrefixEvent
+MIDI.EndOfTrackEvent
+MIDI.SetTempoEvent
+MIDI.TimeSignatureEvent
+MIDI.KeySignatureEvent
+```
+
+## MIDI Events
+```@docs
+MIDI.NoteOffEvent
+MIDI.NoteOnEvent
+MIDI.AftertouchEvent
+MIDI.ControlChangeEvent
+MIDI.ProgramChangeEvent
+MIDI.ChannelPressureEvent
+MIDI.PitchBendEvent
+```
 
 ## Utility functions
 ```@docs
@@ -56,7 +79,6 @@ addevent!
 addevents!
 trackname
 addtrackname!
-textevent
 findtextevents
 tempochanges
 ```
