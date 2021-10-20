@@ -1,18 +1,27 @@
 # Basic MIDI structures
 MIDI files are loaded to/from disc and transformed into a Julia structure `MIDIFile`, which contains `MIDITrack`s.
-## `MIDIFile`
-To read and write a MIDI file, the `load` and `save` functions from `FileIO` can be used.
 
-```@docs
-MIDI.load
-MIDI.save
-```
----
-The above functions return / use the `MIDIFile` type:
+
+## MIDI IO
+To read and write a MIDI file, the `load` and `save` functions can be used. These extend the `FileIO` interface. The syntax is
+
+    load(filename) -> midi::MIDIFile
+
+Load the midi file contained in `filename` (which **must** end in ".mid") and return
+it as a [`MIDIFile`](@ref).
+
+    save(filename, data::MIDIFile)
+
+Write a `MIDIFile` as a ".mid" file to the given `filename`.
+
+    save(filename, notes::Notes)
+
+Create a `MIDIFile` directly from `notes`, using format 1, and then save it.
+
+## `MIDIFile`
 ```@docs
 MIDIFile
 ```
----
 
 ## `MIDITrack`
 The most important field of a `MIDIFile` is the `tracks` field. It contains as
@@ -22,8 +31,6 @@ in the form of the "events" we mentioned in [MIDI: The least you need to know](@
 MIDITrack
 TrackEvent
 ```
-
----
 
 The `TrackEvent` themselves can be broken into three types.
 ```julia
