@@ -50,7 +50,7 @@ Typically the most relevant information of a `MIDITrack` are the notes contained
 For this reason, special functions [`getnotes`](@ref) and [`addnotes!`](@ref) exist, which can be found in the [Notes](@ref) page.
 
 ## Meta Events
-```@docs
+```
 MIDI.SequenceNumberEvent
 MIDI.TextEvent
 MIDI.CopyrightNoticeEvent
@@ -67,7 +67,7 @@ MIDI.KeySignatureEvent
 ```
 
 ## MIDI Events
-```@docs
+```
 MIDI.NoteOffEvent
 MIDI.NoteOnEvent
 MIDI.AftertouchEvent
