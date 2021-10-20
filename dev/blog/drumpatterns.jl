@@ -80,7 +80,7 @@ notes, seq = random_notes_sequence(motifs, q)
 notes
 
 # and now we can write these to a MIDI file simply by doing
-# `writeMIDIFile("drums_patterns.mid", notes)` if we want to.
+# `save("drums_patterns.mid", notes)` if we want to.
 # We can also use [MuseScore](https://musescore.org), to visualize and print
 # the result. The function [`musescore`](@ref) provides this interface.
 musescore("drums_patterns.png", notes) #src
@@ -133,7 +133,7 @@ right_leads = true
 for i in 1:length(seq)
 
     s = accents[seq[i]][1]
-    le = textevent(:lyric, s)
+    le = MIDI.LyricEvent(0, MIDI.LYRICEV, s)
     addevent!(track, ℓ*sixt, le)
 
     if !right_leads # Invert notes
