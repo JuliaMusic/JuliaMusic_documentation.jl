@@ -10,7 +10,9 @@ The current documentation was built with the following package versions
 ```@example versions
 using Pkg
 Pkg.status(["MIDI", "MotifSequenceGenerator",
-            "MusicManipulations", "MusicVisualizations"])
+            "MusicManipulations", "MusicVisualizations"],
+            mode = PKGMODE_MANIFEST, io=stdout
+)
 ```
 
 using [Literate.jl](https://github.com/fredrikekre/Literate.jl) and [Documenter.jl](https://github.com/JuliaDocs/Documenter.jl/).
