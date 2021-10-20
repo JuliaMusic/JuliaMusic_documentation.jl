@@ -43,39 +43,39 @@ notes, seq = random_notes_sequence(motifs, q)
 notes</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">128 Notes with tpq=960
  Note E6  | vel = 100 | pos = 0, dur = 240
  Note A5  | vel = 50  | pos = 240, dur = 240
- Note E6  | vel = 100 | pos = 480, dur = 240
- Note A5  | vel = 50  | pos = 720, dur = 240
- Note A5  | vel = 50  | pos = 960, dur = 240
+ Note A5  | vel = 50  | pos = 480, dur = 240
+ Note E6  | vel = 50  | pos = 720, dur = 240
+ Note E6  | vel = 50  | pos = 960, dur = 240
  Note E6  | vel = 100 | pos = 1200, dur = 240
  Note A5  | vel = 50  | pos = 1440, dur = 240
   ⋮
- Note A5  | vel = 50  | pos = 29040, dur = 240
- Note E6  | vel = 100 | pos = 29280, dur = 240
+ Note E6  | vel = 100 | pos = 29040, dur = 240
+ Note A5  | vel = 50  | pos = 29280, dur = 240
  Note A5  | vel = 50  | pos = 29520, dur = 240
- Note A5  | vel = 50  | pos = 29760, dur = 240
- Note E6  | vel = 100 | pos = 30000, dur = 240
- Note A5  | vel = 50  | pos = 30240, dur = 240
- Note A5  | vel = 50  | pos = 30480, dur = 240</code></pre><p>and now we can write these to a MIDI file simply by doing <code>save(&quot;drums_patterns.mid&quot;, notes)</code> if we want to. We can also use <a href="https://musescore.org">MuseScore</a>, to visualize and print the result. The function <a href="../../printplot/musescore/#MusicVisualizations.musescore"><code>musescore</code></a> provides this interface.</p><pre><code class="language-julia hljs">musescore(&quot;drums_patterns.png&quot;, notes)</code></pre><p><img src="../drums_patterns-1.png" alt="32-bar pattern sequence"/></p><p><em>this is a pre-made figure - your random sequence will probably differ</em></p><p>This worked nicely, but there is a problem: The sequence does not respect the fact that some specific patterns (<code>5b</code> and <code>4</code>) swap the leading hand. This is what we tackle in the next section.</p><h2 id="Adding-alternating-hands-and-Lyrics"><a class="docs-heading-anchor" href="#Adding-alternating-hands-and-Lyrics">Adding alternating hands and Lyrics</a><a id="Adding-alternating-hands-and-Lyrics-1"></a><a class="docs-heading-anchor-permalink" href="#Adding-alternating-hands-and-Lyrics" title="Permalink"></a></h2><p>Notice that <code>random_note_sequence</code> also returns the indices of the motifs that were used to create the sequence:</p><pre><code class="language-julia hljs">seq</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">31-element Vector{Int64}:
- 1
- 4
+ Note E6  | vel = 100 | pos = 29760, dur = 240
+ Note A5  | vel = 50  | pos = 30000, dur = 240
+ Note E6  | vel = 50  | pos = 30240, dur = 240
+ Note E6  | vel = 50  | pos = 30480, dur = 240</code></pre><p>and now we can write these to a MIDI file simply by doing <code>save(&quot;drums_patterns.mid&quot;, notes)</code> if we want to. We can also use <a href="https://musescore.org">MuseScore</a>, to visualize and print the result. The function <a href="../../printplot/musescore/#MusicVisualizations.musescore"><code>musescore</code></a> provides this interface.</p><pre><code class="language-julia hljs">musescore(&quot;drums_patterns.png&quot;, notes)</code></pre><p><img src="../drums_patterns-1.png" alt="32-bar pattern sequence"/></p><p><em>this is a pre-made figure - your random sequence will probably differ</em></p><p>This worked nicely, but there is a problem: The sequence does not respect the fact that some specific patterns (<code>5b</code> and <code>4</code>) swap the leading hand. This is what we tackle in the next section.</p><h2 id="Adding-alternating-hands-and-Lyrics"><a class="docs-heading-anchor" href="#Adding-alternating-hands-and-Lyrics">Adding alternating hands and Lyrics</a><a id="Adding-alternating-hands-and-Lyrics-1"></a><a class="docs-heading-anchor-permalink" href="#Adding-alternating-hands-and-Lyrics" title="Permalink"></a></h2><p>Notice that <code>random_note_sequence</code> also returns the indices of the motifs that were used to create the sequence:</p><pre><code class="language-julia hljs">seq</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">31-element Vector{Int64}:
+ 2
  3
- 2
- 4
- 2
  3
  1
- 2
  3
+ 2
+ 4
+ 2
+ 2
+ 4
  ⋮
+ 3
+ 4
  1
  3
+ 4
+ 2
+ 2
  3
- 1
- 3
- 1
- 3
- 1
- 3</code></pre><p>We can use this information to put the correct &quot;stickings&quot;. To alternate hands we simply need to replace the necessary E notes with A and vice versa. Let&#39;s define some &quot;meta-data&quot; like structures</p><pre><code class="language-julia hljs">accent1 = (&quot;5a&quot;, false)
+ 4</code></pre><p>We can use this information to put the correct &quot;stickings&quot;. To alternate hands we simply need to replace the necessary E notes with A and vice versa. Let&#39;s define some &quot;meta-data&quot; like structures</p><pre><code class="language-julia hljs">accent1 = (&quot;5a&quot;, false)
 accent2 = (&quot;5b&quot;, true)
 accent3 = (&quot;3&quot;, false)
 accent4 = (&quot;4&quot;, true)
@@ -83,7 +83,7 @@ accents = [accent1, accent2, accent3, accent4]</code></pre><pre class="documente
  (&quot;5a&quot;, 0)
  (&quot;5b&quot;, 1)
  (&quot;3&quot;, 0)
- (&quot;4&quot;, 1)</code></pre><p>The first entry of each tuple is simply the name of the pattern which we will also show in our music score as &quot;lyrics&quot;. The second entry of the tuple simply denotes whether the pattern swaps the leading hand.</p><p>The function that will &quot;inverse&quot; a note sticking is:</p><pre><code class="language-julia hljs">inverse!(n::Note) = (n.pitch = (n.pitch == left ? right : left));</code></pre><p>The function that will &quot;count&quot; how long is each pattern, so that we put the lyrics on the correct positions in the score, will be:</p><pre><code class="language-julia hljs">note_length(s::String) = parse(Int, s[1]);</code></pre><p>(remember: <code>sixt</code> is the duration of one sixteenth note). We now initialize an empty <a href="../../midi/io/#MIDI.MIDITrack"><code>MIDITrack</code></a> and add all events to it!</p><pre><code class="language- hljs">track = MIDITrack()
+ (&quot;4&quot;, 1)</code></pre><p>The first entry of each tuple is simply the name of the pattern which we will also show in our music score as &quot;lyrics&quot;. The second entry of the tuple simply denotes whether the pattern swaps the leading hand.</p><p>The function that will &quot;inverse&quot; a note sticking is:</p><pre><code class="language-julia hljs">inverse!(n::Note) = (n.pitch = (n.pitch == left ? right : left));</code></pre><p>The function that will &quot;count&quot; how long is each pattern, so that we put the lyrics on the correct positions in the score, will be:</p><pre><code class="language-julia hljs">note_length(s::String) = parse(Int, s[1]);</code></pre><p>(remember: <code>sixt</code> is the duration of one sixteenth note). We now initialize an empty <a href="../../midi/io/#MIDI.MIDITrack"><code>MIDITrack</code></a> and add all events to it!</p><pre><code class="language-julia hljs">track = MIDITrack()
 ℓ = 0
 right_leads = true
 
@@ -106,4 +106,19 @@ for i in 1:length(seq)
 end
 
 addnotes!(track, notes)
-notes</code></pre><p>Finally, to visualize, we use <a href="../../printplot/musescore/#MusicVisualizations.musescore"><code>musescore</code></a> again, using a midi file as an input</p><pre><code class="language-julia hljs">musescore(&quot;drums_patterns_with_names.png&quot;, MIDIFile(1, 960, [track]))</code></pre><p><img src="../drums_patterns_with_names-1.png" alt="Correct 32-bar pattern sequence"/></p><p>Isn&#39;t it cool that even the lyrics text was displayed so seamlessly?</p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../../motif/musicexample/">« Music motifs</a><a class="docs-footer-nextpage" href="../garibaldi_dragadiddle/">Ep. 2 - Garibaldi inspired dragaddidle »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.10 on <span class="colophon-date" title="Wednesday 20 October 2021 13:38">Wednesday 20 October 2021</span>. Using Julia version 1.6.3.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
+notes</code></pre><pre class="documenter-example-output"><code class="nohighlight hljs ansi">128 Notes with tpq=960
+ Note E6  | vel = 100 | pos = 0, dur = 240
+ Note A5  | vel = 50  | pos = 240, dur = 240
+ Note A5  | vel = 50  | pos = 480, dur = 240
+ Note E6  | vel = 50  | pos = 720, dur = 240
+ Note E6  | vel = 50  | pos = 960, dur = 240
+ Note A5  | vel = 100 | pos = 1200, dur = 240
+ Note E6  | vel = 50  | pos = 1440, dur = 240
+  ⋮
+ Note E6  | vel = 100 | pos = 29040, dur = 240
+ Note A5  | vel = 50  | pos = 29280, dur = 240
+ Note A5  | vel = 50  | pos = 29520, dur = 240
+ Note E6  | vel = 100 | pos = 29760, dur = 240
+ Note A5  | vel = 50  | pos = 30000, dur = 240
+ Note E6  | vel = 50  | pos = 30240, dur = 240
+ Note E6  | vel = 50  | pos = 30480, dur = 240</code></pre><p>Finally, to visualize, we use <a href="../../printplot/musescore/#MusicVisualizations.musescore"><code>musescore</code></a> again, using a midi file as an input</p><pre><code class="language-julia hljs">musescore(&quot;drums_patterns_with_names.png&quot;, MIDIFile(1, 960, [track]))</code></pre><p><img src="../drums_patterns_with_names-1.png" alt="Correct 32-bar pattern sequence"/></p><p>Isn&#39;t it cool that even the lyrics text was displayed so seamlessly?</p></article><nav class="docs-footer"><a class="docs-footer-prevpage" href="../../motif/musicexample/">« Music motifs</a><a class="docs-footer-nextpage" href="../garibaldi_dragadiddle/">Ep. 2 - Garibaldi inspired dragaddidle »</a><div class="flexbox-break"></div><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 0.27.10 on <span class="colophon-date" title="Wednesday 20 October 2021 17:36">Wednesday 20 October 2021</span>. Using Julia version 1.6.3.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
