@@ -74,3 +74,14 @@ hz_to_pitch
 pitch_to_hz
 is_octave
 ```
+
+## Iteration
+
+`Notes` is iterable. 
+
+There is a single-line easy way to get highest/lowest `Note` from `Notes`:
+
+```julia
+notes = testnotes()
+max_pitch_note, index = findmax(n -> n.pitch, notes)
+```
