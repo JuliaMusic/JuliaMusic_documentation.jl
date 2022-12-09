@@ -72,4 +72,5 @@ pitch_to_name
 note_to_fundamental
 hz_to_pitch
 pitch_to_hz
+is_octave
 ```
