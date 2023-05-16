@@ -53,7 +53,7 @@ writeMIDIFile("test.mid", file)
 ## Read Example
 ```@example midi
 using MIDI
-midi = readMIDIFile(testmidi())
+midi = load(testmidi())
 ```
 
 ```@example midi
