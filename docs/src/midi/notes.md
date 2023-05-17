@@ -47,7 +47,7 @@ G = Note(67 + 12, 96, G.position+inc, 96)
 addnotes!(track, notes)
 addtrackname!(track, "simple track")
 push!(file.tracks, track)
-writeMIDIFile("test.mid", file)
+save("test.mid", file)
 ```
 
 ## Read Example
