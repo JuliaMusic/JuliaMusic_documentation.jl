@@ -54,6 +54,7 @@ makedocs(
         "Basic MIDI structures" => "midi/io.md",
         "Notes" => "midi/notes.md",
         "Note Tools" => "mm/notetools.md",
+        "NamedNote" =>"mm/namednote.md",
         "Quantizing & Humanizing" => "mm/quantizing.md",
         "Music data extraction" => "mm/extraction.md",
         "Visualization" => Any[
