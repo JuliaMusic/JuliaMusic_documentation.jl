@@ -73,3 +73,11 @@ note_to_fundamental
 hz_to_pitch
 pitch_to_hz
 ```
+## NamedNote
+
+Note with specific note name. This type need `MusicManipulations.jl`.
+
+```@docs
+NamedNote
+NamedNotes
+```
