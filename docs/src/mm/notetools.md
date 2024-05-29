@@ -9,6 +9,8 @@ the respective property when given some [`Notes`](@ref).
 
 Other functions follow:
 ```@docs
+metric_time
+duration_metric_time
 translate
 transpose
 louden
